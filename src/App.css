@@ -1,11 +1,293 @@
-.App {
-  text-align: center;
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: "swap";
+  src: url("./fonts/Poppins-Regular.woff2") format("woff2");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: "swap";
+  src: url("./fonts/Poppins-Light.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 200;
+  font-display: "swap";
+  src: url("./fonts/Poppins-ExtraLight.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: "swap";
+  src: url("./fonts/Poppins-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-display: "swap";
+  src: url("./fonts/Poppins-ExtraBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: "swap";
+  src: url("./fonts/Poppins-Black.woff2") format("woff2");
+}
+
+html,
+  body {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  address,
+  big,
+  cite,
+  code,
+  em,
+  font,
+  img,
+  small,
+  strike,
+  sub,
+  sup,
+  li,
+  ol,
+  ul,
+  fieldset,
+  form,
+  label,
+  legend,
+  button,
+  table,
+  caption,
+  tr,
+  th,
+  td {
+    border: none;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    text-align: inherit;
+  }
+
+  blockquote::before,
+  blockquote::after {
+    content: "";
+  }
+
+  a,
+  path {
+    transition: all 0.15s linear;
+  }
+
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
+  }
+
+  body {
+    background:'';
+    box-sizing: border-box;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: -0.015em;
+    text-align: left;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    -webkit-font-smoothing: antialiased;
+    word-break: break-word;
+    word-wrap: break-word;
+  }
+
+  #site-content {
+    overflow: hidden;
+  }  
+  main {
+    display: block;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .faux-heading {
+      margin:0;
+      padding:0px;  
+  }
+
+  h1,
+  .heading-size-1 {
+    font-size: 3.6rem;
+    font-weight: 800;
+    line-height: 1.138888889;
+  }
+
+  h2,
+  .heading-size-2 {
+    font-size: 3.2rem;
+  }
+
+  h3,
+  .heading-size-3 {
+    font-size: 2.8rem;
+  }
+
+  h4,
+  .heading-size-4 {
+    font-size: 2.4rem;
+  }
+
+  h5,
+  .heading-size-5 {
+    font-size: 2.1rem;
+  }
+
+  h6,
+  .heading-size-6 {
+    font-size: 1.6rem;
+    letter-spacing: 0.03125em;
+    text-transform: uppercase;
+  }
+
+  p {
+    line-height: 1.5;
+    margin: 0 0 1em 0;
+  }
+
+  
+  .featured-heading
+  {
+      /* top: 1252px;
+      left: 530px;
+      width: 861px;
+      height: 113px;  */
+      text-align: center;
+      font: normal normal 900 71px/111px 'Poppins', sans-serif;;
+      letter-spacing: 0px;
+      color: #202741;
+      opacity: 1;
+      
+      margin: 0;
+      
+  }
+  
+  .featured-project-heading
+  {
+      text-align: left;
+      font:normal normal 600 66px/97px 'Poppins',sans-serif;
+      letter-spacing: 0px;
+      color: #202741;
+      opacity: 1;
+  }
+  
+  .featured-project-line
+  {
+      top: 1370px;
+  left: 916px;
+  width: 89px;
+  height: 12px;
+  background: #FE5656 0% 0% no-repeat padding-box;
+  border-radius: 107px;
+  opacity: 1;
+  margin: auto;
+  /* width: 89px; */
+  /* border: 3px solid green; */
+  /* padding: 10px; */
+  
+  }
+  
+  .featured-project-description{
+  width: 565px;
+  text-align: left;
+  font: normal normal 300 24px/35px 'Poppins', sans-serif;;
+  letter-spacing: 0px;
+  color: #202741;
+  opacity: 1;
+  }
+  
+  .featured-project-city-name
+  {
+      background: #202741 0% 0% no-repeat padding-box;
+      border-radius: 8px;
+      opacity: 1;
+      float:left;
+      margin-right: 30px;
+  }
+  
+  .featured-project-city-name-text
+  {
+    text-align: center;
+    font: normal normal 300 18px/27px 'Poppins', sans-serif;;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    margin: 0;
+    padding: 5px 23px;
+  }
+  
+  .featured-project-category
+  {
+  border: 1px solid #A1A1A1;
+  border-radius: 8px;
+  opacity: 1;
+  float:left;
+  }
+  
+  .featured-project-category-text
+  {
+  text-align: center;
+  font: normal normal 300 18px/27px 'Poppins', sans-serif;;
+  letter-spacing: 0px;
+  color: #202741;
+  opacity: 1;
+  }
+  
+  .featured-project-button
+  {
+    background: #DB2D34 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+  }
+  
+  .featured-project-button-text
+  {
+    /* top: 2172px;
+    left: 294px;
+    width: 126px;
+    height: 32px; */
+    text-align: left;
+    font: normal normal 300 18px/25px 'Poppins', sans-serif;;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+  }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -35,4 +317,127 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+@media (min-width: 700px) {
+  h1,
+  .heading-size-1,
+  h2,
+  .heading-size-2,
+  h3,
+  .heading-size-3 {
+    margin: 6rem auto 3rem;
+  }
+
+  h4,
+  .heading-size-4,
+  h5,
+  .heading-size-5,
+  h6,
+  .heading-size-6 {
+    margin: 4.5rem auto 2.5rem;
+  }
+
+  h1,
+  .heading-size-1 {
+    font-size: 6.4rem;
+  }
+
+  h2,
+  .heading-size-2 {
+    font-size: 4.8rem;
+  }
+
+  h3,
+  .heading-size-3 {
+    font-size: 4rem;
+  }
+
+  h4,
+  .heading-size-4 {
+    font-size: 3.2rem;
+  }
+
+  h5,
+  .heading-size-5 {
+    font-size: 2.4rem;
+  }
+
+  h6,
+  .heading-size-6 {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 1220px) {
+  h1,
+  .heading-size-1 {
+    font-size: 8.4rem;
+  }
+}
+ul,
+ol {
+  margin: 0 0 3rem 3rem;
+}
+
+ul {
+  list-style: disc;
+}
+
+ul ul {
+  list-style: circle;
+}
+
+ul ul ul {
+  list-style: square;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol ol {
+  list-style: lower-alpha;
+}
+
+ol ol ol {
+  list-style: lower-roman;
+}
+
+li {
+  line-height: 1.5;
+  margin: 0.5rem 0 0 2rem;
+}
+
+li > ul,
+li > ol {
+  margin: 1rem 0 0 2rem;
+}
+
+.reset-list-style,
+.reset-list-style ul,
+.reset-list-style ol {
+  list-style: none;
+  margin: 0;
+}
+
+.reset-list-style li {
+  margin: 0;
+}
+
+dt,
+dd {
+  line-height: 1.5;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dt + dd {
+  margin-top: 0.5rem;
+}
+
+dd + dt {
+  margin-top: 1.5rem;
 }
