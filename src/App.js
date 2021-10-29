@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import Home from "./components/pages/home";
 import Pages from "./components/pages/pages";
 import Projects from "./components/pages/projects";
 import ProjectSingle from "./components/pages/projectSingle";
-import PageBackground from "./assets/page_bg.png";
+import { SWRConfig } from 'swr'
+import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useLocation
 } from "react-router-dom";
 
 export default function App(state) {
   console.log(state);
   //const  headerBg  = data.isHome ? HomeBackground : PageBackground;
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [pathname]);
+
   return (
     <div className="App">
+      <SWRConfig
+      value={{
+        refreshInterval: 3000,
+        refreshWhenOffline : false
+      }}
+    >
         <Switch>
         {/* <Route path="/about">
           <About />
@@ -35,6 +52,8 @@ export default function App(state) {
         <Route path="/project/:slug" exact component={ProjectSingle}></Route>
         <Route path="/"  component={Home}></Route>
       </Switch>
+      
+    </SWRConfig>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Latestnews = () => {
 
-    const { data, error } = useSWR('/latest', fetcher)
+    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47', fetcher)
     console.log(data,error,'34')
 
     var settings = {

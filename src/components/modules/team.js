@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
-import meet_lft from "../../assets/meet_lft.png";
-import team_box from "../../assets/team_box.png";
+import Meet_lft from "../../assets/meet_lft.png";
+import Team_box from "../../assets/team_box.png";
 
 const Team = ({ team, owner }) => {
   
@@ -20,7 +20,7 @@ const Team = ({ team, owner }) => {
               <h2>{owner.lastname}</h2>
             </TeamMeetSectionLeft>
             <TeamMeetSectionRight>
-              <RF className="logo_f" src={meet_lft}></RF>
+              <RF className="logo_f" src={Meet_lft}></RF>
             </TeamMeetSectionRight>
           </TeamMeetSectionMain>
           <TeamMeetSectionBottom>
@@ -31,7 +31,7 @@ const Team = ({ team, owner }) => {
             {team && team.people && team.people.map((peop, index) =>
               <TeamMeetBoxes key={index}>
                 <Img>
-                  <Imge src={team_box}></Imge>
+                  <Imge src={Team_box}></Imge>
                 </Img>
                 <Text>
                   <h2>{peop.name}</h2>

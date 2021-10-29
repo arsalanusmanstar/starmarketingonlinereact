@@ -12,16 +12,20 @@ import latest_icon06 from "../../assets/latest_icon06.png";
 import latest_icon07 from "../../assets/latest_icon07.png";
 import latest_icon08 from "../../assets/latest_icon08.png";
 import Moment from "react-moment";
+import ReactLoading from "react-loading";
+import back from "../../assets/back.png";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
 const Blog = ({state}) => {
+    const [activeContent,setActiveContent] = useState(false);
+    const [content,setContent] = useState();
     const [currentPage,setCurrentPage] = useState(1);
     const [todosPerPage,setTodosPerPage] = useState(3);
     const [filter,setFilter] = useState('');
     const [filterCategory,setFilterCategory] = useState([47,2673]);
-    const { data, error } = useSWR('/blog', fetcher)
+    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47,2673&per_page=100', fetcher)
 
     const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
     const filteredData = data ? data.filter(item => {
@@ -102,7 +106,7 @@ const Blog = ({state}) => {
             </LatestSearchsectionMain>
 
 
-            {currentTodos.length > 0 && currentTodos.map((post,index)=>
+            {currentTodos.length > 0 ? currentTodos.map((post,index)=>
                 
                 <LatestBoxes>
                     {console.log(post)}
@@ -127,16 +131,27 @@ const Blog = ({state}) => {
                     <LatestBoxesText>
                         <h1 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h1>
                         <p  dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p>
-                        <button>
+                        <button onClick={()=>{
+                            setActiveContent(true)
+                            setContent(post.content.rendered)
+                        }}>
                         Read more
                         <Imge src={latest_icon07}></Imge>
                         </button>
                     </LatestBoxesText>  
                  </LatestBoxes>
-            )}
-            <ul>{renderPageNumbers}</ul>
+            ) : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
+            <ul className="pagination">{renderPageNumbers}</ul>
           </SectionContainer>
         </LatestSearchsection>
+        
+        <LatestBoxesSlides className={activeContent && 'active'}>
+            <div className="projectContent">
+                <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
+                <h1>PROJECT DESCRIPTION</h1>
+                <div className="content" dangerouslySetInnerHTML={{ __html:htmlDecode(content)}}></div>
+            </div>
+        </LatestBoxesSlides>
 
     </div>
 
@@ -147,6 +162,12 @@ const Blog = ({state}) => {
 export default Blog;
 
 
+const  htmlDecode = (content) => {
+    let e = document.createElement('div');
+    e.innerHTML = content;
+    return e.innerHTML;
+  }
+  
 
 
 const LatestBoxesImg = styled.div`
@@ -246,6 +267,28 @@ grid-template-columns: 40% 54%;
 gap: 6%;
 margin: 10% 0px;
 
+@media (max-width: 700px) {
+    grid-template-columns:100%;
+    margin:10px 0px 80px;
+    gap:0px;
+    text{
+        display:none;
+        grid-template-columns:100%;
+        user{
+            margin:0px;
+        }
+
+    }
+    p{ margin-bottom:10px;}
+    ul.pagination li{
+        grid-template-columns: repeat( auto-fit, minmax(35px, 1fr) );
+    }
+    ul.pagination:before,ul.pagination:after{
+        content:'';
+        clear:both;
+        display:block
+    }
+  }
 `
 
 
@@ -371,4 +414,52 @@ const LatestSearchsectionMain = styled.div`
 const Imge = styled.img`
   
 
+`
+
+const  LatestBoxesSlides = styled.div`
+  position: fixed;
+  right: -2000px;
+  width: 100%;
+  background: rgb(0 0 0 / 85%);
+  height: 100%;
+  z-index: 9999;
+  top: 0;
+  .projectContent {
+    background: #fff;
+    width: 50%;
+    position: fixed;
+    right: -2000px;
+    padding: 40px;
+    height: 80vh;
+    overflow: scroll;
+    top: 10%;
+    -webkit-transition: all 0.5s 0s ease;
+    -moz-transition: all 0.5s 0s ease;
+    -o-transition: all 0.5s 0s ease;
+    transition: all 0.5s 0s ease;
+    h1 {
+      padding: 0;
+      margin: 0;
+      font-size: 59px;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+  &.active{
+    .projectContent {
+        position: fixed;
+        right: 0;
+    }
+    right: 0;
+  }
+`
+const Back = styled.button`
+  background:url(${(props) => props.bg}) no-repeat center;
+  height: 40px;
+  width: 40px;
+  display: block;
+  background-size: contain;
+  margin-bottom: 20px;
+  cursor:pointer;
 `

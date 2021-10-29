@@ -77,7 +77,7 @@ const FeatureProducts = ({state}) => {
     centerPadding: 0,
     centerMode: true,
   };
-    const { data, error } = useSWR('/featureProject', fetcher)
+    const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true', fetcher)
     console.log(data,error)
     return (
         <FeautureProductsMain  background={grayBackground}>
@@ -222,7 +222,7 @@ const Section = styled.section`
 const FeautureProductsMain = styled.div`
     background:#ebebeb  url(${(props) => props.background})  0% 0% no-repeat padding-box;
     opacity: 1;
-    padding:0px 0 140px;
+    padding:0px 0 0px;
     background-position: bottom;
     margin-bottom: -191px;
     position: relative;
@@ -280,7 +280,7 @@ width: 60%;
         .number_slider{
             font-size:35px;
             position:relative;
-            margin-top: 35px;
+            margin-top:0px;
             margin-left: 20px;
             font-weight: 600;
         }
@@ -300,14 +300,14 @@ width: 60%;
         .next{
             position: absolute;
             right: 0%;
-            top: 110%;
+            bottom: -45px;
             z-index: 999;            
         }
         .prev{
             z-index: 999;
             position: absolute;
             left: 5%;
-            top: 110%;
+            bottom: -45px;
         }
 }  
 `

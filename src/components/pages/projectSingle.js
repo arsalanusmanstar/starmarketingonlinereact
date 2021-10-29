@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
 import latest_icon07 from "../../assets/latest_icon07.png";
 import Button from "../elements/button"
@@ -9,6 +10,8 @@ import description02 from "../../assets/description02.png";
 import description03 from "../../assets/description03.png";
 import description04 from "../../assets/description04.png";
 import description05 from "../../assets/description05.png";
+import penthousewhite from "../../assets/penthousewhite.png";
+import plotswhite from "../../assets/plotswhite.png";
 import description06 from "../../assets/description06.png";
 import description07 from "../../assets/description07.png";
 import description08 from "../../assets/description08.png";
@@ -24,42 +27,43 @@ import Facilities05 from "../../assets/Facilities05.png";
 import Facilities06 from "../../assets/Facilities06.png";
 import Facilities07 from "../../assets/Facilities07.png";
 import Facilities08 from "../../assets/Facilities08.png";
-import pdf from "../../assets/pdf.png";
-import gallery01 from "../../assets/gallery01.png";
-import gallery02 from "../../assets/gallery02.png";
-import gallery03 from "../../assets/gallery03.png";
-import maap from "../../assets/maap.png";
+import pdfImage from "../../assets/pdf.png";
+import back from "../../assets/back.png";
 import rightboxes from "../../assets/rightboxes.png";
 import useSWR from 'swr'
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import ReactLoading from "react-loading";
+import WebImage from "../../assets/page_bg.png";
 
-const fetcher = (url) => fetch(url,{
-  method:'Post',
-  
-}).then((res) => res.json());
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match}) => {
-  const { data, error } = useSWR('/singleprojects?slug='+match.params.slug, fetcher)
- 
+  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher, {refreshInterval: 0,
+    refreshWhenOffline : false})
+  const [pdf,setPdf] = useState('');
+  const [activeContent,setActiveContent] = useState(false);
+  
 
   return (
-    <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
+    <Mainproject  style={{backgroundImage:`url(${WebImage})`}}>
       <Header />
-     
-        <DescriptionBanner background={data && data[0]._embedded['wp:featuredmedia'][0].source_url}>
+      {console.log(data)}
+      {data ?  data[0] &&
+      <>
+        <DescriptionBanner background={data[0]._embedded['wp:featuredmedia'][0].source_url}>
             <SectionContainer>
-            {data && 
+            
             <>
                <div className="play_section">
                  <Imge src={description09}></Imge>
                  <p>Watch<br/>Property Video</p>
                </div>
                <h1  dangerouslySetInnerHTML={{ __html: data[0].title.rendered }}></h1>
-               <h5>Launching a new spirit and lifestyle</h5>
+               <h5 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.tagline }}></h5>
                <div className="loction_section">
                  <Imge src={projects09}></Imge>
-                 <p>10-Min drive from Islamabad Airport, Opp. Capital Smart City, main Chakri Road.</p>
+                 <p dangerouslySetInnerHTML={{ __html: data[0].acf.filters.address_information.address }}></p>
                </div>
                
                <button className="red" >
@@ -67,7 +71,7 @@ const ProjectSingle = ({match}) => {
                    Scroll to see detail <Imge src={description10}></Imge>
                 </button>
                 </>
-              }
+              
             </SectionContainer>
         </DescriptionBanner>
           
@@ -80,32 +84,26 @@ const ProjectSingle = ({match}) => {
 
                   <ProjectsDescriptionLfet >
                      <h1>PROJECT DESCRIPTION</h1>
-                     <p>Launching a new spirit and lifestyle with a LIMITED inventory of 2 & 3 bedrooms super luxury apartments & Penthouses at 'The Views' Emaar Beach, Karachi. </p>
-                     <p> Fall in love with the breathtaking sunsets over the Arabian Sea from the luxury of your living room. Fall in love with the breathtaking sunsets over the Arabian Seafrom the luxury of your living ro..... </p>
-                     <button>Read more  <Imge src={latest_icon07}></Imge></button>
+                    <div  dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].excerpt.rendered)}} ></div>
+                     <button onClick={()=>setActiveContent(true)}>Read more  <Imge src={latest_icon07}></Imge></button>
                      <ProjectSectionBoxesMain>
-                      <ProjectSectionBoxes>
-                        <Imge src={description02}></Imge>
-                        <button>Shop</button>
-                      </ProjectSectionBoxes>
-                      <ProjectSectionBoxes>
-                        <Imge src={description03}></Imge>
-                        <button>Apartments</button>
-                      </ProjectSectionBoxes>
-                      <ProjectSectionBoxes>
-                        <Imge src={description04}></Imge>
-                        <button>Offices</button>
-                      </ProjectSectionBoxes>
-                      <ProjectSectionBoxes>
-                        <Imge src={description05}></Imge>
-                        <button>Houses</button>
-                      </ProjectSectionBoxes>
-                      
+                      { data[0].acf.filters.categories && data[0].acf.filters.categories.map((cat,index)=>
+                        <ProjectSectionBoxes key={index}>
+                          <Imge src={ 
+                            cat == 'shop' ? description02 
+                            : cat == 'apartments' ? description03 
+                            : cat == 'offices' ? description04 
+                            : cat == 'penthousewhite' ? penthousewhite 
+                            : cat == 'plots' ? plotswhite 
+                            : cat == 'houses' && description05 
+                            
+                            }></Imge>
+                          <button>{cat}</button>
+                        </ProjectSectionBoxes>
+                      )}
                      </ProjectSectionBoxesMain>
                   </ProjectsDescriptionLfet>
-
                   <ProjectsDescriptionRight>
-
                   <CallSectionMain>
                 <CallRequests >
                     <Imge className="description_top" src={description06}></Imge>
@@ -121,26 +119,17 @@ const ProjectSingle = ({match}) => {
                   
                     <Button type="submit" value="Request info" />
                 </form>
-                
-
-
-
-
                 </CallSectionMain>
- 
                 <SaveShare>
-                  
-                  <SaveShareLfet>
+                  {/* <SaveShareLfet>
                   <Imge src={description07}></Imge>
                   <p>Save</p>
-                  </SaveShareLfet>
+                  </SaveShareLfet> */}
 
                   <SaveShareLfet>
                   <Imge src={description08}></Imge>
                   <p>Share</p>
                   </SaveShareLfet>
-
-
                   </SaveShare>
 
 
@@ -155,38 +144,21 @@ const ProjectSingle = ({match}) => {
               <Facilities>
                 <h1>FACILITIES</h1>
                 <FacilitiesBack>
-                 <FacilitiesBoxes>
-                    <Imge src={Facilities01}></Imge>
-                    <p>Beach</p>
+                  {data[0].acf.filters.facilities && data[0].acf.filters.facilities.facility.map((faci,index)=>
+                  <FacilitiesBoxes key={index}>
+                    <Imge src={
+                      faci == 'beach' ? Facilities01 : 
+                      faci == 'scurity' ? Facilities02 : 
+                      faci == 'gated' ? Facilities03 : 
+                      faci == 'lounge' ? Facilities04 : 
+                      faci == 'playarea' ? Facilities05 : 
+                      faci == 'gym' ? Facilities06 : 
+                      faci == 'swimming' ? Facilities07 :
+                      faci == 'gaming' && Facilities08
+                    }></Imge>
+                    <p>{faci}</p>
                   </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities02}></Imge>
-                    <p>24/7 Security</p>
-                  </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities03}></Imge>
-                    <p>Gated</p>
-                  </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities04}></Imge>
-                    <p>Lounge</p>
-                  </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities05}></Imge>
-                    <p>Play Area</p>
-                  </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities06}></Imge>
-                    <p>Gym</p>
-                  </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities07}></Imge>
-                    <p>Swimming</p>
-                  </FacilitiesBoxes>
-                  <FacilitiesBoxes>
-                    <Imge src={Facilities08}></Imge>
-                    <p>Gaming</p>
-                  </FacilitiesBoxes>
+                  )}
                   <FacilitiesBoxesBottom> <h5>& ALL MODERN AMENITIES</h5> </FacilitiesBoxesBottom> 
                   </FacilitiesBack>
             
@@ -196,24 +168,18 @@ const ProjectSingle = ({match}) => {
                 <h1>PROPERTY PORTFOLIO</h1>
                 <PropertyMain>
                    <PropertyLeft>
-                      <Boxes>
-                      <Imge src={pdf}></Imge>
-                      <h3>Application form</h3>
-                      </Boxes>
-                      <Boxes>
-                      <Imge src={pdf}></Imge>
-                      <h3>Payment Plan</h3>
-                      </Boxes>
-                      <Boxes>
-                      <Imge src={pdf}></Imge>
-                      <h3>Brochure</h3>
-                      </Boxes>
-                  
-
+                      {data[0].acf.filters.property_portfolio_f && data[0].acf.filters.property_portfolio_f.property_file.map((files,index)=>
+                        <Boxes key={index} className={pdf == files.file_url && 'active'} onClick={()=>setPdf(files.file_url)}>
+                          <Imge src={pdfImage}></Imge>
+                          <h3>{files.file_title}</h3>
+                        </Boxes>
+                      )}
                    </PropertyLeft>
 
                    <PropertyRight>
-                  
+                     {pdf ? 
+                       <embed src={pdf} type="application/pdf" width="100%" height="100%" />
+                      : <p>Please select Pdf.</p>}
                    </PropertyRight>
 
                 </PropertyMain>
@@ -226,37 +192,13 @@ const ProjectSingle = ({match}) => {
             <GallerySection>
                 <h1>GALLERY</h1>
                 <GalleryMain>
-                   <GBoxes>
-                     <Imge src={gallery01}></Imge>
+                {data[0].acf.filters.gallery && data[0].acf.filters.gallery.map((gallery,index)=>
+                   <GBoxes key={index}>
+                     <Imge src={gallery} width="100%"></Imge>
                    </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery02}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery03}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery02}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery03}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery01}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery03}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery01}></Imge>
-                   </GBoxes>
-                   <GBoxes>
-                     <Imge src={gallery03}></Imge>
-                   </GBoxes>
-                 
+                )}
 
-
-                </GalleryMain>
+              </GalleryMain>
 
             </GallerySection>
 
@@ -266,7 +208,7 @@ const ProjectSingle = ({match}) => {
               <LocationSectionyMain>
 
                   <LocationSectionLeft>
-                    <Imge src={maap}></Imge>
+                    <iframe src={data[0].acf.filters.address_information && data[0].acf.filters.address_information.map} width="100%" height="450" loading="lazy"></iframe>
                   </LocationSectionLeft>
 
                   <LocationSectionRight>
@@ -274,11 +216,11 @@ const ProjectSingle = ({match}) => {
                        
                       <RightBoxes>
                        <p>Location</p>
-                       <h4>Islamabad Airport, Opp. Capital Smart City, main Chakri Road.</h4>
+                       <h4 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.address_information.location }}></h4>
                       </RightBoxes>
                       <RightBoxes>
                       <p>Contact</p>
-                      <h2>041-111-111-160</h2>
+                      <h2  dangerouslySetInnerHTML={{ __html: data[0].acf.filters.address_information.phone }}></h2>
                       </RightBoxes>
 
                   </LocationSectionRight>
@@ -288,10 +230,19 @@ const ProjectSingle = ({match}) => {
             </LocationSection>
 
 
-
+         
            </SectionContainer>
         </ProjectsDescription>
-       
+        
+        <ProjectContentSlides className={activeContent && 'active'}>
+          <div className="projectContent">
+              <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
+              <h1>PROJECT DESCRIPTION</h1>
+              <div className="content" dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].content.rendered)}}></div>
+          </div>
+        </ProjectContentSlides>
+        </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
+        }
       <Footer />
    </Mainproject>
   );
@@ -300,6 +251,12 @@ const ProjectSingle = ({match}) => {
 export default ProjectSingle;
 
 
+const  htmlDecode = (content) => {
+  let e = document.createElement('div');
+  e.innerHTML = content;
+  console.log(content);
+  return e.innerHTML;
+}
 
 const LocationSection = styled.div`
  h1 {
@@ -400,6 +357,7 @@ h1 {
   `
   const PropertyMain = styled.div`
   display: grid;
+  min-height:700px;
   grid-template-columns: 20% 70%;
   gap: 5%;
   background: #F3F3F3;
@@ -428,10 +386,20 @@ h1 {
     text-transform: capitalize;
     margin: 24px 0px 0px 0px;
 }
+&.active{
+  background: #f3f3f3;
+}
   
   `
   const PropertyRight = styled.div`
-  background: #000;
+    background: #000;
+    p{
+      text-align: center;
+      height: 600px;
+      color: #f3f3f3;
+      padding-top: 90px;
+      font-size: 24px;
+    }
   `
 
 const FacilitiesBoxesBottom = styled.div`
@@ -482,8 +450,17 @@ background:url(${(props) => props.background}) no-repeat center;
 height: 952px;
 display: block;
 background-size: cover;
+position: relative;
+&:before{
+  content: '';
+  background-image: linear-gradient(-90deg, rgba(255, 255, 255, 0) 1%, black 100%);
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
 button {
-  background: none;
+  background: rgb(255 255 255 / 14%);
   border: 1px solid #B9AB66;
   color: #fff;
   display: flex;
@@ -549,22 +526,24 @@ p {
 }
 `
 const SaveShare = styled.div`
-display: grid;
-grid-template-columns: 60% 40%;
-    padding: 40px 30px 0px 30px;
+  display: grid;
+  grid-template-columns: 100%;
+  padding: 40px 30px 0px 30px;
+  
  img {
-  width: fit-content;
-  height: fit-content;
-  margin-right: 15px;
-}
-.css-1vw4uqh-SaveShare p {
-  margin: 0px;
-  font-size: 20px;
-}
+    width: fit-content;
+    height: fit-content;
+    margin-right: 15px;
+  }
+  .css-1vw4uqh-SaveShare p {
+    margin: 0px;
+    font-size: 20px;
+  }
 `
 const SaveShareLfet = styled.div`
 
   display: flex;
+  justify-content: center;
 
 `
 
@@ -663,6 +642,7 @@ const ProjectsDescriptionLfet = styled.div`
     border-radius: 10px;
     font-size: 21px;
     letter-spacing: 1px;
+    cursor:pointer;
   img {
     float: right;
     margin: 4px 0px 0px 24px;
@@ -680,11 +660,13 @@ border-radius: 14px;
 img {
   text-align: center;
   margin: 0 auto;
+  display: block;
+  height: 44px;
 }
 button {
   background: none;
   padding: 0px;
-  margin: 16px 0px 0px 0px;
+  margin: 12px 0px 0px 0px;
   font-size: 13px;
   letter-spacing: 2px;
 }
@@ -726,4 +708,55 @@ textarea {
   display: none;
 }
 
+`
+
+const  ProjectContentSlides = styled.div`
+  position: fixed;
+  right: -2000px;
+  width: 100%;
+  background: rgb(0 0 0 / 85%);
+  height: 100%;
+  z-index: 9999;
+  top: 0;
+  .projectContent {
+    background: #fff;
+    width: 50%;
+    position: fixed;
+    right: -2000px;
+    padding: 40px;
+    height: 80vh;
+    overflow: scroll;
+    top: 10%;
+    -webkit-transition: all 0.5s 0s ease;
+    -moz-transition: all 0.5s 0s ease;
+    -o-transition: all 0.5s 0s ease;
+    transition: all 0.5s 0s ease;
+    h1 {
+      padding: 0;
+      margin: 0;
+      font-size: 59px;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+  &.active{
+    .projectContent {
+        position: fixed;
+        right: 0;
+    }
+    right: 0;
+  }
+`
+const ProjectContentText = styled.div`
+
+`
+const Back = styled.button`
+  background:url(${(props) => props.bg}) no-repeat center;
+  height: 40px;
+  width: 40px;
+  display: block;
+  background-size: contain;
+  margin-bottom: 20px;
+  cursor:pointer;
 `

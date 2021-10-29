@@ -23,6 +23,9 @@ const SectionContainer = styled.div`
   @media (min-width: 700px) {
     width: calc(100% - 8rem);
   }
+  @media (max-width: 700px) {
+    padding:40px 20px;
+  }
 `;
 
 export default SectionContainer;

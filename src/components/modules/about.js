@@ -4,7 +4,6 @@ import AboutBackground from "../../assets/about_background.png";
 
 
 const ScoreCounter = (state) => {
-
     return (
         <Score>
             <ScoreCont>

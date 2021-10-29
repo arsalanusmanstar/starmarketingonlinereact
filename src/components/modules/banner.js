@@ -1,20 +1,18 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
-
 import BackgroundImage from "../../assets/WebBg.png";
 import VideoImage from "../../assets/video.png";
 import GuarantLogo from "../../assets/1Icon.png";
-
 const BannerText = ({state}) => {
     return (
-        <BannerCont >
-            <GuaranteeLogo background={GuarantLogo}/>
-            <Heading>{state.heading}</Heading>
-            <Subheading>{state.sub_heading}</Subheading>
-            <Content>{state.content}</Content>
-            <Button href={state.learn_more}> Learn More </Button>
-            <SubButton href={state.know_us}>Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
-        </BannerCont>   
+            <BannerCont >
+                <GuaranteeLogo background={GuarantLogo}/>
+                <Heading>{state.heading}</Heading>
+                <Subheading>{state.sub_heading}</Subheading>
+                <Content>{state.content}</Content>
+                <Button href={state.learn_more}> Learn More </Button>
+                <SubButton href={state.know_us}>Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
+            </BannerCont>   
     )
 }
 const Video = ({state}) => {
@@ -26,7 +24,7 @@ const TopBanner = ({state,data}) => {
     return (
     <MainSection background={BackgroundImage}>
         <SectionContainer minHeight="800px" style={{paddingTop:0}}>
-            <BannerText state={data}/>
+                 <BannerText state={data} />
             <Video state={state} />
         </SectionContainer>
     </MainSection>    

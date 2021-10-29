@@ -15,6 +15,11 @@ import projects05 from "../../assets/projects05.png";
 import projects06 from "../../assets/projects06.png";
 import shop from "../../assets/shop.png";
 import aparments from "../../assets/apartments.png";
+import offices from "../../assets/offices.png";
+import plots from "../../assets/plots.png";
+import penthouses from "../../assets/penthouses.png";
+import ReactLoading from "react-loading";
+import WebImage from "../../assets/page_bg.png";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -28,7 +33,8 @@ const Projects = (state) => {
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
 
-  const { data, error } = useSWR('/projects', fetcher)
+  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&per_page=100', fetcher, {refreshInterval: 0,
+    refreshWhenOffline : false})
   
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
@@ -55,7 +61,7 @@ const Projects = (state) => {
   }
   
   return (
-    <div style={{backgroundImage:`url("/assets/page_bg.png")`}}> 
+    <div style={{backgroundImage:`url(${WebImage})`}}> 
       <Header />
       <Mainproject>
       <SectionContainer>
@@ -84,15 +90,16 @@ const Projects = (state) => {
               <input type="checkbox" />
               <button className={completed && 'active'} onClick={()=>{
                 setCompleted(completed ? false:true)
-                }}>Comlpeted</button>
+                }}>Completed</button>
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <input type="checkbox" />
               <button className={nearme && 'active'} onClick={()=>{
                 setNearme(nearme ? false:true)
                 }}>Project near me</button>
-            </div>
-           
+            </div> */}
+           <br />
+           <br />
                 
 
             </ProjectHeaderleft>
@@ -174,9 +181,9 @@ const Projects = (state) => {
 
         <ProjectHeadersectionB>
         <SectionContainer className="pt-0">
-          <h1 className="listing_heading">Found {FilterData.length} projects</h1>
+           {FilterData.length > 0 && <h1 className="listing_heading">Found {FilterData.length} projects</h1>}
           <div className="listing">
-          {FilterData.length > 0 && FilterData.map((post,index)=> 
+          {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
               {console.log(post,'datad')}
               <Image background={post._embedded['wp:featuredmedia'][0].source_url}></Image>
@@ -189,9 +196,11 @@ const Projects = (state) => {
                     <Imge src={
                       cat == 'shop' ? shop 
                       :  cat == 'apartments' ? 
-                      aparments : ''
+                      aparments : cat == 'offices' ? offices : 
+                      cat == 'plots' ? plots : 
+                      cat == 'penthouses' && penthouses
                       }></Imge>
-                    <button>{cat}</button>
+                    {/* <button>{cat}</button> */}
                   </div>
                   ) }
                 </div>
@@ -209,7 +218,7 @@ const Projects = (state) => {
                 </div>
 
               </div>
-            )}
+            ): <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> }
           </div>
           </SectionContainer>
           </ProjectHeadersectionB>
@@ -233,7 +242,7 @@ const ProjectHeadersectionB = styled.div`
       display: grid;
       grid-template-columns: 30% 30% 30%;
       justify-content: space-between;
-      margin-top: 4%;
+      padding-top: 4%;
       h2 {
         color: #000;
         font-size: 30px;
@@ -252,8 +261,9 @@ const ProjectHeadersectionB = styled.div`
   
   }
   .listing_shop {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     margin-bottom: 20px;
      button {
       background: none;
@@ -281,7 +291,7 @@ const ProjectHeadersectionB = styled.div`
     margin: 0;
 }
 .listing_shop.secound {
-  grid-template-columns: 64% 30%;
+  grid-template-columns: 61% 34%;
   gap: 10px;
   justify-content: space-between;
 }

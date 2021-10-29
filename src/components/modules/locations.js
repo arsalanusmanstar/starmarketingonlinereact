@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import footer_icon from "../../assets/footer_icon.png";
-import logo_f from "../../assets/logo_f.png";
+import Logo_f from "../../assets/logo_f.png";
 import FB from "../../assets/FB.png";
 import TW from "../../assets/TW.png";
 import YT from "../../assets/YT.png";
 import In from "../../assets/In.png";
 import INSTA from "../../assets/INSTA.png";
-import touch from "../../assets/touch.png";
+import Touch from "../../assets/touch.png";
 import grayBackground from "../../assets/map.png";
 import { useEffect,useState } from "react";
 import axios from "axios";
@@ -47,7 +47,7 @@ const Locations = ({state}) => {
          </ContactSectionTouchLeft>
 
          <ContactSectionTouchRight>
-            <Imge src={touch}></Imge>
+            <Imge src={Touch}></Imge>
          </ContactSectionTouchRight>
         
     </ContactSectionTouch>
@@ -62,7 +62,7 @@ const Locations = ({state}) => {
 
              <ContactSectionRight>
                 
-                <Flogo className="logo_f" src={logo_f}></Flogo>
+                <Flogo className="logo_f" src={Logo_f}></Flogo>
                 <SL>
                 <IconTW className="FS" src={TW}></IconTW>
                 <IconTW className="FS" src={FB}></IconTW>
