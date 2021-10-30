@@ -168,11 +168,11 @@ const Blog = ({state}) => {
                             post.author == 1 && "Star Marketing" 
                             
                         }</user>
-                        </text>
+                        </text> 
                         </div>
                   
                   <h2 className="popupheadings" dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
-                   <div className="content" dangerouslySetInnerHTML={{ __html:post.content.rendered}}></div>
+                   <div className="content"     ></div>
                    </>
                      : 
                      <div >
