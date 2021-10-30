@@ -34,7 +34,7 @@ app.post('/expressPost', (req, res) => { //Line 93
 }); //Line 11
 
 app.get('/latest', (req, res) => { //Line 93
-     var url = baseUrl+'/posts?_embed=true&?categories=47';
+     var url = baseUrl+'/posts?_embed=true&?categories=47,2673&per_page=100';
     console.log(url)
 
     request({

@@ -9,6 +9,7 @@ import video from  "../../assets/video.png"
 import line from "../../assets/line.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 const NextArrow = ({ onClick }) => {
     return (
         <div className="arrow next" onClick={onClick}>
@@ -110,7 +111,10 @@ const FeatureProducts = ({state}) => {
                                 <br/>
                                 <br/>
                                 <br/>
-                                <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button>
+                                <ReadMore>
+                                <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://starmarketingonline.com','')}>Read More <LeftArrow src={arrowLeft} /></Link>
+                                </ReadMore>
+                                {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
                         )}
                         {/* <div>
@@ -315,3 +319,21 @@ const BackgroundImage = styled.div`
 `
 const LeftArrow = styled.img`
 `
+
+const ReadMore = styled.button`
+  background: #DB2D34 0% 0% no-repeat padding-box;
+  color: #fff;
+  padding: 19px;
+  text-align: left;
+  min-width: 206px;
+  border-radius: 8px;
+  font: normal normal 300 18px/30px Poppins;
+  margin: 20px 0;
+  position:relative;
+  img {
+    width: 34px;
+    top: 39%;
+    right: 18px;
+    position: absolute;
+  }
+`;

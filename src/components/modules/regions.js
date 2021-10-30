@@ -1,12 +1,8 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import Card_reg from "../../assets/Card_reg.png";
-import karachi from "../../assets/karachi.png";
-import Lahore from "../../assets/Lahore.png";
-import Islamabad from "../../assets/Islamabad.png";
-import Multan from "../../assets/Multan.png";
-import Peshawar from "../../assets/Peshawar.png";
-import Gawadar from "../../assets/Gawadar.png";
+import { Link } from 'react-router-dom';
+
 const Regions = ({data}) => {
   console.log(data,'Regions');
     return (
@@ -18,9 +14,9 @@ const Regions = ({data}) => {
 
          <RegionsBoxesMain>
             {data && data.region_listing && data.region_listing.map((region,index)=>
-              <RegionsBoxes background={Card_reg} key={index}>
-                <h1>{region.country}</h1>
-                <p>{region.total_projects} Projects</p>
+              <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.country.toLowerCase()} style={{textDecoration:'none'}}>
+                <h1 style={{color:'#000000'}}>{region.country}</h1>
+                <p style={{color:'#000000'}}>{region.total_projects} Projects</p>
                 <Imge src={region.image}></Imge>
               </RegionsBoxes>
             )}
@@ -49,7 +45,7 @@ gap: 29px 29px;
 margin-top: 10%;
    
 `;
-const RegionsBoxes = styled.div`
+const RegionsBoxes = styled(Link)`
     background:url(${(props) => props.background}) no-repeat center;
     padding: 30px 30px;
     -webkit-background-size: cover;

@@ -33,9 +33,9 @@ const Callrequest = ({state, bg}) => {
                     <h2>Request Instant Call Back</h2>
                 </CallRequests>
                 <form className="callform" method="POST" id="contactForm" onSubmit={(e)=>submitHandler(e)}>
-                    <Input type="text" name="Name" placeholder="name" title="Full Name" />
-                    <Input type="number" name="Phone" placeholder="0000000000" title="Phone" />
-                    <Input type="email" name="Email" placeholder="ui/ux@starmarketingonline.com" title="Email" />
+                    <Input type="text" name="Name" placeholder="" title="Full Name" />
+                    <Input type="number" name="Phone" placeholder="" title="Phone" />
+                    <Input type="email" name="Email" placeholder="" title="Email" />
                     <Textarea name="Details" placeholder="Write your message" title="Details" />
                     <Success>{success}</Success>
                     <Button type="submit" value="Send Message" />

@@ -12,11 +12,11 @@ const FooterNavigation = () => (
         
             <MenuItem key="1">
               <MenuLink
-                href='#'
+                href='https://starjaidad.com/'
               > Star Jaidad
               </MenuLink>
               <MenuLink
-                href='#'
+                href='/latest'
               > Star Blogs
               </MenuLink>
               <MenuLink
