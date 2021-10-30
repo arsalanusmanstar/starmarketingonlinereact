@@ -14,7 +14,7 @@ const Team = ({ team, owner }) => {
       <TeamMeetSection>
         <SectionContainer style={{marginTop:'-100px'}}>
         <Heading>
-            <h1 className="featured-heading" style={{color:'white'}}>CONTACT US</h1>
+            <h1 className="featured-heading" style={{color:'white'}}>OUR TEAM</h1>
             </Heading>
           <TeamMeetSectionMain>
             <TeamMeetSectionLeft>
