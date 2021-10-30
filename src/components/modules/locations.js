@@ -34,7 +34,7 @@ const Locations = ({state}) => {
 
 
 
-    <ContactSectionTouch>
+    <ContactSectionTouch style={{marginTop:'-50px'}}>
   
          <ContactSectionTouchLeft>
              <form method="Post" onSubmit={(e)=>submitHandler(e)}>
