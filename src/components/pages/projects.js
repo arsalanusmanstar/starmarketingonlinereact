@@ -241,6 +241,12 @@ const ProjectHeadersectionB = styled.div`
       grid-template-columns: 30% 30% 30%;
       justify-content: space-between;
       padding-top: 4%;
+       
+      @media only screen and (max-width: 1024px) {
+        grid-template-columns: 48% 48%;
+    
+   }
+
       h2 {
         color: #000;
         font-size: 30px;
@@ -328,6 +334,20 @@ a {
   text-decoration:none;
   color:#000;
   font-weight:500;
+
+  @media only screen and (max-width: 1024px) {
+    display: inline-block;
+
+  }
+   
+
+}
+
+@media only screen and (max-width: 1024px) {
+  br {
+    display: none;
+}
+
 }
 `
 const ProjectHeadersection = styled.div`

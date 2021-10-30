@@ -691,6 +691,10 @@ background-size: cover;
   color: #fff;
   display: grid;
   grid-template-columns: 74% 26%;
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 66% 34%;
+
+}
   label {
     display: none;
 }
