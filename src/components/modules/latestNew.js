@@ -57,7 +57,13 @@ const Latestnews = () => {
                         <Details>
                        
                             <Date> <Imge src={clock}></Imge>{post.date}</Date>
-                            <Auth><Imge src={user}></Imge>{post.author == 1 && 'Admin'}</Auth>
+                            <Auth><Imge src={user}></Imge> {
+                            post.author == 789 ? "Aamir Saeeduddin" :
+                            post.author == 788 ? "Arif Mustafa" :
+                            post.author == 787 ? "Haris Sonija" :
+                            post.author == 1 && "Star Marketing" 
+                            
+                        }</Auth>
                         </Details>
                     </Post>
                 )}

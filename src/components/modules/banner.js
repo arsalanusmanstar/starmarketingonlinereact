@@ -10,14 +10,14 @@ const BannerText = ({state}) => {
                 <Heading>{state.heading}</Heading>
                 <Subheading>{state.sub_heading}</Subheading>
                 <Content>{state.content}</Content>
-                <Button onClick={scrollToAbout} style={{cursor:'pointer'}}> Learn More </Button>
+                <Button href="#about" style={{cursor:'pointer'}}> Learn More </Button>
                 <SubButton>Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
             </BannerCont>   
     )
 }
 const Video = ({state}) => {
     return (
-        <VideoImg controls autoplay>
+        <VideoImg controls loop autoPlay playsInline muted id="video">
             <source src={VideoImage} type="video/mp4" />
         </VideoImg>
     )
@@ -27,57 +27,15 @@ const TopBanner = ({state,data}) => {
     <MainSection background={BackgroundImage}>
         <SectionContainer minHeight="800px" style={{paddingTop:0, paddingBottom: 40}}>
                  <BannerText state={data} />
-                <Video state={state} />
+                 <Video state={state} />
         </SectionContainer>
     </MainSection>    
     )
 }
 
 
-//Redirect to about section
-
-const scrollToAbout = () =>{
-           
-    if(document.documentElement.scrollHeight>4000)
-    {
-    window.scrollTo({
-      top: 1200,
-      
-      behavior: 'smooth'
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
-    });
-}
-
-if(document.documentElement.scrollHeight>6000)
-{
-window.scrollTo({
-  top: 2250,
-  
-  behavior: 'smooth'
-  /* you can also use 'auto' behaviour
-     in place of 'smooth' */
-});
-}
-
-
-if(document.documentElement.scrollHeight>8000)
-{
-window.scrollTo({
-top: 3200,
-
-behavior: 'smooth'
-/* you can also use 'auto' behaviour
- in place of 'smooth' */
-});
-}
-
-
-  };
-
 
 export default TopBanner;
-
 
 const MainSection = styled.section`
     background: url(${(props) => props.background});

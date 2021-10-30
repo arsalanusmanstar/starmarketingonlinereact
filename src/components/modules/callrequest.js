@@ -9,10 +9,11 @@ import Button from "../elements/button"
 import Input from "../elements/input"
 import Textarea from "../elements/textarea"
 
-const Callrequest = ({state, bg}) => {
+const Callrequest = ({state, bg, location}) => {
     const [success,setSuccess] = useState('');
     const submitHandler = e => {
         e.preventDefault();
+       
         const data = new FormData(e.target);
         axios.post('https://sheet.best/api/sheets/3f32dba9-712b-4a21-8585-48cc2c2da400', data, {
             headers: {
@@ -36,6 +37,7 @@ const Callrequest = ({state, bg}) => {
                     <Input type="text" name="Name" placeholder="" title="Full Name" />
                     <Input type="number" name="Phone" placeholder="" title="Phone" />
                     <Input type="email" name="Email" placeholder="" title="Email" />
+                    <Input type="hidden" name="Url" value={location && location.pathname} />
                     <Textarea name="Details" placeholder="Write your message" title="Details" />
                     <Success>{success}</Success>
                     <Button type="submit" value="Send Message" />
@@ -104,7 +106,7 @@ grid-template-columns: 35% 65%;
   }
 .callform{
     background: #fff;
-    padding: 79px 70px;
+    padding: 65px 70px 42px;
   }
 .fild {
     float: left;

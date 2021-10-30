@@ -89,6 +89,7 @@ const FeatureProducts = ({state}) => {
                 <ContentArea>
                     <LeftArea>
                     <Slider  {...settings}>   
+                    {console.log(data,'dataFeature')}
                         {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
                             <div key={index}>
                                 <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>

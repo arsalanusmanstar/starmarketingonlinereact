@@ -17,7 +17,7 @@ const ScoreCounter = (state) => {
 
 const About = ({data}) => {
     return (
-        <MainContainer background={AboutBackground}>
+        <MainContainer background={AboutBackground} id="about">
             <SectionContainer>
                 <h2 className="featured-heading">{data.heading}</h2>
                 <div className="featured-project-line"></div>

@@ -14,46 +14,41 @@ const Achievements = ({state}) => {
   <div className="entry">
     <div className="title"><b>2005</b> - 2007</div>
     <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
+      <p>The founding members rebrand themselves to Star Marketing after having worked for 10 years in real estate marketing under different names. Right from the start, Star Marketing establishes itself as a trustworthy, ethical and professional real estate marketing agency.</p>
     </div>
   </div>
   <div className="entry">
-  <div className="title"><b>2007</b> - 2009</div>
+  <div className="title"><b>2008</b> - 2010</div>
     <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
+      <p>Star Marketing launches its first foreign office in the city of Dubai in the UAE. The best builders and developers partner up with Star Marketing to successfully launch their projects across the country. Star Marketing starts getting local and international attention for their creative and innovative marketing strategies.</p>
     </div>
   </div>
   <div className="entry">
-  <div className="title"><b>2010</b> - 2012</div>
+  <div className="title"><b>2011</b> - 2013</div>
     <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
-    </div>
-  </div>
-  <div className="entry">
-  <div className="title"><b>2012</b> - 2014</div>
-    <div className="body">
-      <p>Voluptatibus veniam ea reprehenderit atque. Reiciendis non laborum adipisci ipsa pariatur omnis. Sed ipsam repudiandae velit. Omnis libero nostrum aperiam nemo dolor ea eos eius. Esse a non itaque quidem.</p>
+      <p>During this period, Star Marketing landed their biggest client ever – Gulberg Residence Islamabad! This mega project enabled Star Marketing to expand its team and add even more talented and skilled professionals to their organization.</p>
     </div>
   </div>
   <div className="entry">
   <div className="title"><b>2014</b> - 2016</div>
     <div className="body">
-      <p>VAdipisci totam omnis cum et suscipit excepturi et excepturi. Inventore sequi sit ut aliquid. Modi aut dolores dignissimos.</p>
-      <p>Delectus facere officia consequuntur molestias deserunt illo. Placeat laudantium beatae natus excepturi ab nihil voluptates.</p>
+      <p>This period was also very eventful and productive for Star Marketing, as it landed another huge Gulberg project called Gulberg Greens. Not only this, but Star Marketing also worked on other major projects like DHA Oasis Karachi and LDA City Lahore.</p>
     </div>
   </div>
   <div className="entry">
-  <div className="title"><b>2016</b> - 2018</div>
+  <div className="title"><b>2017</b> - 2019</div>
     <div className="body">
-      <p>Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam earum rerum quae dicta quibusdam aliquam ut.</p>
+      <p>Star Marketing proudly marketed Top City Islamabad along with other major projects like Chen One Mall and Heaven Heights Lahore. Star Marketing also completely redesigned and revitalized their website – starmarketingonline.com.</p>
+     
     </div>
   </div>
   <div className="entry">
-  <div className="title"><b>2020</b> - 2021</div>
+  <div className="title"><b>2020</b> - Present</div>
     <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
+      <p>Star Marketing continues to be the leading real estate marketing company in Pakistan. We have over 30 ongoing projects in all the major cities of Pakistan. We have organized multiple property expos across the country with the next one in the Festival Arena in Dubai Festival City! Star Marketing has also launched their new state-of-the-art Star Digital department.</p>
     </div>
   </div>
+  
   
   
 </div>
