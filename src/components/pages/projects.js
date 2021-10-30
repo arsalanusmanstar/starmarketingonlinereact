@@ -19,7 +19,6 @@ import offices from "../../assets/offices.png";
 import plots from "../../assets/plots.png";
 import penthouses from "../../assets/penthouses.png";
 import ReactLoading from "react-loading";
-import WebImage from "../../assets/page_bg.png";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -33,7 +32,7 @@ const Projects = (state) => {
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
 
-  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&per_page=100', fetcher, {refreshInterval: 0,
+  const { data, error } = useSWR('/projects', fetcher, {refreshInterval: 0,
     refreshWhenOffline : false})
   
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
@@ -61,7 +60,7 @@ const Projects = (state) => {
   }
   
   return (
-    <div style={{backgroundImage:`url(${WebImage})`}}> 
+    <div style={{backgroundImage:`url("/assets/page_bg.png")`}}> 
       <Header />
       <Mainproject>
       <SectionContainer>

@@ -25,7 +25,7 @@ const Blog = ({state}) => {
     const [todosPerPage,setTodosPerPage] = useState(3);
     const [filter,setFilter] = useState('');
     const [filterCategory,setFilterCategory] = useState([47,2673]);
-    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47,2673&per_page=100', fetcher)
+    const { data, error } = useSWR('/blog', fetcher)
 
     const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
     const filteredData = data ? data.filter(item => {

@@ -13,7 +13,7 @@ import Contact from "./contact";
 const Modules = ({data}) => {
    return (
        <>
-        {data && data['main_banner'] && <TopBanner data={data['main_banner']}/>}
+        {data && data['main_banner'] && <TopBanner data={data['main_banner']}/> }
         {data && data['featured_projects'] && <FeatureProjects data={data['featured_projects']}/>}
         {data && data['latest_projects'] && <LatestNews data={data['latest_projects']}/>}
         {data && data['about_us'] && <About data={data['about_us']}/>}

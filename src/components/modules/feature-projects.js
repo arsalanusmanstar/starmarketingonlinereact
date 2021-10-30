@@ -77,7 +77,7 @@ const FeatureProducts = ({state}) => {
     centerPadding: 0,
     centerMode: true,
   };
-    const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true', fetcher)
+    const { data, error } = useSWR('/featureProject', fetcher)
     console.log(data,error)
     return (
         <FeautureProductsMain  background={grayBackground}>

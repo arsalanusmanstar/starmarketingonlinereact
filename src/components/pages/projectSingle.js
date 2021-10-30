@@ -34,19 +34,21 @@ import useSWR from 'swr'
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
-import WebImage from "../../assets/page_bg.png";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) => fetch(url,{
+  method:'Post',
+  
+}).then((res) => res.json());
 
 const ProjectSingle = ({match}) => {
-  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher, {refreshInterval: 0,
+  const { data, error } = useSWR('/singleprojects?slug='+match.params.slug, fetcher, {refreshInterval: 0,
     refreshWhenOffline : false})
   const [pdf,setPdf] = useState('');
   const [activeContent,setActiveContent] = useState(false);
   
 
   return (
-    <Mainproject  style={{backgroundImage:`url(${WebImage})`}}>
+    <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
       <Header />
       {console.log(data)}
       {data ?  data[0] &&
