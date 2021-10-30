@@ -184,7 +184,7 @@ const Projects = (state) => {
           <div className="listing">
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
-              <Image background={post._embedded['wp:featuredmedia'][0].source_url}></Image>
+              <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
                 <h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
 
                 <div className="listing_shop">
@@ -207,10 +207,10 @@ const Projects = (state) => {
                   <div className="listing_shop_box button">
                    <Link to={post.link.replace('https://starmarketingonline.com','')}>Read more</Link>
                   </div>
-                  {post.acf.filters && post.acf.filters.country &&
+                  {post.acf.filters && post.acf.filters.city &&
                   <div className="listing_shop_box location">
                     <Imge src={projects09}></Imge>
-                    <button>{post.acf.filters.country}</button>
+                    <button>{post.acf.filters.city}</button>
                   </div>
                   }
                 </div>
@@ -276,7 +276,7 @@ const ProjectHeadersectionB = styled.div`
 .listing_shop_box.location img {
   height: fit-content;
   width: 26px;
-  padding: 16px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 .listing_shop_box.button a {
   background: #DB2D34;

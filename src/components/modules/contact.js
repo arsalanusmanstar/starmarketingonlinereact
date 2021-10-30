@@ -25,31 +25,49 @@ const Contact = ({offices,get_in_touch}) => {
             <Container style={{width: '', margin: '0 auto'}}>
                 
               <div style={AddressDetails}>
-                  <select style={RegionDropdown}>
+                  <select style={RegionDropdown}  onChange={(x)=>setCurrentLocation(x.target.value)}>
                       {office.map((location,index) => 
-                        <option key={index} onChange={()=>setCurrentLocation(index)}>{location.city}</option>
+                        <option key={index} value={index}>{location.city}</option>
                     )}
                   </select>
                   <br/> <br/>
-                  <label style={LabelHeading}>Phone</label>
-                  <br/>
-                  <label style={LableDescription}>{office[currentLocation].phone}</label>
-                  <br/>
-                  <label style={LabelHeading}>Fax</label>
-                  <br/>
-                  <label style={LableDescription}>{office[currentLocation].fax}</label>
-                  <br/>
-                  <label style={LabelHeading}>Toll Free</label>
-                  <br/>
-                  <label style={LableDescription}>{office[currentLocation].toll_free}</label>
-                  <br/>
-                  <label style={LabelHeading}>Location</label>
-                  <br/>
-                  <label style={LableDescriptionAddress}>{office[currentLocation].location}</label>
+                  {office[currentLocation] && office[currentLocation].phone &&
+                   <>
+                    <label style={LabelHeading}>Phone</label>
+                    <br/>
+                    <label style={LableDescription}>{office[currentLocation].phone}</label>
+                    </>
+                  }
+                  {office[currentLocation] &&  office[currentLocation].fax &&
+                  <>
+                    <br/> 
+                    <label style={LabelHeading}>Fax</label>
+                    <br/>
+                    <label style={LableDescription}>{office[currentLocation].fax}</label>
+                    </>
+                  }
+                   {office[currentLocation] && office[currentLocation].toll_free &&
+                    <>
+                    <br/>
+                    <label style={LabelHeading}>Toll Free</label>
+                    <br/>
+                    <label style={LableDescription}>{office[currentLocation].toll_free}</label>
+                    </>
+                    }
+                    {office[currentLocation] && office[currentLocation].location &&
+                    <>
+                      <br/>
+                      <label style={LabelHeading}>Location</label>
+                      <br/>
+                      <label style={LableDescriptionAddress}>{office[currentLocation].location}</label>
+                    </>
+                    }
               </div>
               <div style={LocationMap}>
+              {office[currentLocation] && office[currentLocation].map_url &&
               <iframe src={office[currentLocation].map_url}
                width="950" height="400" style={{border:'0'}} loading="lazy"></iframe>
+              }
               </div>
              
               </Container>
@@ -105,7 +123,9 @@ const AddressDetails={
     width: '400px',
     height: '400px',
     background: '#143063',
-    float: 'left', borderRadius:'20px'
+    float: 'left',
+    padding: '0px 20px',
+    borderRadius:'20px'
 
 }
 
@@ -113,7 +133,6 @@ const AddressDetails={
 const LabelHeading={
     color:'#FFFFFF',
     opacity:'0.44',
-    marginLeft:'22px',
     font: 'normal normal normal 14px/20px Poppins'
 
 }
@@ -124,7 +143,6 @@ font: 'normal normal 600 19px/30px Poppins',
 letterSpacing: '0px',
 color: '#FFFFFF',
 opacity: '1',
-marginLeft:'22px',
 }
 
 const LableDescriptionAddress={
@@ -133,7 +151,6 @@ font: 'normal normal 400 12px/20px Poppins',
 letterSpacing: '0px',
 color: '#FFFFFF',
 opacity: '1',
-marginLeft:'22px',
 }
 
 
@@ -148,7 +165,6 @@ const RegionDropdown = {
 marginTop:'20px',
 width: '350px',
 height: '55px',
-marginLeft:'20px',
 background: '#FFFFFF 0% 0% no-repeat padding-box',
 border: '1px solid #FFFFFF',
 borderRadius: '10px',

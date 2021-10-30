@@ -150,7 +150,7 @@ const Blog = ({state}) => {
                 {currentTodos.length > 0 && currentTodos.filter((post,index)=> 
                     index == content
                   ).map((post,index)=>
-                   !post.categories[0] == 47 ? 
+                   post.categories[0] == 47 ? 
                   <>
                            <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
                         <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].source_url} width="100%"></Imge>

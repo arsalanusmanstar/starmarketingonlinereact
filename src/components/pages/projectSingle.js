@@ -35,6 +35,10 @@ import axios from "axios";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
+import {EmailShareButton,FacebookShareButton,LinkedinShareButton,TwitterShareButton,WhatsappShareButton} from "react-share";
+import {EmailIcon,FacebookIcon,LinkedinIcon,TwitterIcon,WhatsappIcon} from "react-share";
+
+
 
 const fetcher = (url) => fetch(url,{
   method:'Post',
@@ -44,10 +48,13 @@ const fetcher = (url) => fetch(url,{
 const ProjectSingle = ({match,location}) => {
   const { data, error } = useSWR('/singleprojects?slug='+match.params.slug, fetcher, {refreshInterval: 0,
     refreshWhenOffline : false})
-  const [pdf,setPdf] = useState('');
+  const baseUrl = 'https://starmarketingonline.com';
+  const [pdf,setPdf] = useState(0);
   const [activeContent,setActiveContent] = useState(false);
   const [videoModel,setVideoModel] = useState();
   const [success,setSuccess] = useState('');
+  const [shareActive,setShareActive] = useState(false);
+  
   const submitHandler = e => {
       e.preventDefault();
       const data = new FormData(e.target);
@@ -72,10 +79,11 @@ const ProjectSingle = ({match,location}) => {
             <SectionContainer>
             
             <>
-               <div className="play_section">
+               {data[0].acf.filters.video &&  <div className="play_section" onClick={()=>setVideoModel(data[0].acf.filters.video)}>
                  <Imge src={description09}></Imge>
-                 {data[0].acf.filters.video && <p onClick={()=>setVideoModel(data[0].acf.filters.video)}>Watch<br/>Property Video</p>}
+                 <p >Watch<br/>Property Video</p>
                </div>
+               }
                <h1  dangerouslySetInnerHTML={{ __html: data[0].title.rendered }}></h1>
                <h5 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.tagline }}></h5>
                <div className="loction_section">
@@ -127,13 +135,15 @@ const ProjectSingle = ({match,location}) => {
                     <h2>Instant Call Back</h2>
                 </CallRequests>
                 <form className="callform" method="POST" id="contactForm"  onSubmit={(e)=>submitHandler(e)}>
-                    <Input type="text" name="Name" placeholder="name" title="Name" />
-                    <Input type="email" name="Email" placeholder="Pakistan" title="Email" />
-                    <Input type="text" name="Email" placeholder="Your City" title="City" />
+                    <Input type="text" name="Name" placeholder="Name" title="Name" />
+                    <Input type="text" name="Country" placeholder="Your Country" title="Email" />
+                    <Input type="text" name="City" placeholder="Your City" title="City" />
                     <Input type="number" name="Phone" placeholder="+92" title="Phone" />
                     <Input type="hidden" name="Url" title="Url" value={location.pathname} />
                     <Textarea name="Details" placeholder="Enter your message..." title="Details" />
                     <Button type="submit" value="Request info" />
+                    <br />
+                    {success}
                 </form>
                 </CallSectionMain>
                 <SaveShare>
@@ -142,11 +152,18 @@ const ProjectSingle = ({match,location}) => {
                   <p>Save</p>
                   </SaveShareLfet> */}
 
-                  <SaveShareLfet>
-                  <Imge src={description08}></Imge>
-                  <p>Share</p>
-                  </SaveShareLfet>
+                  <SaveShareLfet onClick={()=>setShareActive(shareActive ? false:true)}>
+                    <Imge src={description08}></Imge>
+                    <p>Share</p>
+                    </SaveShareLfet>
                   </SaveShare>
+                  <div className={shareActive ? "ShareButtons active":"ShareButtons"}>
+                    <EmailShareButton  url={baseUrl+location.pathname} onClick={()=>setShareActive(false)}><EmailIcon size={32} round={true} /></EmailShareButton>
+                    <FacebookShareButton  url={baseUrl+location.pathname} onClick={()=>setShareActive(false)}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                    <TwitterShareButton  url={baseUrl+location.pathname} onClick={()=>setShareActive(false)}><LinkedinIcon size={32} round={true} /></TwitterShareButton>
+                    <EmailShareButton  url={baseUrl+location.pathname} onClick={()=>setShareActive(false)}><TwitterIcon size={32} round={true} /></EmailShareButton>
+                    <WhatsappShareButton  url={baseUrl+location.pathname} onClick={()=>setShareActive(false)}><WhatsappIcon size={32} round={true} /></WhatsappShareButton>
+                  </div>
 
 
 
@@ -185,7 +202,7 @@ const ProjectSingle = ({match,location}) => {
                 <PropertyMain>
                    <PropertyLeft>
                       {data[0].acf.filters.property_portfolio_f && data[0].acf.filters.property_portfolio_f.property_file.map((files,index)=>
-                        <Boxes key={index} className={pdf == files.file_url && 'active'} onClick={()=>setPdf(files.file_url)}>
+                        <Boxes key={index} className={pdf == index && 'active'} onClick={()=>setPdf(index)}>
                           <Imge src={pdfImage}></Imge>
                           <h3>{files.file_title}</h3>
                         </Boxes>
@@ -193,9 +210,9 @@ const ProjectSingle = ({match,location}) => {
                    </PropertyLeft>
 
                    <PropertyRight>
-                     {pdf ? 
-                       <embed src={pdf} type="application/pdf" width="100%" height="100%" />
-                      : <p>Please select Pdf.</p>}
+                   {data[0].acf.filters.property_portfolio_f && data[0].acf.filters.property_portfolio_f.property_file.filter((file,index)=> index == pdf).map((files,index)=>
+                       <embed src={files.file_url} type="application/pdf" width="100%" height="100%" />
+                   )}
                    </PropertyRight>
 
                 </PropertyMain>
@@ -259,9 +276,11 @@ const ProjectSingle = ({match,location}) => {
         </ProjectContentSlides>
         <VideoModel className={videoModel && 'active'}>
           <div className="back" onClick={()=>setVideoModel()}>X</div>
-          <VideoImg controls autoplay>
-              <source src={videoModel} type="video/mp4" />
-          </VideoImg>
+          {videoModel && 
+            <VideoImg controls autoplay>
+                <source src={videoModel} type="video/mp4" />
+            </VideoImg> 
+          }
         </VideoModel>
 
         </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
@@ -298,6 +317,7 @@ background: #000;
 color: #fff;
 padding: 60px 60px;
 
+
 `
 
 const LocationSectionLeft = styled.div`
@@ -310,9 +330,10 @@ border-bottom-right-radius: 15px;
 border-top: 10px solid  #B5292E;
 padding: 20px 30px;
 img {
-  margin: auto;
+  margin:0 auto;
   margin-bottom: 30px;
   width: 100px;
+  display:block;
 }
 
 `
@@ -451,6 +472,7 @@ p {
   margin: 16px 0px;
   letter-spacing: 1px;
   text-align: center;
+  text-transform: capitalize;
 }
  img {
   margin: auto;
@@ -469,7 +491,7 @@ const FacilitiesBack = styled.div`
 
 const DescriptionBanner = styled.div`
 background:url(${(props) => props.background}) no-repeat center;
-height: 952px;
+height: 716px;
 display: block;
 background-size: cover;
 position: relative;
@@ -613,6 +635,7 @@ const CallRequests = styled.div`
         line-height: 43px;
         text-shadow: 1px 1px 1px #00000070;
     }
+    
 `
 
 const Imge = styled.img`
@@ -631,7 +654,36 @@ const Mainproject = styled.div`
 const ProjectsDescription = styled.div`
   background: #fff;
   display: block;
-
+    .ShareButtons{
+      display:none;
+      text-align: center;
+      position: absolute;
+      background: #fff;
+      width: 194px;
+      box-shadow: 0px 1px 5px #ff4148;
+      border-radius: 42px;
+      padding: 13px 0px 8px;
+      margin-left: 95px;
+      margin-top: -5px;
+      &.active{
+        display:block;
+      }
+      :before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 10px
+        solid transparent;
+        border-right: 10px
+        solid transparent;
+        border-bottom: 10px
+        solid #ffffff;
+        position: absolute;
+        top: -10px;
+        right: 0;
+        left: 0;
+        margin: 0 auto;}
+    }
 `
 const ProjectsDescriptionLMain = styled.div`
 background:url(${(props) => props.background}) no-repeat right;
@@ -671,6 +723,7 @@ const ProjectsDescriptionLfet = styled.div`
     margin: 4px 0px 0px 24px;
   }
   }
+  
 
 `
 const ProjectSectionBoxes = styled.div`
@@ -692,7 +745,9 @@ button {
   margin: 12px 0px 0px 0px;
   font-size: 13px;
   letter-spacing: 2px;
+  text-transform: capitalize;
 }
+
 `
 const ProjectsDescriptionRight = styled.div`
 background: #FF4148;
@@ -737,19 +792,18 @@ const  ProjectContentSlides = styled.div`
   position: fixed;
   right: -2000px;
   width: 100%;
-  background: rgb(0 0 0 / 85%);
+  background: rgb(0 0 0 / 90%);
   height: 100%;
   z-index: 9999;
   top: 0;
   .projectContent {
     background: #fff;
-    width: 50%;
+    width: 70%;
     position: fixed;
     right: -2000px;
     padding: 40px;
-    height: 80vh;
+    height: 100vh;
     overflow: scroll;
-    top: 10%;
     -webkit-transition: all 0.5s 0s ease;
     -moz-transition: all 0.5s 0s ease;
     -o-transition: all 0.5s 0s ease;
@@ -813,7 +867,9 @@ const VideoModel = styled.div`
     height: 60px;
     border-radius: 37px;
     text-align: center;
-    padding: 9px 0 0;}
+    padding: 9px 0 0;
+    cursor:pointer;
+  }
   }
   &.active{
     right: 0;
