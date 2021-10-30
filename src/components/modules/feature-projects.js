@@ -311,25 +311,6 @@ const BackgroundImage = styled.div`
 `
 const LeftArrow = styled.img`
 `
-<<<<<<< HEAD
-const LinkNew = styled(Link)`
-    background: #DB2D34 0% 0% no-repeat padding-box;
-    color: #fff;
-    padding: 19px;
-    text-align: left;
-    min-width: 206px;
-    border-radius: 8px;
-    font: normal normal 300 18px/30px Poppins;
-    margin: 20px 0;
-    position: relative;
-    text-decoration: none;
-    line-height: 100px;
-    img{
-        
-        display: inherit;
-    }    
-`
-=======
 
 const ReadMore = styled.button`
   background: #DB2D34 0% 0% no-repeat padding-box;
@@ -348,4 +329,3 @@ const ReadMore = styled.button`
     position: absolute;
   }
 `;
->>>>>>> 3790eee6287efb5014c7ec66d7cf036cc419ece7
