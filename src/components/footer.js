@@ -29,6 +29,10 @@ const SiteFooterInner = styled(SectionContainer)`
   margin:0 auto;
   display: flex;
   justify-content: space-between;
+  @media only screen and (max-width: 1366px) {
+    display: block;
+
+  }
 `;
 const Link = styled.a``
 const SiteFooter = styled.footer`
@@ -49,6 +53,11 @@ const SiteFooter = styled.footer`
 const Credits = styled.div`
   @media (min-width: 700px) {
     display: flex;
+    @media only screen and (max-width: 1366px) {
+      justify-content: center;
+  
+    }
+
   }
 `;
 

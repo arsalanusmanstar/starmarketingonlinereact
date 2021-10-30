@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import SectionContainer from "../styles/section-container";
 import grayBackground from "../../assets/grayBackground.png";
 import Button from "../styles/button";
-import arrowLeft from "../../assets/arrowLeft.png";
+import latest_icon07 from "../../assets/latest_icon07.png";
 import Slider from "react-slick";
 import video from  "../../assets/video.png"
 import line from "../../assets/line.png";
@@ -110,7 +110,7 @@ const FeatureProducts = ({state}) => {
                                 <br/>
                                 <br/>
                                 <ReadMore>
-                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://starmarketingonline.com','')}>Read More <LeftArrow src={arrowLeft} /></Link>
+                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://starmarketingonline.com','')}>Read More <LeftArrow src={latest_icon07} /></Link>
                                 </ReadMore>
                                 {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
@@ -219,9 +219,9 @@ const Section = styled.section`
 const FeautureProductsMain = styled.div`
     background:#ebebeb  url(${(props) => props.background})  0% 0% no-repeat padding-box;
     opacity: 1;
-    padding:0px 0 0px;
+    padding: 0px 0px 90px 0px;
     background-position: bottom;
-    margin-bottom: -191px;
+   
     position: relative;
     ul.featured-project-tag {
         list-style: none;
@@ -240,9 +240,23 @@ const FeautureProductsMain = styled.div`
     }
   `;
 const ContentArea = styled.div`
-    display: flex;`
+    display: flex;
+    @media only screen and (max-width: 1366px) {
+        display: block;
+    
+      }
+    
+    
+    
+    `
+    
 const LeftArea = styled.div`
     width:50%;
+    @media only screen and (max-width: 1366px) {
+        width:100%;
+    
+      }
+    
     button{
         clear:both;
         display:block;
@@ -250,6 +264,10 @@ const LeftArea = styled.div`
 `
 const RightArea = styled.div` 
 width: 60%;
+@media only screen and (max-width: 1366px) {
+    width:100%;
+
+  }
     .left_line{
         position: absolute;
         left: 85%;
@@ -316,17 +334,20 @@ const LeftArrow = styled.img`
 const ReadMore = styled.button`
   background: #DB2D34 0% 0% no-repeat padding-box;
   color: #fff;
-  padding: 19px;
   text-align: left;
-  min-width: 206px;
   border-radius: 8px;
   font: normal normal 300 18px/30px Poppins;
   margin: 20px 0;
   position:relative;
+   a {
+    padding: 24px 95px 24px 36px;
+    display: block;
+    font-size: 23px;
+    font-weight: 200;
+}
   img {
-    width: 34px;
-    top: 39%;
-    right: 18px;
-    position: absolute;
+        top: 31px;
+        right: 28px;
+        position: absolute;
   }
 `;

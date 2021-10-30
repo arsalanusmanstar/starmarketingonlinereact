@@ -47,7 +47,7 @@ const Locations = ({state}) => {
          </ContactSectionTouchLeft>
 
          <ContactSectionTouchRight>
-            <Imge src={Touch}></Imge>
+            <Imge className="responsive" src={Touch}></Imge>
          </ContactSectionTouchRight>
         
     </ContactSectionTouch>
@@ -126,15 +126,32 @@ h1 {
     font-size: 72px;
     font-weight: 600;
     margin-top: 20px;
+    @media only screen and (max-width: 1366px) {
+        
+    font-size: 61px;
+
+    
+      }
 }
  p {
     font-size: 24px;
 }
  input {
-    border: 2px solid #b9b9b9;
-    border-radius: 5px;
-    width: 70%;
-    padding: 22px 22px;
+    border: 1px solid #707070;
+        border-radius: 5px;
+        width: 70%;
+        padding: 20px 22px;
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-weight: 100;
+        :focus {
+            outline: none;
+        }
+        @media only screen and (max-width: 1366px) {
+            width: 60%;
+        
+          }
+
 }
  button {
     background: #212841;
@@ -159,6 +176,19 @@ grid-template-columns: 70% 30%;
 padding: 60px 80px;
 margin: 10% 0px;
 box-shadow: 0px 31px 30px #b9b9b929;
+
+@media only screen and (max-width: 1366px) {
+    align-items: center;
+    padding: 30px 30px;
+
+  }
+
+  
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 54% 46%;
+    grid-template-columns: 100%;
+  }
+
 `;
 
 
@@ -169,7 +199,14 @@ const Section = styled.section`
 const LocationList = styled.div`
     display: grid;
     grid-template-columns: 46% 46%;
-    grid-gap:40px;
+    grid-gap: 40px;
+
+    @media only screen and (max-width: 1366px) {
+        grid-template-columns: 100%;
+    
+      }
+    
+   
 `;
 
 const Icon = styled.img`
@@ -228,8 +265,31 @@ const ContactSectionLeft = styled.div`
 const ContactSection = styled.div`
 display: grid;
 grid-template-columns: 46% 46%;
-grid-gap: 40;
+grid-gap: 40px;
 padding-bottom: 10%;
+@media only screen and (max-width: 1366px) {
+    grid-template-columns: 48% 47%;
+
+  }
+
+  
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 100%;
+    text-align: center;
+    h1:after {
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+
+  }
+  
+   
+
+
+
+
+
 
 `;
 

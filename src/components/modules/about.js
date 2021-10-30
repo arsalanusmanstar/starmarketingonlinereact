@@ -86,6 +86,15 @@ const SectionThree = styled.div`
     display: grid;
     grid-template-columns: 28% 28% 28%;
     grid-gap:8%;
+    @media only screen and (max-width: 1366px) {
+        grid-template-columns: 32% 32% 32%;
+        grid-gap: 2%;
+    
+      }
+      @media only screen and (max-width: 1024px) {
+        grid-template-columns: 100% ;
+    
+      }
 `
 const Icon = styled.div``
 const Count = styled.div`

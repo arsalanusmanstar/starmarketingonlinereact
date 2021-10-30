@@ -44,6 +44,10 @@ const MenuItem = styled.li`
   color: #8E8E8E;
   opacity: 1;
   list-style:none;
+  @media only screen and (max-width: 1366px) {
+    text-align: center;
+
+  }
 `;
 
 const MenuLink = styled.a`

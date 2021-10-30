@@ -37,7 +37,7 @@ const Callrequest = ({state, bg, location}) => {
                     <Input type="text" name="Name" placeholder="" title="Full Name" />
                     <Input type="number" name="Phone" placeholder="" title="Phone" />
                     <Input type="email" name="Email" placeholder="" title="Email" />
-                    <Input type="hidden" name="Url" value={location.pathname} />
+                    <Input type="hidden" name="Url" value={location && location.pathname} />
                     <Textarea name="Details" placeholder="Write your message" title="Details" />
                     <Success>{success}</Success>
                     <Button type="submit" value="Send Message" />
@@ -67,8 +67,12 @@ const CallRequests = styled.div`
     background:url(${(props) => props.background}) no-repeat center;
     width: 100%;
     display: block;
-    
     height: 591px;
+    @media only screen and (max-width: 1366px) {
+        background-size: contain;
+        background-position: center;
+    
+      }
      h2 {
         font-size: 34px;
         font-weight: 400;
@@ -77,6 +81,11 @@ const CallRequests = styled.div`
         margin: 80px 60px;
         line-height: 43px;
         text-shadow: 1px 1px 1px #00000070;
+        @media only screen and (max-width: 1366px) {
+            font-size: 30px;
+            width: 80%;
+        
+          }
     }
 `
 const Success = styled.div`
@@ -87,6 +96,14 @@ const Success = styled.div`
 const CallSectionMain = styled.div` 
 display: grid;
 grid-template-columns: 35% 65%;
+@media only screen and (max-width: 1366px) {
+    background: #db2d34;
+
+  }
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 100%;
+
+  }
 .callform{
     background: #fff;
     padding: 65px 70px 42px;
@@ -109,7 +126,15 @@ grid-template-columns: 35% 65%;
     width: 48%;
 }
 
-.fild input {border: 0px;border-bottom: 1px solid #929292;width: 100%;font-size: 18px;text-transform: uppercase;line-height: 45px;letter-spacing: 1px;}
+.fild input {
+    border: 0px;
+    border-bottom: 1px solid #929292;
+    width: 100%;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 45px;
+    letter-spacing: 1px;
+}
 
 .input_fild {
     margin: 0px 0px 40px 0px;

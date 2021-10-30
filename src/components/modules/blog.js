@@ -330,12 +330,16 @@ margin: 10% 0px;
     p{ margin-bottom:10px;}
     ul.pagination li{
         grid-template-columns: repeat( auto-fit, minmax(35px, 1fr) );
+       
+       
     }
+   
     ul.pagination:before,ul.pagination:after{
         content:'';
         clear:both;
         display:block
     }
+    
   }
 `
 
@@ -457,6 +461,22 @@ const LatestSearchsectionMain = styled.div`
     display: grid;
     grid-template-columns: 40% 46%;
     grid-gap: 14%;
+    
+  @media only screen and (max-width: 1366px) {
+    grid-template-columns: 36% 50%;
+
+  }
+
+  @media only screen and (max-width: 11024px) {
+    grid-template-columns: 36% 62%;
+    grid-gap: 2%;
+     label img {
+      float: left;
+      margin: 6px 11px 0px 0px  ;
+  }
+ 
+
+  }
 
 `
 const Imge = styled.img`

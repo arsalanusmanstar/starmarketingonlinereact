@@ -489,3 +489,52 @@ ul.pagination li {
 .content h3 strong {
   font-weight: 500;
 }
+
+@media only screen and (max-width: 1366px) {
+  .sc-iqseJM.kwSlTj .featured-heading {
+    text-align: left;
+   
+  }
+  .featured-project-line {
+  
+    margin: inherit;
+   
+}
+.fFBWBR .right_line {
+ 
+  left: 0 !important;
+
+}
+
+.fFBWBR .left_line {
+ 
+  left: 80% !important;
+ 
+}
+img.responsive {
+  width: 100%;
+}
+
+
+}
+
+@media only screen and (max-width: 1024px) {
+  .sc-iqseJM.kwSlTj .featured-heading {
+    font-size: 62px;
+   
+  }
+  .featured-project-heading {
+   
+    font-size: 50px;
+}
+img.responsive {
+  width: fit-content;
+  margin: 0 auto;
+  display: table;
+}
+ul.pagination li {
+  
+  grid-template-columns: repeat( auto-fit, minmax(128px, 1fr) );
+ 
+}
+}

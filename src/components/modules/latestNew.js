@@ -20,8 +20,29 @@ const Latestnews = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 1
-      };
+        slidesToScroll: 1,
+        
+        responsive: [
+            {
+              breakpoint: 1366,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                adaptiveHeight: true,
+              },
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
+        };	
+      
+
+      
       
     return (
     <LatestNewContainer left_arrow={left_arrow}>    
@@ -60,6 +81,19 @@ const LatestNewContainer = styled.div`
     background: #202741 0% 0% no-repeat padding-box;
     box-shadow: 0px -35px 99px #0000004A;
     color:#fff;
+    position: relative;
+   :before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        background: linear-gradient(to bottom left, #83002400 50%, #202741 50.5%) no-repeat bottom, /* bottom part */ linear-gradient(
+    0deg, #83002400, #83002400) no-repeat top;
+        color: white;
+        background-size: 100% 10em , 100% calc(100% - 10em);
+        top: -250px;
+    }
     .slick-slider{
         button {
             position:absolute;
@@ -72,6 +106,12 @@ const LatestNewContainer = styled.div`
                 font-size: 0px;
                 background-size: cover;
                 cursor: pointer;
+                transform: rotate(179deg);
+                @media only screen and (max-width: 1366px) {
+                    display: none !important;
+                
+                  }
+
               
             }
             &.slick-next{
@@ -82,11 +122,19 @@ const LatestNewContainer = styled.div`
                 font-size: 0px;
                 background-size: cover;
                 cursor: pointer;
+                @media only screen and (max-width: 1366px) {
+                    display: none !important;
+                
+                  }
             }
         }
         .slick-list{
             div.slick-slide{
-                padding:2% 28px 1.2% 30px;
+                padding:1% 28px 1.2% 30px;
+                @media only screen and (max-width: 1024px) {
+                    padding: 1% 10px 0.2% 10px;
+                
+                  }
             }
         }
     }
@@ -96,7 +144,7 @@ const LatestNewContainer = styled.div`
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 6px;
-    margin-top: 10%;
+    margin-top: -2%;
     }
     ul.slick-dots button{
         position: absolute;
@@ -149,6 +197,7 @@ const Title = styled.h3`
     font-weight: 500;
     overflow: hidden;
     line-height: 30px;
+    min-height: 60px;
     `
 const Details = styled.div`
     border-top: 1px solid #1d253f40;
