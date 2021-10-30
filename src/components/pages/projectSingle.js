@@ -201,7 +201,7 @@ const ProjectSingle = ({match,location}) => {
                 <h1>PROPERTY PORTFOLIO</h1>
                 <PropertyMain>
                    <PropertyLeft>
-                      {data[0].acf.filters.property_portfolio_f && data[0].acf.filters.property_portfolio_f.property_file.map((files,index)=>
+                      {data && data[0].acf.filters.property_portfolio_f  && data[0].acf.filters.property_portfolio_f.property_file && data[0].acf.filters.property_portfolio_f.property_file.map((files,index)=>
                         <Boxes key={index} className={pdf == index && 'active'} onClick={()=>setPdf(index)}>
                           <Imge src={pdfImage}></Imge>
                           <h3>{files.file_title}</h3>
@@ -210,7 +210,7 @@ const ProjectSingle = ({match,location}) => {
                    </PropertyLeft>
 
                    <PropertyRight>
-                   {data[0].acf.filters.property_portfolio_f && data[0].acf.filters.property_portfolio_f.property_file.filter((file,index)=> index == pdf).map((files,index)=>
+                   {data[0].acf.filters.property_portfolio_f  && data[0].acf.filters.property_portfolio_f.property_file &&  data[0].acf.filters.property_portfolio_f.property_file.filter((file,index)=> index == pdf).map((files,index)=>
                        <embed src={files.file_url} type="application/pdf" width="100%" height="100%" />
                    )}
                    </PropertyRight>

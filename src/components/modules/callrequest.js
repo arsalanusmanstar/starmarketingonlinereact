@@ -37,7 +37,7 @@ const Callrequest = ({state, bg, location}) => {
                     <Input type="text" name="Name" placeholder="" title="Full Name" />
                     <Input type="number" name="Phone" placeholder="" title="Phone" />
                     <Input type="email" name="Email" placeholder="" title="Email" />
-                    <Input type="hidden" name="Url" value={location.pathname} />
+                    <Input type="hidden" name="Url" value={location && location.pathname} />
                     <Textarea name="Details" placeholder="Write your message" title="Details" />
                     <Success>{success}</Success>
                     <Button type="submit" value="Send Message" />
