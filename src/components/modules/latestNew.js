@@ -12,7 +12,6 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const Latestnews = () => {
 
     const { data, error } = useSWR('/latest', fetcher)
-    console.log(data,error,'34')
 
     var settings = {
         dots: true,
@@ -30,7 +29,7 @@ const Latestnews = () => {
             <Slider  {...settings}>
                 {data && data.map((post,index) => 
                     <Post key={index}>
-                        <Image background={post._embedded['wp:featuredmedia'][0].source_url}></Image>
+                        <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
                         <Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title>
                         <Details>
                        

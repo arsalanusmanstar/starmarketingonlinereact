@@ -9,6 +9,7 @@ import video from  "../../assets/video.png"
 import line from "../../assets/line.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 const NextArrow = ({ onClick }) => {
     return (
         <div className="arrow next" onClick={onClick}>
@@ -78,7 +79,6 @@ const FeatureProducts = ({state}) => {
     centerMode: true,
   };
     const { data, error } = useSWR('/featureProject', fetcher)
-    console.log(data,error)
     return (
         <FeautureProductsMain  background={grayBackground}>
             <SectionContainer>
@@ -89,10 +89,8 @@ const FeatureProducts = ({state}) => {
                 <ContentArea>
                     <LeftArea>
                     <Slider  {...settings}>   
-                        {data && data.map((latest,index)=>
-                            latest.acf && latest.acf.feature_project == 'yes' &&
-                            <div>
-                                {console.log(latest)}
+                        {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
+                            <div key={index}>
                                 <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>
                                 <p className="featured-project-description"  dangerouslySetInnerHTML={{ __html:latest.excerpt.rendered}}></p>
                                     <br />
@@ -110,7 +108,8 @@ const FeatureProducts = ({state}) => {
                                 <br/>
                                 <br/>
                                 <br/>
-                                <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button>
+                                
+                                <LinkNew to={latest.link.replace('https://starmarketingonline.com','')}  bg='#DB2D34'>Read more  <LeftArrow src={arrowLeft} /></LinkNew>
                             </div>
                         )}
                         {/* <div>
@@ -189,22 +188,17 @@ const FeatureProducts = ({state}) => {
                     </LeftArea>
                     <RightArea>
                         <Slider  {...settings_img}>     
-                        {data && data.map((latest,index)=>
-                            latest.acf && latest.acf.feature_project == 'yes' &&                            
-                            <div>
+                        {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>    
+                            <div key={index}>
                                 <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].source_url} alt={video}  />
                             </div> 
                         )}
                          </Slider>
                          <Slider  {...settings_num}>
-                            {data && data.map((latest,index)=>
-                                latest.acf && latest.acf.feature_project == 'yes' &&    
-                                <p className='number_slider'>{index}</p>
+                            {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
+                                   
+                                <p className='number_slider' key={index}>{index + 1}</p>
                             )}
-                            <p className='number_slider'>2</p>
-                             <p className='number_slider'>3</p>
-                             <p className='number_slider'>4</p>
-                             <p className='number_slider'>5</p>
                          </Slider>
                     <img className='left_line' src={line} alt={line}  />
                     <img className='right_line' src={line} alt={line}  />
@@ -314,4 +308,21 @@ width: 60%;
 const BackgroundImage = styled.div`    
 `
 const LeftArrow = styled.img`
+`
+const LinkNew = styled(Link)`
+    background: #DB2D34 0% 0% no-repeat padding-box;
+    color: #fff;
+    padding: 19px;
+    text-align: left;
+    min-width: 206px;
+    border-radius: 8px;
+    font: normal normal 300 18px/30px Poppins;
+    margin: 20px 0;
+    position: relative;
+    text-decoration: none;
+    line-height: 100px;
+    img{
+        
+        display: inherit;
+    }    
 `

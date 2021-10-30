@@ -106,7 +106,7 @@ html,
   }
 
   body {
-    background:'';
+    background:url('./assets/page_bg.png');
     box-sizing: border-box;
     color: #000;
     font-family: 'Poppins', sans-serif;

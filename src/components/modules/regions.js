@@ -8,7 +8,6 @@ import Multan from "../../assets/Multan.png";
 import Peshawar from "../../assets/Peshawar.png";
 import Gawadar from "../../assets/Gawadar.png";
 const Regions = ({data}) => {
-  console.log(data,'Regions');
     return (
         <MainContainer >
          <SectionContainer>

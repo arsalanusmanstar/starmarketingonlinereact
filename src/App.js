@@ -15,7 +15,6 @@ import {
 } from "react-router-dom";
 
 export default function App(state) {
-  console.log(state);
   //const  headerBg  = data.isHome ? HomeBackground : PageBackground;
 
   const { pathname } = useLocation();

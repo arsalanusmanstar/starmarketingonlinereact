@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import BackgroundImage from "../../assets/WebBg.png";
-import VideoImage from "../../assets/video.png";
+import VideoImage from "../../assets/home.mp4";
 import GuarantLogo from "../../assets/1Icon.png";
 const BannerText = ({state}) => {
     return (
@@ -17,7 +17,9 @@ const BannerText = ({state}) => {
 }
 const Video = ({state}) => {
     return (
-        <VideoImg src={VideoImage} alt="" />
+        <VideoImg controls autoplay>
+            <source src={VideoImage} type="video/mp4" />
+        </VideoImg>
     )
 }
 const TopBanner = ({state,data}) => {
@@ -25,7 +27,7 @@ const TopBanner = ({state,data}) => {
     <MainSection background={BackgroundImage}>
         <SectionContainer minHeight="800px" style={{paddingTop:0}}>
                  <BannerText state={data} />
-            <Video state={state} />
+                <Video state={state} />
         </SectionContainer>
     </MainSection>    
     )
@@ -39,12 +41,13 @@ const MainSection = styled.section`
     background: url(${(props) => props.background});
     margin-top: -210px;
     padding-top: 260px;
+    display: flex;
 `;
 const BannerCont = styled.div`
     width: 691px;
     height: 393px;
     position:absolute; 
-    top: 50%;
+    top: 40%;
     transform: translate(0%, -50%);
     background: rgb(255 255 255 / 28%) 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -108,8 +111,9 @@ const SubButton = styled.a`
         top: 5px;
     }`;
 
-const VideoImg = styled.img`
+const VideoImg = styled.video`
     float: right;
     width: 60%;
+    margin-bottom:30px;
     box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
 `

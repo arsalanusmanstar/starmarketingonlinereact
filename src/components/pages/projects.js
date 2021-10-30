@@ -184,7 +184,6 @@ const Projects = (state) => {
           <div className="listing">
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
-              {console.log(post,'datad')}
               <Image background={post._embedded['wp:featuredmedia'][0].source_url}></Image>
                 <h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
 

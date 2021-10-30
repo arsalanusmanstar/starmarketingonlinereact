@@ -31,6 +31,7 @@ import pdfImage from "../../assets/pdf.png";
 import back from "../../assets/back.png";
 import rightboxes from "../../assets/rightboxes.png";
 import useSWR from 'swr'
+import axios from "axios";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
@@ -40,17 +41,31 @@ const fetcher = (url) => fetch(url,{
   
 }).then((res) => res.json());
 
-const ProjectSingle = ({match}) => {
+const ProjectSingle = ({match,location}) => {
   const { data, error } = useSWR('/singleprojects?slug='+match.params.slug, fetcher, {refreshInterval: 0,
     refreshWhenOffline : false})
   const [pdf,setPdf] = useState('');
   const [activeContent,setActiveContent] = useState(false);
+  const [videoModel,setVideoModel] = useState();
+  const [success,setSuccess] = useState('');
+  const submitHandler = e => {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      axios.post('https://sheet.best/api/sheets/3f32dba9-712b-4a21-8585-48cc2c2da400', data, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => {
+          setSuccess('Thank you for submit your request. We will contact you shortily.')
+      })
+   }
+
   
 
   return (
     <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
       <Header />
-      {console.log(data)}
       {data ?  data[0] &&
       <>
         <DescriptionBanner background={data[0]._embedded['wp:featuredmedia'][0].source_url}>
@@ -59,7 +74,7 @@ const ProjectSingle = ({match}) => {
             <>
                <div className="play_section">
                  <Imge src={description09}></Imge>
-                 <p>Watch<br/>Property Video</p>
+                 {data[0].acf.filters.video && <p onClick={()=>setVideoModel(data[0].acf.filters.video)}>Watch<br/>Property Video</p>}
                </div>
                <h1  dangerouslySetInnerHTML={{ __html: data[0].title.rendered }}></h1>
                <h5 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.tagline }}></h5>
@@ -111,14 +126,13 @@ const ProjectSingle = ({match}) => {
                     <Imge className="description_top" src={description06}></Imge>
                     <h2>Instant Call Back</h2>
                 </CallRequests>
-                <form className="callform" method="POST" id="contactForm" >
+                <form className="callform" method="POST" id="contactForm"  onSubmit={(e)=>submitHandler(e)}>
                     <Input type="text" name="Name" placeholder="name" title="Name" />
                     <Input type="email" name="Email" placeholder="Pakistan" title="Email" />
-                    <Input type="email" name="Email" placeholder="Your City" title="Email" />
+                    <Input type="text" name="Email" placeholder="Your City" title="City" />
                     <Input type="number" name="Phone" placeholder="+92" title="Phone" />
-                   
+                    <Input type="hidden" name="Url" title="Url" value={location.pathname} />
                     <Textarea name="Details" placeholder="Enter your message..." title="Details" />
-                  
                     <Button type="submit" value="Request info" />
                 </form>
                 </CallSectionMain>
@@ -243,6 +257,13 @@ const ProjectSingle = ({match}) => {
               <div className="content" dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].content.rendered)}}></div>
           </div>
         </ProjectContentSlides>
+        <VideoModel className={videoModel && 'active'}>
+          <div className="back" onClick={()=>setVideoModel()}>X</div>
+          <VideoImg controls autoplay>
+              <source src={videoModel} type="video/mp4" />
+          </VideoImg>
+        </VideoModel>
+
         </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
         }
       <Footer />
@@ -256,7 +277,6 @@ export default ProjectSingle;
 const  htmlDecode = (content) => {
   let e = document.createElement('div');
   e.innerHTML = content;
-  console.log(content);
   return e.innerHTML;
 }
 
@@ -484,6 +504,7 @@ button {
 .play_section {
   display: flex;
   color: #fff;
+  cursor: pointer;
   img {
     width: fit-content;
     height: fit-content;
@@ -761,4 +782,46 @@ const Back = styled.button`
   background-size: contain;
   margin-bottom: 20px;
   cursor:pointer;
+`
+
+const VideoModel = styled.div`
+  position: fixed;
+  right: -2000px;
+  width: 100%;
+  background: rgb(0 0 0 / 85%);
+  height: 100%;
+  z-index: 9999;
+  top: 0;
+  video{
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    top: 22%;
+    position: absolute;
+    right: 0;
+    left: 0;
+  }
+  .back{
+    color: #000;
+    z-index: 99;
+    position: absolute;
+    font-size: 28px;
+    right: 20px;
+    top: 20px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 37px;
+    text-align: center;
+    padding: 9px 0 0;}
+  }
+  &.active{
+    right: 0;
+  }
+`
+const VideoImg = styled.video`
+    float: right;
+    width: 60%;
+    margin-bottom:30px;
+    box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
 `

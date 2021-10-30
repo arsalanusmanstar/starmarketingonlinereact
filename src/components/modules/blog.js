@@ -61,7 +61,6 @@ const Blog = ({state}) => {
         const arr = filterCategory.includes(value) 
         ? filterCategory.filter(i => i !== value) // remove item
         : [ ...filterCategory,value ] // add item
-        console.log('working', arr)
         setFilterCategory(arr)
     }  
     return (
@@ -79,7 +78,7 @@ const Blog = ({state}) => {
           <LatestSearchsectionMain>
             <LatestSearchsectionLfet>
                 <div className="search">
-                   <input type="text" className="searchTerm" placeholder="Search Here |" onChange={(x)=>setFilter(x.target.value)}/>
+                   <input type="text" className="searchTerm" placeholder="Search Here" onChange={(x)=>setFilter(x.target.value)}/>
                     <button type="submit" className="searchButton">
                     <i className="fa fa-search"></i>
                     </button>
@@ -108,13 +107,12 @@ const Blog = ({state}) => {
 
             {currentTodos.length > 0 ? currentTodos.map((post,index)=>
                 
-                <LatestBoxes>
-                    {console.log(post)}
+                <LatestBoxes key={index}>
                     <LatestBoxesImg>
                         {post.categories[0] == 47 ? 
                             <tag><Imge src={latest_icon01}></Imge>Events</tag> : <tag className="red"><Imge src={latest_icon08}></Imge>Announcements</tag>
                          }
-                        <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].source_url} width="100%"></Imge>
+                        <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} width="100%"></Imge>
                         <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY">{post.date}</Moment></date>
                         <views><Imge src={latest_icon05}></Imge>85 Views</views>

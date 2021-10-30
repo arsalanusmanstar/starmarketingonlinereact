@@ -16,7 +16,6 @@ const ScoreCounter = (state) => {
 }
 
 const About = ({data}) => {
-    console.log(data,'about');
     return (
         <MainContainer background={AboutBackground}>
             <SectionContainer>

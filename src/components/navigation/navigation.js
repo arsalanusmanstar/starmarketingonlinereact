@@ -19,7 +19,6 @@ const Navigation = () =>  {
   <NavWrapper>
     <MenuNav>
       <Menu>
-        {console.log(state)}
         {state.map(([name, link, target, child]) => {
           
           return (
@@ -53,7 +52,6 @@ const Navigation = () =>  {
                             </MenuLink>
                         </MenuItem>
                         )})}
-                        {console.log(subChild  )}
                   </MenuItem>
                 )})}
                 
