@@ -9,9 +9,11 @@ import Slider from "react-slick";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
+
 const Latestnews = () => {
 
     const { data, error } = useSWR('/latest', fetcher)
+    const cat = ['47','2673']
 
     var settings = {
         dots: true,
@@ -27,7 +29,7 @@ const Latestnews = () => {
             <h1 className="latest-heading">Latest</h1>
             <div className="featured-project-line"></div>
             <Slider  {...settings}>
-                {data && data.map((post,index) => 
+                {data && data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
                     <Post key={index}>
                         <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
                         <Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title>

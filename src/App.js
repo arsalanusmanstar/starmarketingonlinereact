@@ -4,6 +4,8 @@ import Home from "./components/pages/home";
 import Pages from "./components/pages/pages";
 import Projects from "./components/pages/projects";
 import ProjectSingle from "./components/pages/projectSingle";
+import ScrollButton from './components/elements/ScrollButton/ScrollButton';
+
 import { SWRConfig } from 'swr'
 import { useEffect } from "react";
 import {
@@ -51,7 +53,7 @@ export default function App(state) {
         <Route path="/project/:slug" exact component={ProjectSingle}></Route>
         <Route path="/"  component={Home}></Route>
       </Switch>
-      
+      <ScrollButton />
     </SWRConfig>
     </div>
   );

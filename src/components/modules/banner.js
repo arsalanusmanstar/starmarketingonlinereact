@@ -10,8 +10,8 @@ const BannerText = ({state}) => {
                 <Heading>{state.heading}</Heading>
                 <Subheading>{state.sub_heading}</Subheading>
                 <Content>{state.content}</Content>
-                <Button href={state.learn_more}> Learn More </Button>
-                <SubButton href={state.know_us}>Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
+                <Button onClick={scrollToAbout} style={{cursor:'pointer'}}> Learn More </Button>
+                <SubButton>Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
             </BannerCont>   
     )
 }
@@ -32,6 +32,48 @@ const TopBanner = ({state,data}) => {
     </MainSection>    
     )
 }
+
+
+//Redirect to about section
+
+const scrollToAbout = () =>{
+           
+    if(document.documentElement.scrollHeight>4000)
+    {
+    window.scrollTo({
+      top: 1200,
+      
+      behavior: 'smooth'
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    });
+}
+
+if(document.documentElement.scrollHeight>6000)
+{
+window.scrollTo({
+  top: 2250,
+  
+  behavior: 'smooth'
+  /* you can also use 'auto' behaviour
+     in place of 'smooth' */
+});
+}
+
+
+if(document.documentElement.scrollHeight>8000)
+{
+window.scrollTo({
+top: 3200,
+
+behavior: 'smooth'
+/* you can also use 'auto' behaviour
+ in place of 'smooth' */
+});
+}
+
+
+  };
 
 
 export default TopBanner;

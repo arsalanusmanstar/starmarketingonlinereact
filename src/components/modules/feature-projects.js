@@ -108,8 +108,10 @@ const FeatureProducts = ({state}) => {
                                 <br/>
                                 <br/>
                                 <br/>
-                                
-                                <LinkNew to={latest.link.replace('https://starmarketingonline.com','')}  bg='#DB2D34'>Read more  <LeftArrow src={arrowLeft} /></LinkNew>
+                                <ReadMore>
+                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://starmarketingonline.com','')}>Read More <LeftArrow src={arrowLeft} /></Link>
+                                </ReadMore>
+                                {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
                         )}
                         {/* <div>
@@ -309,6 +311,7 @@ const BackgroundImage = styled.div`
 `
 const LeftArrow = styled.img`
 `
+<<<<<<< HEAD
 const LinkNew = styled(Link)`
     background: #DB2D34 0% 0% no-repeat padding-box;
     color: #fff;
@@ -326,3 +329,23 @@ const LinkNew = styled(Link)`
         display: inherit;
     }    
 `
+=======
+
+const ReadMore = styled.button`
+  background: #DB2D34 0% 0% no-repeat padding-box;
+  color: #fff;
+  padding: 19px;
+  text-align: left;
+  min-width: 206px;
+  border-radius: 8px;
+  font: normal normal 300 18px/30px Poppins;
+  margin: 20px 0;
+  position:relative;
+  img {
+    width: 34px;
+    top: 39%;
+    right: 18px;
+    position: absolute;
+  }
+`;
+>>>>>>> 3790eee6287efb5014c7ec66d7cf036cc419ece7

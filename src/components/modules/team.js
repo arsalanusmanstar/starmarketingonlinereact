@@ -12,7 +12,10 @@ const Team = ({ team, owner }) => {
   return (
     <div>
       <TeamMeetSection>
-        <SectionContainer>
+        <SectionContainer style={{marginTop:'-100px'}}>
+        <Heading>
+            <h1 className="featured-heading" style={{color:'white'}}>CONTACT US</h1>
+            </Heading>
           <TeamMeetSectionMain>
             <TeamMeetSectionLeft>
               <h4>Meet our<span>CEO</span></h4>
@@ -152,3 +155,43 @@ p {
 const Imge = styled.img`
 margin-bottom: -53px;
 `;
+
+
+const Heading = styled.div`
+h1{
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px
+    
+  }
+  h1:after{
+    content: "";
+    height: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 10%;
+    bottom: -16px;
+    border-radius: 107px;
+    background: #fe5656e3 0% 0% no-repeat padding-box;
+    
+  }
+  h1:before{
+    content: "";
+    background: url(./assets/whiteImage.png) 0% 0% no-repeat padding-box;
+    width: 393px;
+    height: 180px;
+    display: table;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -59px;
+    text-align: center;
+    background-size: cover;
+   
+  }
+  
+`
