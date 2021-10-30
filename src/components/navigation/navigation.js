@@ -91,6 +91,7 @@ const Menu = styled.ul`
   justify-content: flex-end;
   list-style: none;
   margin: 0;
+ 
 
   @media (min-width: 1220px) {
     margin-top: -0.8rem;
@@ -117,6 +118,10 @@ const Menu = styled.ul`
     right: -15px;
     top: 10px;
 }
+
+
+
+}
 `;
 
 const MenuItem = styled.li`
@@ -124,6 +129,10 @@ const MenuItem = styled.li`
   line-height: 1.25;
   position: relative;
   margin: 0.8rem 0 0 1.6rem !important;
+  @media only screen and (max-width: 1366px) {
+    margin: 0px 12px 0px 11px !important;
+
+  }
 
   @media (min-width: 1220px) {
     margin: 0.8rem 0 0 3.5rem !important;
@@ -174,6 +183,7 @@ top: 30px;
 margin: 0px;
 border-radius: 15px 0px 15px 15px;
 padding: 12px 10px;
+
     li {
      
       margin: 0px 0px 0px 0px !important;
@@ -188,5 +198,10 @@ padding: 12px 10px;
       }
       
     }
+   
   }
+  
+ 
+
+
 `;

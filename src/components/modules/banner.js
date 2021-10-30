@@ -25,7 +25,7 @@ const Video = ({state}) => {
 const TopBanner = ({state,data}) => {
     return (
     <MainSection background={BackgroundImage}>
-        <SectionContainer minHeight="800px" style={{paddingTop:0}}>
+        <SectionContainer minHeight="800px" style={{paddingTop:0, paddingBottom: 40}}>
                  <BannerText state={data} />
                 <Video state={state} />
         </SectionContainer>
@@ -82,20 +82,27 @@ export default TopBanner;
 const MainSection = styled.section`
     background: url(${(props) => props.background});
     margin-top: -210px;
-    padding-top: 260px;
+    padding-top: 200px;
     display: flex;
 `;
 const BannerCont = styled.div`
     width: 691px;
     height: 393px;
     position:absolute; 
-    top: 40%;
+    top: 46%;
     transform: translate(0%, -50%);
     background: rgb(255 255 255 / 28%) 0% 0% no-repeat padding-box;
     opacity: 1;
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
     padding: 35px;
+    @media only screen and (max-width: 1024px) {
+        position: relative;
+        top: 16%;
+        width: 100%;
+    
+      }
+
 `;
     
 const GuaranteeLogo = styled.section`
@@ -158,4 +165,15 @@ const VideoImg = styled.video`
     width: 60%;
     margin-bottom:30px;
     box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
+    
+ @media only screen and (max-width: 1366px) {
+    height: 727px;
+    object-fit: cover;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+
+  }
+
+
 `

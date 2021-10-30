@@ -42,6 +42,16 @@ display: grid;
 grid-template-columns: 32% 32% 32%;
 gap: 29px 29px;
 margin-top: 10%;
+
+@media only screen and (max-width: 1366px) {
+  grid-template-columns: 50% 50%;
+
+}
+
+@media only screen and (max-width: 1024px) {
+  grid-template-columns: 100%;
+
+}
    
 `;
 const RegionsBoxes = styled(Link)`

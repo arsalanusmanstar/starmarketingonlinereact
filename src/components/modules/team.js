@@ -97,6 +97,25 @@ const TeamMeetSectionMain = styled.div`
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
+    @media only screen and (max-width: 1366px) {
+      .logo_f {
+        width: 100%;
+    }
+ 
+  
+    }
+    
+  @media only screen and (max-width: 1024px) {
+    .logo_f {
+      width: 100%;
+  }
+ h2 {
+    font-size: 110px;
+    
+   
+}
+
+  }
 `;
 const TeamMeetSection = styled.div`
     margin: 0 auto;

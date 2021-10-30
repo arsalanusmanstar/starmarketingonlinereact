@@ -88,10 +88,14 @@ const PageHeader = styled.header`
         text-decoration:none !important;
         font-weight:400;
         letter-spacing: 0px;
+        @media only screen and (max-width: 1366px) {
+          font-size: 14px;
+      
+        }
       }
     }
     
-
+     
 
   }
 `;
@@ -109,6 +113,11 @@ const HeaderInner = styled.div`
   @media (min-width: 700px) {
     max-width: 1440px;
   }
+  @media only screen and (max-width: 1366px) {
+    max-width: 94%;
+
+  }
+
 `;
 
 const SiteTitle = styled.h1`
@@ -180,6 +189,20 @@ const HotProject = styled.div`
   -o-transition: all 1s 0s ease;
   transition: all 1s 0s ease;
   position:relative;
+  @media only screen and (max-width: 1366px) {
+    margin-left: 24px;
+    width: 180px;
+    font-size: 14px;
+    padding: 17px 14px;
+    
+    span {
+      top: -18px !important;
+      padding: 15px 19px 35px !important;
+
+    }
+
+
+  }  
   &:hover{
     span{
       box-shadow: 0px 19px 49px #000000b5;
@@ -188,6 +211,7 @@ const HotProject = styled.div`
       display:block;
     }
   }
+
   span{
     background: #DB2D34 0% 0% no-repeat padding-box;
     border: 1px solid #00000000;
@@ -219,5 +243,6 @@ const HotProject = styled.div`
       width: 100%;
       padding-right: 11px;
     }
+    
   }
 `;

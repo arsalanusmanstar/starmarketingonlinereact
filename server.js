@@ -47,7 +47,7 @@ app.get('/latest', (req, res) => { //Line 93
 }); //Line 11
 
 app.get('/featureProject', (req, res) => { //Line 93
-     var url = baseUrl+'/portf?_embed=true';
+     var url = baseUrl+'/portf?_embed=true&per_page=100';
     request({
         method: 'GET',
         uri: url,
