@@ -1,24 +1,27 @@
 import useSWR from 'swr'
+import { useEffect,useState } from "react";
 import Modules from "../modules"
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
+import axios from "axios";
 
-
-const fetcher = (url) => fetch('/expressPost?data='+url,{
-  method:'Post',
-  
-}).then((res) => res.json());
 const Pages = ({ match,location }) => {
+  const [data,setData] = useState('');
   
-  const { data, error } = useSWR('/pages?_embed=true&slug='+match.path, fetcher,{refreshInterval: 0,
-    refreshWhenOffline : false})
-  
+  useEffect(()=>{
+    axios.get('/wp-json/wp/v2/pages?_embed=true&slug='+match.path)
+      .then(response => {
+        setData(response.data)
+      })
+  },[match.path])
+
   return (
-    <div style={{backgroundImage:`url('/assets/page_bg.png')`}}> 
+    <div > 
       <Header />
+      {console.log(data,'data')}
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
-          <Modules data={data && data[0]['acf']} location={location}  /> } 
+          <Modules data={data && data[0] && data[0].acf} location={location}  /> } 
       <Footer />
     </div>
   );

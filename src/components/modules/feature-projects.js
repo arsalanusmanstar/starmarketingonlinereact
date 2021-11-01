@@ -10,6 +10,9 @@ import line from "../../assets/line.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+
+import ReactLoading from "react-loading";
+
 const NextArrow = ({ onClick }) => {
     return (
         <div className="arrow next" onClick={onClick}>
@@ -78,7 +81,8 @@ const FeatureProducts = ({state}) => {
     centerPadding: 0,
     centerMode: true,
   };
-    const { data, error } = useSWR('/featureProject', fetcher)
+  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&per_page=20', fetcher)
+  
     return (
         <FeautureProductsMain  background={grayBackground}>
             <SectionContainer>
@@ -90,7 +94,7 @@ const FeatureProducts = ({state}) => {
                     <LeftArea>
                     <Slider  {...settings}>   
                     {console.log(data,'dataFeature')}
-                        {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
+                        {data ? data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
                             <div key={index}>
                                 <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>
                                 <p className="featured-project-description"  dangerouslySetInnerHTML={{ __html:latest.excerpt.rendered}}></p>
@@ -114,7 +118,7 @@ const FeatureProducts = ({state}) => {
                                 </ReadMore>
                                 {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
-                        )}
+                        ):<ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
                         {/* <div>
                         <h3 className="featured-project-heading">Heaven Heights 2</h3>
                         <p className="featured-project-description">Heaven Heights Luxury Apartments Lahore. Heaven Heights Apartments in Lahore are new style apartments on main Shah Jamal roundabout. The Apartment building offers 1, 2, and 3 bed Apartments for Sale. It includes all modern day to day facilities that have now become a necessity. Heaven Heights Apartments are designed to be the perfect choice for your living being offered on easy installments</p>

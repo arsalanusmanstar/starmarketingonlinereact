@@ -5,9 +5,10 @@ import Pages from "./components/pages/pages";
 import Projects from "./components/pages/projects";
 import ProjectSingle from "./components/pages/projectSingle";
 import ScrollButton from './components/elements/ScrollButton/ScrollButton';
+import { useEffect,useState } from "react";
+import axios from "axios";
+import {MobileView,isMobile} from 'react-device-detect';
 
-import { SWRConfig } from 'swr'
-import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,22 +21,30 @@ export default function App(state) {
   //const  headerBg  = data.isHome ? HomeBackground : PageBackground;
 
   const { pathname } = useLocation();
+   
+  const [data,setData] = useState('');
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+    axios.get('/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      .then(response => {
+        setData(response.data)
+        console.log(response.data,'respons')
+      })
   }, [pathname]);
+
+  
 
   return (
     <div className="App">
-      <SWRConfig
-      value={{
-        refreshInterval: 3000,
-        refreshWhenOffline : false
-      }}
-    >
+      {isMobile &&
+       <MobileView>
+            <meta http-equiv="Refresh" content="0; url=https://m.starmarketingonline.com/" />
+          </MobileView>
+         }
         <Switch>
         {/* <Route path="/about">
           <About />
@@ -44,17 +53,16 @@ export default function App(state) {
         <Route path="/achievements"  component={Pages}></Route>
         <Route path="/latest"  component={Pages}></Route>
         <Route path="/contact-us"  component={Pages}></Route>
-        <Route path="/projects/" exact component={Projects}></Route>
-        <Route path="/projects/:city" exact  component={Projects}></Route>
-        <Route path="/projects/:city/:id"  exact component={Projects}></Route>
-        <Route path="/hot-projects/" exact component={Projects}></Route>
-        <Route path="/hot-projects/:city" exact  component={Projects}></Route>
-        <Route path="/hot-projects/:city/:id"  exact component={Projects}></Route>
-        <Route path="/project/:slug" exact component={ProjectSingle}></Route>
+        <Route path="/projects/" exact render={(props) => <Projects data={data} {...props} />} />
+        <Route path="/projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
+        <Route path="/projects/:city/:id" exact render={(props) => <Projects data={data} {...props} />} />
+        <Route path="/hot-projects/" exact render={(props) => <Projects data={data} {...props} />} />
+        <Route path="/hot-projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
+        <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>
+        <Route path="/project/:slug"  exact component={ProjectSingle} data={data}></Route>
         <Route path="/"  component={Home}></Route>
       </Switch>
       <ScrollButton />
-    </SWRConfig>
     </div>
   );
 }

@@ -6,13 +6,14 @@ import clock from "../../assets/clock.png";
 import user from "../../assets/user.png";
 import left_arrow from "../../assets/left_arrow.png";
 import Slider from "react-slick";
+import ReactLoading from "react-loading";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
 const Latestnews = () => {
 
-    const { data, error } = useSWR('/latest', fetcher)
+    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47,2673&per_page=50', fetcher)
     const cat = ['47','2673']
 
     var settings = {
@@ -50,7 +51,7 @@ const Latestnews = () => {
             <h1 className="latest-heading">Latest</h1>
             <div className="featured-project-line"></div>
             <Slider  {...settings}>
-                {data && data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
+                {data ? data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
                     <Post key={index}>
                         <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
                         <Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title>
@@ -66,7 +67,7 @@ const Latestnews = () => {
                         }</Auth>
                         </Details>
                     </Post>
-                )}
+                ):<ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
             </Slider>
         </SectionContainer>    
     </LatestNewContainer>
