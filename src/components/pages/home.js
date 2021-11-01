@@ -4,13 +4,10 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
 
-const fetcher = (url) => fetch('/expressPost?data='+url,{
-  method:'Post',
-  
-}).then((res) => res.json());
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 const Home = ({state,location}) => {
-  const { data, error } = useSWR('/pages?_embed=true&slug=home-page', fetcher, {refreshInterval: 0,
-    refreshWhenOffline : false})
+  const { data, error } = useSWR('/wp-json/wp/v2/pages?_embed=true&slug=home-page', fetcher)
   return (
     <div style={{backgroundImage:`url("/assets/WebBg.png")`}}> 
       <Header />

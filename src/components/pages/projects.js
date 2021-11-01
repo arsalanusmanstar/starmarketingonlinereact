@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import useSWR from 'swr'
 import { useEffect,useState } from "react";
 import { Link,NavLink } from 'react-router-dom';
 import SectionContainer from "../styles/section-container";
@@ -31,10 +30,17 @@ const Projects = (state) => {
   const [category,setCategories] = useState();
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
-
-  const { data, error } = useSWR('/projects', fetcher, {refreshInterval: 0,
-    refreshWhenOffline : false})
   
+  const [data,setData] = useState(state.data);
+  
+  // useEffect(()=>{
+  //   axios.get('/wp-json/wp/v2/portf?_embed=true&per_page=100')
+  //     .then(response => {
+  //       setData(response.data)
+  //     })
+  // },[])
+
+  console.log(state,'projectpage')
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
   filter ? Object.keys(post).some(key =>
@@ -43,9 +49,9 @@ const Projects = (state) => {
 ).filter((post)=> post.acf && post.acf.filters && post.acf.filters.categories && post.acf.filters.categories.includes(category) ||  category == null  )
 .filter((post)=> post.acf && post.acf.filters && post.acf.filters.completed == completed || completed == false) : [];
   const FilterData = state.match.params.id ? serachFilter.filter((post) => 
-  post.acf && post.acf.filters && post.acf.filters.country.toLowerCase() == state.match.params.id 
+  post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.id 
 ) : state.match.params.city ? serachFilter.filter((post) => 
-    post.acf && post.acf.filters && post.acf.filters.country.toLowerCase() == state.match.params.city 
+    post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.city 
   )  : serachFilter;
  
 

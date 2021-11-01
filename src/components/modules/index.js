@@ -11,7 +11,9 @@ import Achievements from "./achievements";
 import Contact from "./contact";
 
 const Modules = ({data,location}) => {
+    console.log(data,'innerData')
    return (
+       
        <>
         {data && data['main_banner'] && <TopBanner data={data['main_banner']}/> }
         {data && data['featured_projects'] && <FeatureProjects data={data['featured_projects']}/>}

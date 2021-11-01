@@ -39,15 +39,10 @@ import {EmailShareButton,FacebookShareButton,LinkedinShareButton,TwitterShareBut
 import {EmailIcon,FacebookIcon,LinkedinIcon,TwitterIcon,WhatsappIcon} from "react-share";
 
 
-
-const fetcher = (url) => fetch(url,{
-  method:'Post',
-  
-}).then((res) => res.json());
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match,location}) => {
-  const { data, error } = useSWR('/singleprojects?slug='+match.params.slug, fetcher, {refreshInterval: 0,
-    refreshWhenOffline : false})
+  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher)
   const baseUrl = 'https://starmarketingonline.com';
   const [pdf,setPdf] = useState(0);
   const [activeContent,setActiveContent] = useState(false);
