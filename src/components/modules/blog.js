@@ -14,6 +14,8 @@ import latest_icon08 from "../../assets/latest_icon08.png";
 import Moment from "react-moment";
 import ReactLoading from "react-loading";
 import back from "../../assets/back.png";
+import LeftPag from "../../assets/left_pag.png";
+import RightPag from "../../assets/right_pag.png";
 
 
 import {BiChevronLeftCircle, BiChevronRightCircle} from 'react-icons/bi';
@@ -29,7 +31,7 @@ const Blog = ({state}) => {
     const [todosPerPage,setTodosPerPage] = useState(3);
     const [filter,setFilter] = useState('');
     const [filterCategory,setFilterCategory] = useState([47,2673]);
-    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47,2673&per_page=100', fetcher)
+    const { data, error } = useSWR('/blog', fetcher)
 
     const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
     const filteredData = data ? data.filter(item => {
@@ -145,14 +147,16 @@ const Blog = ({state}) => {
             ) : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
             
             <ul className="pagination">{renderPageNumbers}</ul>
-            <Button style={{float:'left'}}>
+           <a href="#"> <img src={LeftPag} style={{float:'left', marginTop:'-71px'}}></img></a>
+           <a href="#"> <img src={RightPag} style={{float:'right', marginTop:'-71px'}}></img></a>
+            {/* <Button style={{float:'left'}}>
      <BiChevronLeftCircle 
      />
     </Button>  
             <Button style={{float:'right'}}>
      <BiChevronRightCircle
      />
-    </Button>
+    </Button> */}
           </SectionContainer>
         </LatestSearchsection>
         
