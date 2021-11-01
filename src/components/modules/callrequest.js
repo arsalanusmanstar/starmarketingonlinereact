@@ -5,15 +5,17 @@ import SectionContainer from "../styles/section-container";
 import callRequestBg from "../../assets/callRequest.png";
 import Call from "../../assets/call.png";
 
+import ReactLoading from "react-loading";
 import Button from "../elements/button"
 import Input from "../elements/input"
 import Textarea from "../elements/textarea"
 
 const Callrequest = ({state, bg, location}) => {
     const [success,setSuccess] = useState('');
+    const [loader,setLoader] = useState(false);
     const submitHandler = e => {
         e.preventDefault();
-       
+        setLoader(true);
         const data = new FormData(e.target);
         axios.post('https://sheet.best/api/sheets/3f32dba9-712b-4a21-8585-48cc2c2da400', data, {
             headers: {
@@ -21,6 +23,8 @@ const Callrequest = ({state, bg, location}) => {
             }
         })
         .then(response => {
+            document.getElementById("contactForm").reset();
+            setLoader(false)
             setSuccess('Thank you for submit your request. We will contact you shortily.')
         })
      }
@@ -42,6 +46,8 @@ const Callrequest = ({state, bg, location}) => {
                     <Success>{success}</Success>
                     <Button type="submit" value="Send Message" />
                 </form>
+                
+                {loader && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"red",height:'100vh',width:"80px"}} />}
                 </CallSectionMain>
             </SectionContainerOverRight>
         </MainContainer>

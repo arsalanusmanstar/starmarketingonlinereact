@@ -13,7 +13,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Latestnews = () => {
 
-    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47,2673&per_page=50', fetcher)
+    const { data, error } = useSWR('/wp-json/wp/v2/posts?categories=47,2673&per_page=100&_embed=true', fetcher)
     const cat = ['47','2673']
 
     var settings = {

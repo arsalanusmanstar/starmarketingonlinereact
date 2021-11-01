@@ -199,6 +199,9 @@ const HotProject = styled.div`
   -o-transition: all 1s 0s ease;
   transition: all 1s 0s ease;
   position:relative;
+  span{
+    box-shadow: 0px 19px 49px #000000b5;
+  }
   @media only screen and (max-width: 1366px) {
     margin-left: 24px;
     width: 180px;
@@ -214,9 +217,6 @@ const HotProject = styled.div`
 
   }  
   &:hover{
-    span{
-      box-shadow: 0px 19px 49px #000000b5;
-    }
     .hotMenu{
       display:block;
     }

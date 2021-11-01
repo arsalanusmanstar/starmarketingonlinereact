@@ -29,7 +29,7 @@ const Blog = ({state}) => {
     const [todosPerPage,setTodosPerPage] = useState(3);
     const [filter,setFilter] = useState('');
     const [filterCategory,setFilterCategory] = useState([47,2673]);
-    const { data, error } = useSWR('/wp-json/wp/v2/posts?_embed=true&?categories=47,2673&per_page=100', fetcher)
+    const { data, error } = useSWR('/wp-json/wp/v2/posts?categories=47,2673&per_page=100&_embed=true', fetcher)
 
     const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
     const filteredData = data ? data.filter(item => {
@@ -70,7 +70,7 @@ const Blog = ({state}) => {
     return (
         <div>
         <SectionContainer>
-
+            {console.log(data,'post')}
           <InnerBannerSection>
              <h1>Latest </h1>
           </InnerBannerSection> 
@@ -119,7 +119,7 @@ const Blog = ({state}) => {
                         <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} width="100%"></Imge>
                         <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY">{post.date}</Moment></date>
-                        <views><Imge src={latest_icon05}></Imge>85 Views</views>
+                        <views><Imge src={latest_icon05}></Imge>{post['post-meta-fields'].post_views_count[0]} Views</views>
                         <user><Imge src={latest_icon06}></Imge> {
                             post.author == 789 ? "Aamir Saeeduddin" :
                             post.author == 788 ? "Arif Mustafa" :
@@ -166,14 +166,17 @@ const Blog = ({state}) => {
                    post.categories[0] == 47 ? 
                   <>
                            <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
-                        <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].source_url} width="100%"></Imge>
+                        {post.acf ? post.acf.video && 
+                            <iframe width="100%" height="500" src={post.acf.video}></iframe>
+                        : 
+                        <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].source_url} width="100%"></Imge> }
                         <div className="popupheadermain">
                         
                             <tag><Imge src={latest_icon01}></Imge>Events</tag>
                       
                         <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY">{post.date}</Moment></date>
-                        <views><Imge src={latest_icon05}></Imge>85 Views</views>
+                        <views><Imge src={latest_icon05}></Imge>{post['post-meta-fields'].post_views_count[0]} Views</views>
                         <user><Imge src={latest_icon06}></Imge> {
                             post.author == 789 ? "Aamir Saeeduddin" :
                             post.author == 788 ? "Arif Mustafa" :
@@ -185,7 +188,7 @@ const Blog = ({state}) => {
                         </div>
                   
                   <h2 className="popupheadings" dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
-                   <div className="content"     ></div>
+                   <div className="content"  dangerouslySetInnerHTML={{ __html:post.content.rendered}}></div>
                    </>
                      : 
                      <div >
@@ -199,7 +202,7 @@ const Blog = ({state}) => {
                       
                         <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY">{post.date}</Moment></date>
-                        <views><Imge src={latest_icon05}></Imge>85 Views</views>
+                        <views><Imge src={latest_icon05}></Imge>{post['post-meta-fields'].post_views_count[0]} Views</views>
                         <user><Imge src={latest_icon06}></Imge> {
                             post.author == 789 ? "Aamir Saeeduddin" :
                             post.author == 788 ? "Arif Mustafa" :

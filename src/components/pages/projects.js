@@ -18,6 +18,7 @@ import offices from "../../assets/offices.png";
 import plots from "../../assets/plots.png";
 import penthouses from "../../assets/penthouses.png";
 import ReactLoading from "react-loading";
+import axios from "axios";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -25,6 +26,7 @@ const Projects = (state) => {
   const [allType,setAllType] = useState(true);
   const [allReigons,setAllRegions] = useState(true);
   const [completed,setCompleted] = useState(false);
+  const [upcoming,setUpcoming] = useState(false);
   const [hideFilter,setHideFilter] = useState(true);
   const [nearme,setNearme] = useState(false);
   const [category,setCategories] = useState();
@@ -33,12 +35,12 @@ const Projects = (state) => {
   
   const [data,setData] = useState(state.data);
   
-  // useEffect(()=>{
-  //   axios.get('/wp-json/wp/v2/portf?_embed=true&per_page=100')
-  //     .then(response => {
-  //       setData(response.data)
-  //     })
-  // },[])
+  useEffect(()=>{
+    data.length > 0 && axios.get('/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      .then(response => {
+        setData(response.data)
+      })
+  },[])
 
   console.log(state,'projectpage')
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
@@ -47,7 +49,8 @@ const Projects = (state) => {
     post['title'].rendered.toLowerCase().includes(lowercasedFilter)
   ) : post
 ).filter((post)=> post.acf && post.acf.filters && post.acf.filters.categories && post.acf.filters.categories.includes(category) ||  category == null  )
-.filter((post)=> post.acf && post.acf.filters && post.acf.filters.completed == completed || completed == false) : [];
+.filter((post)=> post.acf && post.acf.filters && post.acf.filters.completed == completed || completed == false)
+.filter((post)=> post.acf && post.acf.filters && post.acf.filters.upcoming == upcoming || upcoming == false) : [];
   const FilterData = state.match.params.id ? serachFilter.filter((post) => 
   post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.id 
 ) : state.match.params.city ? serachFilter.filter((post) => 
@@ -97,12 +100,12 @@ const Projects = (state) => {
                 setCompleted(completed ? false:true)
                 }}>Completed</button>
             </div>
-            {/* <div className="form-group">
+            <div className="form-group">
               <input type="checkbox" />
-              <button className={nearme && 'active'} onClick={()=>{
-                setNearme(nearme ? false:true)
-                }}>Project near me</button>
-            </div> */}
+              <button className={upcoming && 'active'} onClick={()=>{
+                setUpcoming(upcoming ? false:true)
+                }}>Upcoming Projects</button>
+            </div>
            <br />
            <br />
                 
@@ -112,37 +115,37 @@ const Projects = (state) => {
             <ProjectHeaderRight>
 
             <ProjectSection>
-               <ProjectSectionBoxes onClick={()=>
+               <ProjectSectionBoxes className={category == 'shop'}  onClick={()=>
                   {setCategories('shop')
                   setAllType(false)}}>
                   <Imge src={projects01}></Imge>
                   <button>Shop</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes onClick={()=>{
+               <ProjectSectionBoxes className={category == 'apartments'}  onClick={()=>{
                  setCategories('apartments')
                   setAllType(false)}}>
                   <Imge src={projects02}></Imge>
                   <button>Apartments</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes onClick={()=>{
+               <ProjectSectionBoxes  className={category == 'offices'} onClick={()=>{
                  setCategories('offices')
                   setAllType(false)}}>
                   <Imge src={projects03}></Imge>
                   <button>Offices</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes onClick={()=>{
+               <ProjectSectionBoxes  className={category == 'houses'} onClick={()=>{
                  setCategories('houses')
                   setAllType(false)}}>
                   <Imge src={projects04}></Imge>
                   <button>Houses</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes onClick={()=>{
+               <ProjectSectionBoxes  className={category == 'plots'} onClick={()=>{
                  setCategories('plots')
                   setAllType(false)}}>
                   <Imge src={projects05}></Imge>
                   <button >Plots</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes onClick={()=>{
+               <ProjectSectionBoxes className={category == 'penthouses'} onClick={()=>{
                  setCategories('penthouses')
                   setAllType(false)}}>
                   <Imge src={projects06}></Imge>
@@ -340,6 +343,11 @@ a {
   text-decoration:none;
   color:#000;
   font-weight:500;
+  &.active{
+    color: #fff;
+    background: #ff000a;
+    border-color: #ff000a;
+  }
 
   @media only screen and (max-width: 1024px) {
     display: inline-block;
@@ -430,6 +438,12 @@ justify-content: space-between;
 `
 const ProjectSectionBoxes = styled.div`
 text-align: center;
+border-radius: 10px;
+padding: 16px 23px 0;
+&.true{
+  border: 3px solid #ff000a;
+  padding: 13px 20px 0;
+}
 button {
   background: none;
   font-size: 20px;
