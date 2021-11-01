@@ -152,7 +152,7 @@ const Projects = (state) => {
             </ProjectSection>
               
             <ProjectSearch> 
-                <input type='text' placeholder="Search Project |"  onChange={(e)=>setFilter(e.target.value)} />
+                <input type='text' placeholder="Search Project"  onChange={(e)=>setFilter(e.target.value)} />
                 <button onClick={()=>setLocation('Multan')}> <i className="fa fa-search"></i></button>
              </ProjectSearch> 
              
@@ -247,6 +247,12 @@ const ProjectHeadersectionB = styled.div`
       grid-template-columns: 30% 30% 30%;
       justify-content: space-between;
       padding-top: 4%;
+       
+      @media only screen and (max-width: 1024px) {
+        grid-template-columns: 48% 48%;
+    
+   }
+
       h2 {
         color: #000;
         font-size: 30px;
@@ -334,6 +340,20 @@ a {
   text-decoration:none;
   color:#000;
   font-weight:500;
+
+  @media only screen and (max-width: 1024px) {
+    display: inline-block;
+
+  }
+   
+
+}
+
+@media only screen and (max-width: 1024px) {
+  br {
+    display: none;
+}
+
 }
 `
 const ProjectHeadersection = styled.div`
@@ -492,6 +512,13 @@ const Image = styled.div`
     -webkit-background-size: cover;
     background-size: cover;
     border-radius: 20px;
-    box-shadow: 0px 25px 31px #00000045;
+    
+    border:2px solid #EDEDED;
     margin-top: -40px;
+
+   :hover{
+    box-shadow: 0px 25px 31px #00000045;
+   }
+    
 `
+

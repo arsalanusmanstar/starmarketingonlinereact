@@ -41,7 +41,7 @@ const Locations = ({state}) => {
                 <h1>Let's Stay In Touch</h1>
                 <p>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</p>
                 <input type="text" name="Email" placeholder="Email Address"/>
-                <button type="Submit">Subscribe</button>
+                <button type="Submit" style={{cursor:'pointer'}}>Subscribe</button>
                 <div style={{paddingTop:'10px'}}>{success}</div>
             </form>
          </ContactSectionTouchLeft>

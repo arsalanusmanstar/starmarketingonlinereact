@@ -4,9 +4,22 @@ import SectionContainer from "../styles/section-container";
 import CallRequest from "./callrequest";
 import { Row, Col, Alert, Container,FormGroup} from "react-bootstrap";
 
+import Select from 'react-select';
+
+
 const Contact = ({offices,get_in_touch}) => {
     const [office,setOffice] = useState(offices.office)
     const [currentLocation,setCurrentLocation] = useState(0)
+
+
+    //get locations
+    const Locations = office.map((location,index) => ({
+      "key"   : index,
+      "value" : index,
+      "label" : location.city
+    }))
+    
+    console.log(Locations);
     return (
         <SectionContainer>
             <Heading>
@@ -25,12 +38,22 @@ const Contact = ({offices,get_in_touch}) => {
             <Container style={{width: '', margin: '0 auto'}}>
                 
               <div style={AddressDetails}>
-                  <select style={RegionDropdown}  onChange={(x)=>setCurrentLocation(x.target.value)}>
+                  {/* <select style={RegionDropdown}  onChange={(x)=>setCurrentLocation(x.target.value)}>
                       {office.map((location,index) => 
                         <option key={index} value={index}>{location.city}</option>
                     )}
-                  </select>
-                  <br/> <br/>
+                  </select> */}
+                     <br/>
+                  <Select
+        
+        onChange={(x)=>setCurrentLocation(x.value)}
+        options={Locations}        
+        placeholder="Type to Search..."
+        style={RegionDropdown}
+      />
+
+
+                  <br/>
                   {office[currentLocation] && office[currentLocation].phone &&
                    <>
                     <label style={LabelHeading}>Phone</label>
@@ -133,8 +156,8 @@ const AddressDetails={
 const LabelHeading={
     color:'#FFFFFF',
     opacity:'0.44',
-    font: 'normal normal normal 14px/20px Poppins'
-
+    font: 'normal normal normal 16px/22px Poppins',
+  
 }
 
 const LableDescription={
@@ -147,7 +170,7 @@ opacity: '1',
 
 const LableDescriptionAddress={
     textAlign: 'left',
-font: 'normal normal 400 12px/20px Poppins',
+font: 'normal normal 400 14px/22px Poppins',
 letterSpacing: '0px',
 color: '#FFFFFF',
 opacity: '1',

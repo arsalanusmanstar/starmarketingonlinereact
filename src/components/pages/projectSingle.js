@@ -265,7 +265,7 @@ const ProjectSingle = ({match,location}) => {
         <ProjectContentSlides className={activeContent && 'active'}>
           <div className="projectContent">
               <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
-              <h1>PROJECT DESCRIPTION</h1>
+              {/* <h1>PROJECT DESCRIPTION</h1> */}
               <div className="content" dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].content.rendered)}}></div>
           </div>
         </ProjectContentSlides>
@@ -686,6 +686,10 @@ background-size: cover;
   color: #fff;
   display: grid;
   grid-template-columns: 74% 26%;
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 66% 34%;
+
+}
   label {
     display: none;
 }
