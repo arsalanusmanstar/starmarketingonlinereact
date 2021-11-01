@@ -146,7 +146,7 @@ const Projects = (state) => {
             </ProjectSection>
               
             <ProjectSearch> 
-                <input type='text' placeholder="Search Project |"  onChange={(e)=>setFilter(e.target.value)} />
+                <input type='text' placeholder="Search Project"  onChange={(e)=>setFilter(e.target.value)} />
                 <button onClick={()=>setLocation('Multan')}> <i className="fa fa-search"></i></button>
              </ProjectSearch> 
              
@@ -506,6 +506,13 @@ const Image = styled.div`
     -webkit-background-size: cover;
     background-size: cover;
     border-radius: 20px;
-    box-shadow: 0px 25px 31px #00000045;
+    
+    border:2px solid #EDEDED;
     margin-top: -40px;
+
+   :hover{
+    box-shadow: 0px 25px 31px #00000045;
+   }
+    
 `
+

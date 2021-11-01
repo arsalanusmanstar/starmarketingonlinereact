@@ -30,7 +30,17 @@ const Header = () => {
           {/* Desktop navigation links */}
           <Navigation />
           <HotProject>Hot Projects <span><DownArrow /></span>
-            <div className="hotMenu"><Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link></div>
+            <div className="hotMenu">
+              <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
+              <br/><br/>
+              <Link to='/project/whitely-mall/'>Whitely Mall</Link>
+              <br/><br/>
+              <Link to='/project/mall-of-gulgasht/'>Mall of Gulgasht</Link>
+              <br/><br/>
+              <Link to='/project/safari-garden-housing-scheme/'>Safari Garden</Link>
+              <br/><br/>
+              <Link to='/project/jan-heights/'>Jan Heights</Link>
+              </div>
           </HotProject>
           {/* Desktop search button */}
           {/* {state.theme.showSearchInHeader && <SearchButton />} */}

@@ -270,7 +270,7 @@ const ProjectSingle = ({match,location}) => {
         <ProjectContentSlides className={activeContent && 'active'}>
           <div className="projectContent">
               <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
-              <h1>PROJECT DESCRIPTION</h1>
+              {/* <h1>PROJECT DESCRIPTION</h1> */}
               <div className="content" dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].content.rendered)}}></div>
           </div>
         </ProjectContentSlides>
