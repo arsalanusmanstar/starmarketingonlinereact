@@ -15,6 +15,10 @@ import Moment from "react-moment";
 import ReactLoading from "react-loading";
 import back from "../../assets/back.png";
 
+
+import {BiChevronLeftCircle, BiChevronRightCircle} from 'react-icons/bi';
+
+
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
@@ -139,7 +143,16 @@ const Blog = ({state}) => {
                     </LatestBoxesText>  
                  </LatestBoxes>
             ) : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
+            
             <ul className="pagination">{renderPageNumbers}</ul>
+            <Button style={{float:'left'}}>
+     <BiChevronLeftCircle 
+     />
+    </Button>  
+            <Button style={{float:'right'}}>
+     <BiChevronRightCircle
+     />
+    </Button>
           </SectionContainer>
         </LatestSearchsection>
         
@@ -654,4 +667,15 @@ const Back = styled.button`
   position: absolute;
     left: 30px;
     top: 30px;
+`
+
+
+
+const Button = styled.div`
+   margin-top:-58px;
+   height: 30px;
+   font-size: 5rem;
+   z-index: 1;
+   cursor: pointer;
+   color: #000000;
 `
