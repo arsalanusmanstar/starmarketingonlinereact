@@ -458,8 +458,8 @@ dd + dt {
 }
 ul.pagination {
   padding: 0;
-  margin: 0;
-  width: 100%;
+  margin: 0 auto;
+  width: 90%;
   display: block;
 }
 
@@ -467,12 +467,26 @@ ul.pagination li {
   float: left;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
+  grid-template-columns: repeat( auto-fit, minmax(180px, 1fr) );
   text-align-last: center;
   font-size: 38px;
   cursor: pointer;
 }
+.pagi {
+  position: relative;
+}
 
+.pagi img.left {
+  cursor:pointer;
+  position: absolute;
+  left: 0;
+}
+
+.pagi img.right {
+  cursor:pointer;
+  position: absolute;
+  right: 0;
+}
 
 .content h4 {
   font-size: 19px;
@@ -497,7 +511,7 @@ ul.pagination li {
   }
   .featured-project-line {
   
-    margin: inherit;
+    margin: 0 auto;
    
 }
 .fFBWBR .right_line {
@@ -514,8 +528,12 @@ ul.pagination li {
 img.responsive {
   width: 100%;
 }
-
-
+.featured-project-description{
+  width: 100%;
+}
+.getinTouch{
+  width: 60%;
+}
 }
 
 @media only screen and (max-width: 1024px) {
@@ -537,4 +555,58 @@ ul.pagination li {
   grid-template-columns: repeat( auto-fit, minmax(128px, 1fr) );
  
 }
+}
+
+.contactMap.container:after,.contactMap.container:before {content: '';display: block;clear: both;}
+
+.addressLeft {
+    float: left;
+    padding: 0px
+ 20px;
+    border-radius: 20px;
+    background: rgb(20, 48, 99);
+    width: 38%;
+    padding-bottom: 20px;
+}
+
+.addressRight {
+    border-radius: 20px;
+    width: 59%;
+    float: right;
+}
+
+.addressRight iframe {
+    width: 100%;
+}
+
+.mainSlide{
+  width: 80%;
+  margin: 0 auto;
+}
+.getinTouch {
+  width: 61%;
+}
+
+.menuIcon {
+  float: right;
+  position: absolute;
+  right: 10%;
+  display:none;
+  font-size: 56px;
+}
+.hotMenu ul {
+  padding: 0;
+  margin: 0;
+}
+
+.hotMenu ul li a {
+  color: #333 !important;
+  font-size: 17px !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  
+  .menuIcon {
+    display:block;
+  }
 }

@@ -88,9 +88,10 @@ const CallRequests = styled.div`
         line-height: 43px;
         text-shadow: 1px 1px 1px #00000070;
         @media only screen and (max-width: 1366px) {
-            font-size: 30px;
+            font-size: 56px;
             width: 80%;
-        
+            margin: 80px auto;
+            text-align: center;
           }
     }
 `

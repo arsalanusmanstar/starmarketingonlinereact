@@ -10,8 +10,8 @@ import description02 from "../../assets/description02.png";
 import description03 from "../../assets/description03.png";
 import description04 from "../../assets/description04.png";
 import description05 from "../../assets/description05.png";
-import penthousewhite from "../../assets/penthousewhite.png";
-import plotswhite from "../../assets/plotswhite.png";
+import Penthousewhite from "../../assets/penthousewhite.png";
+import Plotswhite from "../../assets/plotswhite.png";
 import description06 from "../../assets/description06.png";
 import description07 from "../../assets/description07.png";
 import description08 from "../../assets/description08.png";
@@ -27,9 +27,9 @@ import Facilities05 from "../../assets/Facilities05.png";
 import Facilities06 from "../../assets/Facilities06.png";
 import Facilities07 from "../../assets/Facilities07.png";
 import Facilities08 from "../../assets/Facilities08.png";
+import newBox from "../../assets/rightboxes.png";
 import pdfImage from "../../assets/pdf.png";
 import back from "../../assets/back.png";
-import rightboxes from "../../assets/rightboxes.png";
 import useSWR from 'swr'
 import axios from "axios";
 import Header from "../../components/header";
@@ -42,11 +42,12 @@ import {EmailIcon,FacebookIcon,LinkedinIcon,TwitterIcon,WhatsappIcon} from "reac
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match,location}) => {
-  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher)
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher)
   const baseUrl = 'https://starmarketingonline.com';
   const [pdf,setPdf] = useState(0);
   const [activeContent,setActiveContent] = useState(false);
   const [videoModel,setVideoModel] = useState();
+  const [imageModel,setImageModel] = useState();
   const [success,setSuccess] = useState('');
   const [shareActive,setShareActive] = useState(false);
   
@@ -113,8 +114,8 @@ const ProjectSingle = ({match,location}) => {
                             cat == 'shop' ? description02 
                             : cat == 'apartments' ? description03 
                             : cat == 'offices' ? description04 
-                            : cat == 'penthousewhite' ? penthousewhite 
-                            : cat == 'plots' ? plotswhite 
+                            : cat == 'penthouses' ? Penthousewhite 
+                            : cat == 'plots' ? Plotswhite 
                             : cat == 'houses' && description05 
                             
                             }></Imge>
@@ -184,14 +185,14 @@ const ProjectSingle = ({match,location}) => {
                       faci == 'swimming' ? Facilities07 :
                       faci == 'gaming' && Facilities08
                     }></Imge>
-                    <p>{faci}</p>
+                    <p>{faci == "scurity" ? 'security' : faci}</p>
                   </FacilitiesBoxes>
                   )}
                   <FacilitiesBoxesBottom> <h5>& ALL MODERN AMENITIES</h5> </FacilitiesBoxesBottom> 
                   </FacilitiesBack>
             
              </Facilities>
-
+             {data && data[0].acf.filters.property_portfolio_f  &&
              <PropertySection>
                 <h1>PROPERTY PORTFOLIO</h1>
                 <PropertyMain>
@@ -206,7 +207,7 @@ const ProjectSingle = ({match,location}) => {
 
                    <PropertyRight>
                    {data[0].acf.filters.property_portfolio_f  && data[0].acf.filters.property_portfolio_f.property_file &&  data[0].acf.filters.property_portfolio_f.property_file.filter((file,index)=> index == pdf).map((files,index)=>
-                       <embed src={files.file_url} type="application/pdf" width="100%" height="100%" />
+                       <embed src={files.file_url.replace('http://','https://')} type="application/pdf" width="100%" height="100%" />
                    )}
                    </PropertyRight>
 
@@ -214,14 +215,14 @@ const ProjectSingle = ({match,location}) => {
 
             </PropertySection>
             
-
+            }
 
 
             <GallerySection>
                 <h1>GALLERY</h1>
                 <GalleryMain>
                 {data[0].acf.filters.gallery && data[0].acf.filters.gallery.map((gallery,index)=>
-                   <GBoxes key={index}>
+                   <GBoxes key={index} onClick={()=>setImageModel(gallery)}>
                      <Imge src={gallery} width="100%"></Imge>
                    </GBoxes>
                 )}
@@ -240,8 +241,6 @@ const ProjectSingle = ({match,location}) => {
                   </LocationSectionLeft>
 
                   <LocationSectionRight>
-                      <Imge src={rightboxes}></Imge>
-                       
                       <RightBoxes>
                        <p>Location</p>
                        <h4 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.address_information.location }}></h4>
@@ -277,6 +276,10 @@ const ProjectSingle = ({match,location}) => {
             </VideoImg> 
           }
         </VideoModel>
+        <ImageModel className={imageModel && 'active'}>
+          <div className="back" onClick={()=>setImageModel()}>X</div>
+          <img src={imageModel} alt="" />
+        </ImageModel>
 
         </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
         }
@@ -478,9 +481,7 @@ const FacilitiesBack = styled.div`
   border-radius: 10px;
   color: #fff;
   padding: 50px 30px 100px 30px;
-  align-items: center;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  display: flex;
   position: relative;
 `
 
@@ -879,4 +880,50 @@ const VideoImg = styled.video`
     width: 60%;
     margin-bottom:30px;
     box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
+`
+
+const ImageModel = styled.div`
+  position: fixed;
+  right: -2000px;
+  width: 100%;
+  background: rgb(0 0 0 / 85%);
+  height: 100%;
+  z-index: 9999;
+  top: 0;
+  video{
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    top: 22%;
+    position: absolute;
+    right: 0;
+    left: 0;
+  }
+  .back{
+    color: #000;
+    z-index: 99;
+    position: absolute;
+    font-size: 28px;
+    right: 20px;
+    top: 20px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 37px;
+    text-align: center;
+    padding: 9px 0 0;
+    cursor:pointer;
+  }
+  }
+  &.active{
+    right: 0;
+  }
+  img{
+    width: 50%;
+    position: fixed;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
 `

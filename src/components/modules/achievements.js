@@ -4,7 +4,7 @@ import SectionContainer from "../styles/section-container";
 
 const Achievements = ({state}) => {
     return (
-        <SectionContainer style={{height:'2000px'}}>
+        <SectionContainer>
             <Heading>
             <h1 className="featured-heading" style={{color:'white'}}>Achievements</h1>
             </Heading>
@@ -56,7 +56,7 @@ const Achievements = ({state}) => {
   
 </Body>
        
- <div style={{height:'35px', width:'35px', backgroundColor:'#e24f53', margin:'auto', marginTop:'500px', borderRadius:'100%'}}></div>
+ <div style={{height:'35px', width:'35px', backgroundColor:'#e24f53', margin:'auto', marginTop:'265px', borderRadius:'100%'}}></div>
         </SectionContainer>   
     )
 
@@ -116,7 +116,7 @@ const Body=styled.div`
     position: absolute;
     top:290px;
     left:50%;
-    bottom:400px;
+    bottom: 218px;
     transform:translateX(-50%);
     width:20px;
     border-radius:30px;
@@ -166,7 +166,7 @@ const Body=styled.div`
       }
       .body {
         color:#001439;
-        font: normal normal 400 13px/19px Poppins;
+        font: normal normal 400 14px/19px Poppins;
         p {
           line-height:1.4em;
         }

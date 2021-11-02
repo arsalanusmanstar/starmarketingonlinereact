@@ -6,6 +6,7 @@ import clock from "../../assets/clock.png";
 import user from "../../assets/user.png";
 import left_arrow from "../../assets/left_arrow.png";
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 import ReactLoading from "react-loading";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -13,7 +14,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Latestnews = () => {
 
-    const { data, error } = useSWR('/wp-json/wp/v2/posts?categories=47,2673&per_page=100&_embed=true', fetcher)
+    const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/posts?categories=47,2673&per_page=20&_embed=true', fetcher)
     const cat = ['47','2673']
 
     var settings = {
@@ -50,9 +51,10 @@ const Latestnews = () => {
         <SectionContainer>
             <h1 className="latest-heading">Latest</h1>
             <div className="featured-project-line"></div>
+            <div className="mainSlide">
             <Slider  {...settings}>
                 {data ? data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
-                    <Post key={index}>
+                    <Post key={index} to={'/latest?id='+index}>
                         <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
                         <Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title>
                         <Details>
@@ -67,9 +69,12 @@ const Latestnews = () => {
                         }</Auth>
                         </Details>
                     </Post>
-                ):<ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
+                ): <div className="loaderFilter"><ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /></div>}
+                      
             </Slider>
-        </SectionContainer>    
+            </div>
+        </SectionContainer>  
+          
     </LatestNewContainer>
     )
 }
@@ -171,10 +176,11 @@ const LatestNewContainer = styled.div`
             justify-content: center;
              }
 `
-const Post = styled.div`
+const Post = styled(Link)`
     background: #f9f9f9   0% 0% no-repeat padding-box;
     opacity: 1;
     padding: 0px 0px 0px 30px;
+    text-decoration:none;
 `
 const Image = styled.div`
     background: url(${(props) => props.background})  0% 0% no-repeat padding-box;
@@ -205,8 +211,8 @@ const Details = styled.div`
     margin: 20px 30px 20px 0px;
     padding: 18px 0px;
     display: grid;
-    grid-template-columns: 70% 30%;
-    grid-gap: 1%;
+    grid-template-columns: 48% 51%;
+    grid-gap: 2%;
     :after{
         content: "";
         display: block;

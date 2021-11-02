@@ -83,6 +83,11 @@ h2 {
     margin: 0px;
 }
 
+@media only screen and (max-width: 1024px) {
+  h1{font-size: 91px;}
+  h2{font-size: 82px;}
+}
+
 
 `;
 
@@ -100,7 +105,7 @@ const TeamMeetSectionMain = styled.div`
     @media only screen and (max-width: 1366px) {
       .logo_f {
         width: 100%;
-    }
+       }
  
   
     }
@@ -142,6 +147,10 @@ const TeamMeetSectionBottom = styled.div`
     font-size: 26px;
     font-weight: 200;
     width: 90%;
+    @media only screen and (max-width: 1366px) {
+      
+      width:100%;
+    }
 `;
 
 const TeamMeetBoxesMain = styled.div`

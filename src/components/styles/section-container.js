@@ -19,7 +19,16 @@ const SectionContainer = styled.div`
   position:relative;
   min-height:${getMinHeight};
   max-width: ${getMaxWidth};
-
+  &:before{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
   @media (min-width: 700px) {
     width: calc(100% - 8rem);
   }

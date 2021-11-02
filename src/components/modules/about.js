@@ -40,7 +40,9 @@ export default About;
 const MainContainer = styled.div`
     background: #fff url(${(props) => props.background});
 `
-const AboutContent = styled.div``
+const AboutContent = styled.div`
+
+`
 const Cont = styled.p`
     text-align: center;
     font: normal normal normal 30px/50px Poppins;
@@ -89,7 +91,7 @@ const SectionThree = styled.div`
     @media only screen and (max-width: 1366px) {
         grid-template-columns: 32% 32% 32%;
         grid-gap: 2%;
-    
+        
       }
       @media only screen and (max-width: 1024px) {
         grid-template-columns: 100% ;

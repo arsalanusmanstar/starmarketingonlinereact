@@ -29,15 +29,15 @@ const Contact = ({offices,get_in_touch}) => {
             <br/> <br/>
             <div style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
              <h2>{get_in_touch.heading}</h2>
-             <p style={{fontSize:'26px', fontWeight:'500'}}>{get_in_touch.content}</p>
+             <p style={{fontSize:'26px', fontWeight:'500'}} className="getinTouch">{get_in_touch.content}</p>
              {get_in_touch.image && <img src={get_in_touch.image} style={{float:'right', marginTop:'-250px'}} alt="Get in touch"/>}
             <CallRequest bg={'off'}/>
            
             <h2>WE HAVE <span  style={{color:'red'}}>{offices.office.length}</span> OFFICES</h2>
             <br/>
-            <Container style={{width: '', margin: '0 auto'}}>
+            <Container style={{width: '', margin: '0 auto'}} className="contactMap">
                 
-              <div style={AddressDetails}>
+              <div className="addressLeft">
                   {/* <select style={RegionDropdown}  onChange={(x)=>setCurrentLocation(x.target.value)}>
                       {office.map((location,index) => 
                         <option key={index} value={index}>{location.city}</option>
@@ -46,11 +46,11 @@ const Contact = ({offices,get_in_touch}) => {
                      <br/>
                   <Select
         
-        onChange={(x)=>setCurrentLocation(x.value)}
-        options={Locations}        
-        placeholder="Type to Search..."
-        style={RegionDropdown}
-      />
+                    onChange={(x)=>setCurrentLocation(x.value)}
+                    options={Locations}        
+                    placeholder="Type to Search..."
+                    style={RegionDropdown}
+                  />
 
 
                   <br/>
@@ -86,7 +86,7 @@ const Contact = ({offices,get_in_touch}) => {
                     </>
                     }
               </div>
-              <div style={LocationMap}>
+              <div  className="addressRight">
               {office[currentLocation] && office[currentLocation].map_url &&
               <iframe src={office[currentLocation].map_url}
                width="950" height="400" style={{border:'0'}} loading="lazy"></iframe>

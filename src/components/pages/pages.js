@@ -10,7 +10,7 @@ const Pages = ({ match,location }) => {
   const [data,setData] = useState('');
   
   useEffect(()=>{
-    axios.get('/wp-json/wp/v2/pages?_embed=true&slug='+match.path)
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.path)
       .then(response => {
         setData(response.data)
       })

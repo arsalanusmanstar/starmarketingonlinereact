@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Navigation from "./navigation/navigation";
+import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
 import {  Logo, DownArrow } from "./icons";
 
@@ -21,9 +22,8 @@ const Header = () => {
             {/* <SiteDescription>{description}</SiteDescription> */}
           </TitleGroup>
 
+          <MobileNavigation />
           {/* Mobile menu button and modal */}
-          {/* <MobileMenuButton />
-          <MobileMenuModal /> */}
         </TitleWrapper>
 
         <HeaderNavigationWrapper>
@@ -31,15 +31,17 @@ const Header = () => {
           <Navigation />
           <HotProject>Hot Projects <span><DownArrow /></span>
             <div className="hotMenu">
-              <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
-              <br/><br/>
+             <ul>
+               <li> <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
+               </li> <li>
               <Link to='/project/whitely-mall/'>Whitely Mall</Link>
-              <br/><br/>
+              </li><li>
               <Link to='/project/mall-of-gulgasht/'>Mall of Gulgasht</Link>
-              <br/><br/>
+              </li><li>
               <Link to='/project/safari-garden-housing-scheme/'>Safari Garden</Link>
-              <br/><br/>
-              <Link to='/project/jan-heights/'>Jan Heights</Link>
+              </li><li>
+              <Link to='/project/jan-heights/'>Jan Heights</Link></li>
+              </ul>
               </div>
           </HotProject>
           {/* Desktop search button */}
@@ -63,6 +65,8 @@ const TitleGroup = styled.div`
     justify-content: flex-start;
     margin: -1rem 0 0 -2.4rem;
   }
+  
+
 `;
 
 const TitleWrapper = styled.div`
@@ -79,6 +83,11 @@ const TitleWrapper = styled.div`
     max-width: 50%;
     padding: 0;
     text-align: left;
+  }
+  @media only screen and (max-width: 1024px) {
+    
+    text-align: left;
+    justify-content: left;
   }
 `;
 
@@ -143,6 +152,7 @@ const SiteTitle = styled.h1`
     font-size: 2.4rem;
     font-weight: 700;
   }
+  
 `;
 
 const SiteDescription = styled.div`
@@ -181,6 +191,7 @@ const HeaderNavigationWrapper = styled.div`
     align-items: center;
     display: flex;
   }
+  
 `;
 
 const HotProject = styled.div`

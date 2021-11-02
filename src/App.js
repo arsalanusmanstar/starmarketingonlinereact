@@ -23,24 +23,33 @@ export default function App(state) {
   const { pathname } = useLocation();
    
   const [data,setData] = useState('');
+  const [width, setWidth] = useState(window.innerWidth);
 
+  function handleWindowSizeChange() {
+      setWidth(window.innerWidth);
+  }
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-    axios.get('/wp-json/wp/v2/portf?_embed=true&per_page=100')
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
         setData(response.data)
         console.log(response.data,'respons')
       })
+      window.addEventListener('resize', handleWindowSizeChange);
+      return () => {
+          window.removeEventListener('resize', handleWindowSizeChange);
+      }
   }, [pathname]);
 
+ console.log(width)
   
 
   return (
     <div className="App">
-      {isMobile &&
+      {width < 767 &&
        <MobileView>
             <meta http-equiv="Refresh" content="0; url=https://m.starmarketingonline.com/" />
           </MobileView>
@@ -49,10 +58,10 @@ export default function App(state) {
         {/* <Route path="/about">
           <About />
         </Route>*/}
-        <Route path="/our-team"  component={Pages}></Route>
-        <Route path="/achievements"  component={Pages}></Route>
-        <Route path="/latest"  component={Pages}></Route>
-        <Route path="/contact-us"  component={Pages}></Route>
+        <Route path="/our-team" exact component={Pages}></Route>
+        <Route path="/achievements" exact component={Pages}></Route>
+        <Route path="/latest" exact component={Pages}></Route>
+        <Route path="/contact-us" exact component={Pages}></Route>
         <Route path="/projects/" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/projects/:city/:id" exact render={(props) => <Projects data={data} {...props} />} />

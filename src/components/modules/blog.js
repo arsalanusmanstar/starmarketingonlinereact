@@ -19,19 +19,23 @@ import RightPag from "../../assets/right_pag.png";
 
 
 import {BiChevronLeftCircle, BiChevronRightCircle} from 'react-icons/bi';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
-const Blog = ({state}) => {
+const Blog = (state) => {
     const [activeContent,setActiveContent] = useState(false);
     const [content,setContent] = useState();
     const [currentPage,setCurrentPage] = useState(1);
     const [todosPerPage,setTodosPerPage] = useState(3);
     const [filter,setFilter] = useState('');
+    const [next,setNext] = useState(1);
+    
     const [filterCategory,setFilterCategory] = useState([47,2673]);
-    const { data, error } = useSWR('/wp-json/wp/v2/posts?categories=47,2673&per_page=100&_embed=true', fetcher)
+    const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/posts?categories=47,2673&per_page=100&_embed=true', fetcher)
+    
 
     const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
     const filteredData = data ? data.filter(item => {
@@ -145,10 +149,12 @@ const Blog = ({state}) => {
                     </LatestBoxesText>  
                  </LatestBoxes>
             ) : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
-            
+            <div className="pagi">
             <ul className="pagination">{renderPageNumbers}</ul>
-           <a href="#"> <img src={LeftPag} style={{float:'left', marginTop:'-71px'}}></img></a>
-           <a href="#"> <img src={RightPag} style={{float:'right', marginTop:'-71px'}}></img></a>
+            {console.log(currentPage)}
+                  <img src={LeftPag} className="left" onClick={()=> setCurrentPage(currentPage != 1 ?  currentPage - 1  : 1)} />
+                     <img src={RightPag} className="right" onClick={()=> setCurrentPage(currentPage < pageNumbers.length ? currentPage + 1 : pageNumbers.length)}  />
+           </div>
             {/* <Button style={{float:'left'}}>
      <BiChevronLeftCircle 
      />
@@ -169,9 +175,10 @@ const Blog = ({state}) => {
                   ).map((post,index)=>
                    post.categories[0] == 47 ? 
                   <>
+                  {console.log(post,'subpost')}
                            <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
-                        {post.acf ? post.acf.video && 
-                            <iframe width="100%" height="500" src={post.acf.video}></iframe>
+                           {post.acf ? post.acf.video_url && 
+                            <iframe width="560" height="315" src={post.acf.video_url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" height="450" allowfullscreen width="100%"></iframe>
                         : 
                         <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].source_url} width="100%"></Imge> }
                         <div className="popupheadermain">
@@ -445,6 +452,7 @@ const LatestSearchsectionRight = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:20px;
      label {
         background: #000;
         margin: 0px 20px;
@@ -487,8 +495,8 @@ const LatestSearchsectionMain = styled.div`
 
   }
 
-  @media only screen and (max-width: 11024px) {
-    grid-template-columns: 36% 62%;
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 100%;
     grid-gap: 2%;
      label img {
       float: left;
@@ -551,6 +559,7 @@ const  LatestBoxesSlides = styled.div`
    
 
   }
+  
   &.active{
     .projectContent {
         position: fixed;
@@ -658,6 +667,18 @@ tag.red.secound {
   display: table;
   margin: 0 auto;
   border-radius: 20px;
+}
+
+@media only screen and (max-width: 1366px) {
+    .projectContent{
+            
+        top: 4%;
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+
 }
 
 

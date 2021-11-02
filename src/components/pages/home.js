@@ -7,7 +7,7 @@ import ReactLoading from "react-loading";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Home = ({state,location}) => {
-  const { data, error } = useSWR('/wp-json/wp/v2/pages?_embed=true&slug=home-page', fetcher)
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug=home-page', fetcher)
   return (
     <div style={{backgroundImage:`url("/assets/WebBg.png")`}}> 
       <Header />

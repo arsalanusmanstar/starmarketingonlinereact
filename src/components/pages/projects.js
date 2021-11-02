@@ -36,7 +36,7 @@ const Projects = (state) => {
   const [data,setData] = useState(state.data);
   
   useEffect(()=>{
-    data.length > 0 && axios.get('/wp-json/wp/v2/portf?_embed=true&per_page=100')
+     axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
         setData(response.data)
       })
@@ -214,7 +214,7 @@ const Projects = (state) => {
 
                 <div className="listing_shop secound">
                   <div className="listing_shop_box button">
-                   <Link to={post.link.replace('https://starmarketingonline.com','')}>Read more</Link>
+                   <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>Read more</Link>
                   </div>
                   {post.acf.filters && post.acf.filters.city &&
                   <div className="listing_shop_box location">
@@ -251,19 +251,24 @@ const ProjectHeadersectionB = styled.div`
       justify-content: space-between;
       padding-top: 4%;
        
+    @media only screen and (max-width: 1366px) {
+
+      grid-template-columns: 48% 48%;
+      }
       @media only screen and (max-width: 1024px) {
-        grid-template-columns: 48% 48%;
+        grid-template-columns: 100%;
     
    }
 
       h2 {
-        color: #000;
+        color: #000;s
         font-size: 30px;
         font-weight: 600;
         text-align: center;
         border-bottom: 3px dashed  #e3e3e3;
         padding: 0px 0px 16px 0px;
         margin-top: 40px;
+        font-size: 35px;
     }
   }
   .listing_boxes {
@@ -348,8 +353,12 @@ a {
     background: #ff000a;
     border-color: #ff000a;
   }
+  @media only screen and (max-width: 1366px) {
+    display: inline-block;
 
-  @media only screen and (max-width: 1024px) {
+  }
+
+  @media only screen and (max-width: 1024px) {  
     display: inline-block;
 
   }
@@ -373,6 +382,10 @@ display: grid;
 grid-template-columns: 20% 78%;
 grid-gap: 2%;
  
+@media only screen and (max-width: 1024px) {
+  grid-template-columns: 100%;
+
+}
 `
 const ProjectHeaderleft = styled.div`
 .form-group {
@@ -427,6 +440,11 @@ const ProjectHeaderleft = styled.div`
   }
   }
  
+@media only screen and (max-width: 1024px) {
+  grid-template-columns: 50% 50%;
+    display: grid;
+
+}
 `
 const ProjectHeaderRight = styled.div`
  
@@ -439,6 +457,7 @@ justify-content: space-between;
 const ProjectSectionBoxes = styled.div`
 text-align: center;
 border-radius: 10px;
+cursor:pointer;
 padding: 16px 23px 0;
 &.true{
   border: 3px solid #ff000a;

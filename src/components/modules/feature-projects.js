@@ -81,7 +81,7 @@ const FeatureProducts = ({state}) => {
     centerPadding: 0,
     centerMode: true,
   };
-  const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true&per_page=20', fetcher)
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=20', fetcher)
   
     return (
         <FeautureProductsMain  background={grayBackground}>
@@ -118,7 +118,7 @@ const FeatureProducts = ({state}) => {
                                 </ReadMore>
                                 {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
-                        ):<ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
+                        ): <div className="loaderFilter"><ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /></div>}
                         {/* <div>
                         <h3 className="featured-project-heading">Heaven Heights 2</h3>
                         <p className="featured-project-description">Heaven Heights Luxury Apartments Lahore. Heaven Heights Apartments in Lahore are new style apartments on main Shah Jamal roundabout. The Apartment building offers 1, 2, and 3 bed Apartments for Sale. It includes all modern day to day facilities that have now become a necessity. Heaven Heights Apartments are designed to be the perfect choice for your living being offered on easy installments</p>
@@ -255,7 +255,7 @@ const ContentArea = styled.div`
     `
     
 const LeftArea = styled.div`
-    width:50%;
+    width:40%;
     @media only screen and (max-width: 1366px) {
         width:100%;
     
@@ -267,22 +267,22 @@ const LeftArea = styled.div`
     }
 `
 const RightArea = styled.div` 
-width: 60%;
+width: 50%;
 @media only screen and (max-width: 1366px) {
     width:100%;
 
   }
     .left_line{
         position: absolute;
-        left: 85%;
+        left: 69%;
         top: 84%;
-        width: 20%
+        width: 16%;
     }
     .right_line{
         position: absolute;
-        left: 58%;
+        left: 47%;
         top: 84%;
-        width: 20%
+        width: 16%;
     }
   .slick-slide {
     position: flex;
