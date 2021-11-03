@@ -12,7 +12,7 @@ const Footer = ({ state }) => {
         <Credits>
           <Copyright>
             Copyright &copy; {currentYear}{" "} By 
-             <Link href={'/'}> Star Marketing PVT LTD</Link>
+             <Link href={'https://digital.starmarketingonline.com/'} target="_blank"> Star Digital</Link>
           </Copyright> <PoweredBy>| All rights reserved.</PoweredBy>
         </Credits>
           <FooterNavigation />

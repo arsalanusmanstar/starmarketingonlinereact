@@ -647,8 +647,8 @@ const GallerySection = styled.div`
 `
 const GalleryMain = styled.div`
 display: grid;
-grid-template-columns: 30% 30% 30%;
-gap: 5%;
+grid-template-columns: 24% 24% 24% 24%;
+gap: 1%;
 
 `
 

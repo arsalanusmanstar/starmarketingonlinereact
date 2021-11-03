@@ -13,6 +13,7 @@ import projects03 from "../../assets/projects03.png";
 import projects04 from "../../assets/projects04.png";
 import projects05 from "../../assets/projects05.png";
 import projects06 from "../../assets/projects06.png";
+import comingsoon from "../../assets/upcoming.png";
 import shop from "../../assets/shop.png";
 import aparments from "../../assets/apartments.png";
 import offices from "../../assets/offices.png";
@@ -57,7 +58,7 @@ const Projects = (state) => {
     post['title'].rendered.toLowerCase().includes(lowercasedFilter)
   ) : post
 ).filter((post)=> post.acf && post.acf.filters && post.acf.filters.categories && post.acf.filters.categories.includes(category) ||  category == null  )
-.filter((post)=> post.acf && post.acf.filters && post.acf.filters.completed == completed || completed == false)
+.filter((post)=> post.acf && post.acf.filters && post.acf.filters.completed == completed)
 .filter((post)=> post.acf && post.acf.filters && post.acf.filters.upcoming == upcoming || upcoming == false) : [];
   const FilterData = state.match.params.id ? serachFilter.filter((post) => 
   post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.id 
@@ -213,6 +214,8 @@ const Projects = (state) => {
           <div className="listing">
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
+              {post.acf.filters.upcoming &&
+              <div className="upcoming"><img src={comingsoon} alt="" /></div>}
                <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
                 <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
               </Link>
@@ -305,6 +308,7 @@ const ProjectHeadersectionB = styled.div`
       background: #F9F9F9;
       padding: 0px 20px;
       border-radius: 20px;
+      position: relative;
   
   }
   .listing_shop {
@@ -351,6 +355,10 @@ h1.listing_heading {
     margin: 0;
  }
 }
+.upcoming {
+  position: absolute;
+  right: 17px;
+  top: -53px;}
 `
 const ProjectButtonSection = styled.div`
 button {
