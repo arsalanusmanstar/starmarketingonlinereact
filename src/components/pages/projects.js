@@ -42,8 +42,13 @@ const Projects = (state) => {
         setData(response.data)
       })
       setRedirect(false)
+      
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   },[redirect])
-
+  const city = state.match.params.city == 'other' ? '' : state.match.params.city
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
   filter ? Object.keys(post).some(key =>
@@ -54,8 +59,8 @@ const Projects = (state) => {
 .filter((post)=> post.acf && post.acf.filters && post.acf.filters.upcoming == upcoming || upcoming == false) : [];
   const FilterData = state.match.params.id ? serachFilter.filter((post) => 
   post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.id 
-) : state.match.params.city ? serachFilter.filter((post) => 
-    post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.city 
+) : city ? serachFilter.filter((post) => 
+    post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == city 
   )  : serachFilter;
  
 
@@ -206,7 +211,9 @@ const Projects = (state) => {
           <div className="listing">
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
+               <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
               <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
+              </Link>
                 <h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
 
                 <div className="listing_shop">
@@ -281,7 +288,7 @@ const ProjectHeadersectionB = styled.div`
         border-bottom: 3px dashed  #e3e3e3;
         padding: 0px 0px 16px 0px;
         margin-top: 40px;
-        font-size: 35px;
+        font-size: 25px;
     }
   }
   .listing_boxes {

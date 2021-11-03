@@ -34,7 +34,7 @@ const Header = () => {
              <ul>
                <li> <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
                </li> <li>
-              <Link to='/project/whitely-mall/'>Whitely Mall</Link>
+              <Link to='/project/whiteley-mall/'>Whitely Mall</Link>
               </li><li>
               <Link to='/project/mall-of-gulgasht/'>Mall of Gulgasht</Link>
               </li><li>

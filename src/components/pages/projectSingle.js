@@ -113,7 +113,7 @@ const ProjectSingle = ({match,location}) => {
 
                   <ProjectsDescriptionLfet >
                      <h1>PROJECT DESCRIPTION</h1>
-                    <div  dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].excerpt.rendered)}} ></div>
+                    <div className="excerpt" dangerouslySetInnerHTML={{ __html:htmlDecode(data[0].excerpt.rendered+'....')}} ></div>
                      <button onClick={()=>setActiveContent(true)}>Read more  <Imge src={latest_icon07}></Imge></button>
                      <ProjectSectionBoxesMain>
                       { data[0].acf.filters.categories && data[0].acf.filters.categories.map((cat,index)=>
@@ -185,7 +185,7 @@ const ProjectSingle = ({match,location}) => {
                   <FacilitiesBoxes key={index}>
                     <Imge src={
                       faci == 'beach' ? Facilities01 : 
-                      faci == 'scurity' ? Facilities02 : 
+                      faci == 'security' ? Facilities02 : 
                       faci == 'gated' ? Facilities03 : 
                       faci == 'lounge' ? Facilities04 : 
                       faci == 'playarea' ? Facilities05 : 
@@ -193,7 +193,7 @@ const ProjectSingle = ({match,location}) => {
                       faci == 'swimming' ? Facilities07 :
                       faci == 'gaming' && Facilities08
                     }></Imge>
-                    <p>{faci == "scurity" ? 'security' : faci}</p>
+                    <p>{faci}</p>
                   </FacilitiesBoxes>
                   )}
                   <FacilitiesBoxesBottom> <h5>& ALL MODERN AMENITIES</h5> </FacilitiesBoxesBottom> 
@@ -240,7 +240,7 @@ const ProjectSingle = ({match,location}) => {
 
             </GallerySection>
           }
-
+            {data[0].acf.filters.address_information && data[0].acf.filters.address_information.location != null &&
             <LocationSection>
               <h1>PROJECT LOCATION</h1>
               <LocationSectionyMain>
@@ -265,7 +265,7 @@ const ProjectSingle = ({match,location}) => {
 
             </LocationSection>
 
-
+            }
          
            </SectionContainer>
         </ProjectsDescription>
@@ -735,7 +735,13 @@ const ProjectsDescriptionLfet = styled.div`
     margin: 4px 0px 0px 24px;
   }
   }
+  .excerpt{
+    margin-bottom: 15px;
+    p {
+      display: contents;
+    }
   
+  } 
 
 `
 const ProjectSectionBoxes = styled.div`

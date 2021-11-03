@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import { useEffect,useState } from "react";
 import Modules from "../modules"
+import SinglePage from "./singlePage"
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
@@ -25,7 +26,7 @@ const Pages = ({ match,location }) => {
       <Header />
       {console.log(data,'data')}
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
-          <Modules data={data && data[0] && data[0].acf} location={location}  /> } 
+          data[0] && data[0].acf ? <Modules data={data[0].acf} location={location}  /> : <SinglePage data={data[0]}/>  }
       <Footer />
     </div>
   );

@@ -56,6 +56,7 @@ export default function App(state) {
         <Route path="/achievements" exact component={Pages}></Route>
         <Route path="/latest" exact component={Pages}></Route>
         <Route path="/contact-us" exact component={Pages}></Route>
+        <Route path="/privacy-policy" exact component={Pages}></Route>
         <Route path="/projects/" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/projects/:city/:id" exact render={(props) => <Projects data={data} {...props} />} />
@@ -63,7 +64,8 @@ export default function App(state) {
         <Route path="/hot-projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>
         <Route path="/project/:slug"  exact component={ProjectSingle} data={data}></Route>
-        <Route path="/"  component={Home}></Route>
+        <Route path="/" exact component={Home}></Route>
+        <Route path="*" component={Pages} />
       </Switch>
       <ScrollButton />
       

@@ -230,7 +230,9 @@ const FeautureProductsMain = styled.div`
     ul.featured-project-tag {
         list-style: none;
         margin: 0;
+        display: block;
         padding: 0;
+        clear: both;
     }
     
     ul.featured-project-tag li {
@@ -240,7 +242,7 @@ const FeautureProductsMain = styled.div`
         padding: 5px 15px;
         border-radius: 10px;
         font: normal normal 300 16px/27px Poppins;
-        margin: 0 9px;
+        margin: 9px 9px 0px 0px;
     }
   `;
 const ContentArea = styled.div`
@@ -312,7 +314,8 @@ width: 50%;
               opacity: 1;
               transform: scale(.8);
               position: relative;
-              right: 2%
+              right: 2%;
+              z-index: 999;
             }
             
         }

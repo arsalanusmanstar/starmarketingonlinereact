@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 /**
  * Navigation Component
@@ -19,10 +20,10 @@ const FooterNavigation = () => (
                 href='/latest'
               > Star Blogs
               </MenuLink>
-              <MenuLink
-                href='#'
-              > Privacy Policy
-              </MenuLink>
+              <LinkNew
+                to='/privacy-policy'
+              >  Privacy Policy
+              </LinkNew>
             </MenuItem>
           
       </Menu>
@@ -51,6 +52,11 @@ const MenuItem = styled.li`
 `;
 
 const MenuLink = styled.a`
+  font: normal normal 300 18px/26px 'Poppins',sans-serif;    
+  padding-left: 11px;
+`;
+
+const LinkNew = styled(Link)`
   font: normal normal 300 18px/26px 'Poppins',sans-serif;    
   padding-left: 11px;
 `;
