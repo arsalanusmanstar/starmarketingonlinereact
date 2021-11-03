@@ -102,7 +102,8 @@ const FeatureProducts = ({state}) => {
                                     <div className="featured-project-city-name">  
                                         <p className="featured-project-city-name-text" >{latest.acf && latest.acf.filters && latest.acf.filters.country}</p>
                                     </div>
-                                    <ul  className="featured-project-tag">
+                                    <br/><br/>
+                                    <ul  className="featured-project-tag" style={{marginLeft:'-9px'}}>
                                     {latest.acf && latest.acf.filters && latest.acf.filters.categories.map((cat,index)=>
                                     
                                      <li key={index}><i className="fa fa-tag"></i> {cat}</li>
