@@ -65,6 +65,7 @@ export default function App(state) {
         <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>
         <Route path="/project/:slug"  exact component={ProjectSingle} data={data}></Route>
         <Route path="/" exact component={Home}></Route>
+        <Route path="/react" exact component={Home}></Route>
         <Route path="*" component={Pages} />
       </Switch>
       <ScrollButton />

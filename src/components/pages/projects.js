@@ -5,6 +5,7 @@ import SectionContainer from "../styles/section-container";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import projects09 from "../../assets/projects09.png";
 import projects01 from "../../assets/projects01.png";
 import projects02 from "../../assets/projects02.png";
@@ -16,6 +17,7 @@ import shop from "../../assets/shop.png";
 import aparments from "../../assets/apartments.png";
 import offices from "../../assets/offices.png";
 import plots from "../../assets/plots.png";
+import houses from "../../assets/houses.png";
 import penthouses from "../../assets/penthouses.png";
 import ReactLoading from "react-loading";
 import axios from "axios";
@@ -212,7 +214,7 @@ const Projects = (state) => {
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
                <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
-              <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
+                <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
               </Link>
                 <h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
 
@@ -220,13 +222,20 @@ const Projects = (state) => {
                   {post.acf.filters && post.acf.filters.categories &&
                   post.acf.filters.categories.map((cat,index)=>
                   <div className="listing_shop_box" key={index}>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={<Tooltip id="button-tooltip-2">{cat}</Tooltip>}
+                      >
                     <Imge src={
                       cat == 'shop' ? shop 
-                      :  cat == 'apartments' ? 
-                      aparments : cat == 'offices' ? offices : 
+                      :  cat == 'apartments' ?  aparments : 
+                       cat == 'houses' ?  houses : 
+                      cat == 'offices' ? offices : 
                       cat == 'plots' ? plots : 
                       cat == 'penthouses' && penthouses
-                      }></Imge>
+                      } alt={cat}></Imge>
+                 </OverlayTrigger>
                     {/* <button>{cat}</button> */}
                   </div>
                   ) }

@@ -6,6 +6,8 @@ import FB from "../../assets/FB.png";
 import TW from "../../assets/TW.png";
 import YT from "../../assets/YT.png";
 import In from "../../assets/In.png";
+import WhatsappImage from "../../assets/whatsapp.png";
+import PhoneImage from "../../assets/phone_icon.png";
 import INSTA from "../../assets/INSTA.png";
 import Touch from "../../assets/touch.png";
 import grayBackground from "../../assets/map.png";
@@ -83,8 +85,8 @@ const Locations = ({state}) => {
 
              <ContactSectionLeft>
                 <h1 className="Head_C">Contact Us</h1>
-                <h2 className="head_n">111 111 160</h2>
-                <h2 className="head_n">+92 301 116 1116</h2>
+                <h2 className="head_n"><img src={PhoneImage} />  111 111 160</h2>
+                <h2 className="head_n"><img src={WhatsappImage} /> +92 301 116 1116</h2>
              </ContactSectionLeft>
 
              <ContactSectionRight>

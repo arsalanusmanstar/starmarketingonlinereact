@@ -230,7 +230,7 @@ const FeautureProductsMain = styled.div`
     position: relative;
     ul.featured-project-tag {
         list-style: none;
-        margin: 0;
+        margin: 0 auto !important;
         display: block;
         padding: 0;
         clear: both;

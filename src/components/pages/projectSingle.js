@@ -9,7 +9,7 @@ import description01 from "../../assets/description01.png";
 import description02 from "../../assets/description02.png";
 import description03 from "../../assets/description03.png";
 import description04 from "../../assets/description04.png";
-import description05 from "../../assets/description05.png";
+import houseswhite from "../../assets/houseswhite.png";
 import Penthousewhite from "../../assets/penthousewhite.png";
 import Plotswhite from "../../assets/plotswhite.png";
 import description06 from "../../assets/description06.png";
@@ -375,7 +375,7 @@ const countries = [
                             : cat == 'offices' ? description04 
                             : cat == 'penthouses' ? Penthousewhite 
                             : cat == 'plots' ? Plotswhite 
-                            : cat == 'houses' && description05 
+                            :  houseswhite 
                             
                             }></Imge>
                           <button>{cat}</button>

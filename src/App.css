@@ -647,3 +647,4 @@ ul.pagination li {
 .mailchimpform button {
   cursor: pointer;
 }
+div[data-popper-placement="right"] {color: #fff;background: #000 !important;padding:5px 20px;border-radius:10px;}
