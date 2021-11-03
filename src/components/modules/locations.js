@@ -10,10 +10,12 @@ import INSTA from "../../assets/INSTA.png";
 import Touch from "../../assets/touch.png";
 import grayBackground from "../../assets/map.png";
 import { useEffect,useState } from "react";
+import Mailchimp from 'react-mailchimp-form';
 import axios from "axios";
 
 const Locations = ({state}) => {
     const [success,setSuccess] = useState('');
+    const url = "//xxxx.us13.list-manage.com/subscribe/post?u=zefzefzef&id=fnfgn";
     const submitHandler = e => {
         e.preventDefault();
         const data = new FormData(e.target);
@@ -26,6 +28,7 @@ const Locations = ({state}) => {
             setSuccess('Thank you for submit your request. We will contact you shortily.')
         })
      }
+
     return (
 
        
@@ -37,12 +40,36 @@ const Locations = ({state}) => {
     <ContactSectionTouch style={{marginTop:'-50px'}}>
   
          <ContactSectionTouchLeft>
-             <form method="Post" onSubmit={(e)=>submitHandler(e)}>
-                <h1>Let's Stay In Touch</h1>
-                <p>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</p>
-                <input type="text" name="Email" placeholder="Email Address" required/>
-                <button type="Submit" style={{cursor:'pointer'}}>Subscribe</button>
-                <div style={{paddingTop:'10px'}}>{success}</div>
+         <h1>Let's Stay In Touch</h1>
+         <p>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</p>
+         <Mailchimp
+                action='https://starmarketingonline.us1.list-manage.com/subscribe/post?u=c310c5c3b46ff223b92ac57e6&amp;id=5baec4271f'
+                fields={[
+                {
+                    name: 'EMAIL',
+                    placeholder: 'Enter Email Address',
+                    type: 'email',
+                    required: true
+                }
+                ]}
+                messages = {
+                    {
+                    sending: "Sending...",
+                    success: "Thank you for subscribing!",
+                    error: "An unexpected internal error has occurred.",
+                    empty: "You must write an e-mail.",
+                    duplicate: "Too many subscribe attempts for this email address",
+                    button: "Subscribe!"
+                    }
+                }
+                className='mailchimpform'
+                />
+             <form method="Post" action="https://marketing.us6.list-manage.com/subscribe/post?u=df313acb6a40efd656040f419&amp;id=faefd9810a"  id="mc-embedded-subscribe-form"  name="mc-embedded-subscribe-form" className="validate" target="_blank" novalidate>
+                
+                {/* <MailchimpSubscribe url={url}/> */}
+                {/* <input type="text" name="EMAIL" placeholder="Email Address"  id="mce-EMAIL" required/>
+                <button type="Submit" style={{cursor:'pointer'}} name="subscribe" id="mc-embedded-subscribe" className="button">Subscribe</button> */}
+                {/* <div style={{paddingTop:'10px'}}>{success}</div> */}
             </form>
          </ContactSectionTouchLeft>
 
@@ -55,7 +82,7 @@ const Locations = ({state}) => {
         <ContactSection>
 
              <ContactSectionLeft>
-                <h1 className="Head_C">Conatct Us</h1>
+                <h1 className="Head_C">Contact Us</h1>
                 <h2 className="head_n">(021) 111 111 160</h2>
                 <h2 className="head_n">+92 301 116 1116</h2>
              </ContactSectionLeft>

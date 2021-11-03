@@ -10,6 +10,10 @@ const Pages = ({ match,location }) => {
   const [data,setData] = useState('');
   
   useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.path)
       .then(response => {
         setData(response.data)

@@ -534,6 +534,17 @@ img.responsive {
 .getinTouch{
   width: 60%;
 }
+.right_line{
+  left: 12% !important;
+  top: 89% !important;
+  width: 35% !important;
+}
+.left_line{
+  left: 57% !important;
+  top: 89% !important;
+  width: 35% !important;
+}
+.mainSlide{    width: 100% !important;}
 }
 
 @media only screen and (max-width: 1024px) {
@@ -541,6 +552,8 @@ img.responsive {
     font-size: 62px;
    
   }
+  
+  .mainSlide{    width: 100% !important;}
   .featured-project-heading {
    
     font-size: 50px;
@@ -581,7 +594,7 @@ ul.pagination li {
 
 .mainSlide{
   width: 80%;
-  margin: 0 auto;
+    margin: 60px auto 0;
 }
 .getinTouch {
   width: 61%;
@@ -609,4 +622,28 @@ ul.pagination li {
   .menuIcon {
     display:block;
   }
+}
+
+.notfounded {
+  color: #333;
+  text-align: center;
+  font-size: 28px;
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+.msg-alert {
+  margin-top: 13px;
+}
+
+.msg-alert p {
+  font-size: 19px;
+}
+.loction_section i.fa{
+  
+  margin-right: 12px;
+  font-size: 24px;
+}
+.mailchimpform button {
+  cursor: pointer;
 }

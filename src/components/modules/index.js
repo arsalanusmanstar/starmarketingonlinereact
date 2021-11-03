@@ -11,7 +11,6 @@ import Achievements from "./achievements";
 import Contact from "./contact";
 
 const Modules = ({data,location}) => {
-    console.log(data,'innerData')
    return (
        
        <>

@@ -93,7 +93,6 @@ const FeatureProducts = ({state}) => {
                 <ContentArea>
                     <LeftArea>
                     <Slider  {...settings}>   
-                    {console.log(data,'dataFeature')}
                         {data ? data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
                             <div key={index}>
                                 <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>
@@ -114,7 +113,7 @@ const FeatureProducts = ({state}) => {
                                 <br/>
                                 <br/>
                                 <ReadMore>
-                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://starmarketingonline.com','')}>Read More <LeftArrow src={latest_icon07} /></Link>
+                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://staging.starmarketingonline.com','')}>Read More <LeftArrow src={latest_icon07} /></Link>
                                 </ReadMore>
                                 {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
@@ -197,7 +196,8 @@ const FeatureProducts = ({state}) => {
                         <Slider  {...settings_img}>     
                         {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>    
                             <div key={index}>
-                                <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].source_url} alt={video}  />
+                                {console.log(latest._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url)}
+                                <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url} alt={video}  />
                             </div> 
                         )}
                          </Slider>

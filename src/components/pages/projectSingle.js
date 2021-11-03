@@ -51,6 +51,14 @@ const ProjectSingle = ({match,location}) => {
   const [success,setSuccess] = useState('');
   const [shareActive,setShareActive] = useState(false);
   
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  },[match.path])
+
+
   const submitHandler = e => {
       e.preventDefault();
       const data = new FormData(e.target);
@@ -69,21 +77,21 @@ const ProjectSingle = ({match,location}) => {
   return (
     <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
       <Header />
-      {data ?  data[0] &&
+      {data ?  data[0] && data[0].acf.filters &&
       <>
         <DescriptionBanner background={data[0]._embedded['wp:featuredmedia'][0].source_url}>
             <SectionContainer>
             
             <>
-               {data[0].acf.filters.video &&  <div className="play_section" onClick={()=>setVideoModel(data[0].acf.filters.video)}>
+               {data[0].acf.filters && data[0].acf.filters.video &&  <div className="play_section" onClick={()=>setVideoModel(data[0].acf.filters.video)}>
                  <Imge src={description09}></Imge>
                  <p >Watch<br/>Property Video</p>
                </div>
                }
                <h1  dangerouslySetInnerHTML={{ __html: data[0].title.rendered }}></h1>
-               <h5 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.tagline }}></h5>
+               {data[0].acf.filters.tagline && <h5 dangerouslySetInnerHTML={{ __html: data[0].acf.filters.tagline }}></h5>}
                <div className="loction_section">
-                 <Imge src={projects09}></Imge>
+                <i class="fa fa-map-marker "></i>
                  <p dangerouslySetInnerHTML={{ __html: data[0].acf.filters.address_information.address }}></p>
                </div>
                
@@ -169,7 +177,7 @@ const ProjectSingle = ({match,location}) => {
 
 
 
-
+              {data[0].acf.filters.facilities.facility.length > 0 &&
               <Facilities>
                 <h1>FACILITIES</h1>
                 <FacilitiesBack>
@@ -192,7 +200,8 @@ const ProjectSingle = ({match,location}) => {
                   </FacilitiesBack>
             
              </Facilities>
-             {data && data[0].acf.filters.property_portfolio_f  &&
+}
+             {data && data[0].acf.filters.property_portfolio_f && data[0].acf.filters.property_portfolio_f.property_file.length > 0 &&
              <PropertySection>
                 <h1>PROPERTY PORTFOLIO</h1>
                 <PropertyMain>
@@ -217,7 +226,7 @@ const ProjectSingle = ({match,location}) => {
             
             }
 
-
+      {data[0].acf.filters.gallery &&
             <GallerySection>
                 <h1>GALLERY</h1>
                 <GalleryMain>
@@ -230,7 +239,7 @@ const ProjectSingle = ({match,location}) => {
               </GalleryMain>
 
             </GallerySection>
-
+          }
 
             <LocationSection>
               <h1>PROJECT LOCATION</h1>
@@ -560,6 +569,9 @@ button {
     width: fit-content;
     margin-right: 10px;
 }
+.loction_section .fa {
+  font-size: 25px;
+  padding-right: 9px; }
 p {
   letter-spacing: 1px;
 }

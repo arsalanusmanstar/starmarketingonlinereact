@@ -27,7 +27,7 @@ const TopBanner = ({state,data}) => {
     <MainSection background={BackgroundImage}>
         <SectionContainer minHeight="800px" style={{paddingTop:0, paddingBottom: 40}}>
                  <BannerText state={data} />
-                 <Video state={state} />
+                 {VideoImage && <Video state={state} />}
         </SectionContainer>
     </MainSection>    
     )

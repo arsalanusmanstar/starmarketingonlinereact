@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useEffect,useState } from "react";
-import { Link,NavLink } from 'react-router-dom';
+import { Link,NavLink,Redirect } from 'react-router-dom';
 import SectionContainer from "../styles/section-container";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -32,17 +32,18 @@ const Projects = (state) => {
   const [category,setCategories] = useState();
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
+  const [redirect,setRedirect] = useState(false);
   
-  const [data,setData] = useState(state.data);
+  const [data,setData] = useState();
   
   useEffect(()=>{
      axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
         setData(response.data)
       })
-  },[])
+      setRedirect(false)
+  },[redirect])
 
-  console.log(state,'projectpage')
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
   filter ? Object.keys(post).some(key =>
@@ -67,6 +68,13 @@ const Projects = (state) => {
     setFilter()
     setLocation()
   }
+  const regionsFun =()=> {
+   
+      setAllRegions(true)
+      setRedirect(true)
+      
+    
+  }
   
   return (
     <div style={{backgroundImage:`url("/assets/page_bg.png")`}}> 
@@ -77,7 +85,7 @@ const Projects = (state) => {
              <h1>Projects</h1>
           </InnerBannerSection> 
         </SectionContainer>
-
+        {redirect && <Redirect to="/projects" />}
 
         <ProjectHeadersection>
           <SectionContainer className="pb-0">
@@ -92,7 +100,9 @@ const Projects = (state) => {
             </div>
             <div className="form-group">
               <input type="checkbox" />
-              <button className={allReigons && 'active'} onClick={()=>setAllRegions(true)}>all Regions</button>
+              <button className={allReigons && 'active'} onClick={
+                ()=>regionsFun()
+              }>all Regions</button>
             </div>
             <div className="form-group">
               <input type="checkbox" />
@@ -178,6 +188,8 @@ const Projects = (state) => {
               <NavLink to="/projects/murree" onClick={()=>setAllRegions(false)}>Murree</NavLink>
               <NavLink to="/projects/sialkot" onClick={()=>setAllRegions(false)}>Sialkot</NavLink>
               <NavLink to="/projects/kalam" onClick={()=>setAllRegions(false)}>Kalam</NavLink>
+              <br/><br/><br/>
+              <NavLink to="/projects/gwadar" onClick={()=>setAllRegions(false)}>Gwadar</NavLink>
              
            </ProjectButtonSection>
            }
@@ -189,6 +201,7 @@ const Projects = (state) => {
 
         <ProjectHeadersectionB>
         <SectionContainer className="pt-0">
+          {!data && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
            {FilterData.length > 0 && <h1 className="listing_heading">Found {FilterData.length} projects</h1>}
           <div className="listing">
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
@@ -225,7 +238,7 @@ const Projects = (state) => {
                 </div>
 
               </div>
-            ): <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> }
+            ): <div className="notfounded">NOT FOUND</div>  }
           </div>
           </SectionContainer>
           </ProjectHeadersectionB>
@@ -539,11 +552,11 @@ h1{
   }    
     `
 const Image = styled.div`
-    background: url(${(props) => props.background})  0% 0% no-repeat padding-box;
-    height: 340px;
+    background: url(${(props) => props.background})  center center no-repeat padding-box;
+    height: 311px;
     width: 100%;
     -webkit-background-size: cover;
-    background-size: cover;
+    background-size: contain;
     border-radius: 20px;
     
     border:2px solid #EDEDED;
@@ -553,5 +566,10 @@ const Image = styled.div`
     box-shadow: 0px 25px 31px #00000045;
    }
     
+@media only screen and (max-width: 1366px) {
+  background-size: cover;
+}
+@media only screen and (max-width: 1024px) {
+  background-size: cover;}
 `
 

@@ -29,14 +29,9 @@ export default function App(state) {
       setWidth(window.innerWidth);
   }
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
     axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
         setData(response.data)
-        console.log(response.data,'respons')
       })
       window.addEventListener('resize', handleWindowSizeChange);
       return () => {
@@ -44,12 +39,11 @@ export default function App(state) {
       }
   }, [pathname]);
 
- console.log(width)
   
 
   return (
     <div className="App">
-      {width < 767 &&
+      {parseInt(width) < 767 &&
        <MobileView>
             <meta http-equiv="Refresh" content="0; url=https://m.starmarketingonline.com/" />
           </MobileView>
@@ -72,6 +66,7 @@ export default function App(state) {
         <Route path="/"  component={Home}></Route>
       </Switch>
       <ScrollButton />
+      
     </div>
   );
 }
