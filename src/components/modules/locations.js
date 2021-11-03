@@ -83,7 +83,7 @@ const Locations = ({state}) => {
 
              <ContactSectionLeft>
                 <h1 className="Head_C">Contact Us</h1>
-                <h2 className="head_n">(021) 111 111 160</h2>
+                <h2 className="head_n">111 111 160</h2>
                 <h2 className="head_n">+92 301 116 1116</h2>
              </ContactSectionLeft>
 
@@ -139,6 +139,8 @@ const Locations = ({state}) => {
    </FooterMain>  
     )
 }
+
+
 
 
 

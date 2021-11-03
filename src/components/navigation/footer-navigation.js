@@ -16,10 +16,6 @@ const FooterNavigation = () => (
                 href='https://starjaidad.com/'
               > Star Jaidad
               </MenuLink>
-              <MenuLink
-                href='/latest'
-              > Star Blogs
-              </MenuLink>
               <LinkNew
                 to='/privacy-policy'
               >  Privacy Policy
