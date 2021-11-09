@@ -1,0 +1,16 @@
+[
+    {"key":0,"label":"All Cities","value":""},
+    {"key":5,"label":"faisalabad","value":"faisalabad"},
+    {"key":12,"label":"gwadar","value":"gwadar"},
+    {"key":2,"label":"hyderabad","value":"hyderabad"},
+    {"key":4,"label":"islamabad","value":"islamabad"},
+    {"key":11,"label":"kalam","value":"kalam"},
+    {"key":7,"label":"kpk","value":"kpk"},
+    {"key":1,"label":"karachi","value":"karachi"},
+    {"key":3,"label":"lahore","value":"lahore"},
+    {"key":6,"label":"multan","value":"multan"},
+    {"key":8,"label":"mardan","value":"mardan"},
+    {"key":9,"label":"murree","value":"murree"},
+    {"key":10,"label":"peshawar","value":"peshawar"},
+    {"key":10,"label":"sialkot","value":"sialkot"}
+]

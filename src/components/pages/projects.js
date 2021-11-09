@@ -4,6 +4,7 @@ import { Link,NavLink,Redirect } from 'react-router-dom';
 import SectionContainer from "../styles/section-container";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import Select from 'react-select';
 
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import projects09 from "../../assets/projects09.png";
@@ -21,9 +22,9 @@ import plots from "../../assets/plots.png";
 import houses from "../../assets/houses.png";
 import penthouses from "../../assets/penthouses.png";
 import ReactLoading from "react-loading";
+import Location from "./../../data/location.json";
 import axios from "axios";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Projects = (state) => {
   const [allType,setAllType] = useState(true);
@@ -36,21 +37,39 @@ const Projects = (state) => {
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
   const [redirect,setRedirect] = useState(false);
-  
+  const [sendLocation,setSendLocation] = useState(false);
   const [data,setData] = useState();
-  
-  useEffect(()=>{
-     axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+  const [currentLocation,setCurrentLocation] = useState({"key":0,"label":"All Cities","value":""})
+
+  useEffect(async ()=>{
+    try {
+     await axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
         setData(response.data)
+        
+      
       })
       setRedirect(false)
-      
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  },[redirect])
+    } catch (e) {
+        console.error(e);
+    }
+    const lock =  Location.filter((loc,index)=>
+      loc.value == state.match.params.city 
+    )
+    console.log(lock,'lock')
+    lock.length != 0 && setAllRegions(false)
+    setCurrentLocation(lock.length > 0 ? lock[0] : {"key":0,"label":"All Cities","value":""})
+    
+    state.data &&  clearFilters()
+    !state.data &&  window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        }); 
+   
+
+
+  },[state.data])
+
   const city = state.match.params.city == 'other' ? '' : state.match.params.city
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
@@ -66,22 +85,30 @@ const Projects = (state) => {
     post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == city 
   )  : serachFilter;
  
-
+  
   const clearFilters = () => {
     setAllType(true)
-    setAllRegions(true)
     setCompleted(false)
+    setUpcoming(false)
     setNearme(false)
     setCategories()
     setFilter()
     setLocation()
+    setAllRegions(true)
+    setRedirect(true)
+    document.getElementById("searchfilter").reset();
+    setCurrentLocation({"key":0,"label":"All Cities","value":""})
+  }
+  const onChangeLocation = (x) => {
+    console.log(x);
+    setCurrentLocation(x)
+    setSendLocation(true)
+    setAllRegions(false)
   }
   const regionsFun =()=> {
-   
+      setCurrentLocation({"key":0,"label":"All Cities","value":""})
       setAllRegions(true)
       setRedirect(true)
-      
-    
   }
   
   return (
@@ -90,10 +117,12 @@ const Projects = (state) => {
       <Mainproject>
       <SectionContainer>
           <InnerBannerSection>
-             <h1>Projects</h1>
+             <h1 style={{marginTop:'-40px'}}>Projects</h1>
           </InnerBannerSection> 
         </SectionContainer>
         {redirect && <Redirect to="/projects" />}
+        {sendLocation && <Redirect to={"/projects/"+currentLocation.value} />}
+
 
         <ProjectHeadersection>
           <SectionContainer className="pb-0">
@@ -124,8 +153,6 @@ const Projects = (state) => {
                 setUpcoming(upcoming ? false:true)
                 }}>Upcoming Projects</button>
             </div>
-           <br />
-           <br />
                 
 
             </ProjectHeaderleft>
@@ -173,14 +200,28 @@ const Projects = (state) => {
             </ProjectSection>
               
             <ProjectSearch> 
-                <input type='text' placeholder="Search Project"  onChange={(e)=>setFilter(e.target.value)} />
-                <button onClick={()=>setLocation('Multan')}> <i className="fa fa-search"></i></button>
+                <div className="searchCity">
+                <Select
+                  onChange={(x)=>onChangeLocation(x)}
+                  value={currentLocation}
+                  options={Location}        
+                  placeholder="Type to Search..."
+                  style={RegionDropdown}
+                />
+                </div>
+                <div className="searchKeyword">
+                  <form  id="searchfilter">
+                  <label for=""> <span>Project Name: </span>  
+                    <input type='text' placeholder="Search Project" onChange={(e)=>setFilter(e.target.value)} />
+                    <button > <i className="fa fa-search"></i></button>
+                  </label>
+                  </form>
+                </div>
              </ProjectSearch> 
              
             </ProjectHeaderRight>
             </ProjectHeadersectionMain>
-            <br/>
-            {hideFilter &&
+            {/* {hideFilter &&
             <ProjectButtonSection> 
               <NavLink to="/projects/karachi" onClick={()=>setAllRegions(false)}>Karachi</NavLink>
               <NavLink to="/projects/hyderabad" onClick={()=>setAllRegions(false)}>Hyderabad</NavLink>
@@ -200,10 +241,17 @@ const Projects = (state) => {
               <NavLink to="/projects/gwadar" onClick={()=>setAllRegions(false)}>Gwadar</NavLink>
              
            </ProjectButtonSection>
-           }
-           <br/>
-             {!allReigons ? <Link style={{float:'right',font:'normal normal 300 18px/30px Poppins',color:'#0B52DF', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> : !allType  && <Link to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> }
-           <button style={{float:'right', marginRight:'30px', cursor:'pointer',font:'normal normal 300 18px/30px Poppins',color:'#0B52DF', background:'transparent'}}  onClick={()=>setHideFilter(hideFilter ? false:true)}> {hideFilter ? "Hide":"Show" } Filters</button>
+           } */}
+             {!allReigons ? 
+              <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> : 
+              !allType  ? 
+              <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> : 
+              completed  ?
+              <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link>  :
+              upcoming  && 
+              <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> 
+              }
+           {/* <button style={{float:'right', marginRight:'0', cursor:'pointer',font:'normal normal 300 18px/30px Poppins',color:'red', background:'transparent'}}  onClick={()=>setHideFilter(hideFilter ? false:true)}> {hideFilter ? "Hide":"Show" } Filters</button> */}
             </SectionContainer>
         </ProjectHeadersection>
 
@@ -513,25 +561,84 @@ img {
  
 `
 const ProjectSearch = styled.div`
-position: relative;
-margin: 26px 0px 0px 0px;
-input {
-  border: 1px solid #9f9f9f;
-  width: 100%;
-  font-size: 22px;
-  padding: 18px 36px;
-  border-radius: 10px;
-  :focus {
+    position: relative;
+    margin: 26px 0px 0px 0px;
+    display:flex;
+        label {
+          border: 1px solid #000;
+          width: 100%;
+          padding: 8px 35px;
+          display: block;
+          margin-left: 17px;
+          border-radius: 0;
+          color: #333;
+          font-size: 16px;
+          display: flex;
+          span{
+            padding-top:7px;
+          }
+          button {
+            background: red !important;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            width: 53px;
+            right: 0;
+            height: 100%;
+            font-size: 21px;
+            padding: 12px 12px 12px 15px;
+            border: 1px solid #000;
+          }
+          input{
+            font-size: 16px;
+            padding: 11px;
+            margin-left: 10px;
+            width: 70%;
+            border: 0;
+            outline: none;
+          }
+      }
+    
+    .searchCity {
+        width: 25%;
+    }
+    
+    .searchKeyword {
+        width: 70%;
+    }
+    
+
+  .searchCity >div {
+    border: 1px solid #000!important;
     outline: none;
-}
-}
-button {
-  position: absolute;
-  right: 35px;
-  top: 16px;
-  background: none;
-  font-size: 27px;
-}
+  }
+
+  .searchCity > div > div {
+    border: 0;
+    color: #000 !important;
+    outline: none;
+    padding: 8px 10px;
+    text-transform: capitalize;
+
+
+  }
+
+  .searchCity >div > div > span {
+    background: red;
+    display: block;
+  }
+
+  .searchCity > div > div svg {
+    background: red !important;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    width: 53px;
+    right: 0;
+    height: 100%;
+    padding: 12px;
+    border-left: 1px solid #000;
+  }
 `
 const Mainproject = styled.div`
   color:#fff;
@@ -597,3 +704,17 @@ const Image = styled.div`
   background-size: cover;}
 `
 
+
+
+
+const RegionDropdown = {
+  marginTop:'20px',
+  width: '350px',
+  height: '55px',
+  background: '#FFFFFF 0% 0% no-repeat padding-box',
+  border: '1px solid #FFFFFF',
+  borderRadius: '10px',
+  opacity: '1',
+  fontSize:'22px',
+  padding:'12px'
+};

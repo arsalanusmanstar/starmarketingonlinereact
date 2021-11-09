@@ -27,7 +27,7 @@ const PrevArrow = ({ onClick }) => {
       </div>
     );
 };
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 const FeatureProducts = ({state}) => {
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
@@ -45,12 +45,15 @@ const FeatureProducts = ({state}) => {
 
     const settings_img = {
     infinite: true,
+    lazyLoad: true,
     dots:false,
     speed: 1000,
     slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
     asNavFor: nav2,
+    autoplay: true,
+    autoplaySpeed: 7000,
     ref : slider => (slider1 = slider),
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -72,6 +75,7 @@ const FeatureProducts = ({state}) => {
   const settings_num = {
       
     infinite: true,
+    lazyLoad: true,
     speed: 300,
     arrows: false,
     slidesToShow: 3,
@@ -93,6 +97,7 @@ const FeatureProducts = ({state}) => {
                 <ContentArea>
                     <LeftArea>
                     <Slider  {...settings}>   
+                    
                         {data ? data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
                             <div key={index}>
                                 <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>
@@ -100,7 +105,7 @@ const FeatureProducts = ({state}) => {
                                     <br />
                                     <div>
                                     <div className="featured-project-city-name">  
-                                        <p className="featured-project-city-name-text" >{latest.acf && latest.acf.filters && latest.acf.filters.country}</p>
+                                        <p className="featured-project-city-name-text" >{latest.acf && latest.acf.filters && latest.acf.filters.city}</p>
                                     </div>
                                     <br/><br/>
                                     <ul  className="featured-project-tag" style={{marginLeft:'-9px'}}>
@@ -197,8 +202,8 @@ const FeatureProducts = ({state}) => {
                         <Slider  {...settings_img}>     
                         {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>    
                             <div key={index}>
-                                {console.log(latest._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url)}
-                                <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url} alt={video}  />
+                                {console.log(latest._embedded['wp:featuredmedia'][0].media_details)}
+                                <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} alt={video}  />
                             </div> 
                         )}
                          </Slider>
@@ -244,6 +249,12 @@ const FeautureProductsMain = styled.div`
         border-radius: 10px;
         font: normal normal 300 16px/27px Poppins;
         margin: 9px 9px 0px 0px;
+        @media only screen and (max-width: 480px) {
+                margin: 6px 6px 0px 0px;
+                font-size: 14px;
+                padding: 3px 10px;
+
+        }
     }
   `;
 const ContentArea = styled.div`
@@ -294,6 +305,11 @@ width: 50%;
     .image_slide{
         width: 551px;
         height: 665px;
+        @media only screen and (max-width: 480px) {
+            width: 200px;
+                height: 260px;
+
+        }
     }
     
 }
@@ -352,10 +368,28 @@ const ReadMore = styled.button`
     display: block;
     font-size: 23px;
     font-weight: 200;
+    @media only screen and (max-width: 480px) {
+            padding: 14px 60px 14px 20px;
+            font-size: 14px;
+         
+    
+      }
 }
   img {
         top: 31px;
         right: 28px;
         position: absolute;
+        @media only screen and (max-width: 480px) {
+            top: 24px;
+            right: 20px;
+            width: 30px;
+             
+        
+          }
   }
+  @media only screen and (max-width: 480px) {
+   
+    margin: 0px 0;
+}
+ 
 `;

@@ -66,7 +66,7 @@ const Locations = ({state}) => {
                 }
                 className='mailchimpform'
                 />
-             <form method="Post" action="https://marketing.us6.list-manage.com/subscribe/post?u=df313acb6a40efd656040f419&amp;id=faefd9810a"  id="mc-embedded-subscribe-form"  name="mc-embedded-subscribe-form" className="validate" target="_blank" novalidate>
+             <form method="Post" action="https://marketing.us6.list-manage.com/subscribe/post?u=df313acb6a40efd656040f419&amp;id=faefd9810a"  id="mc-embedded-subscribe-form"  name="mc-embedded-subscribe-form" className="validate" target="_blank" >
                 
                 {/* <MailchimpSubscribe url={url}/> */}
                 {/* <input type="text" name="EMAIL" placeholder="Email Address"  id="mce-EMAIL" required/>
@@ -158,14 +158,19 @@ h1 {
     font-weight: 600;
     margin-top: 20px;
     @media only screen and (max-width: 1366px) {
-        
     font-size: 61px;
+    }
+    @media only screen and (max-width: 480px) {
+        font-size: 40px;
 
-    
-      }
+    }
 }
  p {
     font-size: 24px;
+    @media only screen and (max-width: 480px) {
+        font-size: 18px;
+
+    }
 }
  input {
     border: 1px solid #707070;
@@ -181,7 +186,11 @@ h1 {
         @media only screen and (max-width: 1366px) {
             width: 60%;
         
-          }
+        }
+        @media only screen and (max-width: 480px) {
+            width: 100%;
+
+        }
 
 }
  button {
@@ -195,6 +204,11 @@ h1 {
     margin: 0px 0px 0px 30px;
     position: relative;
     top: 3px;
+    @media only screen and (max-width: 480px) {
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        text-align: center;
+    }
 }
 `;
 const ContactSectionTouchRight = styled.section`
@@ -218,6 +232,11 @@ box-shadow: 0px 31px 30px #b9b9b929;
   @media only screen and (max-width: 1024px) {
     grid-template-columns: 54% 46%;
     grid-template-columns: 100%;
+  }
+  @media only screen and (max-width: 480px) {
+    img.responsive {
+        width: -webkit-fill-available;
+    }
   }
 
 `;
@@ -244,6 +263,11 @@ const Icon = styled.img`
     float: left;
     margin: 0px 20px 20px 0px;
     width: 30px;
+    @media only screen and (max-width: 480px) {
+        float: none;
+        margin: 0px 0px 0px 0px;
+
+    }
 `;
 const List = styled.div``;
 const ListTitle = styled.div`
@@ -264,7 +288,12 @@ const ContactSectionLeft = styled.div`
     text-transform: uppercase;
     font-weight: 700;
     position: relative;
-    margin-bottom: 90px
+    margin-bottom: 90px;
+    @media only screen and (max-width: 480px) {
+        margin-bottom: 55px;
+
+    }
+   
    }
    h1:after{
     content: "";
@@ -285,8 +314,13 @@ const ContactSectionLeft = styled.div`
     font-size: 63px;
     margin: 10px 0px 13px 0px;
     padding-bottom: 0px;
+    @media only screen and (max-width: 480px) {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
 
-
+    }
+ 
 
    }
 
@@ -297,7 +331,7 @@ const ContactSection = styled.div`
 display: grid;
 grid-template-columns: 46% 46%;
 grid-gap: 40px;
-padding-bottom: 10%;
+padding-bottom: 5%;
 @media only screen and (max-width: 1366px) {
     grid-template-columns: 48% 47%;
 

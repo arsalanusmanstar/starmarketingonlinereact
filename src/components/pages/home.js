@@ -5,7 +5,7 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 
 const Home = ({state,location}) => {

@@ -14,7 +14,7 @@ const Team = ({ team, owner }) => {
       <TeamMeetSection>
         <SectionContainer style={{marginTop:'-100px'}}>
         <Heading>
-            <h1 className="featured-heading" style={{color:'white'}}>OUR TEAM</h1>
+            <h1 className="featured-heading banners" style={{color:'white'}}>OUR TEAM</h1>
             </Heading>
           <TeamMeetSectionMain>
             <TeamMeetSectionLeft>
@@ -68,6 +68,11 @@ h4 span{
     padding: 0px 20px;
     margin-left: 26px;
     font-size: 46px;
+    @media only screen and (max-width: 480px) {
+          margin-left: 10px;
+          font-size: 24px;
+
+    }
 }
 h1 {
     font-size: 130px;
@@ -87,7 +92,11 @@ h2 {
   h1{font-size: 91px;}
   h2{font-size: 82px;}
 }
+@media only screen and (max-width: 480px) {
+  h1{font-size: 70px;}
+  h2{font-size: 70px;}
 
+}
 
 `;
 
@@ -106,6 +115,10 @@ const TeamMeetSectionMain = styled.div`
       .logo_f {
         width: 100%;
        }
+    @media only screen and (max-width: 480px) {
+      grid-template-columns: 100%;
+
+      }
  
   
     }

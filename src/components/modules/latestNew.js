@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import ReactLoading from "react-loading";
 import Moment from 'react-moment';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 
 const Latestnews = () => {
@@ -209,6 +209,10 @@ const LatestNewContainer = styled.div`
     font-weight: 700;
     margin-bottom: 6px;
     margin-top: -2%;
+    @media only screen and (max-width: 480px) {
+      font-size: 50px;
+      text-align: left;
+    }
     }
     ul.slick-dots button{
         position: absolute;
@@ -240,6 +244,10 @@ const Post = styled.div`
     padding: 0px 0px 0px 30px;
     text-decoration:none;
     cursor:pointer;
+    @media only screen and (max-width: 480px) {
+      padding: 0px 0px 0px 18px;
+
+    }
 `
 const Image = styled.div`
     background: url(${(props) => props.background})  0% 0% no-repeat padding-box;
@@ -264,6 +272,10 @@ const Title = styled.h3`
     overflow: hidden;
     line-height: 30px;
     min-height: 60px;
+    @media only screen and (max-width: 480px) {
+      margin: 10px 20px 6px 0px;
+
+    }
     `
 const Details = styled.div`
     border-top: 1px solid #1d253f40;
@@ -285,14 +297,23 @@ const Details = styled.div`
         margin: 0px 10px 0px 0px;
 
     }
+    @media only screen and (max-width: 480px) {
+      margin: 0px 30px 0px 0px;
+          padding: 16px 0px;
 
+    }
 
 `
 const Date = styled.div`
     color: #929292;
     font-size: 18px;
     line-height: 20px;
-   
+    @media only screen and (max-width: 480px) {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+
+    }
    
 
 
@@ -301,7 +322,12 @@ const Auth = styled.div`
     color: #929292;
     font-size: 18px;
     line-height: 17px;
-   
+    @media only screen and (max-width: 480px) {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+
+    }
 
 `
 

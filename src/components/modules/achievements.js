@@ -6,7 +6,7 @@ const Achievements = ({state}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading" style={{color:'white'}}>Achievements</h1>
+            <h1 className="featured-heading"  style={{marginTop:'-40px',color:'white'}}>Achievements</h1>
             </Heading>
             <br/><br/><br/><br/>
            <Body>

@@ -65,6 +65,11 @@ const MainContainer = styled.div`
     padding-bottom:  ${(props) => props.bg != 'off' && '20%'};
     padding-top:${(props) => props.bg != 'off' && ' 4%;'};
     color:#fff;
+    @media only screen and (max-width: 480px) {
+        margin-bottom: 0;
+    padding-bottom: 0%;
+
+    }
 `;
 const SectionContainerOverRight = styled(SectionContainer)`
     padding:${(props) => props.bg == 'off' && ' 40px 0'};
@@ -79,6 +84,10 @@ const CallRequests = styled.div`
         background-position: center;
     
       }
+      @media only screen and (max-width: 480px) {
+        height: 420px;
+
+    }
      h2 {
         font-size: 34px;
         font-weight: 400;
@@ -93,6 +102,13 @@ const CallRequests = styled.div`
             margin: 80px auto;
             text-align: center;
           }
+          @media only screen and (max-width: 480px) {
+            font-size: 35px;
+            width: 90%;
+            line-height: 43px;
+            margin: 40px auto;
+
+        }
     }
 `
 const Success = styled.div`
@@ -114,6 +130,13 @@ grid-template-columns: 35% 65%;
 .callform{
     background: #fff;
     padding: 65px 70px 42px;
+    
+    @media only screen and (max-width: 480px) {
+        padding: 30px 30px;
+       
+    }
+   
+
   }
 .fild {
     float: left;
@@ -122,15 +145,27 @@ grid-template-columns: 35% 65%;
 .fild label {
     color: #000;
     font-size: 22px;
+    @media only screen and (max-width: 480px) {
+        font-size: 18px;
+
+    }
 }
 
 .fild:nth-child(2) {
     width: 48%;
     float: right;
+    @media only screen and (max-width: 480px) {
+        width: 100%;
+
+    }
 }
 
 .fild:nth-child(1) {
     width: 48%;
+    @media only screen and (max-width: 480px) {
+        width: 100%;
+
+    }
 }
 
 .fild input {
@@ -141,10 +176,18 @@ grid-template-columns: 35% 65%;
     text-transform: uppercase;
     line-height: 45px;
     letter-spacing: 1px;
+    @media only screen and (max-width: 480px) {
+        line-height: 16px;
+
+    }
 }
 
 .input_fild {
     margin: 0px 0px 40px 0px;
+    @media only screen and (max-width: 480px) {
+        margin: 0px 0px 20px 0px;
+
+    }
 }
 
 
@@ -169,6 +212,10 @@ textarea {
     letter-spacing: 2px;
     float: right;
     border-radius: 11px;
+    @media only screen and (max-width: 480px) {
+        font-size: 16px;
+
+    }
 
 }
 .fild_button button img {
@@ -176,6 +223,11 @@ textarea {
     right: 31px;
     width: 20px;
     top: 18px;
+    @media only screen and (max-width: 480px) {
+        right: 0px;
+        height: 200px;
+
+    }
 }
 textarea, input:focus {
     outline: none;

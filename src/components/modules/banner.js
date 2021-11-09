@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import BackgroundImage from "../../assets/WebBg.png";
-import VideoImage from "../../assets/home.mp4";
+import VideoImage from "../../assets/homepage.webm";
 import GuarantLogo from "../../assets/1Icon.png";
 const BannerText = ({state}) => {
     return (
@@ -17,7 +17,7 @@ const BannerText = ({state}) => {
 }
 const Video = ({state}) => {
     return (
-        <VideoImg controls loop autoPlay playsInline muted id="video">
+        <VideoImg controls loop autoPlay playsInline muted defer  id="video">
             <source src={VideoImage} type="video/mp4" />
         </VideoImg>
     )
@@ -25,8 +25,9 @@ const Video = ({state}) => {
 const TopBanner = ({state,data}) => {
     return (
     <MainSection background={BackgroundImage}>
-        <SectionContainer minHeight="800px" style={{paddingTop:0, paddingBottom: 40}}>
+        <SectionContainer  style={{paddingTop:0, paddingBottom: 40}}>
                  <BannerText state={data} />
+            
                  {VideoImage && <Video state={state} />}
         </SectionContainer>
     </MainSection>    
@@ -36,6 +37,8 @@ const TopBanner = ({state,data}) => {
 
 
 export default TopBanner;
+
+
 
 const MainSection = styled.section`
     background: url(${(props) => props.background});
@@ -58,6 +61,14 @@ const BannerCont = styled.div`
         position: relative;
         top: 16%;
         width: 100%;
+        @media only screen and (max-width: 480px) {
+            top: 29%;
+            height: auto;
+            padding: 20px;
+            padding-bottom: 70px;
+            margin-bottom: -30px;
+
+        }
     
       }
 
@@ -70,6 +81,13 @@ const GuaranteeLogo = styled.section`
     background-size: contain;
     position: absolute;
     right: 26px;
+    @media only screen and (max-width: 480px) {
+            width: 70px;
+            height: 70px;
+            right: 14px;
+            top: 25px;
+
+    }
 `;
 const Heading = styled.h1`
     padding:0px;
@@ -79,6 +97,10 @@ const Heading = styled.h1`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
+    @media only screen and (max-width: 480px) {
+        font-size: 30px;
+
+    }
 `;
 const Subheading = styled.h2`
     font: normal normal 300 32px/29px 'Poppins',sans-serif;
@@ -87,11 +109,30 @@ const Subheading = styled.h2`
     opacity: 1;
     padding:0px;
     margin:0px;
+    @media only screen and (max-width: 480px) {
+        font-size: 20px;
+        line-height: 0px;
+
+    }
     `;
 const Content = styled.p`
     margin-top:40px;
     margin-bottom:30px;
-    color: #fff;`;
+    color: #fff;
+    @media only screen and (max-width: 480px) {
+        font-size: 14px;
+        margin: 22px 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+    }
+    
+    
+    `;
 const Button = styled.a`
     background: #13213A 0% 0% no-repeat padding-box;
     box-shadow: 0px 20px 29px #00000029;
@@ -102,6 +143,13 @@ const Button = styled.a`
     opacity: 1;
     padding: 14px 42px;
     text-decoration:none;
+    @media only screen and (max-width: 480px) {
+        font-size: 12px;
+        padding: 4px 16px ;
+        float: left;
+
+    }
+
 `;
 const SubButton = styled.a`
     float:right;
@@ -116,7 +164,17 @@ const SubButton = styled.a`
         margin-left: 8px;
         position: relative;
         top: 5px;
-    }`;
+    }
+    @media only screen and (max-width: 480px) {
+        float: left;
+        margin: 3px 20px;
+        font-size: 12px;
+    }
+    
+    
+    
+    
+    `;
 
 const VideoImg = styled.video`
     float: right;
@@ -127,6 +185,10 @@ const VideoImg = styled.video`
  @media only screen and (max-width: 1366px) {
     height: 727px;
     object-fit: cover;
+    @media only screen and (max-width: 480px) {
+        height: auto;
+ 
+    }
   }
   @media only screen and (max-width: 1024px) {
     width: 100%;

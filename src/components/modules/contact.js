@@ -9,7 +9,11 @@ import Select from 'react-select';
 
 const Contact = ({offices,get_in_touch}) => {
     const [office,setOffice] = useState(offices.office)
-    const [currentLocation,setCurrentLocation] = useState(0)
+    const [currentLocation,setCurrentLocation] = useState({
+      "key"   : 0,
+      "value" : 0,
+      "label" : 'karachi'
+    })
 
 
     //get locations
@@ -19,11 +23,10 @@ const Contact = ({offices,get_in_touch}) => {
       "label" : location.city
     }))
     
-    console.log(Locations);
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading" style={{color:'white'}}>CONTACT US</h1>
+            <h1 className="featured-heading" style={{marginTop:'-40px',color:'white'}}>CONTACT US</h1>
             </Heading>
            
             <br/> <br/>
@@ -46,7 +49,8 @@ const Contact = ({offices,get_in_touch}) => {
                      <br/>
                   <Select
         
-                    onChange={(x)=>setCurrentLocation(x.value)}
+                    onChange={(x)=>setCurrentLocation(x)}
+                    value={currentLocation}
                     options={Locations}        
                     placeholder="Type to Search..."
                     style={RegionDropdown}
@@ -54,41 +58,41 @@ const Contact = ({offices,get_in_touch}) => {
 
 
                   <br/>
-                  {office[currentLocation] && office[currentLocation].phone &&
+                  {office[currentLocation.key] && office[currentLocation.key].phone &&
                    <>
                     <label style={LabelHeading}>Phone</label>
                     <br/>
-                    <label style={LableDescription}>{office[currentLocation].phone}</label>
+                    <label style={LableDescription}>{office[currentLocation.key].phone}</label>
                     </>
                   }
-                  {office[currentLocation] &&  office[currentLocation].fax &&
+                  {office[currentLocation.key] &&  office[currentLocation.key].fax &&
                   <>
                     <br/> 
                     <label style={LabelHeading}>Fax</label>
                     <br/>
-                    <label style={LableDescription}>{office[currentLocation].fax}</label>
+                    <label style={LableDescription}>{office[currentLocation.key].fax}</label>
                     </>
                   }
-                   {office[currentLocation] && office[currentLocation].toll_free &&
+                   {office[currentLocation.key] && office[currentLocation.key].toll_free &&
                     <>
                     <br/>
                     <label style={LabelHeading}>Toll Free</label>
                     <br/>
-                    <label style={LableDescription}>{office[currentLocation].toll_free}</label>
+                    <label style={LableDescription}>{office[currentLocation.key].toll_free}</label>
                     </>
                     }
-                    {office[currentLocation] && office[currentLocation].location &&
+                    {office[currentLocation.key] && office[currentLocation.key].location &&
                     <>
                       <br/>
                       <label style={LabelHeading}>Location</label>
                       <br/>
-                      <label style={LableDescriptionAddress}>{office[currentLocation].location}</label>
+                      <label style={LableDescriptionAddress}>{office[currentLocation.key].location}</label>
                     </>
                     }
               </div>
               <div  className="addressRight">
-              {office[currentLocation] && office[currentLocation].map_url &&
-              <iframe src={office[currentLocation].map_url}
+              {office[currentLocation.key] && office[currentLocation.key].map_url &&
+              <iframe src={office[currentLocation.key].map_url}
                width="950" height="400" style={{border:'0'}} loading="lazy"></iframe>
               }
               </div>

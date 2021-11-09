@@ -48,14 +48,28 @@ const SiteFooter = styled.footer`
     color: inherit;
     text-decoration: none;
   }
+  @media only screen and (max-width: 480px) {
+   ul{
+    margin: 0 auto;
+   }
+   ul li{
+   
+    margin: 0;
+}
+  }
 `;
 
 const Credits = styled.div`
   @media (min-width: 700px) {
     display: flex;
+    
     @media only screen and (max-width: 1366px) {
       justify-content: center;
+      
   
+    }
+   
+
     }
 
   }
@@ -66,6 +80,10 @@ const Copyright = styled.p`
   font:italic normal normal 18px/26px 'Raleway',sans-serif;
   letter-spacing: 0px;
   color: #757575;
+  @media only screen and (max-width: 480px) {
+    text-align: center;
+    
+  }
   a{
     text-align: left;
     font:italic normal normal 18px/26px 'Raleway',sans-serif;

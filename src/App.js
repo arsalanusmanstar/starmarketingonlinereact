@@ -1,4 +1,5 @@
 import './App.css';
+
 import React from "react";
 import Home from "./components/pages/home";
 import Pages from "./components/pages/pages";
@@ -29,10 +30,6 @@ export default function App(state) {
       setWidth(window.innerWidth);
   }
   useEffect(() => {
-    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
-      .then(response => {
-        setData(response.data)
-      })
       window.addEventListener('resize', handleWindowSizeChange);
       return () => {
           window.removeEventListener('resize', handleWindowSizeChange);
@@ -45,7 +42,7 @@ export default function App(state) {
     <div className="App">
       {parseInt(width) < 767 &&
        <MobileView>
-            <meta http-equiv="Refresh" content="0; url=https://m.starmarketingonline.com/" />
+            <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
           </MobileView>
          }
         <Switch>
@@ -57,9 +54,9 @@ export default function App(state) {
         <Route path="/latest" exact component={Pages}></Route>
         <Route path="/contact-us" exact component={Pages}></Route>
         <Route path="/privacy-policy" exact component={Pages}></Route>
-        <Route path="/projects/" exact render={(props) => <Projects data={data} {...props} />} />
-        <Route path="/projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
-        <Route path="/projects/:city/:id" exact render={(props) => <Projects data={data} {...props} />} />
+        <Route path="/projects" exact render={(props) => <Projects {...props} data="" />} />
+        <Route path="/projects/:city" exact render={(props) => <Projects {...props} />} />
+        <Route path="/projects/:city/:id" exact render={(props) => <Projects {...props} />} />
         <Route path="/hot-projects/" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>

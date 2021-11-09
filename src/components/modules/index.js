@@ -1,3 +1,5 @@
+
+import loadable from '@loadable/component'
 import TopBanner from "./banner";
 import FeatureProjects from "./feature-projects";
 import LatestNews from "./latestNew";

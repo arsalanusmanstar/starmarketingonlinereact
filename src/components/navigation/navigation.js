@@ -9,7 +9,7 @@ const Navigation = () =>  {
   const state = [
     ["About","#","",[['Our Team','/our-team',''],['Achievements','/achievements','']]],
     ["Media","#","",[['Latest','/latest',''],['News','https://star.news','new']]],
-    ["Projects","/projects","",[]],
+    ["Projects","/projects/","",[]],
     // ["Projects","/projects","",[['Islamabad','/projects/islamabad','',[['Murree','/projects/islamabad/multan','',]]],['Punjab','/projects/Punjab',''],['KPK','/projects/kpk',''],['Sindh','/projects/sindh',''],['Baluchistan','/projects/baluchistan','']]],
     ["Products","#","",[['Manhill Advertising','https://www.manhilladvertising.com/','new'],['Star Digital','https://digital.starmarketingonline.com/','new'],['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new']]],
     // ["Careers","#","",[]],

@@ -40,7 +40,7 @@ import {EmailIcon,FacebookIcon,LinkedinIcon,TwitterIcon,WhatsappIcon} from "reac
 
 import Select from 'react-select';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match,location}) => {
   const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher)

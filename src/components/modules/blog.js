@@ -22,8 +22,7 @@ import {BiChevronLeftCircle, BiChevronRightCircle} from 'react-icons/bi';
 import { Prev } from 'react-bootstrap/esm/PageItem';
 
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
+const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 const Blog = (state) => {
     const [activeContent,setActiveContent] = useState(false);
@@ -76,9 +75,8 @@ const Blog = (state) => {
     return (
         <div>
         <SectionContainer>
-            {console.log(data,'post')}
           <InnerBannerSection>
-             <h1>Latest </h1>
+             <h1 style={{marginTop:'-40px'}}>Latest </h1>
           </InnerBannerSection> 
         
         </SectionContainer>  

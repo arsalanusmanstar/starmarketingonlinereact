@@ -45,11 +45,22 @@ const AboutContent = styled.div`
 `
 const Cont = styled.p`
     text-align: center;
-    font: normal normal normal 30px/50px Poppins;
+    font: 24px/44px Poppins;
+    -webkit-letter-spacing: 0px;
+    -moz-letter-spacing: 0px;
+    -ms-letter-spacing: 0px;
     letter-spacing: 0px;
     color: #929292;
     opacity: 1;
     padding: 60px 30px;
+    text-rendering: optimizeLegibility;
+    @media only screen and (max-width: 480px) {
+        text-align: left;
+        font-size: 14px;
+        line-height: 26px;
+        padding: 14px 6px;
+
+    }
 ` 
 const Score = styled.div`
     opacity: 1;
