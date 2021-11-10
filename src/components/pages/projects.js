@@ -22,7 +22,8 @@ import plots from "../../assets/plots.png";
 import houses from "../../assets/houses.png";
 import penthouses from "../../assets/penthouses.png";
 import ReactLoading from "react-loading";
-import Location from "./../../data/location.json";
+import Cities from "./../../data/cities.json";
+import Regions from "./../../data/regions.json";
 import axios from "axios";
 
 
@@ -39,21 +40,21 @@ const Projects = (state) => {
   const [redirect,setRedirect] = useState(false);
   const [sendLocation,setSendLocation] = useState(false);
   const [data,setData] = useState();
+  const [cities,setCities] = useState(Cities);
   const [currentLocation,setCurrentLocation] = useState({"key":0,"label":"All Cities","value":""})
+  const [currentRegions,setCurrentRegions] = useState({"key":0,"label":"All Regions","value":""})
 
   useEffect(async ()=>{
     try {
      await axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
         setData(response.data)
-        
-      
       })
       setRedirect(false)
     } catch (e) {
         console.error(e);
     }
-    const lock =  Location.filter((loc,index)=>
+    const lock =  Cities.filter((loc,index)=>
       loc.value == state.match.params.city 
     )
     console.log(lock,'lock')
@@ -61,10 +62,7 @@ const Projects = (state) => {
     setCurrentLocation(lock.length > 0 ? lock[0] : {"key":0,"label":"All Cities","value":""})
     
     state.data &&  clearFilters()
-    !state.data &&  window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        }); 
+    !state.data &&  window.scrollTo({top: 0,behavior: 'smooth'}); 
    
 
 
@@ -100,8 +98,17 @@ const Projects = (state) => {
     setCurrentLocation({"key":0,"label":"All Cities","value":""})
   }
   const onChangeLocation = (x) => {
-    console.log(x);
     setCurrentLocation(x)
+    setSendLocation(true)
+    setAllRegions(false)
+  }
+  const onChangeRegions = (x) => {
+    
+    x.key != 0 ? 
+      setCities( Cities.filter((city,index)=> city.region == x.key ))
+    : setCities( Cities )
+
+      setCurrentRegions(x)
     setSendLocation(true)
     setAllRegions(false)
   }
@@ -203,9 +210,9 @@ const Projects = (state) => {
               
             <div className="searchCity pr">
                 <Select
-                  onChange={(x)=>onChangeLocation(x)}
-                  value={currentLocation}
-                  options={Location}        
+                  onChange={(x)=>onChangeRegions(x)}
+                  value={currentRegions}
+                  options={Regions}        
                   placeholder="Type to Search..."
                   style={RegionDropdown}
                 />
@@ -214,7 +221,7 @@ const Projects = (state) => {
                 <Select
                   onChange={(x)=>onChangeLocation(x)}
                   value={currentLocation}
-                  options={Location}        
+                  options={cities}        
                   placeholder="Type to Search..."
                   style={RegionDropdown}
                 />
@@ -231,27 +238,6 @@ const Projects = (state) => {
              
             </ProjectHeaderRight>
             </ProjectHeadersectionMain>
-            {/* {hideFilter &&
-            <ProjectButtonSection> 
-              <NavLink to="/projects/karachi" onClick={()=>setAllRegions(false)}>Karachi</NavLink>
-              <NavLink to="/projects/hyderabad" onClick={()=>setAllRegions(false)}>Hyderabad</NavLink>
-              <NavLink to="/projects/lahore" onClick={()=>setAllRegions(false)}>Lahore</NavLink>
-              <NavLink to="/projects/islamabad" onClick={()=>setAllRegions(false)}>Islamabad</NavLink>
-              <NavLink to="/projects/faisalabad" onClick={()=>setAllRegions(false)}>Faisalabad</NavLink>
-            
-              
-              <br/><br/><br/>
-              <NavLink to="/projects/multan" onClick={()=>setAllRegions(false)}>Multan</NavLink>
-              <NavLink to="/projects/kpk" onClick={()=>setAllRegions(false)}>KPK</NavLink>
-              <NavLink to="/projects/mardan" onClick={()=>setAllRegions(false)}>Mardan</NavLink>
-              <NavLink to="/projects/murree" onClick={()=>setAllRegions(false)}>Murree</NavLink>
-              <NavLink to="/projects/sialkot" onClick={()=>setAllRegions(false)}>Sialkot</NavLink>
-              <NavLink to="/projects/kalam" onClick={()=>setAllRegions(false)}>Kalam</NavLink>
-              <br/><br/><br/>
-              <NavLink to="/projects/gwadar" onClick={()=>setAllRegions(false)}>Gwadar</NavLink>
-             
-           </ProjectButtonSection>
-           } */}
              {!allReigons ? 
               <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> : 
               !allType  ? 
@@ -261,7 +247,6 @@ const Projects = (state) => {
               upcoming  && 
               <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> 
               }
-           {/* <button style={{float:'right', marginRight:'0', cursor:'pointer',font:'normal normal 300 18px/30px Poppins',color:'red', background:'transparent'}}  onClick={()=>setHideFilter(hideFilter ? false:true)}> {hideFilter ? "Hide":"Show" } Filters</button> */}
             </SectionContainer>
         </ProjectHeadersection>
 

@@ -1,6 +1,7 @@
 import './App.css';
 
 import React from "react";
+import Modal from "./components/elements/modal";
 import Home from "./components/pages/home";
 import Pages from "./components/pages/pages";
 import Projects from "./components/pages/projects";
@@ -69,6 +70,7 @@ export default function App(state) {
         <Route path="/react" exact component={Home}></Route>
         <Route path="*" component={Pages} />
       </Switch>
+      <Modal />
       <ScrollButton />
       
     </div>
