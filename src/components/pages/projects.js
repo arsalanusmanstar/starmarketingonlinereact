@@ -200,6 +200,16 @@ const Projects = (state) => {
             </ProjectSection>
               
             <ProjectSearch> 
+              
+            <div className="searchCity pr">
+                <Select
+                  onChange={(x)=>onChangeLocation(x)}
+                  value={currentLocation}
+                  options={Location}        
+                  placeholder="Type to Search..."
+                  style={RegionDropdown}
+                />
+                </div>
                 <div className="searchCity">
                 <Select
                   onChange={(x)=>onChangeLocation(x)}
@@ -564,12 +574,13 @@ const ProjectSearch = styled.div`
     position: relative;
     margin: 26px 0px 0px 0px;
     display:flex;
+    gap: 14px;
         label {
           border: 1px solid #000;
           width: 100%;
           padding: 8px 35px;
           display: block;
-          margin-left: 17px;
+          margin-left: 0px;
           border-radius: 0;
           color: #333;
           font-size: 16px;
@@ -604,7 +615,7 @@ const ProjectSearch = styled.div`
     }
     
     .searchKeyword {
-        width: 70%;
+        width: 50%;
     }
     
 

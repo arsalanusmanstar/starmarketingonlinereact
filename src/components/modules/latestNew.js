@@ -157,6 +157,12 @@ const LatestNewContainer = styled.div`
         color: white;
         background-size: 100% 10em , 100% calc(100% - 10em);
         top: -250px;
+        @media only screen and (max-width: 1024px) {
+          top: -249px;
+
+
+        }
+
     }
     .slick-slider{
         button {
@@ -196,6 +202,10 @@ const LatestNewContainer = styled.div`
             div.slick-slide{
                 padding:1% 28px 1.2% 30px;
                 @media only screen and (max-width: 1024px) {
+                    padding: 1% 30px 0.2% 30px;
+                
+                  }
+                  @media only screen and (max-width: 786px) {
                     padding: 1% 10px 0.2% 10px;
                 
                   }
@@ -209,6 +219,10 @@ const LatestNewContainer = styled.div`
     font-weight: 700;
     margin-bottom: 6px;
     margin-top: -2%;
+    @media only screen and (max-width: 1024px) {
+      font-size: 50px;
+
+    }
     @media only screen and (max-width: 480px) {
       font-size: 50px;
       text-align: left;

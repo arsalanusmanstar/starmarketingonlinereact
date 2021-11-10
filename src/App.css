@@ -458,7 +458,35 @@ ul.pagination li {
 .content h3 strong {
   font-weight: 500;
 }
+.sticky{
+z-index: 9999;
+background: #001439d6;
+} 
+.sticky .Sticky_p {
+  padding: 0px 0px !important;
+    height: 66px;
+}
+.sticky ul li a {
+  font-size: 14px !important;
+  transition: all 0.35s linear;
+}
+.sticky .Sticky_l svg {
+  width: 60%;
+  transition: all 0.35s linear;
+}
+.Sticky_l svg {
+ 
+  transition: all 0.35s linear;
+}
+.sticky .hotMenuMain {
+  width: 180px;
+  font-size: 14px;
+  line-height: 28px;
+}
 
+.sticky .hotMenuMain span {
+  padding: 13px 16px 38px;
+}
 @media only screen and (max-width: 1366px) {
   .sc-iqseJM.kwSlTj .featured-heading {
     text-align: left;
@@ -485,6 +513,7 @@ img.responsive {
 }
 .featured-project-description{
   width: 100%;
+  font-size: 16px;
 }
 .getinTouch{
   width: 60%;
@@ -500,23 +529,55 @@ img.responsive {
   width: 35% !important;
 }
 .mainSlide{    width: 100% !important;}
+.featured-project-heading {
+  font-size: 40px;
+}
+.left_line {
+
+  display: none;
+}
+.right_line{
+
+  display: none;
+}
+.eFgfHc {
+  padding: 50px 0px!important;}
+
+
 }
 
 @media only screen and (max-width: 1024px) {
+  .eFgfHc {
+    padding: 16px 0px!important;
+}
+  .maincontactsection {
+    margin: 0px 0px 0px 0px !important;
+    position: relative;
+}
+  .featured-heading{
+    font-size: 50px;
+    margin-bottom: -26px;
+
+
+  }
+
+  .featured-project-heading {
+    font-size: 30px;
+    margin-bottom: 0px;
+}
   .sc-iqseJM.kwSlTj .featured-heading {
     font-size: 62px;
    
   }
   
   .mainSlide{    width: 100% !important;}
-  .featured-project-heading {
-   
-    font-size: 50px;
-}
+ 
 img.responsive {
   width: fit-content;
-  margin: 0 auto;
-  display: table;
+  position: absolute;
+  top: 36px;
+  right: 0;
+  opacity: 0.1;
 }
 ul.pagination li {
   
@@ -605,11 +666,18 @@ ul.pagination li {
 div[data-popper-placement="right"] {color: #fff;background: #000 !important;padding:5px 20px;border-radius:10px;}
 
 @media only screen and (max-width: 480px) {
+  .maincontactsection {
+    margin: 0px 0px 20px 0px !important;
    
+}
+  .eFgfHc {
+    padding: 40px 20px !important;
+}
   .featured-heading {
     font-size: 30px;
     line-height: 42px;
     text-align: left;
+    margin-bottom: 0;
 }
 .featured-project-line {
   margin: revert;

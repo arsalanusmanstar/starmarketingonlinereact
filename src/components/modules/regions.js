@@ -51,6 +51,10 @@ margin-top: 10%;
 }
 
 @media only screen and (max-width: 1024px) {
+  grid-template-columns: 48% 48%;
+  margin-top: 4%;
+}
+@media only screen and (max-width: 480px) {
   grid-template-columns: 100%;
 
 }
@@ -111,6 +115,12 @@ const RegionsBoxes = styled(Link)`
         right: 60px;
         bottom: 0;
         filter: grayscale(100%);
+        @media only screen and (max-width: 786px) {
+          right: 10px;
+              height: 160px;
+              bottom: 22px;
+        
+        }
         @media only screen and (max-width: 480px) {
           right: 0px;
           height: 200px;

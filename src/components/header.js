@@ -3,12 +3,17 @@ import Navigation from "./navigation/navigation";
 import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
 import {  Logo, DownArrow } from "./icons";
+import Sticky from 'react-sticky-el';
+
+
+
 
 const Header = () => {
-
+  
   return (
-    <PageHeader id="site-header">
-      <HeaderInner>
+    <StickyUpdate style={{transform:'inherit !important'}}>
+     <PageHeader  id="site-header">
+      <HeaderInner  className="Sticky_p">
         <TitleWrapper>
           {/* Search button on mobile */}
           {/* {state.theme.showSearchInHeader && <MobileSearchButton />} */}
@@ -16,7 +21,7 @@ const Header = () => {
           {/* Heading and Description of the site */}
           <TitleGroup>
             <SiteTitle>
-            <StyledLink to="/"><Logo /></StyledLink> 
+            <StyledLink to="/" className="Sticky_l"><Logo /></StyledLink> 
               
             </SiteTitle>
             {/* <SiteDescription>{description}</SiteDescription> */}
@@ -29,7 +34,7 @@ const Header = () => {
         <HeaderNavigationWrapper>
           {/* Desktop navigation links */}
           <Navigation />
-          <HotProject>Hot Projects <span><DownArrow /></span>
+          <HotProject className="hotMenuMain">Hot Projects <span><DownArrow /></span>
             <div className="hotMenu">
              <ul>
                <li> <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
@@ -51,11 +56,16 @@ const Header = () => {
       {/* Global search modal */}
       {/* <SearchModal /> */}
     </PageHeader>
+    </StickyUpdate>
   );
 };
 
+
+
 // Connect the Header component to get access to the `state` in it's `props`
 export default Header
+
+
 
 const TitleGroup = styled.div`
   @media (min-width: 1000px) {
@@ -220,7 +230,7 @@ const HotProject = styled.div`
     padding: 17px 14px;
     
     span {
-      top: -18px !important;
+      top: -39px !important;
       padding: 15px 19px 35px !important;
 
     }
@@ -241,7 +251,7 @@ const HotProject = styled.div`
     display: block;
     float: right;
     height: 100%;
-    padding:13px 19px 38px;
+    padding:13px 17px 38px;
     position: relative;
     top: -14px;
     right: -14px;
@@ -267,3 +277,9 @@ const HotProject = styled.div`
     
   }
 `;
+
+const StickyUpdate = styled(Sticky)`
+div{
+transform: inherit !important;
+}
+`

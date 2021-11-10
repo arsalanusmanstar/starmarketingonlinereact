@@ -3,9 +3,13 @@ import SectionContainer from "../styles/section-container";
 import AboutBackground from "../../assets/about_background.png";
 
 
+
+
+
+
 const ScoreCounter = (state) => {
     return (
-        <Score>
+        <Score >
             <ScoreCont>
                 <Icon><img src={state.icon} alt={state.title} /></Icon>
                 <Count>{state.score}</Count>
@@ -19,7 +23,7 @@ const About = ({data}) => {
     return (
         <MainContainer background={AboutBackground} id="about">
             <SectionContainer>
-                <h2 className="featured-heading">{data.heading}</h2>
+                <h2  className="featured-heading " >{data.heading}</h2>
                 <div className="featured-project-line"></div>
                 <AboutContent>
                     <Cont dangerouslySetInnerHTML={{ __html:data.content}}></Cont>
@@ -54,6 +58,12 @@ const Cont = styled.p`
     opacity: 1;
     padding: 60px 30px;
     text-rendering: optimizeLegibility;
+    @media only screen and (max-width: 1024px) {
+        font-size: 16px;
+        line-height: 30px;
+        padding: 30px 0px;
+    }
+
     @media only screen and (max-width: 480px) {
         text-align: left;
         font-size: 14px;
@@ -105,6 +115,10 @@ const SectionThree = styled.div`
         
       }
       @media only screen and (max-width: 1024px) {
+        grid-template-columns: 32% 32% 32% ;
+    
+      }
+      @media only screen and (max-width: 480px) {
         grid-template-columns: 100% ;
     
       }
@@ -115,10 +129,33 @@ const Count = styled.div`
     font: normal normal bold 64px/95px Poppins;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;`
+    opacity: 1;
+    @media only screen and (max-width: 1024px) {
+        font-size: 48px;
+
+    } 
+    @media only screen and (max-width: 1024px) {
+        font-size: 38px;
+
+    }   
+    
+    
+    `
 const Title = styled.div`
     text-align: left;
     font: normal normal 200 38px/42px Poppins;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;`
+    opacity: 1;
+    @media only screen and (max-width: 1024px) {
+        font-size: 22px;
+        line-height: 28px;
+
+    }  
+    @media only screen and (max-width: 786px) {
+        font-size: 20px;
+        line-height: 25px;
+
+    } 
+    
+    `

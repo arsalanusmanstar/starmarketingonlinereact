@@ -39,7 +39,7 @@ const Locations = ({state}) => {
 
 
 
-    <ContactSectionTouch style={{marginTop:'-50px'}}>
+    <ContactSectionTouch className="maincontactsection" style={{marginTop:'-50px'}}>
   
          <ContactSectionTouchLeft>
          <h1>Let's Stay In Touch</h1>
@@ -252,9 +252,16 @@ const LocationList = styled.div`
     grid-gap: 40px;
 
     @media only screen and (max-width: 1366px) {
+        grid-template-columns: 50% 50%;
+    
+      }
+      @media only screen and (max-width: 786px) {
         grid-template-columns: 100%;
     
       }
+      @media only screen and (max-width: 480px) {
+        grid-gap: 10px;
+    }
     
    
 `;
@@ -263,9 +270,13 @@ const Icon = styled.img`
     float: left;
     margin: 0px 20px 20px 0px;
     width: 30px;
+    @media only screen and (max-width: 1024px) {
+        margin: 0px 20px 66px 0px;
+    }
     @media only screen and (max-width: 480px) {
         float: none;
         margin: 0px 0px 0px 0px;
+        width: 20px;
 
     }
 `;
@@ -281,7 +292,15 @@ const ListContent = styled.div`
     font: normal normal normal 20px/26px  'Poppins',sans-serif;
     letter-spacing: 0px;
     color: #000000;
-    opacity: 1;`;
+    opacity: 1;
+    @media only screen and (max-width: 480px) {
+        font-size: 14px;
+
+    }
+    
+    
+    
+    `;
 
 const ContactSectionLeft = styled.div`
    h1{
@@ -289,6 +308,9 @@ const ContactSectionLeft = styled.div`
     font-weight: 700;
     position: relative;
     margin-bottom: 90px;
+    @media only screen and (max-width: 1024px) {
+        margin-bottom: 40px;
+    }
     @media only screen and (max-width: 480px) {
         margin-bottom: 55px;
 
@@ -332,12 +354,13 @@ display: grid;
 grid-template-columns: 46% 46%;
 grid-gap: 40px;
 padding-bottom: 5%;
+
 @media only screen and (max-width: 1366px) {
     grid-template-columns: 48% 47%;
 
   }
 
-  
+ 
   @media only screen and (max-width: 1024px) {
     grid-template-columns: 100%;
     text-align: center;
@@ -346,6 +369,7 @@ padding-bottom: 5%;
         left: 0;
         right: 0;
     }
+    
 
   }
   
@@ -364,6 +388,12 @@ const ContactSectionRight = styled.div`
 const Flogo = styled.img`
 width: 100%;
 margin-bottom: 70px;
+@media only screen and (max-width: 1024px) {
+    width: fit-content;
+}
+@media only screen and (max-width: 480px) {
+    width: 100%;
+}
 `;
 
 const IconTW = styled.img`
@@ -373,6 +403,14 @@ const IconTW = styled.img`
 const SL = styled.div`
 display: flex;
 justify-content: space-around;
+@media only screen and (max-width: 480px) {
+    align-items: center;
+    img {
+        width: 34px;
+    }
+}
+
+
 `;
 
 const FooterMain = styled.div`

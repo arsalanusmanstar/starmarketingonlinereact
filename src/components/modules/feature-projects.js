@@ -91,11 +91,11 @@ const FeatureProducts = ({state}) => {
         <FeautureProductsMain  background={grayBackground}>
             <SectionContainer>
                 <div>
-                    <h2 className="featured-heading">FEATURED PROJECTS</h2>
-                    <div className="featured-project-line"></div>
+                    <h2 className="featured-heading wow slideInUp" data-wow-duration="5s">FEATURED PROJECTS</h2>
+                    <div className="featured-project-line "></div>
                 </div>
                 <ContentArea>
-                    <LeftArea>
+                    <LeftArea className="wow slideInUp" data-wow-duration="3s">
                     <Slider  {...settings}>   
                     
                         {data ? data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
@@ -198,7 +198,7 @@ const FeatureProducts = ({state}) => {
                         </div> */}
                         </Slider>
                     </LeftArea>
-                    <RightArea>
+                    <RightArea className="wow slideInRight" data-wow-duration="3s">
                         <Slider  {...settings_img}>     
                         {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>    
                             <div key={index}>
@@ -260,6 +260,10 @@ const FeautureProductsMain = styled.div`
 const ContentArea = styled.div`
     display: flex;
     @media only screen and (max-width: 1366px) {
+        justify-content: space-between;
+    
+      }
+      @media only screen and (max-width: 786px) {
         display: block;
     
       }
@@ -270,7 +274,7 @@ const ContentArea = styled.div`
     
 const LeftArea = styled.div`
     width:40%;
-    @media only screen and (max-width: 1366px) {
+    @media only screen and (max-width: 786px) {
         width:100%;
     
       }
@@ -282,7 +286,7 @@ const LeftArea = styled.div`
 `
 const RightArea = styled.div` 
 width: 50%;
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 786px) {
     width:100%;
 
   }
@@ -291,6 +295,7 @@ width: 50%;
         left: 69%;
         top: 84%;
         width: 16%;
+        
     }
     .right_line{
         position: absolute;
@@ -305,6 +310,11 @@ width: 50%;
     .image_slide{
         width: 551px;
         height: 665px;
+        @media only screen and (max-width: 1366px) {
+            width: 345px;
+            height: 490px;
+
+        }
         @media only screen and (max-width: 480px) {
             width: 200px;
                 height: 260px;
@@ -340,13 +350,19 @@ width: 50%;
             position: absolute;
             right: 0%;
             bottom: -45px;
-            z-index: 999;            
+            z-index: 999;   
+            @media only screen and (max-width: 786px) {
+                bottom: 14px;
+            }
         }
         .prev{
             z-index: 999;
             position: absolute;
             left: 5%;
             bottom: -45px;
+            @media only screen and (max-width: 786px) {
+                bottom: 14px;
+            }
         }
 }  
 `
@@ -368,6 +384,11 @@ const ReadMore = styled.button`
     display: block;
     font-size: 23px;
     font-weight: 200;
+    @media only screen and (max-width: 1366px) {
+        padding: 20px 80px 20px 24px;
+        font-size: 16px;
+   
+    }
     @media only screen and (max-width: 480px) {
             padding: 14px 60px 14px 20px;
             font-size: 14px;
@@ -379,6 +400,10 @@ const ReadMore = styled.button`
         top: 31px;
         right: 28px;
         position: absolute;
+        @media only screen and (max-width: 1366px) {
+            top: 26px;
+            right: 20px;
+        }
         @media only screen and (max-width: 480px) {
             top: 24px;
             right: 20px;

@@ -10,6 +10,8 @@ import { useEffect,useState } from "react";
 import axios from "axios";
 import {MobileView,isMobile} from 'react-device-detect';
 
+
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,8 +38,10 @@ export default function App(state) {
       }
   }, [pathname]);
 
-  
 
+ 
+  
+  
   return (
     <div className="App">
       {parseInt(width) < 767 &&

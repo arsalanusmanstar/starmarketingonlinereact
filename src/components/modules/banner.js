@@ -4,20 +4,24 @@ import BackgroundImage from "../../assets/WebBg.png";
 import VideoImage from "../../assets/homepage.webm";
 import GuarantLogo from "../../assets/1Icon.png";
 const BannerText = ({state}) => {
+    
+    
     return (
             <BannerCont >
-                <GuaranteeLogo background={GuarantLogo}/>
-                <Heading>{state.heading}</Heading>
-                <Subheading>{state.sub_heading}</Subheading>
-                <Content>{state.content}</Content>
-                <Button href="#about" style={{cursor:'pointer'}}> Learn More </Button>
-                <SubButton>Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
+         
+                <GuaranteeLogo  background={GuarantLogo}/>
+                <Heading >{state.heading}</Heading>
+                <Subheading >{state.sub_heading}</Subheading>
+                <Content >{state.content}</Content>
+                <Button  href="#about"  style={{cursor:'pointer'}} > Learn More </Button>
+                <SubButton >Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
+              
             </BannerCont>   
     )
 }
 const Video = ({state}) => {
     return (
-        <VideoImg controls loop autoPlay playsInline muted defer  id="video">
+        <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
             <source src={VideoImage} type="video/mp4" />
         </VideoImg>
     )
@@ -35,16 +39,18 @@ const TopBanner = ({state,data}) => {
 }
 
 
-
 export default TopBanner;
 
 
 
 const MainSection = styled.section`
-    background: url(${(props) => props.background});
+    background: url(${(props) => props.background})no-repeat;
     margin-top: -210px;
     padding-top: 200px;
     display: flex;
+    background-attachment: fixed;
+    background-position: right;
+    background-size: cover;
 `;
 const BannerCont = styled.div`
     width: 691px;
@@ -57,9 +63,10 @@ const BannerCont = styled.div`
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
     padding: 35px;
-    @media only screen and (max-width: 1024px) {
+    z-index: 123;
+    @media only screen and (max-width: 786px) {
         position: relative;
-        top: 16%;
+        top: 25%;
         width: 100%;
         @media only screen and (max-width: 480px) {
             top: 29%;
@@ -182,6 +189,7 @@ const VideoImg = styled.video`
     margin-bottom:30px;
     box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
     
+    
  @media only screen and (max-width: 1366px) {
     height: 727px;
     object-fit: cover;
@@ -190,8 +198,9 @@ const VideoImg = styled.video`
  
     }
   }
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 786px) {
     width: 100%;
+    height: 400px;
 
   }
 

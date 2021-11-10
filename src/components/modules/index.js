@@ -19,10 +19,11 @@ const Modules = ({data,location}) => {
         {data && data['main_banner'] && <TopBanner data={data['main_banner']}/> }
         {data && data['featured_projects'] && <FeatureProjects data={data['featured_projects']}/>}
         {data && data['latest_projects'] && <LatestNews data={data['latest_projects']}/>}
+        {data && data['regions'] && <Regions data={data['regions']}/>}
         {data && data['about_us'] && <About data={data['about_us']}/>}
         {data && data['call_back'] && <CallRequest location={location} data={data['call_back']}/>}
         {data && data['team_members'] && <Team team={data['team_members']} owner={data['owner']}/>}
-        {data && data['regions'] && <Regions data={data['regions']}/>}
+        
         {data && data['blog_categories'] && <Blog data={data['blog_categories']}/>}
         {data && data['achievement'] && <Achievements team={data['achievement']}/>}
         {data && data['offices'] && <Contact offices={data['offices']} get_in_touch={data['get_in_touch']}/>}

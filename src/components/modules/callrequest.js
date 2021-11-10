@@ -62,8 +62,8 @@ const MainContainer = styled.div`
     display: block;
     background-position: bottom;
     margin-bottom: ${(props) => props.bg != 'off' && '-146px'};
-    padding-bottom:  ${(props) => props.bg != 'off' && '20%'};
-    padding-top:${(props) => props.bg != 'off' && ' 4%;'};
+    padding-bottom:  ${(props) => props.bg != 'off' && '7%'};
+    padding-top:${(props) => props.bg != 'off' && ' 0%;'};
     color:#fff;
     @media only screen and (max-width: 480px) {
         margin-bottom: 0;
@@ -84,6 +84,10 @@ const CallRequests = styled.div`
         background-position: center;
     
       }
+      @media only screen and (max-width: 768px) {
+        height: 366px;
+
+    }
       @media only screen and (max-width: 480px) {
         height: 420px;
 
@@ -97,10 +101,15 @@ const CallRequests = styled.div`
         line-height: 43px;
         text-shadow: 1px 1px 1px #00000070;
         @media only screen and (max-width: 1366px) {
-            font-size: 56px;
-            width: 80%;
-            margin: 80px auto;
+            font-size: 46px;
+            width: 100%;
+            margin: 44px auto;
             text-align: center;
+            line-height: 56px;
+          }
+          @media only screen and (max-width: 1024px) {
+            font-size: 36px;
+
           }
           @media only screen and (max-width: 480px) {
             font-size: 35px;
@@ -124,8 +133,12 @@ grid-template-columns: 35% 65%;
 
   }
   @media only screen and (max-width: 1024px) {
-    grid-template-columns: 100%;
+    grid-template-columns: 35% 65%;
 
+  }
+  @media only screen and (max-width: 786px) {
+    grid-template-columns: 100% ;
+  
   }
 .callform{
     background: #fff;
