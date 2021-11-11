@@ -59,7 +59,10 @@ const  LatestBoxesSlides = styled.div`
     -o-transition: all 0.5s 0s ease;
     transition: all 0.5s 0s ease;
     border-radius: 20px;
-
+    @media only screen and (max-width: 1024px) {
+      height: fit-content;
+      
+    }
    
   
     h2.popupheadings {
@@ -67,6 +70,9 @@ const  LatestBoxesSlides = styled.div`
       font-weight: 300;
       font-size: 29px;
       padding: 14px 0px 40px 0px;
+      @media only screen and (max-width: 480px) {
+        padding: 30px 0px 40px 0px;
+      }
     }
     h1 {
       padding: 0;
@@ -89,6 +95,14 @@ const  LatestBoxesSlides = styled.div`
         right: 0;
         left: 0;
         margin: 0 auto;
+        @media only screen and (max-width: 1024px) {
+
+          top: 24%;
+        }
+        @media only screen and (max-width: 480px) {
+
+          top: 10%;
+        }
     }
     right: 0;
   }
@@ -112,6 +126,9 @@ const  LatestBoxesSlides = styled.div`
   width: 90%;
   margin: 0 auto;
   padding: 30px 0px;
+  @media only screen and (max-width: 480px) {
+    grid-template-columns: 100%;
+  }
    .tag {
        text-decoration:none;
         background: #58AF78;
@@ -125,6 +142,9 @@ const  LatestBoxesSlides = styled.div`
         letter-spacing: 0.5px;
         left: 23px;
         text-align:center;
+        @media only screen and (max-width: 480px) {
+          left: 0px;
+        }
     img {
       position: absolute;
       left: -24px;
@@ -137,6 +157,9 @@ text {
   display: flex;
   justify-content: end;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    display: contents;
+  }
    img {
     height: fit-content;
     width: fit-content;

@@ -43,6 +43,9 @@ export default About;
 
 const MainContainer = styled.div`
     background: #fff url(${(props) => props.background});
+    @media only screen and (max-width: 480px) {
+        padding-bottom: 40px;
+    }
 `
 const AboutContent = styled.div`
 
@@ -104,6 +107,10 @@ const ScoreCont = styled.div`
     position: relative;
     z-index: 3;
     padding:40px;
+    @media only screen and (max-width: 480px) {
+        padding:20px;
+    
+      }
 `
 const SectionThree = styled.div`
     display: grid;
@@ -138,6 +145,11 @@ const Count = styled.div`
         font-size: 38px;
 
     }   
+    @media only screen and (max-width: 480px) {
+        line-height: 44px;
+
+    } 
+    
     
     
     `

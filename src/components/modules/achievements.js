@@ -70,7 +70,10 @@ h1{
     position: relative;
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    @media only screen and (max-width: 480px) {
+      text-align: center;
+    }
     
   }
   h1:after{
@@ -99,6 +102,10 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 480px) {
+
+      width: 100%;
+    }
    
   }
 `
@@ -121,6 +128,7 @@ const Body=styled.div`
     width:20px;
     border-radius:30px;
     background-color:#e24f53;
+    
   }
   .entries {
     width:calc(100% - 80px);
@@ -137,6 +145,11 @@ const Body=styled.div`
       clear:both;
       text-align:right;
       background-color:white;
+      @media only screen and (max-width: 480px) {
+        width: calc(100% - 0px);
+        margin-bottom: 80px;
+        text-align: left;
+      }
       &:not(:first-child) {
         margin-top:-60px;
       }
@@ -157,6 +170,12 @@ const Body=styled.div`
           transform:translateY(-50%);
           right:-135px;
           z-index:1000;
+          @media only screen and (max-width: 480px) {
+               width: 30px;
+                height: 30px;
+                border: 8px solid #e24f53;
+                right: -60px;
+          }
         }
         &.big:before {
           width:24px;
@@ -177,6 +196,9 @@ const Body=styled.div`
         .title {
           &:before {
             left:-124px;
+            @media only screen and (max-width: 480px) {
+              left:-58px;
+            }
           }
           &.big:before {
             transform:translate(-8px,-50%);

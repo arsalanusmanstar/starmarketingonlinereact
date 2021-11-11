@@ -99,6 +99,9 @@ const TitleWrapper = styled.div`
     text-align: left;
     justify-content: left;
   }
+  @media only screen and (max-width: 480px) {
+    padding: 0;
+  }
 `;
 
 const PageHeader = styled.header`
@@ -139,13 +142,20 @@ const HeaderInner = styled.div`
   margin-left: auto;
   margin-right: auto;
   
+  
   @media (min-width: 700px) {
     max-width: 1440px;
   }
   @media only screen and (max-width: 1366px) {
     max-width: 94%;
+  
 
   }
+  @media only screen and (max-width: 480px) {
+    padding: 0px;
+
+  }
+ 
 
 `;
 
@@ -206,12 +216,12 @@ const HeaderNavigationWrapper = styled.div`
 
 const HotProject = styled.div`
   margin-left:40px;
-  width: 215px;
+  width: 196px;
   height: 52px;
   background: #DB2D34 0% 0% no-repeat padding-box;
   border-radius: 8px;
   opacity: 1;
-  font-size: 18px;
+  font-size: 16px;
   padding: 13px 14px;
   text-transform: uppercase;
   cursor: pointer;
@@ -220,8 +230,13 @@ const HotProject = styled.div`
   -o-transition: all 1s 0s ease;
   transition: all 1s 0s ease;
   position:relative;
+  
   span{
     box-shadow: 0px 19px 49px #000000b5;
+    
+  }
+  
+
   }
   @media only screen and (max-width: 1366px) {
     margin-left: 24px;
@@ -255,6 +270,8 @@ const HotProject = styled.div`
     position: relative;
     top: -14px;
     right: -14px;
+    
+    
   }
   .hotMenu{
     display:none;

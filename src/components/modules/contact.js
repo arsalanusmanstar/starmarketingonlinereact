@@ -30,10 +30,10 @@ const Contact = ({offices,get_in_touch}) => {
             </Heading>
            
             <br/> <br/>
-            <div style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
+            <div className="contactMain" style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
              <h2>{get_in_touch.heading}</h2>
              <p style={{fontSize:'26px', fontWeight:'500'}} className="getinTouch">{get_in_touch.content}</p>
-             {get_in_touch.image && <img src={get_in_touch.image} style={{float:'right', marginTop:'-250px'}} alt="Get in touch"/>}
+             {get_in_touch.image && <img className="contactTopimg" src={get_in_touch.image} style={{float:'right', marginTop:'-250px'}} alt="Get in touch"/>}
             <CallRequest bg={'off'}/>
            
             <h2>WE HAVE <span  style={{color:'red'}}>{offices.office.length}</span> OFFICES</h2>
@@ -110,7 +110,11 @@ h1{
     position: relative;
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    @media only screen and (max-width: 480px) {
+      text-align: center;
+
+    }
     
   }
   h1:after{
@@ -139,7 +143,9 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
-   
+    @media only screen and (max-width: 480px) {
+      width: 100%;
+    }
   }
   
 `

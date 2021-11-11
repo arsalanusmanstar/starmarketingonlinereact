@@ -89,7 +89,8 @@ const CallRequests = styled.div`
 
     }
       @media only screen and (max-width: 480px) {
-        height: 420px;
+        height: 266px;
+    background-position: bottom;
 
     }
      h2 {
@@ -112,10 +113,10 @@ const CallRequests = styled.div`
 
           }
           @media only screen and (max-width: 480px) {
-            font-size: 35px;
+            font-size: 22px;
             width: 90%;
             line-height: 43px;
-            margin: 40px auto;
+            margin: 20px auto;
 
         }
     }
@@ -145,7 +146,7 @@ grid-template-columns: 35% 65%;
     padding: 65px 70px 42px;
     
     @media only screen and (max-width: 480px) {
-        padding: 30px 30px;
+        padding: 20px 14px;
        
     }
    
@@ -227,6 +228,7 @@ textarea {
     border-radius: 11px;
     @media only screen and (max-width: 480px) {
         font-size: 16px;
+        float: left;
 
     }
 
@@ -237,8 +239,8 @@ textarea {
     width: 20px;
     top: 18px;
     @media only screen and (max-width: 480px) {
-        right: 0px;
-        height: 200px;
+        top: 15px;
+        
 
     }
 }

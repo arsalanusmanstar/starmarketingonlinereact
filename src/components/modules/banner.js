@@ -51,6 +51,10 @@ const MainSection = styled.section`
     background-attachment: fixed;
     background-position: right;
     background-size: cover;
+    height: 100vh;
+    @media only screen and (max-width: 1024px) {
+        height: 100%;
+    }
 `;
 const BannerCont = styled.div`
     width: 691px;
@@ -69,11 +73,12 @@ const BannerCont = styled.div`
         top: 25%;
         width: 100%;
         @media only screen and (max-width: 480px) {
-            top: 29%;
+            top: 24%;
             height: auto;
             padding: 20px;
-            padding-bottom: 70px;
+            padding-bottom: 90px;
             margin-bottom: -30px;
+            z-index: revert;
 
         }
     
@@ -106,6 +111,7 @@ const Heading = styled.h1`
     opacity: 1;
     @media only screen and (max-width: 480px) {
         font-size: 30px;
+        line-height: 60px;
 
     }
 `;
@@ -117,7 +123,7 @@ const Subheading = styled.h2`
     padding:0px;
     margin:0px;
     @media only screen and (max-width: 480px) {
-        font-size: 20px;
+        font-size: 15px;
         line-height: 0px;
 
     }
@@ -148,8 +154,15 @@ const Button = styled.a`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-    padding: 14px 42px;
+    padding: 14px 26px;
     text-decoration:none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    :hover{
+        background: #db2d34 0% 0% no-repeat padding-box;
+
+
+    }
     @media only screen and (max-width: 480px) {
         font-size: 12px;
         padding: 4px 16px ;
@@ -166,6 +179,8 @@ const SubButton = styled.a`
     color: #FFFFFF;
     opacity: 1;
     text-decoration:none;
+    font-size: 14px;
+    letter-spacing: 1px;
     .fa {
         font-size: 28px;
         margin-left: 8px;
@@ -174,8 +189,9 @@ const SubButton = styled.a`
     }
     @media only screen and (max-width: 480px) {
         float: left;
-        margin: 3px 20px;
+        margin: 0px;
         font-size: 12px;
+        clear: both;
     }
     
     
@@ -188,6 +204,8 @@ const VideoImg = styled.video`
     width: 60%;
     margin-bottom:30px;
     box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
+    object-fit: cover;
+    height: -webkit-fill-available;
     
     
  @media only screen and (max-width: 1366px) {

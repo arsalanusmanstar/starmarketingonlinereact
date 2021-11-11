@@ -61,6 +61,9 @@ h4{
     font-weight: 400;
     letter-spacing: 1px;
     margin: 0px 0px 100px 0px;
+    @media only screen and (max-width: 480px) {
+      margin: 0px 0px 0px 0px;
+    }
 }
 h4 span{
     background: #FF000A 0% 0% no-repeat padding-box;
@@ -80,12 +83,16 @@ h1 {
     text-transform: capitalize;
     margin: 0px;
     line-height: 80px;
+   
 }
 h2 {
     font-size: 130px;
     font-weight: 200;
     text-transform: capitalize;
     margin: 0px;
+    @media only screen and (max-width: 480px) {
+      font-size: 70px!important;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -117,6 +124,7 @@ const TeamMeetSectionMain = styled.div`
        }
     @media only screen and (max-width: 480px) {
       grid-template-columns: 100%;
+      
 
       }
  
@@ -134,6 +142,8 @@ const TeamMeetSectionMain = styled.div`
 }
 
   }
+ 
+ 
 `;
 const TeamMeetSection = styled.div`
     margin: 0 auto;
@@ -163,19 +173,34 @@ const TeamMeetSectionBottom = styled.div`
     @media only screen and (max-width: 1366px) {
       
       width:100%;
+      font-size: 16px;
     }
 `;
 
 const TeamMeetBoxesMain = styled.div`
     text-align: center;
-    margin-top: 90px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    
+    
+    
+    
+    grid-template-columns: 50% 50%;
+    display: grid;
+    @media only screen and (max-width: 1024px) {
+      grid-template-columns: 50% 50%;
+    }
+    @media only screen and (max-width: 480px) {
+      grid-template-columns: 100%;
+    }
 `;
 
 const TeamMeetBoxes = styled.div`
     flex: 0 0 calc(31.66% - 0px);
+
+    @media only screen and (max-width: 1024px) {
+      img {
+        width: 100%;
+    }
+    }
 `;
 
 const Img = styled.div`
@@ -232,6 +257,9 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 480px) {
+      width: 100%;
+    }
    
   }
   

@@ -43,6 +43,9 @@ const SiteFooter = styled.footer`
   background: #f3f3f3;
   background-color: ${(props) => props.bg};
   color: #000000;
+  @media only screen and (max-width: 480px) {
+    padding-top: 0px;
+  }
 
   a {
     color: inherit;

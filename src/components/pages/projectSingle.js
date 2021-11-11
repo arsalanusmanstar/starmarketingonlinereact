@@ -588,7 +588,10 @@ gap: 5%;
 background: #000;
 color: #fff;
 padding: 60px 60px;
-
+@media only screen and (max-width: 480px) {
+  grid-template-columns: 100%;
+  padding: 10px 10px;
+}
 
 `
 
@@ -677,6 +680,9 @@ h1 {
   gap: 5%;
   background: #F3F3F3;
   padding: 5% 5%;
+  @media only screen and (max-width: 480px) {
+    grid-template-columns: 100%;
+  }
   `
   const PropertyLeft = styled.div`
   
@@ -941,6 +947,9 @@ grid-template-columns: 16% 16% 16% 16%;
 justify-content: flex-start;
 gap: 45px;
 margin: 55px 0px 0px 0px;
+@media only screen and (max-width: 480px) {
+  grid-template-columns: 30% 30% 30%;
+}
 `
 const Mainproject = styled.div`
 
@@ -989,6 +998,10 @@ background-size: cover;
     grid-template-columns: 66% 34%;
 
 }
+@media only screen and (max-width: 480px) {
+  grid-template-columns: 100%;
+
+}
   label {
     display: none;
 }
@@ -997,15 +1010,24 @@ const ProjectsDescriptionLfet = styled.div`
 
   padding: 50px 20% 50px 50px;
   letter-spacing: 1px;
+  @media only screen and (max-width: 480px) {
+    padding: 20px 20% 52px 20px;
+  }
   h1 {
   font-size: 53px;
   font-weight: 600;
+  @media only screen and (max-width: 480px) {
+    font-size: 30px;
+  }
   }
 
   p {
   font-size: 24px;
   font-weight: 300;
   color: #ffffffe6;
+  @media only screen and (max-width: 480px) {
+    font-size: 16px;
+  }
   }
 
   button {
@@ -1016,9 +1038,19 @@ const ProjectsDescriptionLfet = styled.div`
     font-size: 21px;
     letter-spacing: 1px;
     cursor:pointer;
+    @media only screen and (max-width: 480px) {
+      padding: 16px 20px;
+      font-size: 15px;
+
+    }
   img {
     float: right;
     margin: 4px 0px 0px 24px;
+    @media only screen and (max-width: 480px) {
+      margin: 4px 0px 0px 4px;
+      width: 30px;
+
+    }
   }
   }
   .excerpt{

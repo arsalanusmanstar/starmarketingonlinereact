@@ -359,6 +359,9 @@ const ProjectHeadersectionB = styled.div`
       padding: 0px 20px;
       border-radius: 20px;
       position: relative;
+      @media only screen and (max-width: 480px) {
+        padding: 0px 0px;
+      }
   
   }
   .listing_shop {
@@ -375,6 +378,10 @@ const ProjectHeadersectionB = styled.div`
 }
 .listing_shop_box {
   display: flex;
+  @media only screen and (max-width: 480px) {
+    justify-content: center;
+    margin-top: 22px;
+  }
 }
 .listing_shop_box.location img {
   height: fit-content;
@@ -390,11 +397,19 @@ const ProjectHeadersectionB = styled.div`
   width: -webkit-fill-available;
     text-align: center;
     margin: 0;
+    @media only screen and (max-width: 480px) {
+      padding: 18px 10px;
+
+    }
 }
 .listing_shop.secound {
   grid-template-columns: 61% 34%;
   gap: 10px;
   justify-content: space-between;
+  @media only screen and (max-width: 480px) {
+    grid-template-columns: 100%;
+    display: contents;
+  }
 }
 h1.listing_heading {
   color: #747474;
@@ -484,6 +499,9 @@ const ProjectHeaderleft = styled.div`
       text-transform: capitalize;
       position: relative;
       cursor: pointer;
+      @media only screen and (max-width: 480px) {
+        font-size: 14px;
+      }
       
             :before {
               content: '';
@@ -501,6 +519,10 @@ const ProjectHeaderleft = styled.div`
               -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
+            @media only screen and (max-width: 480px) {
+              margin-right: 8px;
+              padding: 6px;
+            }
           }
   
    }
@@ -524,6 +546,12 @@ const ProjectHeaderleft = styled.div`
       border: solid #ff000a;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
+      @media only screen and (max-width: 480px) {
+        top: 5px;
+            left: 7px;
+            width: 4px;
+            height: 6px;
+      }
   }
   }
  
@@ -539,6 +567,11 @@ const ProjectHeaderRight = styled.div`
 const ProjectSection = styled.div`
 display: flex;
 justify-content: space-between;
+@media only screen and (max-width: 480px) {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-items: baseline;
+}
  
 `
 const ProjectSectionBoxes = styled.div`
@@ -546,6 +579,9 @@ text-align: center;
 border-radius: 10px;
 cursor:pointer;
 padding: 16px 23px 0;
+@media only screen and (max-width: 480px) {
+  padding: 16px 0px 0;
+}
 &.true{
   border: 3px solid #ff000a;
   padding: 13px 20px 0;
@@ -554,11 +590,17 @@ button {
   background: none;
   font-size: 20px;
   margin: 20px 0px;
+  @media only screen and (max-width: 480px) {
+    font-size: 14px;
+  }
 }
 img {
   text-align: center;
   margin: 0 auto;
   display: block;
+  @media only screen and (max-width: 480px) {
+    width: 42px;
+  }
 }
  
 `
@@ -567,6 +609,9 @@ const ProjectSearch = styled.div`
     margin: 26px 0px 0px 0px;
     display:flex;
     gap: 14px;
+    @media only screen and (max-width: 480px) {
+      display: contents;
+    }
         label {
           border: 1px solid #000;
           width: 100%;
@@ -577,6 +622,9 @@ const ProjectSearch = styled.div`
           color: #333;
           font-size: 16px;
           display: flex;
+          @media only screen and (max-width: 480px) {
+            padding: 8px 18px;
+          }
           span{
             padding-top:7px;
           }
@@ -604,10 +652,18 @@ const ProjectSearch = styled.div`
     
     .searchCity {
         width: 25%;
+        @media only screen and (max-width: 480px) {
+          width: 100%;
+          margin-bottom: 10px;
+        }
     }
     
     .searchKeyword {
         width: 50%;
+        @media only screen and (max-width: 480px) {
+          width: 100%;
+          position: relative;
+        }
     }
     
 
@@ -683,6 +739,11 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 480px) {
+
+      width: 100%;
+
+
   }    
     `
 const Image = styled.div`

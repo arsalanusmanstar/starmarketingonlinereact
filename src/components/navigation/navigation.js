@@ -26,7 +26,7 @@ const Navigation = () =>  {
               <MenuLink  to={link}>
                 {name}
               </MenuLink>
-              <MenuSub>
+              <MenuSub className="McD">
                 {child.length > 0 && child.map(([subName,subLink,target,subChild]) => {
                    return (
                    <MenuItem key={subName}>
@@ -139,7 +139,11 @@ const MenuItem = styled.li`
   }
   &.submenu:hover > ul{
    
+    opacity: 1;
+    margin-top: 0;
     display: block;
+    transition: all 0.35s linear;
+   
    
   }
  
@@ -172,17 +176,21 @@ const MenuLinkTarget = styled.a`
   }
   
 `;
+
 const MenuSub = styled.ul`
-display: none;
+
 position: absolute;
 right: 0;
 list-style: none;
 background: #ffffff;
-min-width: 250px;
-top: 30px;
+min-width: 200px;
 margin: 0px;
 border-radius: 15px 0px 15px 15px;
 padding: 12px 10px;
+opacity: 0;
+transition: all 0.5s ease;
+margin: 0;
+display: none;
 
     li {
      

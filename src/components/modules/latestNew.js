@@ -162,6 +162,13 @@ const LatestNewContainer = styled.div`
 
 
         }
+        @media only screen and (max-width: 480px) {
+          top: -100px;
+          background-size: 100% 4em,100% calc(100% - 4em);
+          height: 100px;
+
+
+        }
 
     }
     .slick-slider{

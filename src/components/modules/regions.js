@@ -56,6 +56,7 @@ margin-top: 10%;
 }
 @media only screen and (max-width: 480px) {
   grid-template-columns: 100%;
+  gap: 10px 10px;
 
 }
    
@@ -69,11 +70,18 @@ const RegionsBoxes = styled(Link)`
     padding-bottom: 0px;
     position: relative;
     height: 420px;  
+    @media only screen and (max-width: 480px) {
+      padding: 0px 20px;
+      height: 202px;
+    }
     h1 {
         font-size: 48px;
         margin-bottom: 0px;
         font-weight: 600;
         margin: 2rem auto 0rem;
+        @media only screen and (max-width: 480px) {
+          font-size: 30px;
+        }
     }
     p {
       font-size: 20px; 
@@ -85,6 +93,11 @@ const RegionsBoxes = styled(Link)`
         border-radius: 27px;
         display: inline-block;
         text-align: right;
+        @media only screen and (max-width: 480px) {
+          font-size: 16px;
+          padding: 2px 10px 0px 0px;
+          margin: 6px 4px!important;
+        }
         span{
           color:#fff;
           border-radius: 15px;    
@@ -93,6 +106,11 @@ const RegionsBoxes = styled(Link)`
           position: relative;
           top: -2px;
           margin-right: 4px;
+          @media only screen and (max-width: 480px) {
+            padding: 5px 18px;
+            font-size: 12px;
+            top: -2px;
+          }
         }
         &.black{
           span{
@@ -122,8 +140,9 @@ const RegionsBoxes = styled(Link)`
         
         }
         @media only screen and (max-width: 480px) {
-          right: 0px;
-          height: 200px;
+          right: 10px;
+              height: 120px;
+              bottom: 0;
         
         }
     }

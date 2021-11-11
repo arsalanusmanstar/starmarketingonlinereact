@@ -231,6 +231,10 @@ const FeautureProductsMain = styled.div`
     opacity: 1;
     padding: 0px 0px 90px 0px;
     background-position: bottom;
+    @media only screen and (max-width: 480px) {
+        padding: 0px 0px 0px 0px;
+        background-size: contain;
+    }
    
     position: relative;
     ul.featured-project-tag {
@@ -380,34 +384,35 @@ const ReadMore = styled.button`
   margin: 20px 0;
   position:relative;
    a {
-    padding: 24px 95px 24px 36px;
-    display: block;
-    font-size: 23px;
-    font-weight: 200;
+    padding: 18px 70px 18px 30px;
+        display: block;
+        font-size: 16px;
+        font-weight: 200;
     @media only screen and (max-width: 1366px) {
         padding: 20px 80px 20px 24px;
         font-size: 16px;
    
     }
     @media only screen and (max-width: 480px) {
-            padding: 14px 60px 14px 20px;
+            padding: 12px 40px 12px 18px;
             font-size: 14px;
          
     
       }
 }
   img {
-        top: 31px;
-        right: 28px;
+    top: 27px;
+        right: 26px;
         position: absolute;
+        width: 32px;
         @media only screen and (max-width: 1366px) {
             top: 26px;
             right: 20px;
         }
         @media only screen and (max-width: 480px) {
             top: 24px;
-            right: 20px;
-            width: 30px;
+                right: 16px;
+                width: 20px;
              
         
           }

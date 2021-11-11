@@ -161,14 +161,15 @@ h1 {
     font-size: 61px;
     }
     @media only screen and (max-width: 480px) {
-        font-size: 40px;
+        font-size: 30px;
+    margin-bottom: 10px;
 
     }
 }
  p {
     font-size: 24px;
     @media only screen and (max-width: 480px) {
-        font-size: 18px;
+        font-size: 14px;
 
     }
 }
@@ -189,6 +190,8 @@ h1 {
         }
         @media only screen and (max-width: 480px) {
             width: 100%;
+            font-size: 14px;
+             margin-bottom: 5px;
 
         }
 
@@ -208,6 +211,7 @@ h1 {
         width: 100%;
         margin: 0px 0px 0px 0px;
         text-align: center;
+        font-size: 16px;
     }
 }
 `;
@@ -225,6 +229,9 @@ box-shadow: 0px 31px 30px #b9b9b929;
 @media only screen and (max-width: 1366px) {
     align-items: center;
     padding: 30px 30px;
+    @media only screen and (max-width: 480px) {
+        padding: 20px 20px;
+    }
 
   }
 
@@ -393,6 +400,7 @@ margin-bottom: 70px;
 }
 @media only screen and (max-width: 480px) {
     width: 100%;
+    margin-bottom: 20px;
 }
 `;
 

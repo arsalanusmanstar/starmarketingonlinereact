@@ -261,14 +261,27 @@ height: fit-content;
     position: absolute;
     left: 0px;
     top: -30px;
+    @media only screen and (max-width: 480px) {
+    
+      font-size: 14px;
+    }
 }
     tag img {
         position: absolute;
         left: -14px;
         top: 0px;
+        @media only screen and (max-width: 480px) {
+          left: -14px;
+              top: 0px;
+              width: 44px;
+        }
      }
      .red {
         background: #db2d34;
+        @media only screen and (max-width: 480px) {
+          font-size: 14px;
+          padding: 12px 16px 12px 34px;
+        }
     }
      text {
         background: #001439b5 0% 0% no-repeat padding-box;
@@ -307,6 +320,10 @@ const LatestBoxesText = styled.div`
     letter-spacing: 1px;
     margin-top: 0px;
     margin-bottom: 35px;
+    @media only screen and (max-width: 480px) {
+      font-size: 20px;
+      margin: 10px 0px;
+    }
 }
  p {
     font-size: 25px;
@@ -318,6 +335,9 @@ const LatestBoxesText = styled.div`
     -webkit-box-orient: vertical;
     letter-spacing: 1px;
     margin-bottom: 40px;
+    @media only screen and (max-width: 480px) {
+      font-size: 14px;
+    }
 }
  button {
     background: #DB2D34;
@@ -326,9 +346,17 @@ const LatestBoxesText = styled.div`
     padding: 30px 30px;
     border-radius: 10px;
     cursor: pointer;
+    @media only screen and (max-width: 480px) {
+      font-size: 14px;
+      padding: 15px 20px;
+    }
     img {
         float: right;
         margin: 4px 0px 0px 14px;
+        @media only screen and (max-width: 480px) {
+          margin: 4px 0px 0px 9px;
+              width: 26px;
+        }
     }  
 }
 
@@ -409,6 +437,12 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 480px) {
+
+      width: 100%;
+
+
+  } 
 
 
   }    
@@ -431,6 +465,11 @@ const LatestSearchsectionLfet = styled.div`
         padding: 28px 60px;
         font-size: 26px;
         letter-spacing: 1px;
+        @media only screen and (max-width: 480px) {
+          padding: 20px 20px;
+          font-size: 16px;
+          border-radius: 10px;
+        }
         :focus {
             outline: none;
         }
@@ -442,6 +481,11 @@ const LatestSearchsectionLfet = styled.div`
         background: none;
         top: 20px    ;
         cursor: pointer;
+        @media only screen and (max-width: 480px) {
+          right: 21px;
+              font-size: 22px;
+              top: 16px;
+        }
     }
 }
 
@@ -451,6 +495,9 @@ const LatestSearchsectionRight = styled.div`
     justify-content: center;
     align-items: center;
     margin-top:20px;
+    @media only screen and (max-width: 480px) {
+      display: contents;
+    }
      label {
         background: #000;
         margin: 0px 20px;
@@ -472,13 +519,33 @@ const LatestSearchsectionRight = styled.div`
             width: 25px;
             height: 19px;
             margin: 0px  0px 0px 25px;
+            @media only screen and (max-width: 480px) {
+              position: absolute;
+              right: 10px;
+              top: 20px;
+
+            }
         }
     }
          label.green {
             background: #58AF78;
+            @media only screen and (max-width: 480px) {
+              width: 100%;
+              margin: 15px 0px;
+              border-radius: 10px; 
+              position: relative; 
+              font-size: 20px;       
+            }
         }
          label.red {
             background: #FE5656;
+            @media only screen and (max-width: 480px) {
+              width: 100%;
+              margin: 0px 0px 60px 0px;
+              border-radius: 10px;   
+              position: relative;   
+              font-size: 20px;   
+            }
         }
     
 
@@ -542,6 +609,11 @@ const  LatestBoxesSlides = styled.div`
       font-weight: 300;
       font-size: 29px;
       padding: 14px 0px 40px 0px;
+      @media only screen and (max-width: 480px) {
+        padding: 46px 0px 40px 0px;
+        font-size: 24px;
+      }
+     
     }
     h1 {
       padding: 0;
@@ -574,6 +646,9 @@ const  LatestBoxesSlides = styled.div`
     box-shadow: 0px 3px 10px #00000029;
     border-radius: 20px;
     padding: 30px 30px;
+    @media only screen and (max-width: 480px) {
+      padding: 10px 10px;
+    }
     img {
       width: 100%;
       margin-bottom: 10px;
@@ -587,6 +662,9 @@ const  LatestBoxesSlides = styled.div`
   width: 90%;
   margin: 0 auto;
   padding: 30px 0px;
+  @media only screen and (max-width: 480px) {
+    grid-template-columns: 90%;
+  }
    tag {
     display: flex;
     background: #58AF78;
@@ -611,6 +689,9 @@ text {
   display: flex;
   justify-content: end;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    display: contents;
+  }
    img {
     height: fit-content;
     width: fit-content;
