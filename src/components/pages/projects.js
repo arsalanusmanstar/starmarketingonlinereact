@@ -34,7 +34,7 @@ const Projects = (state) => {
   const [upcoming,setUpcoming] = useState(false);
   const [hideFilter,setHideFilter] = useState(true);
   const [nearme,setNearme] = useState(false);
-  const [category,setCategories] = useState();
+  const [category,setCategories] = useState([]);
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
   const [redirect,setRedirect] = useState(false);
@@ -69,13 +69,19 @@ const Projects = (state) => {
 
   },[state.data])
 
+
   const region = state.match.params.region == 'other' ? '' : state.match.params.region
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
   filter ? Object.keys(post).some(key =>
     post['title'].rendered.toLowerCase().includes(lowercasedFilter)
   ) : post
-).filter((post)=> post.acf && post.acf.filters && post.acf.filters.categories && post.acf.filters.categories.includes(category) ||  category == null  )
+).filter((post)=> 
+    
+  post.acf && post.acf.filters && post.acf.filters.categories && 
+  post.acf.filters.categories.filter(ck =>  category.includes(ck)).length > 0 ||  category.length == 0
+
+)
 .filter((post)=> post.acf && post.acf.filters && post.acf.filters.completed == completed)
 .filter((post)=> post.acf && post.acf.filters && post.acf.filters.upcoming == upcoming || upcoming == false) : [];
   const FilterData = state.match.params.id ? serachFilter.filter((post) => 
@@ -90,7 +96,7 @@ const Projects = (state) => {
     setCompleted(false)
     setUpcoming(false)
     setNearme(false)
-    setCategories()
+    setCategories([])
     setFilter()
     setLocation()
     setAllRegions(true)
@@ -174,38 +180,38 @@ const Projects = (state) => {
             <ProjectHeaderRight>
 
             <ProjectSection>
-               <ProjectSectionBoxes className={category == 'shop'}  onClick={()=>
-                  {setCategories('shop')
+               <ProjectSectionBoxes className={category.includes('shop')}  onClick={()=>{
+                 setCategories(category.includes('shop') ? category.filter(itm => itm != "shop") : [...category, 'shop'])
                   setAllType(false)}}>
                   <Imge src={projects01}></Imge>
                   <button>Shop</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes className={category == 'apartments'}  onClick={()=>{
-                 setCategories('apartments')
+               <ProjectSectionBoxes className={category.includes('apartments')}  onClick={()=>{
+                 setCategories(category.includes('apartments') ? category.filter(itm => itm != "apartments") : [...category, 'apartments'])
                   setAllType(false)}}>
                   <Imge src={projects02}></Imge>
                   <button>Apartments</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes  className={category == 'offices'} onClick={()=>{
-                 setCategories('offices')
+               <ProjectSectionBoxes  className={category.includes('offices')} onClick={()=>{
+                 setCategories(category.includes('offices') ? category.filter(itm => itm != "offices") : [...category, 'offices'])
                   setAllType(false)}}>
                   <Imge src={projects03}></Imge>
                   <button>Offices</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes  className={category == 'houses'} onClick={()=>{
-                 setCategories('houses')
+               <ProjectSectionBoxes  className={category.includes('houses')} onClick={()=>{
+                 setCategories(category.includes('houses') ? category.filter(itm => itm != "houses") : [...category, 'houses'])
                   setAllType(false)}}>
                   <Imge src={projects04}></Imge>
                   <button>Houses</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes  className={category == 'plots'} onClick={()=>{
-                 setCategories('plots')
+               <ProjectSectionBoxes  className={category.includes('plots')} onClick={()=>{
+                 setCategories(category.includes('plots') ? category.filter(itm => itm != "plots") : [...category, 'plots'])
                   setAllType(false)}}>
                   <Imge src={projects05}></Imge>
                   <button >Plots</button>
                </ProjectSectionBoxes>
-               <ProjectSectionBoxes className={category == 'penthouses'} onClick={()=>{
-                 setCategories('penthouses')
+               <ProjectSectionBoxes className={category.includes('penthouses')} onClick={()=>{
+                 setCategories(category.includes('penthouses') ? category.filter(itm => itm != "penthouses") : [...category, 'penthouses'])
                   setAllType(false)}}>
                   <Imge src={projects06}></Imge>
                   <button >Penthouses</button>
@@ -681,7 +687,7 @@ h1{
     right: 0;
     left: 0;
     top: -59px;
-    text-align: center;
+    text-align: center; 
     background-size: cover;
   }    
     `
