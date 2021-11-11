@@ -38,7 +38,8 @@ const Projects = (state) => {
   const [location,setLocation] = useState();
   const [filter,setFilter] = useState();
   const [redirect,setRedirect] = useState(false);
-  const [sendLocation,setSendLocation] = useState(false);
+  const [sendRegion,setSendRegion] = useState(false);
+  const [sendCity,setSendCity] = useState(false);
   const [data,setData] = useState();
   const [cities,setCities] = useState(Cities);
   const [currentLocation,setCurrentLocation] = useState({"key":0,"label":"All Cities","value":""})
@@ -55,7 +56,7 @@ const Projects = (state) => {
         console.error(e);
     }
     const lock =  Cities.filter((loc,index)=>
-      loc.value == state.match.params.city 
+      loc.value == state.match.params.id 
     )
     console.log(lock,'lock')
     lock.length != 0 && setAllRegions(false)
@@ -68,7 +69,7 @@ const Projects = (state) => {
 
   },[state.data])
 
-  const city = state.match.params.city == 'other' ? '' : state.match.params.city
+  const region = state.match.params.region == 'other' ? '' : state.match.params.region
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
   filter ? Object.keys(post).some(key =>
@@ -79,8 +80,8 @@ const Projects = (state) => {
 .filter((post)=> post.acf && post.acf.filters && post.acf.filters.upcoming == upcoming || upcoming == false) : [];
   const FilterData = state.match.params.id ? serachFilter.filter((post) => 
   post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == state.match.params.id 
-) : city ? serachFilter.filter((post) => 
-    post.acf && post.acf.filters && post.acf.filters.city.toLowerCase() == city 
+) : region ? serachFilter.filter((post) => 
+    post.acf && post.acf.filters && post.acf.filters.region.toLowerCase() == region 
   )  : serachFilter;
  
   
@@ -99,23 +100,28 @@ const Projects = (state) => {
   }
   const onChangeLocation = (x) => {
     setCurrentLocation(x)
-    setSendLocation(true)
+    setSendCity(true)
     setAllRegions(false)
   }
   const onChangeRegions = (x) => {
     
     x.key != 0 ? 
-      setCities( Cities.filter((city,index)=> city.region == x.key ))
+      setCities( Cities.filter((city,index)=> 
+        city.region != 0 
+        ? city.region == x.key : city
+      ))
     : setCities( Cities )
 
-      setCurrentRegions(x)
-    setSendLocation(true)
+    setCurrentRegions(x)
+    setSendRegion(true)
+    setSendCity(false)
     setAllRegions(false)
   }
   const regionsFun =()=> {
-      setCurrentLocation({"key":0,"label":"All Cities","value":""})
-      setAllRegions(true)
-      setRedirect(true)
+    setCurrentRegions({"key":0,"label":"All Regions","value":""})
+    setCurrentLocation({"key":0,"label":"All Cities","value":""})
+    setAllRegions(true)
+    setRedirect(true)
   }
   
   return (
@@ -128,7 +134,8 @@ const Projects = (state) => {
           </InnerBannerSection> 
         </SectionContainer>
         {redirect && <Redirect to="/projects" />}
-        {sendLocation && <Redirect to={"/projects/"+currentLocation.value} />}
+        {sendRegion && <Redirect to={"/projects/"+currentRegions.value} />}
+        {sendCity && <Redirect to={"/projects/"+currentRegions.value+"/"+currentLocation.value} />}
 
 
         <ProjectHeadersection>

@@ -4,6 +4,7 @@ import Modules from "../modules"
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
+import Meta from "../elements/meta"
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
@@ -22,6 +23,7 @@ useEffect(()=>{
   const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug=home-page', fetcher)
   return (
     <div style={{backgroundImage:`url("/assets/WebBg.png")`}}> 
+      <Meta meta={data && data[0].yoast_meta} />
       <Header />
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
          <Modules data={data && data[0]['acf']} location={location} /> } 

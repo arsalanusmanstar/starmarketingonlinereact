@@ -6,6 +6,7 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
 import axios from "axios";
+import Meta from "../elements/meta"
 
 const Pages = ({ match,location }) => {
   const [data,setData] = useState('');
@@ -23,6 +24,7 @@ const Pages = ({ match,location }) => {
 
   return (
     <div > 
+      {data && data[0] && <Meta meta={data && data[0].yoast_meta} />}
       <Header />
       {console.log(data,'data')}
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :

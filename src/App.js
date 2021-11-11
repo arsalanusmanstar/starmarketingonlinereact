@@ -60,8 +60,8 @@ export default function App(state) {
         <Route path="/contact-us" exact component={Pages}></Route>
         <Route path="/privacy-policy" exact component={Pages}></Route>
         <Route path="/projects" exact render={(props) => <Projects {...props} data="" />} />
-        <Route path="/projects/:city" exact render={(props) => <Projects {...props} />} />
-        <Route path="/projects/:city/:id" exact render={(props) => <Projects {...props} />} />
+        <Route path="/projects/:region" exact render={(props) => <Projects {...props} />} />
+        <Route path="/projects/:region/:id" exact render={(props) => <Projects {...props} />} />
         <Route path="/hot-projects/" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>
