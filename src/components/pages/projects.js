@@ -55,12 +55,20 @@ const Projects = (state) => {
     } catch (e) {
         console.error(e);
     }
-    const lock =  Cities.filter((loc,index)=>
-      loc.value == state.match.params.id 
+    const lock =  Regions.filter((loc,index)=>
+      loc.value == state.match.params.region 
     )
     console.log(lock,'lock')
     lock.length != 0 && setAllRegions(false)
-    setCurrentLocation(lock.length > 0 ? lock[0] : {"key":0,"label":"All Cities","value":""})
+    setCurrentRegions(lock.length > 0 ? lock[0] : {"key":0,"label":"All Regions","value":""})
+    
+    lock && lock[0] &&
+    lock[0].key != 0 ? 
+      setCities( Cities.filter((city,index)=> 
+        city.region != 0 
+        ? city.region == lock[0].key : city
+      ))
+    : setCities( Cities )
     
     state.data &&  clearFilters()
     !state.data && window.scrollTo({top: 0,behavior: 'smooth'}); 
