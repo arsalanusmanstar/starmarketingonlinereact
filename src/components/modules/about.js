@@ -144,7 +144,11 @@ const Count = styled.div`
     @media only screen and (max-width: 1024px) {
         font-size: 38px;
 
-    }   
+    } 
+    @media only screen and (max-width: 820px) {
+        line-height: 40px;
+
+    }  
     @media only screen and (max-width: 480px) {
         line-height: 44px;
 
@@ -164,7 +168,7 @@ const Title = styled.div`
         line-height: 28px;
 
     }  
-    @media only screen and (max-width: 786px) {
+    @media only screen and (max-width: 820px) {
         font-size: 20px;
         line-height: 25px;
 

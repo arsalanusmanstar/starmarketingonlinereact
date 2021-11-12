@@ -231,6 +231,11 @@ const FeautureProductsMain = styled.div`
     opacity: 1;
     padding: 0px 0px 90px 0px;
     background-position: bottom;
+
+    @media only screen and (max-width: 820px) {
+        background-size: cover;
+        background-position: right;
+    }
     @media only screen and (max-width: 480px) {
         padding: 0px 0px 0px 0px;
         background-size: contain;
@@ -253,6 +258,13 @@ const FeautureProductsMain = styled.div`
         border-radius: 10px;
         font: normal normal 300 16px/27px Poppins;
         margin: 9px 9px 0px 0px;
+        @media only screen and (max-width: 820px) {
+            margin: 0px 4px 0px 0px;
+            font-size: 14px;
+            text-transform: capitalize;
+            padding: 3px 12px;
+
+        }
         @media only screen and (max-width: 480px) {
                 margin: 6px 6px 0px 0px;
                 font-size: 14px;
@@ -394,10 +406,14 @@ const ReadMore = styled.button`
         display: block;
         font-size: 16px;
         font-weight: 200;
+       
     @media only screen and (max-width: 1366px) {
         padding: 20px 80px 20px 24px;
         font-size: 16px;
    
+    }
+    @media only screen and (max-width: 820px) {
+        padding: 14px 58px 14px 20px;
     }
     @media only screen and (max-width: 480px) {
             padding: 12px 40px 12px 18px;
@@ -414,6 +430,10 @@ const ReadMore = styled.button`
         @media only screen and (max-width: 1366px) {
             top: 26px;
             right: 20px;
+        }
+        @media only screen and (max-width: 820px) {
+            top: 23px;
+            right: 16px;
         }
         @media only screen and (max-width: 480px) {
             top: 24px;

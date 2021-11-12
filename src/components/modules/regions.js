@@ -16,8 +16,7 @@ const Regions = ({data}) => {
             {data && data.region_listing && data.region_listing.map((region,index)=>
               <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.country.toLowerCase()} style={{textDecoration:'none'}}>
                 <h1 style={{color:'#000000'}}>{region.country}</h1>
-                <p className="black"><span>Total</span> {region.total_projects} </p> <br />
-                <p className="green"><span>Completed</span> {region.completed_projects} </p>
+              
                 <Imge src={region.image}></Imge>
               </RegionsBoxes>
             )}
@@ -70,6 +69,10 @@ const RegionsBoxes = styled(Link)`
     padding-bottom: 0px;
     position: relative;
     height: 420px;  
+    @media only screen and (max-width: 820px) {
+      padding: 0px 20px;
+      height: 250px;
+    }
     @media only screen and (max-width: 480px) {
       padding: 0px 20px;
       height: 202px;
@@ -79,6 +82,9 @@ const RegionsBoxes = styled(Link)`
         margin-bottom: 0px;
         font-weight: 600;
         margin: 2rem auto 0rem;
+        @media only screen and (max-width: 820px) {
+          font-size: 30px;
+        }
         @media only screen and (max-width: 480px) {
           font-size: 30px;
         }
@@ -93,6 +99,11 @@ const RegionsBoxes = styled(Link)`
         border-radius: 27px;
         display: inline-block;
         text-align: right;
+        @media only screen and (max-width: 820px) {
+          font-size: 16px;
+          padding: 2px 10px 0px 0px;
+          margin: 8px 4px!important;
+        }
         @media only screen and (max-width: 480px) {
           font-size: 16px;
           padding: 2px 10px 0px 0px;
@@ -106,6 +117,11 @@ const RegionsBoxes = styled(Link)`
           position: relative;
           top: -2px;
           margin-right: 4px;
+          @media only screen and (max-width: 820px) {
+            padding: 4px 18px;
+            font-size: 14px;
+            top: -2px;
+          }
           @media only screen and (max-width: 480px) {
             padding: 5px 18px;
             font-size: 12px;
@@ -133,7 +149,7 @@ const RegionsBoxes = styled(Link)`
         right: 60px;
         bottom: 0;
         filter: grayscale(100%);
-        @media only screen and (max-width: 786px) {
+        @media only screen and (max-width: 820px) {
           right: 10px;
               height: 160px;
               bottom: 22px;

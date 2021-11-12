@@ -68,12 +68,14 @@ const BannerCont = styled.div`
     -webkit-backdrop-filter: blur(50px);
     padding: 35px;
     z-index: 123;
-    @media only screen and (max-width: 786px) {
+    @media only screen and (max-width: 820px) {
         position: relative;
         top: 25%;
         width: 100%;
+        height: auto;
+        z-index: revert;
         @media only screen and (max-width: 480px) {
-            top: 24%;
+            top: 16%;
             height: auto;
             padding: 20px;
             padding-bottom: 90px;
@@ -142,6 +144,10 @@ const Content = styled.p`
         line-clamp: 2;
         -webkit-box-orient: vertical;
 
+    }
+    @media only screen and (max-width: 820px) {
+        margin-top:15px;
+        margin-bottom:19px;
     }
     
     
@@ -216,7 +222,7 @@ const VideoImg = styled.video`
  
     }
   }
-  @media only screen and (max-width: 786px) {
+  @media only screen and (max-width: 820px) {
     width: 100%;
     height: 400px;
 

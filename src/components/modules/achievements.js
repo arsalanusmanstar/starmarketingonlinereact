@@ -102,6 +102,10 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+
+      top: -10px;
+    }
     @media only screen and (max-width: 480px) {
 
       width: 100%;

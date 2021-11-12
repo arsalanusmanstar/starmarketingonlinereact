@@ -634,6 +634,7 @@ ul.pagination li {
   right: 10%;
   display:none;
   font-size: 56px;
+  transition: all 0.35s linear;
 }
 .hotMenu ul {
   padding: 0;
@@ -677,7 +678,69 @@ ul.pagination li {
 }
 div[data-popper-placement="right"] {color: #fff;background: #000 !important;padding:5px 20px;border-radius:10px;}
 
+
+@media only screen and (max-width: 820px) {
+  ul.pagination li {
+    grid-template-columns: repeat( auto-fit, minmax(70px, 1fr) );
+    font-size: 20px;
+}
+
+  .pagi img.left {
+      width: 50px;
+}
+.pagi img.right{
+  width: 50px;
+}
+
+  .featured-heading {
+    font-size: 50px;
+    margin: 60px 0px;
+   
+}
+
+  .jVGtoo {
+    left: 94% !important;
+}
+  .dkXZwm {
+
+    padding: 30px 0 !important;
+    
+}
+.featured-project-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+.featured-project-city-name-text {
+
+  font-size: 14px;
+
+}
+
+  .Sticky_p {
+    padding: 10px 0px !important;
+}
+  .fuAxhF {
+    width: calc(100% - 0rem);
+    max-width: 100% !important;
+}
+  .sticky .menuIcon {
+    font-size: 40px;
+    transition: all 0.35s linear;
+}
+.menuIcon {
+ 
+  right: 5%;
+  
+}
+}
+
 @media only screen and (max-width: 480px) {
+  .dkXZwm {
+
+    padding: 30px 20px !important;
+    
+}
 
   .addressLeft {
     width: 100%;

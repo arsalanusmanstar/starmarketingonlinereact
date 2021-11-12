@@ -61,8 +61,13 @@ h4{
     font-weight: 400;
     letter-spacing: 1px;
     margin: 0px 0px 100px 0px;
+    @media only screen and (max-width: 820px) {
+      margin: 0px 0px 0px 0px;
+      font-size: 34px;
+    }
     @media only screen and (max-width: 480px) {
       margin: 0px 0px 0px 0px;
+
     }
 }
 h4 span{
@@ -71,6 +76,11 @@ h4 span{
     padding: 0px 20px;
     margin-left: 26px;
     font-size: 46px;
+    @media only screen and (max-width: 820px) {
+      margin-left: 10px;
+      font-size: 24px;
+
+}
     @media only screen and (max-width: 480px) {
           margin-left: 10px;
           font-size: 24px;
@@ -98,6 +108,11 @@ h2 {
 @media only screen and (max-width: 1024px) {
   h1{font-size: 91px;}
   h2{font-size: 82px;}
+}
+@media only screen and (max-width: 820px) {
+  h1{font-size: 70px;}
+  h2{font-size: 70px !important;}
+
 }
 @media only screen and (max-width: 480px) {
   h1{font-size: 70px;}
@@ -242,6 +257,7 @@ h1{
     bottom: -16px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+   
     
   }
   h1:before{
@@ -257,6 +273,12 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+      width: 300px;
+        height: 130px; 
+        top: 10px;
+       
+    }
     @media only screen and (max-width: 480px) {
       width: 100%;
     }

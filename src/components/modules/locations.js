@@ -160,6 +160,9 @@ h1 {
     @media only screen and (max-width: 1366px) {
     font-size: 61px;
     }
+    @media only screen and (max-width: 820px) {
+        font-size: 40px;
+        }
     @media only screen and (max-width: 480px) {
         font-size: 30px;
     margin-bottom: 10px;
@@ -168,6 +171,9 @@ h1 {
 }
  p {
     font-size: 24px;
+    @media only screen and (max-width: 820px) {
+        font-size: 18px;
+        }
     @media only screen and (max-width: 480px) {
         font-size: 14px;
 
@@ -186,6 +192,10 @@ h1 {
         }
         @media only screen and (max-width: 1366px) {
             width: 60%;
+        
+        }
+        @media only screen and (max-width: 820px) {
+            font-size: 16px;
         
         }
         @media only screen and (max-width: 480px) {
@@ -207,6 +217,10 @@ h1 {
     margin: 0px 0px 0px 30px;
     position: relative;
     top: 3px;
+    @media only screen and (max-width: 820px) {
+        top: 1px;
+        font-size: 19px;
+    }
     @media only screen and (max-width: 480px) {
         width: 100%;
         margin: 0px 0px 0px 0px;
@@ -262,6 +276,10 @@ const LocationList = styled.div`
         grid-template-columns: 50% 50%;
     
       }
+      @media only screen and (max-width: 820px) {
+        grid-gap: 10px;
+    
+      }
       @media only screen and (max-width: 786px) {
         grid-template-columns: 100%;
     
@@ -279,6 +297,11 @@ const Icon = styled.img`
     width: 30px;
     @media only screen and (max-width: 1024px) {
         margin: 0px 20px 66px 0px;
+    }
+    @media only screen and (max-width: 820px) {
+        
+        width: 20px;
+
     }
     @media only screen and (max-width: 480px) {
         float: none;
@@ -300,6 +323,10 @@ const ListContent = styled.div`
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
+    @media only screen and (max-width: 820px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
     @media only screen and (max-width: 480px) {
         font-size: 14px;
 
@@ -317,6 +344,9 @@ const ContactSectionLeft = styled.div`
     margin-bottom: 90px;
     @media only screen and (max-width: 1024px) {
         margin-bottom: 40px;
+    }
+    @media only screen and (max-width: 820px) {
+        font-size: 50px;
     }
     @media only screen and (max-width: 480px) {
         margin-bottom: 55px;
@@ -343,6 +373,10 @@ const ContactSectionLeft = styled.div`
     font-size: 63px;
     margin: 10px 0px 13px 0px;
     padding-bottom: 0px;
+    @media only screen and (max-width: 820px) {
+        font-size: 40px;
+
+    }
     @media only screen and (max-width: 480px) {
         display: flex;
         justify-content: center;
@@ -398,6 +432,9 @@ margin-bottom: 70px;
 @media only screen and (max-width: 1024px) {
     width: fit-content;
 }
+@media only screen and (max-width: 820px) {
+    display: none;
+}
 @media only screen and (max-width: 480px) {
     width: 100%;
     margin-bottom: 20px;
@@ -411,6 +448,12 @@ const IconTW = styled.img`
 const SL = styled.div`
 display: flex;
 justify-content: space-around;
+@media only screen and (max-width: 820px) {
+    align-items: center;
+    img {
+        width: 34px;
+    }
+}
 @media only screen and (max-width: 480px) {
     align-items: center;
     img {

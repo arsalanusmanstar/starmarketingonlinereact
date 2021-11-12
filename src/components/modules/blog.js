@@ -346,6 +346,10 @@ const LatestBoxesText = styled.div`
     padding: 30px 30px;
     border-radius: 10px;
     cursor: pointer;
+    @media only screen and (max-width: 820px) {
+      font-size: 16px;
+      padding: 20px 20px;
+    }
     @media only screen and (max-width: 480px) {
       font-size: 14px;
       padding: 15px 20px;
@@ -353,6 +357,10 @@ const LatestBoxesText = styled.div`
     img {
         float: right;
         margin: 4px 0px 0px 14px;
+        @media only screen and (max-width: 820px) {
+         
+              width: 30px;
+        }
         @media only screen and (max-width: 480px) {
           margin: 4px 0px 0px 9px;
               width: 26px;
@@ -368,13 +376,12 @@ grid-template-columns: 40% 54%;
 gap: 6%;
 margin: 10% 0px;
 
-@media (max-width: 700px) {
+
+@media (max-width: 820px) {
     grid-template-columns:100%;
     margin:10px 0px 80px;
-    gap:0px;
-    text{
-        display:none;
-        grid-template-columns:100%;
+    gap:20px;
+ 
         user{
             margin:0px;
         }
@@ -508,6 +515,9 @@ const LatestSearchsectionRight = styled.div`
         letter-spacing: 1px;
         box-shadow: 0px 3px 3px #00000029;
         cursor: pointer;
+        @media only screen and (max-width: 820px) {
+          margin-bottom: 40px;
+        }
         img {
             float: left;
            

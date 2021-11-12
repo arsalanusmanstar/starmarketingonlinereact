@@ -65,9 +65,14 @@ const MainContainer = styled.div`
     padding-bottom:  ${(props) => props.bg != 'off' && '7%'};
     padding-top:${(props) => props.bg != 'off' && ' 0%;'};
     color:#fff;
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 820px) {
         margin-bottom: 0;
     padding-bottom: 0%;
+
+    }
+    @media only screen and (max-width: 480px) {
+        margin-bottom: 0;
+    
 
     }
 `;
@@ -84,8 +89,8 @@ const CallRequests = styled.div`
         background-position: center;
     
       }
-      @media only screen and (max-width: 768px) {
-        height: 366px;
+      @media only screen and (max-width: 820px) {
+        height: 250px;
 
     }
       @media only screen and (max-width: 480px) {
@@ -110,6 +115,10 @@ const CallRequests = styled.div`
           }
           @media only screen and (max-width: 1024px) {
             font-size: 36px;
+
+          }
+          @media only screen and (max-width: 820px) {
+            margin: 18px auto;
 
           }
           @media only screen and (max-width: 480px) {
@@ -137,13 +146,17 @@ grid-template-columns: 35% 65%;
     grid-template-columns: 35% 65%;
 
   }
-  @media only screen and (max-width: 786px) {
+  @media only screen and (max-width: 820px) {
     grid-template-columns: 100% ;
   
   }
 .callform{
     background: #fff;
     padding: 65px 70px 42px;
+    @media only screen and (max-width: 820px) {
+        padding: 20px 20px;
+       
+    }
     
     @media only screen and (max-width: 480px) {
         padding: 20px 14px;
@@ -159,6 +172,10 @@ grid-template-columns: 35% 65%;
 .fild label {
     color: #000;
     font-size: 22px;
+    @media only screen and (max-width: 820px) {
+        font-size: 18px;
+
+    }
     @media only screen and (max-width: 480px) {
         font-size: 18px;
 
@@ -190,6 +207,10 @@ grid-template-columns: 35% 65%;
     text-transform: uppercase;
     line-height: 45px;
     letter-spacing: 1px;
+    @media only screen and (max-width: 820px) {
+        line-height: 16px;
+
+    }
     @media only screen and (max-width: 480px) {
         line-height: 16px;
 
@@ -198,6 +219,10 @@ grid-template-columns: 35% 65%;
 
 .input_fild {
     margin: 0px 0px 40px 0px;
+    @media only screen and (max-width: 820px) {
+        margin: 0px 0px 20px 0px;
+
+    }
     @media only screen and (max-width: 480px) {
         margin: 0px 0px 20px 0px;
 

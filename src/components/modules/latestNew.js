@@ -212,7 +212,7 @@ const LatestNewContainer = styled.div`
                     padding: 1% 30px 0.2% 30px;
                 
                   }
-                  @media only screen and (max-width: 786px) {
+                  @media only screen and (max-width: 820px) {
                     padding: 1% 10px 0.2% 10px;
                 
                   }
@@ -316,8 +316,12 @@ const Details = styled.div`
         width: auto;
         float: left;
         margin: 0px 10px 0px 0px;
-
+        @media only screen and (max-width: 820px) {
+          width: 20px;
+    
+        }
     }
+   
     @media only screen and (max-width: 480px) {
       margin: 0px 30px 0px 0px;
           padding: 16px 0px;
@@ -329,6 +333,12 @@ const Date = styled.div`
     color: #929292;
     font-size: 18px;
     line-height: 20px;
+    @media only screen and (max-width: 820px) {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+
+    }
     @media only screen and (max-width: 480px) {
       font-size: 14px;
       display: flex;
@@ -343,6 +353,14 @@ const Auth = styled.div`
     color: #929292;
     font-size: 18px;
     line-height: 17px;
+    @media only screen and (max-width: 820px) {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      line-height: 13px;
+    min-height: 26px;
+
+    }
     @media only screen and (max-width: 480px) {
       font-size: 14px;
       display: flex;

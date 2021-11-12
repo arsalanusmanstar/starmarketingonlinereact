@@ -578,6 +578,11 @@ const LocationSection = styled.div`
   letter-spacing: 1px;
   margin: 14% 0px 60px 0px;
   clear: both;
+  @media only screen and (max-width: 820px) {
+   
+
+    margin: 10% 0px 60px 0px;
+  }
   @media only screen and (max-width: 480px) {
     font-size: 30px;
 
@@ -593,6 +598,11 @@ gap: 5%;
 background: #000;
 color: #fff;
 padding: 60px 60px;
+@media only screen and (max-width: 820px) {
+  grid-template-columns: 100%;
+  padding: 10px 10px;
+  gap: 0%;
+}
 @media only screen and (max-width: 480px) {
   grid-template-columns: 100%;
   padding: 10px 10px;
@@ -655,8 +665,8 @@ const GallerySection = styled.div`
   letter-spacing: 1px;
   margin: 100px 0px 60px 0px;
   @media only screen and (max-width: 480px) {
-    font-size: 30px;
-    margin: 60px 0px 20px 0px;
+    margin: 0;
+    
   }
 }
 
@@ -682,6 +692,10 @@ h1 {
   font-weight: 600;
   letter-spacing: 1px;
   margin: 80px 0px 40px 0px;
+  @media only screen and (max-width: 820px) {
+ 
+    margin: 40px 0px 40px 0px;
+  }
   @media only screen and (max-width: 480px) {
     font-size: 28px;
     margin: 40px 0px 40px 0px;
@@ -697,6 +711,10 @@ h1 {
   gap: 5%;
   background: #F3F3F3;
   padding: 5% 5%;
+
+  @media only screen and (max-width: 820px) {
+    grid-template-columns: 100%;
+  }
   @media only screen and (max-width: 480px) {
     grid-template-columns: 100%;
   }
@@ -761,6 +779,10 @@ h1 {
   font-weight: 600;
   letter-spacing: 1px;
   margin: 80px 0px 40px 0px;
+  @media only screen and (max-width: 820px) {
+    
+    margin: 40px 0px 20px 0px;
+  }
   @media only screen and (max-width: 480px) {
     font-size: 30px;
     margin: 40px 0px 20px 0px;
@@ -812,6 +834,11 @@ height: 716px;
 display: block;
 background-size: cover;
 position: relative;
+@media only screen and (max-width: 820px) {
+  height: 560px;
+ 
+  background-position: bottom;
+}
 @media only screen and (max-width: 480px) {
   height: 560px;
   background-size: contain;
@@ -892,6 +919,9 @@ button {
   width: 50%;
   padding: 0px 0px 8px 0px;
   margin: 0px 0px 38px 0px;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 }
 .loction_section {
   color: #fff;
@@ -1084,6 +1114,10 @@ background-size: cover;
     grid-template-columns: 66% 34%;
 
 }
+@media only screen and (max-width: 820px) {
+  grid-template-columns: 100%;
+
+}
 @media only screen and (max-width: 480px) {
   grid-template-columns: 100%;
 
@@ -1102,6 +1136,11 @@ const ProjectsDescriptionLfet = styled.div`
   h1 {
   font-size: 53px;
   font-weight: 600;
+  @media only screen and (max-width: 820px) {
+    margin: 0;
+    font-size: 45px;
+    margin-bottom: 20px;
+  }
   @media only screen and (max-width: 480px) {
     font-size: 30px;
   }

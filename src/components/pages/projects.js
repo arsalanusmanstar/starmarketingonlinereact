@@ -367,8 +367,13 @@ const ProjectHeadersectionB = styled.div`
       padding: 0px 20px;
       border-radius: 20px;
       position: relative;
+      @media only screen and (max-width: 820px) {
+        margin-bottom: 10%; 
+      }
       @media only screen and (max-width: 480px) {
         padding: 0px 0px;
+        margin-bottom: 20%;
+        padding-bottom: 20px;
       }
   
   }
@@ -426,6 +431,9 @@ h1.listing_heading {
   padding: 50px 0px 50px 0px;
     clear: both;
     margin: 0;
+    @media only screen and (max-width: 820px) {
+      padding: 10px 0px 50px 0px;
+    }
  }
 }
 .upcoming {
@@ -507,6 +515,10 @@ const ProjectHeaderleft = styled.div`
       text-transform: capitalize;
       position: relative;
       cursor: pointer;
+      @media only screen and (max-width: 820px) {
+        font-size: 18px;
+        line-height: 28px;
+      }
       @media only screen and (max-width: 480px) {
         font-size: 14px;
       }
@@ -598,6 +610,9 @@ button {
   background: none;
   font-size: 20px;
   margin: 20px 0px;
+  @media only screen and (max-width: 820px) {
+    font-size: 16px;
+  }
   @media only screen and (max-width: 480px) {
     font-size: 14px;
   }
@@ -606,6 +621,9 @@ img {
   text-align: center;
   margin: 0 auto;
   display: block;
+  @media only screen and (max-width: 820px) {
+    width: 42px;
+  }
   @media only screen and (max-width: 480px) {
     width: 42px;
   }
@@ -655,6 +673,9 @@ const ProjectSearch = styled.div`
             width: 70%;
             border: 0;
             outline: none;
+            @media only screen and (max-width: 820px) {
+              width: 50%;
+            }
           }
       }
     
