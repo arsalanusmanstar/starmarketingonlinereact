@@ -795,3 +795,11 @@ h1.featured-heading.banners {
   font-size: 14px;
 }
 }
+
+
+
+.disable.searchCity:before {content: '';display: block;width: 100%;background: rgb(255 255 255 / 72%);height: 100%;z-index: 999;position: absolute;}
+
+.disable.searchCity {
+    position: relative;
+}

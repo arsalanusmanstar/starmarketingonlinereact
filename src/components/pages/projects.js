@@ -63,13 +63,13 @@ const Projects = (state) => {
     setCurrentLocation(lock.length > 0 ? lock[0] : {"key":0,"label":"All Cities","value":""})
     
     state.data &&  clearFilters()
-    !state.data &&  window.scrollTo({top: 0,behavior: 'smooth'}); 
+    !state.data && window.scrollTo({top: 0,behavior: 'smooth'}); 
    
 
 
-  },[state.data])
+  },[])
 
-
+  
   const region = state.match.params.region == 'other' ? '' : state.match.params.region
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
@@ -119,15 +119,17 @@ const Projects = (state) => {
     : setCities( Cities )
 
     setCurrentRegions(x)
+    setCurrentLocation({"key":0,"label":"All Cities","value":""})
     setSendRegion(true)
     setSendCity(false)
     setAllRegions(false)
   }
   const regionsFun =()=> {
+    setRedirect(true)
     setCurrentRegions({"key":0,"label":"All Regions","value":""})
     setCurrentLocation({"key":0,"label":"All Cities","value":""})
     setAllRegions(true)
-    setRedirect(true)
+    // window.location.href="/projects"
   }
   
   return (
@@ -139,7 +141,7 @@ const Projects = (state) => {
              <h1 style={{marginTop:'-40px'}}>Projects</h1>
           </InnerBannerSection> 
         </SectionContainer>
-        {redirect && <Redirect to="/projects" />}
+      {redirect && <Redirect strict to={"/projects/"} />} 
         {sendRegion && <Redirect to={"/projects/"+currentRegions.value} />}
         {sendCity && <Redirect to={"/projects/"+currentRegions.value+"/"+currentLocation.value} />}
 
@@ -152,7 +154,7 @@ const Projects = (state) => {
               <input type="checkbox" />
               <button className={allType && 'active'} onClick={()=>{
                 setAllType(true)
-                setCategories()
+                setCategories([])
               }}>all Types</button>
             </div>
             <div className="form-group">
@@ -230,7 +232,7 @@ const Projects = (state) => {
                   style={RegionDropdown}
                 />
                 </div>
-                <div className="searchCity">
+                <div className={currentRegions.key == 0 ? "disable searchCity": "searchCity"}>
                 <Select
                   onChange={(x)=>onChangeLocation(x)}
                   value={currentLocation}

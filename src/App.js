@@ -18,6 +18,7 @@ import {
   Switch,
   Route,
   Link,
+  Redirect,
   useLocation
 } from "react-router-dom";
 
@@ -39,21 +40,18 @@ export default function App(state) {
       }
   }, [pathname]);
 
-
- 
-  
-  
   return (
     <div className="App">
-      {/* {parseInt(width) < 767 &&
+      {parseInt(width) < 767 &&
        <MobileView>
             <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
           </MobileView>
-         } */}
+         }
         <Switch>
         {/* <Route path="/about">
           <About />
         </Route>*/}
+        <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
         <Route path="/our-team" exact component={Pages}></Route>
         <Route path="/achievements" exact component={Pages}></Route>
         <Route path="/latest" exact component={Pages}></Route>
