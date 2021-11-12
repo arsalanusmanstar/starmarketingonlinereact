@@ -42,11 +42,11 @@ export default function App(state) {
 
   return (
     <div className="App">
-      {parseInt(width) < 767 &&
+      {/* {parseInt(width) < 767 &&
        <MobileView>
             <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
           </MobileView>
-         }
+         } */}
         <Switch>
         {/* <Route path="/about">
           <About />

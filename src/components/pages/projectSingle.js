@@ -578,6 +578,11 @@ const LocationSection = styled.div`
   letter-spacing: 1px;
   margin: 14% 0px 60px 0px;
   clear: both;
+  @media only screen and (max-width: 480px) {
+    font-size: 30px;
+
+    margin: 10% 0px 60px 0px;
+  }
 }
 `
 
@@ -591,6 +596,7 @@ padding: 60px 60px;
 @media only screen and (max-width: 480px) {
   grid-template-columns: 100%;
   padding: 10px 10px;
+  gap: 0%;
 }
 
 `
@@ -604,6 +610,9 @@ border-bottom-left-radius: 15px;
 border-bottom-right-radius: 15px;
 border-top: 10px solid  #B5292E;
 padding: 20px 30px;
+@media only screen and (max-width: 480px) {
+  padding: 10px 10px;
+}
 img {
   margin:0 auto;
   margin-bottom: 30px;
@@ -645,6 +654,10 @@ const GallerySection = styled.div`
   font-weight: 600;
   letter-spacing: 1px;
   margin: 100px 0px 60px 0px;
+  @media only screen and (max-width: 480px) {
+    font-size: 30px;
+    margin: 60px 0px 20px 0px;
+  }
 }
 
 `
@@ -669,6 +682,10 @@ h1 {
   font-weight: 600;
   letter-spacing: 1px;
   margin: 80px 0px 40px 0px;
+  @media only screen and (max-width: 480px) {
+    font-size: 28px;
+    margin: 40px 0px 40px 0px;
+  }
 }
 
   
@@ -695,6 +712,10 @@ h1 {
   margin: 30px 0px 30px 0px;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 8px;
+  @media only screen and (max-width: 480px) {
+    padding: 20px 0px;
+  margin: 20px 0px 20px 0px;
+  }
  img {
     text-align: center;
     margin: 0 auto;
@@ -706,6 +727,10 @@ h1 {
     font-weight: 500;
     text-transform: capitalize;
     margin: 24px 0px 0px 0px;
+    @media only screen and (max-width: 480px) {
+      font-size: 16px;
+      margin: 10px 0px 0px 0px;
+    }
 }
 &.active{
   background: #f3f3f3;
@@ -736,12 +761,19 @@ h1 {
   font-weight: 600;
   letter-spacing: 1px;
   margin: 80px 0px 40px 0px;
+  @media only screen and (max-width: 480px) {
+    font-size: 30px;
+    margin: 40px 0px 20px 0px;
+  }
 }
 h5 {
   font-size: 15px;
   font-weight: 100;
   letter-spacing: 7px;
   color: #fff;
+  @media only screen and (max-width: 480px) {
+    font-size: 10px;
+  }
 }
 `
 const FacilitiesBoxes = styled.div`
@@ -751,9 +783,15 @@ p {
   letter-spacing: 1px;
   text-align: center;
   text-transform: capitalize;
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 }
  img {
   margin: auto;
+  @media only screen and (max-width: 480px) {
+    width: 50px;
+  }
 }
 `
 const FacilitiesBack = styled.div`
@@ -763,6 +801,9 @@ const FacilitiesBack = styled.div`
   padding: 50px 30px 100px 30px;
   display: flex;
   position: relative;
+  @media only screen and (max-width: 480px) {
+    padding: 20px 10px 60px 10px;
+  }
 `
 
 const DescriptionBanner = styled.div`
@@ -771,6 +812,11 @@ height: 716px;
 display: block;
 background-size: cover;
 position: relative;
+@media only screen and (max-width: 480px) {
+  height: 560px;
+  background-size: contain;
+  background-position: bottom;
+}
 &:before{
   content: '';
   background-image: linear-gradient(-90deg, rgba(255, 255, 255, 0) 1%, black 100%);
@@ -792,12 +838,24 @@ button {
   font-weight: 100;
   text-transform: capitalize;
   border-radius: 10px;
+  @media only screen and (max-width: 480px) {
+    padding: 26px 80px 26px 35px;
+    font-size: 16px;
+    width: 100%;
+  }
 
 
   img {
     position: absolute;
     right: 38px;
     top: 28px;
+    @media only screen and (max-width: 480px) {
+      right: 28px;
+      top: 18px; 
+    }
+
+    
+
   }
 
   
@@ -857,6 +915,10 @@ const SaveShare = styled.div`
   display: grid;
   grid-template-columns: 100%;
   padding: 40px 30px 0px 30px;
+  @media only screen and (max-width: 480px) {
+    padding: 10px 30px 10px 30px;
+    font-size: 16px;
+  }
   
  img {
     width: fit-content;
@@ -896,7 +958,16 @@ display: grid;
   font-size: 18px;
   text-transform: uppercase;
   line-height: 45px;
-  letter-spacing: 1px;}
+  letter-spacing: 1px;
+  @media only screen and (max-width: 480px) {
+    
+    font-size: 14px;
+    line-height: 34px;
+
+  }
+
+
+}
 textarea {
     width: 100%;
     font-size: 18px;
@@ -905,6 +976,12 @@ textarea {
     letter-spacing: 1px;
     border: 0px;
     border-bottom: 1px solid #929292;
+    @media only screen and (max-width: 480px) {
+    
+      font-size: 14px;
+      line-height: 34px;
+  
+    }
 }
 textarea, input:focus {
     outline: none;
@@ -922,6 +999,10 @@ textarea, input:focus {
   border-radius: 10px;
   border: 0;
   text-transform: uppercase;
+  @media only screen and (max-width: 480px) {
+    padding: 10px 6px;
+    font-size: 14px;
+  }
 }
 
 `
@@ -934,6 +1015,11 @@ const CallRequests = styled.div`
         margin: 20px 31px;
         line-height: 43px;
         text-shadow: 1px 1px 1px #00000070;
+        @media only screen and (max-width: 480px) {
+          font-size: 30px;
+          margin: 10px 31px;
+         
+        }
     }
     
 `
@@ -1088,12 +1174,16 @@ button {
 const ProjectsDescriptionRight = styled.div`
 background: #FF4148;
 img.description_top {
-  width: 150px;
-  height: 150px;
-  border-radius: 20px;
-  
-  margin-top: -70px ;
-      margin-left: 25px;
+width: 150px;
+height: 150px;
+border-radius: 20px;
+margin-top: -70px ;
+margin-left: 25px;
+@media only screen and (max-width: 480px) {
+  width: 100px;
+  height: 100px;
+  margin-top: -44px;
+}
 }
 input {
   padding: 10px 20px;
@@ -1118,6 +1208,9 @@ textarea {
   border-radius: 10px;
   cursor:pointer;
   color: #fff;
+  @media only screen and (max-width: 480px) {
+    font-size: 16px;
+  }
   &:hover{
     background:#fff;
     color: #FF4148;

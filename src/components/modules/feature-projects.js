@@ -358,6 +358,9 @@ width: 50%;
             @media only screen and (max-width: 786px) {
                 bottom: 14px;
             }
+            @media only screen and (max-width: 480px) {
+                display: none;
+            }
         }
         .prev{
             z-index: 999;
@@ -366,6 +369,9 @@ width: 50%;
             bottom: -45px;
             @media only screen and (max-width: 786px) {
                 bottom: 14px;
+            }
+            @media only screen and (max-width: 480px) {
+                display: none;
             }
         }
 }  
