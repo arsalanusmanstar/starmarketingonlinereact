@@ -8,17 +8,18 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 const Modal = (state) => {
+  console.log(state,'modal')
     const [activeContent,setActiveContent] = useState(true);
     return <LatestBoxesSlides className={activeContent && 'active'}>
         <div className="projectContent">
             <> 
-                <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
+                <Back bg={back} onClick={()=>state.offModule(false)}></Back>
                 <video style={{width:'100%'}} controls loop  playsInline  defer >
                     <source src="https://staging.starmarketingonline.com/wp-content/uploads/2021/11/lallypor_2_10_teaser1.mp4" type="video/mp4" />
                 </video>
                 {/* <Imge className="full_img" src="https://staging.starmarketingonline.com/wp-content/uploads/2021/11/lyllpur-galleria.jpg" width="100%"></Imge> */}
                 <div className="popupheadermain">
-                    <Link className="tag" to="/project/lyallpur-galleria-ii/"  onClick={()=>setActiveContent(false)}>View Page</Link>
+                    <Link className="tag" to="/project/lyallpur-galleria-ii/"  onClick={()=>state.offModule(false)}>View Page</Link>
                     <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY"></Moment></date>
                         {/* <views><Imge src={latest_icon05}></Imge>1 Views</views>? */}

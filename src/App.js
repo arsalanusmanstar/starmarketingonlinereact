@@ -28,6 +28,7 @@ export default function App(state) {
   const { pathname } = useLocation();
    
   const [data,setData] = useState('');
+  const [moduleOff,setModuleOff] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
@@ -42,11 +43,11 @@ export default function App(state) {
 
   return (
     <div className="App">
-      {/* {parseInt(width) < 767 &&
+      {parseInt(width) < 767 &&
        <MobileView>
             <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
           </MobileView>
-         } */}
+         }
         <Switch>
         {/* <Route path="/about">
           <About />
@@ -68,7 +69,7 @@ export default function App(state) {
         <Route path="/react" exact component={Home}></Route>
         <Route path="*" component={Pages} />
       </Switch>
-      <Modal />
+        {moduleOff && <Modal offModule={()=>setModuleOff(false)}/>} 
       <ScrollButton />
       
     </div>
