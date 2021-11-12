@@ -14,7 +14,7 @@ const Regions = ({data}) => {
 
          <RegionsBoxesMain>
             {data && data.region_listing && data.region_listing.map((region,index)=>
-              <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.country.toLowerCase()} style={{textDecoration:'none'}}>
+              <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.slug.toLowerCase()} style={{textDecoration:'none'}}>
                 <h1 style={{color:'#000000'}}>{region.country}</h1>
                 <p className="black"><span>Total</span> {region.total_projects} </p> <br />
                 <p className="green"><span>Completed</span> {region.completed_projects} </p>

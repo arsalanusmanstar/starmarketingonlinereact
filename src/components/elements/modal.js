@@ -13,7 +13,7 @@ const Modal = (state) => {
         <div className="projectContent">
             <> 
                 <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
-                <video style={{width:'100%'}} controls loop autoPlay playsInline  defer >
+                <video style={{width:'100%'}} controls loop  playsInline  defer >
                     <source src="https://staging.starmarketingonline.com/wp-content/uploads/2021/11/lallypor_2_10_teaser1.mp4" type="video/mp4" />
                 </video>
                 {/* <Imge className="full_img" src="https://staging.starmarketingonline.com/wp-content/uploads/2021/11/lyllpur-galleria.jpg" width="100%"></Imge> */}
