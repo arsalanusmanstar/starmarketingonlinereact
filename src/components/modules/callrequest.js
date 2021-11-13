@@ -57,14 +57,16 @@ const Callrequest = ({state, bg, location}) => {
 export default Callrequest;
 
 const MainContainer = styled.div`
-    background:${(props) => props.bg != 'off' ? `url( ${props.background}) no-repeat center`: '#f3f3f3'};
+    background:#161b31 ${(props) => props.bg != 'off' ? `url( ${props.background}) no-repeat center`: '#f3f3f3'};
     width: 100%;
     display: block;
     background-position: bottom;
-    margin-bottom: ${(props) => props.bg != 'off' && '-146px'};
-    padding-bottom:  ${(props) => props.bg != 'off' && '7%'};
+    margin-bottom: ${(props) => props.bg != 'off' && '0'};
+    padding-bottom:  ${(props) => props.bg != 'off' && '0'};
     padding-top:${(props) => props.bg != 'off' && ' 0%;'};
     color:#fff;
+    background-attachment: fixed;
+    background-size: cover;
     @media only screen and (max-width: 820px) {
         margin-bottom: 0;
     padding-bottom: 0%;
@@ -99,22 +101,26 @@ const CallRequests = styled.div`
 
     }
      h2 {
-        font-size: 34px;
-        font-weight: 400;
-        width: 55%;
+        font-size: 36px;
+        font-weight: bold;
+        width: 71%;
         color: #fff;
-        margin: 80px 60px;
-        line-height: 43px;
+        margin: 61px 60px;
+        line-height: 44px;
         text-shadow: 1px 1px 1px #00000070;
+        letter-spacing: 2px;
+        text-transform: uppercase;
         @media only screen and (max-width: 1366px) {
-            font-size: 46px;
+            font-size: 28px;
+            line-height: 30px;
             width: 100%;
             margin: 44px auto;
             text-align: center;
-            line-height: 56px;
+           
           }
           @media only screen and (max-width: 1024px) {
-            font-size: 36px;
+            font-size: 28px;
+            line-height: 36px;
 
           }
           @media only screen and (max-width: 820px) {
@@ -153,6 +159,10 @@ grid-template-columns: 35% 65%;
 .callform{
     background: #fff;
     padding: 65px 70px 42px;
+    @media only screen and (max-width: 1366px) {
+        padding: 44px 30px 42px;
+       
+    }
     @media only screen and (max-width: 820px) {
         padding: 20px 20px;
        
@@ -251,6 +261,16 @@ textarea {
     letter-spacing: 2px;
     float: right;
     border-radius: 11px;
+    cursor: pointer;
+    :hover {
+        background: #ff000a;
+    }
+   :hover img {
+        right: 25px;
+        width: 25px;
+        top: 15px;
+        transition: all 0.35s linear;
+    }
     @media only screen and (max-width: 480px) {
         font-size: 16px;
         float: left;
@@ -263,6 +283,7 @@ textarea {
     right: 31px;
     width: 20px;
     top: 18px;
+    transition: all 0.35s linear;
     @media only screen and (max-width: 480px) {
         top: 15px;
         

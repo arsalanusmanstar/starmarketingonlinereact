@@ -523,6 +523,7 @@ const ProjectHeaderleft = styled.div`
       text-transform: capitalize;
       position: relative;
       cursor: pointer;
+      color: #000;
       @media only screen and (max-width: 820px) {
         font-size: 18px;
         line-height: 28px;
@@ -618,6 +619,7 @@ button {
   background: none;
   font-size: 20px;
   margin: 20px 0px;
+  color: #000;
   @media only screen and (max-width: 820px) {
     font-size: 16px;
   }

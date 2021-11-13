@@ -6,7 +6,7 @@ const Achievements = ({state}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading"  style={{marginTop:'-40px',color:'white'}}>Achievements</h1>
+            <h1 className="featured-heading banners"  style={{marginTop:'-40px',color:'white'}}>Achievements</h1>
             </Heading>
             <br/><br/><br/><br/>
            <Body>
@@ -173,7 +173,7 @@ const Body=styled.div`
           top:50%;
           transform:translateY(-50%);
           right:-135px;
-          z-index:1000;
+         
           @media only screen and (max-width: 480px) {
                width: 30px;
                 height: 30px;

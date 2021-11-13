@@ -12,6 +12,10 @@ export const Button = styled.div`
    z-index: 9999;
    cursor: pointer;
    color: #ff000a;
+   @media only screen and (max-width: 820px) {
+      left: 92%;
+     
+   }
    @media only screen and (max-width: 480px) {
       left: 90%;
       bottom: 20px  ;

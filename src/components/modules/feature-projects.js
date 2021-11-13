@@ -10,7 +10,7 @@ import line from "../../assets/line.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-
+import ReactAnime from 'react-animejs'
 import ReactLoading from "react-loading";
 
 const NextArrow = ({ onClick }) => {
@@ -260,7 +260,7 @@ const FeautureProductsMain = styled.div`
         margin: 9px 9px 0px 0px;
         @media only screen and (max-width: 820px) {
             margin: 0px 4px 0px 0px;
-            font-size: 14px;
+            font-size: 12px;
             text-transform: capitalize;
             padding: 3px 12px;
 
@@ -401,6 +401,15 @@ const ReadMore = styled.button`
   font: normal normal 300 18px/30px Poppins;
   margin: 20px 0;
   position:relative;
+  z-index: 123;
+  transition: all 0.35s linear;
+  :hover {
+    background: #ff000a 0% 0% no-repeat padding-box;
+ }
+  :hover img {
+    right: 15px;
+    width: 35px;
+   }
    a {
     padding: 18px 70px 18px 30px;
         display: block;
@@ -427,6 +436,7 @@ const ReadMore = styled.button`
         right: 26px;
         position: absolute;
         width: 32px;
+        transition: all 0.35s linear;
         @media only screen and (max-width: 1366px) {
             top: 26px;
             right: 20px;

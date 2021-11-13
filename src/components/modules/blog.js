@@ -672,6 +672,7 @@ const  LatestBoxesSlides = styled.div`
   width: 90%;
   margin: 0 auto;
   padding: 30px 0px;
+  margin-top: 10%;
   @media only screen and (max-width: 480px) {
     grid-template-columns: 90%;
   }

@@ -42,7 +42,7 @@ const RegionsBoxesMain = styled.div`
 display: grid;
 grid-template-columns: 32% 32% 32%;
 gap: 29px 29px;
-margin-top: 10%;
+margin-top: 6%;
 
 @media only screen and (max-width: 1366px) {
   grid-template-columns: 50% 50%;

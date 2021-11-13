@@ -244,7 +244,7 @@ h1{
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px
-    
+   
   }
   h1:after{
     content: "";

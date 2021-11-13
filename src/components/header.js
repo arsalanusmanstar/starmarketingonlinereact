@@ -8,7 +8,7 @@ import Sticky from 'react-sticky-el';
 
 
 
-const Header = () => {
+const Header = ({params}) => {
   
   return (
     <StickyUpdate style={{transform:'inherit !important'}}>
@@ -27,7 +27,7 @@ const Header = () => {
             {/* <SiteDescription>{description}</SiteDescription> */}
           </TitleGroup>
 
-          <MobileNavigation />
+          <MobileNavigation  location={params} />
           {/* Mobile menu button and modal */}
         </TitleWrapper>
 
@@ -245,9 +245,10 @@ const HotProject = styled.div`
     padding: 17px 14px;
     
     span {
-      top: -39px !important;
+      
       padding: 15px 19px 35px !important;
-
+     
+      }
     }
 
 
@@ -267,9 +268,9 @@ const HotProject = styled.div`
     float: right;
     height: 100%;
     padding:13px 17px 38px;
-    position: relative;
-    top: -14px;
-    right: -14px;
+    position: absolute;
+    top: 0;
+    right: 0;
     
     
   }

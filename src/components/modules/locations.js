@@ -171,9 +171,11 @@ h1 {
 }
  p {
     font-size: 24px;
+   
     @media only screen and (max-width: 820px) {
         font-size: 18px;
         }
+        
     @media only screen and (max-width: 480px) {
         font-size: 14px;
 
@@ -217,6 +219,11 @@ h1 {
     margin: 0px 0px 0px 30px;
     position: relative;
     top: 3px;
+    transition: all 0.35s linear;
+    :hover {
+        background: #db2d34;
+        transition: all 0.35s linear;
+    }
     @media only screen and (max-width: 820px) {
         top: 1px;
         font-size: 19px;
@@ -323,6 +330,10 @@ const ListContent = styled.div`
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
+    @media only screen and (max-width: 1366px) {
+        font-size: 16px;
+        
+    }
     @media only screen and (max-width: 820px) {
         font-size: 14px;
         line-height: 20px;

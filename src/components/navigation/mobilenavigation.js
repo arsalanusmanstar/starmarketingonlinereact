@@ -7,9 +7,13 @@ import { useEffect, useState } from "react";
  *
  * It renders the navigation links
  */
-const MobileNavigation = () =>  {
+const MobileNavigation = ({location}) =>  {
   const [openNav,setOpenNav] = useState(false);
+  useEffect(()=>{
+    setOpenNav(false)
+  },[location])
   const state = [
+    ["Home","/","",[]],
     ["About","#","",[['Our Team','/our-team',''],['Achievements','/achievements','']]],
     ["Media","#","",[['Latest','/latest',''],['News','https://star.news','new']]],
     ["Projects","/projects","",[]],
@@ -40,6 +44,7 @@ const MobileNavigation = () =>  {
                       <MenuLinkTarget
                         href={subLink}
                         target="_blank"
+                        
                       >
                         {subName}
                       </MenuLinkTarget>
@@ -51,7 +56,7 @@ const MobileNavigation = () =>  {
                     </MenuLink>}
                     {subChild && subChild.map(([subNameCh,subLinkCh]) => {
                         return (
-                          <MenuItem key={subNameCh}>
+                          <MenuItem key={subNameCh} >
                               <MenuLink
                               to={subLinkCh}>
                               {subNameCh}

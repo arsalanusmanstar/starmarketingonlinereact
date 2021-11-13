@@ -481,7 +481,7 @@ background: #001439d6;
 .sticky .hotMenuMain {
   width: 180px;
   font-size: 14px;
-  line-height: 28px;
+
 }
 
 .sticky .hotMenuMain span {
@@ -490,10 +490,7 @@ background: #001439d6;
 
 
 @media only screen and (max-width: 1366px) {
-  .sticky .rKNQB span {
-    top: -45px !important;
-   
-  }
+ 
   .sc-iqseJM.kwSlTj .featured-heading {
     text-align: left;
    
@@ -554,10 +551,7 @@ img.responsive {
 
 @media only screen and (max-width: 1024px) {
  
-    .sticky .rKNQB span {
-      top: -46px !important;
-     
-    }
+  
    
   .eFgfHc {
     padding: 16px 0px!important;
@@ -651,6 +645,8 @@ ul.pagination li {
   .menuIcon {
     display:block;
   }
+ 
+    
 }
 
 .notfounded {
@@ -680,8 +676,23 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
 
 
 @media only screen and (max-width: 820px) {
+  
+
+  img.responsive {
+  
+    top: 5px;
+   
+}
+  ul.pagination {
+   
+    width: 84%;
+  
+}
+  h1.featured-heading.banners {
+    margin: 70px 0px;
+}
   ul.pagination li {
-    grid-template-columns: repeat( auto-fit, minmax(70px, 1fr) );
+    grid-template-columns: repeat( auto-fit, minmax(67px, 1fr) );
     font-size: 20px;
 }
 
@@ -698,9 +709,7 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
    
 }
 
-  .jVGtoo {
-    left: 94% !important;
-}
+  
   .dkXZwm {
 
     padding: 30px 0 !important;
@@ -733,6 +742,7 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
   right: 5%;
   
 }
+
 }
 
 @media only screen and (max-width: 480px) {

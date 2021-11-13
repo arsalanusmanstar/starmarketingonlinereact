@@ -107,6 +107,10 @@ const ScoreCont = styled.div`
     position: relative;
     z-index: 3;
     padding:40px;
+    @media only screen and (max-width: 820px) {
+        padding:20px;
+    
+      }
     @media only screen and (max-width: 480px) {
         padding:20px;
     

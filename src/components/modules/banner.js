@@ -3,24 +3,46 @@ import SectionContainer from "../styles/section-container";
 import BackgroundImage from "../../assets/WebBg.png";
 import VideoImage from "../../assets/homepage.webm";
 import GuarantLogo from "../../assets/1Icon.png";
+import latest_icon07 from "../../assets/latest_icon07.png";
+import ReactAnime from 'react-animejs'
+
+
 const BannerText = ({state}) => {
     
-    
+    const {Anime, stagger} = ReactAnime
     return (
-            <BannerCont >
-         
-                <GuaranteeLogo  background={GuarantLogo}/>
-                <Heading >{state.heading}</Heading>
-                <Subheading >{state.sub_heading}</Subheading>
-                <Content >{state.content}</Content>
-                <Button  href="#about"  style={{cursor:'pointer'}} > Learn More </Button>
-                <SubButton >Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
-              
-            </BannerCont>   
+      
+               
+                <Anime
+                initial={[
+                    {  targets: '.dir-reverse',
+                        translateX: -450,
+                        direction: 'reverse',
+                        easing: 'easeInOutSine'
+                    }
+                ]}
+                >
+               <div className="dir-reverse">
+               <BannerCont >
+                    <GuaranteeLogo  background={GuarantLogo}/> 
+                    <Heading >{state.heading}</Heading> 
+                    <Subheading >{state.sub_heading}</Subheading>
+                    <Content >{state.content}</Content>
+                    <Button  href="#about"  style={{cursor:'pointer'}} > Learn More <LeftArrow src={latest_icon07} /></Button>
+                    <SubButton >Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
+                    </BannerCont> 
+                </div>
+                </Anime>
+             
+                
+               
+               
+          
     )
 }
 const Video = ({state}) => {
     return (
+        
         <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
             <source src={VideoImage} type="video/mp4" />
         </VideoImg>
@@ -60,8 +82,8 @@ const BannerCont = styled.div`
     width: 691px;
     height: 393px;
     position:absolute; 
-    top: 46%;
-    transform: translate(0%, -50%);
+    transform: translateY(40%);
+    
     background: rgb(255 255 255 / 28%) 0% 0% no-repeat padding-box;
     opacity: 1;
     backdrop-filter: blur(50px);
@@ -70,7 +92,7 @@ const BannerCont = styled.div`
     z-index: 123;
     @media only screen and (max-width: 820px) {
         position: relative;
-        top: 25%;
+        transform: translateY(0%);
         width: 100%;
         height: auto;
         z-index: revert;
@@ -94,7 +116,7 @@ const GuaranteeLogo = styled.section`
     height: 135px;
     background-size: contain;
     position: absolute;
-    right: 26px;
+    right: 20px;
     @media only screen and (max-width: 480px) {
             width: 70px;
             height: 70px;
@@ -111,6 +133,7 @@ const Heading = styled.h1`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
+    text-shadow: 1px 2px 1px #000;
     @media only screen and (max-width: 480px) {
         font-size: 30px;
         line-height: 60px;
@@ -124,6 +147,7 @@ const Subheading = styled.h2`
     opacity: 1;
     padding:0px;
     margin:0px;
+    text-shadow: 1px 2px 1px #000000b5;
     @media only screen and (max-width: 480px) {
         font-size: 15px;
         line-height: 0px;
@@ -134,6 +158,7 @@ const Content = styled.p`
     margin-top:40px;
     margin-bottom:30px;
     color: #fff;
+    text-shadow: 1px 2px 1px #000000b5;
     @media only screen and (max-width: 480px) {
         font-size: 14px;
         margin: 22px 0px;
@@ -160,14 +185,19 @@ const Button = styled.a`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-    padding: 14px 26px;
+    padding: 18px 32px 18px 20px;
     text-decoration:none;
     font-size: 14px;
     letter-spacing: 1px;
+    transition: all 0.35s linear;
     :hover{
-        background: #db2d34 0% 0% no-repeat padding-box;
+        background: #000  0% 0% no-repeat padding-box;
 
 
+    }
+    :hover img {
+        right: -10px;
+        transition: all 0.35s linear;
     }
     @media only screen and (max-width: 480px) {
         font-size: 12px;
@@ -175,7 +205,14 @@ const Button = styled.a`
         float: left;
 
     }
+    
 
+`;
+const LeftArrow = styled.img`
+    width: 26px;
+    right: -2px;
+    position: relative;
+    transition: all 0.35s linear;
 `;
 const SubButton = styled.a`
     float:right;
