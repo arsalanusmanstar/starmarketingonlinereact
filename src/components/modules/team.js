@@ -115,8 +115,8 @@ h2 {
 
 }
 @media only screen and (max-width: 480px) {
-  h1{font-size: 70px;}
-  h2{font-size: 70px;}
+  h1{font-size: 70px !important;    }
+  h2{font-size: 70px !important;line-height: 55px;}
 
 }
 
@@ -243,7 +243,11 @@ h1{
     position: relative;
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    @media only screen and (max-width: 480px) {
+      text-align: left !important;
+      margin: 70px 0px !important;
+      }
    
   }
   h1:after{
@@ -257,6 +261,10 @@ h1{
     bottom: -16px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+    @media only screen and (max-width: 480px) {
+      margin: revert;
+       
+    }
    
     
   }
@@ -273,7 +281,7 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
-    @media only screen and (max-width: 820px) {
+    @media only screen and (max-width: 480px) {
       width: 300px;
         height: 130px; 
         top: 10px;
@@ -281,6 +289,8 @@ h1{
     }
     @media only screen and (max-width: 480px) {
       width: 100%;
+      height: 65px;
+       top: -4px;
     }
    
   }

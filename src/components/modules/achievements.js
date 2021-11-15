@@ -72,7 +72,8 @@ h1{
     font-weight: 600;
     letter-spacing: 1px;
     @media only screen and (max-width: 480px) {
-      text-align: center;
+      
+      margin-top: 0px!important;
     }
     
   }
@@ -103,12 +104,15 @@ h1{
     text-align: center;
     background-size: cover;
     @media only screen and (max-width: 820px) {
-
-      top: -10px;
+    width: 300px;
+    height: 130px;
+    top: 10px;
     }
     @media only screen and (max-width: 480px) {
 
       width: 100%;
+      height: 50px;
+          top: -1px;
     }
    
   }

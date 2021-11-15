@@ -415,17 +415,23 @@ ul.pagination {
   padding: 0;
   margin: 0 auto;
   width: 90%;
-  display: block;
+  display: flex;
+  justify-content: space-around;
 }
 
 ul.pagination li {
-  float: left;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(180px, 1fr) );
-  text-align-last: center;
-  font-size: 38px;
-  cursor: pointer;
+     /* float: left; */
+     list-style: none;
+     /* display: inline-flex; */
+     /* grid-template-columns: repeat( auto-fit, minmax(165
+ px
+ , 1fr) ); */
+     /* text-align-last: center; */
+     font-size: 26px;
+     cursor: pointer;
+     /* justify-content: space-between; */
+     margin: 0;
+     padding: 0;
 }
 .pagi {
   position: relative;
@@ -435,12 +441,16 @@ ul.pagination li {
   cursor:pointer;
   position: absolute;
   left: 0;
+  top: 0px;
+  width: 50px;
 }
 
 .pagi img.right {
   cursor:pointer;
   position: absolute;
   right: 0;
+  top: 0px;
+  width: 50px;
 }
 
 .content h4 {
@@ -481,16 +491,30 @@ background: #001439d6;
 .sticky .hotMenuMain {
   width: 180px;
   font-size: 14px;
+  line-height: 27px;
 
 }
 
 .sticky .hotMenuMain span {
   padding: 13px 16px 38px;
 }
+.contactMainHeading{
+  margin: 0px;
+  font-size: 60px;
+  letter-spacing: 1px;
 
 
+}
+h2.have {
+  margin: 1% 0px 0px 0px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 @media only screen and (max-width: 1366px) {
- 
+  .sticky .hotMenuMain {
+  
+    line-height: 17px;
+}
   .sc-iqseJM.kwSlTj .featured-heading {
     text-align: left;
    
@@ -520,6 +544,9 @@ img.responsive {
 }
 .getinTouch{
   width: 60%;
+  
+  
+ 
 }
 .right_line{
   left: 12% !important;
@@ -596,11 +623,10 @@ ul.pagination li {
 
 .addressLeft {
     float: left;
-    padding: 0px
- 20px;
-    border-radius: 20px;
+    padding: 0px 20px;
+  
     background: rgb(20, 48, 99);
-    width: 38%;
+    width: 40%;
     padding-bottom: 20px;
 }
 
@@ -612,6 +638,7 @@ ul.pagination li {
 
 .addressRight iframe {
     width: 100%;
+    height: 369px;
 }
 
 .mainSlide{
@@ -620,8 +647,21 @@ ul.pagination li {
 }
 .getinTouch {
   width: 61%;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 3px;
 }
 
+.contactMain {
+  position: relative;
+  margin-top: 40px;
+}
+
+img.contactTopimg {
+  position: absolute;
+  right: 31px;
+  top: 26px;
+}
 .menuIcon {
   float: right;
   position: absolute;
@@ -746,6 +786,10 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
 }
 
 @media only screen and (max-width: 480px) {
+  h1.featured-heading.banners.custom {
+    text-align: left;
+    margin: 6px 0px;
+}
   .dkXZwm {
 
     padding: 30px 20px !important;

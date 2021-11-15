@@ -10,6 +10,7 @@ import ScrollButton from './components/elements/ScrollButton/ScrollButton';
 import { useEffect,useState } from "react";
 import axios from "axios";
 import {MobileView,isMobile} from 'react-device-detect';
+import CareerSingle from './components/modules/careerSingle';
 
 
 
@@ -43,11 +44,11 @@ export default function App(state) {
 
   return (
     <div className="App">
-      {parseInt(width) < 767 &&
+      {/*parseInt(width) < 767 &&
        <MobileView>
             <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
           </MobileView>
-         }
+         */}
         <Switch>
         {/* <Route path="/about">
           <About />
@@ -58,6 +59,8 @@ export default function App(state) {
         <Route path="/latest" exact component={Pages}></Route>
         <Route path="/contact-us" exact component={Pages}></Route>
         <Route path="/privacy-policy" exact component={Pages}></Route>
+        <Route path="/careers" exact component={Pages}></Route>
+        <Route path="/career/:slug"  exact component={CareerSingle} data={data}></Route>
         <Route path="/projects" exact render={(props) => <Projects {...props} data="" />} />
         <Route path="/projects/:region" exact render={(props) => <Projects {...props} />} />
         <Route path="/projects/:region/:id" exact render={(props) => <Projects {...props} />} />

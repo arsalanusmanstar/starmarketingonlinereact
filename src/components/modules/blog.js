@@ -76,13 +76,13 @@ const Blog = (state) => {
         <div>
         <SectionContainer>
           <InnerBannerSection>
-             <h1 style={{marginTop:'-40px'}}>Latest </h1>
+             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}>Latest </h1>
           </InnerBannerSection> 
         
         </SectionContainer>  
         
-        <LatestSearchsection>
-          <SectionContainer>
+        <LatestSearchsection >
+          <SectionContainer style={{paddingTop:'80px'}}>
           <LatestSearchsectionMain>
             <LatestSearchsectionLfet>
                 <div className="search">
@@ -120,7 +120,10 @@ const Blog = (state) => {
                         {post.categories[0] == 47 ? 
                             <tag><Imge src={latest_icon01}></Imge>Events</tag> : <tag className="red"><Imge src={latest_icon08}></Imge>Announcements</tag>
                          }
-                        <Imge className="full_img" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} width="100%"></Imge>
+                        <Imge onClick={()=>{
+                            setActiveContent(true)
+                            setContent(index)
+                        }} className="full_img" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} width="100%"></Imge>
                         <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY">{post.date}</Moment></date>
                         <views><Imge src={latest_icon05}></Imge>{post['post-meta-fields'].post_views_count[0]} Views</views>
@@ -248,6 +251,7 @@ position: relative;
 height: fit-content;
  img{
     border-radius: 24px;
+    cursor: pointer;
  }
  tag {
     background: #58AF78;
@@ -284,8 +288,8 @@ height: fit-content;
         }
     }
      text {
-        background: #001439b5 0% 0% no-repeat padding-box;
-        border-radius: 21px ;
+        background: #001439f2  0% 0% no-repeat padding-box;
+        border-radius: 0 ;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -294,18 +298,39 @@ height: fit-content;
         display: grid;
         grid-template-columns: 59% 35%;
         padding: 20px 30px;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 36px;
         gap: 6%;
         border-bottom: 15px solid #cccfe5;
+        letter-spacing: 1px;
+        @media only screen and (max-width: 480px) {
+          grid-template-columns: 100%;
+          padding: 10px 10px;
+          font-size: 12px;
+          line-height: 21px;
+          }
          img {
-            float: left;
-            margin: 2px 20px 6px 0px ;
+          margin-right: 10px;
+          @media only screen and (max-width: 480px) {
+            width: 16px;
+            }
         }
         user {
             margin: 10px 0px ;
-            line-height: 43px;
+            display: flex;
+            align-items: center;
+            @media only screen and (max-width: 480px) {
+              margin: 0px 0px;
+              }
         }
+        views {
+          display: flex;
+          align-items: center;
+      }
+      date {
+        display: flex;
+        align-items: center;
+    }
         img.full_img {
             border-top: 6px solid #cccfe5;
         }
@@ -315,18 +340,19 @@ height: fit-content;
 `
 const LatestBoxesText = styled.div`
  h1 {
-    font-size: 29px;
+    font-size: 36px;
     font-weight: 500;
     letter-spacing: 1px;
     margin-top: 0px;
     margin-bottom: 35px;
+    text-transform: uppercase;
     @media only screen and (max-width: 480px) {
       font-size: 20px;
       margin: 10px 0px;
     }
 }
  p {
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 300;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -341,11 +367,12 @@ const LatestBoxesText = styled.div`
 }
  button {
     background: #DB2D34;
-    font-size: 23px;
+    font-size: 16px;
     color: #fff;
-    padding: 30px 30px;
-    border-radius: 10px;
+    padding:24px 20px;
+    border-radius: 3px;
     cursor: pointer;
+    letter-spacing: 1px;
     @media only screen and (max-width: 820px) {
       font-size: 16px;
       padding: 20px 20px;
@@ -356,7 +383,8 @@ const LatestBoxesText = styled.div`
     }
     img {
         float: right;
-        margin: 4px 0px 0px 14px;
+        margin: 4px 0px 0px 10px;
+            width: 28px;
         @media only screen and (max-width: 820px) {
          
               width: 30px;
@@ -417,6 +445,11 @@ h1{
     text-align: center;
     color: #fff;
     font: normal normal 900 71px/111px 'Poppins', sans-serif;
+    @media only screen and (max-width: 480px) {
+      font-size: 40px !important;
+      line-height: 36px !important;
+      margin-top: 10px!important;
+      }
   }
   h1:after{
     content: "";
@@ -444,9 +477,16 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+      width: 300px;
+      height: 130px;
+      top: 10px;
+      }
     @media only screen and (max-width: 480px) {
 
       width: 100%;
+      height: 50px;
+          top: -10px;
 
 
   } 
@@ -599,13 +639,13 @@ const  LatestBoxesSlides = styled.div`
   
   .projectContent {
     background: #F3F4F6;
-    width: 50%;
+    width: 70%;
     position: fixed;
     right: -2000px;
     padding: 0px;
-    height: 80vh;
+    height: 90vh;
     overflow: scroll;
-    top: 10%;
+    top: 6%;
     -webkit-transition: all 0.5s 0s ease;
     -moz-transition: all 0.5s 0s ease;
     -o-transition: all 0.5s 0s ease;
@@ -656,6 +696,7 @@ const  LatestBoxesSlides = styled.div`
     box-shadow: 0px 3px 10px #00000029;
     border-radius: 20px;
     padding: 30px 30px;
+    
     @media only screen and (max-width: 480px) {
       padding: 10px 10px;
     }
@@ -663,7 +704,12 @@ const  LatestBoxesSlides = styled.div`
       width: 100%;
       margin-bottom: 10px;
       border-radius: 8px;
+      height: auto;
   }
+  figure {
+    margin: 0px;
+}
+
 }
 .popupheadermain {
   display: grid;
@@ -672,7 +718,7 @@ const  LatestBoxesSlides = styled.div`
   width: 90%;
   margin: 0 auto;
   padding: 30px 0px;
-  margin-top: 10%;
+  margin-top: 5%;
   @media only screen and (max-width: 480px) {
     grid-template-columns: 90%;
   }
@@ -693,6 +739,7 @@ const  LatestBoxesSlides = styled.div`
       left: -24px;
       top: 0px;
   }
+ 
 }
 
 

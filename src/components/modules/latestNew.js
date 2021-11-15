@@ -57,7 +57,7 @@ const Latestnews = () => {
     return (
     <LatestNewContainer left_arrow={left_arrow}>    
         <SectionContainer>
-            <h1 className="latest-heading">Latest</h1>
+            <h1 className="featured-heading banners custom" style={{color:"#fff"}}>Latest</h1>
             <div className="featured-project-line"></div>
             <div className="mainSlide">
             <Slider  {...settings}>
@@ -174,7 +174,7 @@ const LatestNewContainer = styled.div`
     .slick-slider{
         button {
             position:absolute;
-            top:50%;
+            top:39%;
             &.slick-prev{
                 background: url(${(props) => props.left_arrow})  0% 0% no-repeat padding-box;
                 left: -140px;
@@ -242,6 +242,11 @@ const LatestNewContainer = styled.div`
          height: 20px;
         border-radius: 100px;
         cursor: pointer;
+           
+        @media only screen and (max-width: 480px) {
+          width: 10px;  
+         height: 10px;
+        }
     }
     ul.slick-dots li.slick-active button{
         opacity: 0.21;
@@ -257,6 +262,11 @@ const LatestNewContainer = styled.div`
          ul.slick-dots {
             display: flex !important;
             justify-content: center;
+            margin: 0;
+            @media only screen and (max-width: 480px) {
+              margin-top: 20px;
+        
+            }
              }
 `
 const Post = styled.div`

@@ -276,8 +276,8 @@ const Section = styled.section`
 `;
 const LocationList = styled.div`
     display: grid;
-    grid-template-columns: 46% 46%;
-    grid-gap: 40px;
+    grid-template-columns: 48% 48%;
+    grid-gap: 57px;
 
     @media only screen and (max-width: 1366px) {
         grid-template-columns: 50% 50%;
@@ -360,7 +360,9 @@ const ContactSectionLeft = styled.div`
         font-size: 50px;
     }
     @media only screen and (max-width: 480px) {
-        margin-bottom: 55px;
+        margin-bottom: 34px;
+        font-size: 40px;
+        text-align: left;
 
     }
    
@@ -384,13 +386,17 @@ const ContactSectionLeft = styled.div`
     font-size: 63px;
     margin: 10px 0px 13px 0px;
     padding-bottom: 0px;
+    @media only screen and (max-width: 1366px) {
+        font-size: 50px;
+
+    }
     @media only screen and (max-width: 820px) {
         font-size: 40px;
 
     }
     @media only screen and (max-width: 480px) {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         font-size: 30px;
 
     }
@@ -421,6 +427,16 @@ padding-bottom: 5%;
         left: 0;
         right: 0;
     }
+    @media only screen and (max-width: 480px) {
+        grid-template-columns: 100%;
+        text-align: center;
+        h1:after {
+            margin: revert;
+            left: 0px;
+            right: 0;
+            height: 8px;
+            bottom: -7px;
+        }
     
 
   }

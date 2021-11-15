@@ -13,16 +13,8 @@ const BannerText = ({state}) => {
     return (
       
                
-                <Anime
-                initial={[
-                    {  targets: '.dir-reverse',
-                        translateX: -450,
-                        direction: 'reverse',
-                        easing: 'easeInOutSine'
-                    }
-                ]}
-                >
-               <div className="dir-reverse">
+              
+             
                <BannerCont >
                     <GuaranteeLogo  background={GuarantLogo}/> 
                     <Heading >{state.heading}</Heading> 
@@ -31,8 +23,8 @@ const BannerText = ({state}) => {
                     <Button  href="#about"  style={{cursor:'pointer'}} > Learn More <LeftArrow src={latest_icon07} /></Button>
                     <SubButton >Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
                     </BannerCont> 
-                </div>
-                </Anime>
+              
+              
              
                 
                
@@ -97,7 +89,7 @@ const BannerCont = styled.div`
         height: auto;
         z-index: revert;
         @media only screen and (max-width: 480px) {
-            top: 16%;
+            top: 0%;
             height: auto;
             padding: 20px;
             padding-bottom: 90px;

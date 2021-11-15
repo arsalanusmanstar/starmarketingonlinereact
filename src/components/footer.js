@@ -56,7 +56,14 @@ const SiteFooter = styled.footer`
   }
   @media only screen and (max-width: 480px) {
    ul{
-    margin: 0 auto;
+    float: left;
+    margin: 0;
+
+   }
+   a{
+  
+    padding: 0;
+
    }
    ul li{
    
@@ -87,7 +94,7 @@ const Copyright = styled.p`
   letter-spacing: 0px;
   color: #757575;
   @media only screen and (max-width: 480px) {
-    text-align: center;
+    text-align: left;
     
   }
   a{

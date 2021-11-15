@@ -26,17 +26,18 @@ const Contact = ({offices,get_in_touch}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading" style={{marginTop:'-40px',color:'white'}}>CONTACT US</h1>
+            <h1 className="featured-heading banners" style={{marginTop:'-40px',color:'white'}}>CONTACT US</h1>
             </Heading>
            
             <br/> <br/>
             <div className="contactMain" style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
-             <h2>{get_in_touch.heading}</h2>
-             <p style={{fontSize:'26px', fontWeight:'500'}} className="getinTouch">{get_in_touch.content}</p>
-             {get_in_touch.image && <img className="contactTopimg" src={get_in_touch.image} style={{float:'right', marginTop:'-250px'}} alt="Get in touch"/>}
-            <CallRequest bg={'off'}/>
-           
-            <h2>WE HAVE <span  style={{color:'red'}}>{offices.office.length}</span> OFFICES</h2>
+             <h2 className="contactMainHeading"> {get_in_touch.heading}</h2>
+             <p  className="getinTouch">{get_in_touch.content}</p>
+             {get_in_touch.image && <img className="contactTopimg" src={get_in_touch.image}  alt="Get in touch"/>}
+             <CallRequestMain className="contactPages"><CallRequest  title={"Request Instant Call Back"} bg={'off'} >
+             
+            </CallRequest></CallRequestMain>
+            <h2 className="have">WE HAVE <span  style={{color:'red'}}>{offices.office.length}</span> OFFICES</h2>
             <br/>
             <Container style={{width: '', margin: '0 auto'}} className="contactMap">
                 
@@ -93,7 +94,7 @@ const Contact = ({offices,get_in_touch}) => {
               <div  className="addressRight">
               {office[currentLocation.key] && office[currentLocation.key].map_url &&
               <iframe src={office[currentLocation.key].map_url}
-               width="950" height="400" style={{border:'0'}} loading="lazy"></iframe>
+               width="950" height="auto" style={{border:'0'}} loading="lazy"></iframe>
               }
               </div>
              
@@ -103,7 +104,15 @@ const Contact = ({offices,get_in_touch}) => {
     )
 }
 
-
+const CallRequestMain = styled.div`
+.contactPages h2 {
+  margin: 69px 32px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 38px;
+  width: 88%;
+}
+`;
 
 const Heading = styled.div`
 h1{
@@ -143,13 +152,17 @@ h1{
     top: -59px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+      width: 300px;
+      height: 130px;
+      top: 10px;
+      }
     @media only screen and (max-width: 480px) {
       width: 100%;
     }
   }
   
 `
-
 
 
 const AddressDetails={
@@ -207,7 +220,6 @@ padding:'12px'
   };
 
 
- 
 
 
 export default Contact;

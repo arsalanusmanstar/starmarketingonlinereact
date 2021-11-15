@@ -78,7 +78,7 @@ const RegionsBoxes = styled(Link)`
       height: 202px;
     }
     h1 {
-        font-size: 48px;
+        font-size: 2em;
         margin-bottom: 0px;
         font-weight: 600;
         margin: 2rem auto 0rem;

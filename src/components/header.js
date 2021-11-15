@@ -46,6 +46,9 @@ const Header = ({params}) => {
               <Link to='/project/safari-garden-housing-scheme/'>Safari Garden</Link>
               </li><li>
               <Link to='/project/jan-heights/'>Jan Heights</Link></li>
+              <li>
+              <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link></li>
+              
               </ul>
               </div>
           </HotProject>
@@ -136,7 +139,7 @@ const HeaderInner = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 4.8rem 0;
+  padding: 2.8rem 0;
   max-width: 168rem;
   z-index: 100;
   margin-left: auto;

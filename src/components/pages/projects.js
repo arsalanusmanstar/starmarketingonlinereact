@@ -146,7 +146,7 @@ const Projects = (state) => {
       <Mainproject>
       <SectionContainer>
           <InnerBannerSection>
-             <h1 style={{marginTop:'-40px'}}>Projects</h1>
+             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}>Projects</h1>
           </InnerBannerSection> 
         </SectionContainer>
       {redirect && <Redirect strict to={"/projects/"} />} 
@@ -412,7 +412,7 @@ const ProjectHeadersectionB = styled.div`
 .listing_shop_box.button a {
   background: #DB2D34;
   color: #fff;
-  padding: 26px 36px;
+  padding: 15px 36px;
   border-radius: 10px;
   text-decoration:none;
   width: -webkit-fill-available;
@@ -778,6 +778,11 @@ h1{
     top: -59px;
     text-align: center; 
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+      width: 300px;
+      height: 130px;
+      top: 10px;
+      }
     @media only screen and (max-width: 480px) {
 
       width: 100%;

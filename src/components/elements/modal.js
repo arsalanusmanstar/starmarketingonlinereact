@@ -64,6 +64,7 @@ const  LatestBoxesSlides = styled.div`
       height: fit-content;
       
     }
+  
    
   
     h2.popupheadings {
@@ -102,7 +103,7 @@ const  LatestBoxesSlides = styled.div`
         }
         @media only screen and (max-width: 480px) {
 
-          top: 10%;
+          top: 20%;
         }
     }
     right: 0;
@@ -129,6 +130,7 @@ const  LatestBoxesSlides = styled.div`
   padding: 30px 0px;
   @media only screen and (max-width: 480px) {
     grid-template-columns: 100%;
+    padding: 0px;
   }
    .tag {
        text-decoration:none;
@@ -172,6 +174,10 @@ text {
 date {
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    justify-content: center;
+    margin: 10px 0px 0px 0px;
+  }
 }
 
 views {
@@ -182,6 +188,10 @@ views {
 user {
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    justify-content: center;
+    margin: 0px 0px 20px 0px;
+  }
 }
 
 }
@@ -246,5 +256,12 @@ const Back = styled.button`
   z-index:999;
     left: 30px;
     top: 30px;
+    @media only screen and (max-width: 480px) {
+      height: 20px;
+      width: 20px;
+      left: 10px;
+    top: 10px;
+
+    }
 `
 

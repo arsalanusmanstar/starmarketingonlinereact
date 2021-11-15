@@ -835,7 +835,7 @@ display: block;
 background-size: cover;
 position: relative;
 @media only screen and (max-width: 820px) {
-  height: 560px;
+  height: auto;
  
   background-position: bottom;
 }
@@ -1078,12 +1078,12 @@ const ProjectsDescription = styled.div`
       text-align: center;
       position: absolute;
       background: #fff;
-      width: 194px;
-      box-shadow: 0px 1px 5px #ff4148;
-      border-radius: 42px;
-      padding: 13px 0px 8px;
-      margin-left: 95px;
-      margin-top: -5px;
+      width: fit-content;
+      box-shadow: 0px 1px 2px #ff414880;
+      border-radius: 42px  ;
+      padding: 17px 20px 8px;
+      margin: 0 auto;
+      right: 48px;
       &.active{
         display:block;
       }
@@ -1103,6 +1103,12 @@ const ProjectsDescription = styled.div`
         left: 0;
         margin: 0 auto;}
     }
+    .ShareButtons button {
+      margin: 0px 6px  ;
+  }
+  .ShareButtons svg:hover {
+    opacity: 0.6;
+}
 `
 const ProjectsDescriptionLMain = styled.div`
 background:url(${(props) => props.background}) no-repeat right;
@@ -1110,6 +1116,10 @@ background-size: cover;
   color: #fff;
   display: grid;
   grid-template-columns: 74% 26%;
+  @media only screen and (max-width: 1366px) {
+    grid-template-columns: 66% 34%;
+
+}
   @media only screen and (max-width: 1024px) {
     grid-template-columns: 66% 34%;
 
@@ -1130,6 +1140,9 @@ const ProjectsDescriptionLfet = styled.div`
 
   padding: 50px 20% 50px 50px;
   letter-spacing: 1px;
+  @media only screen and (max-width: 1366px) {
+    padding: 50px 1% 50px 50px;
+  }
   @media only screen and (max-width: 480px) {
     padding: 20px 20% 52px 20px;
   }
@@ -1163,6 +1176,10 @@ const ProjectsDescriptionLfet = styled.div`
     font-size: 21px;
     letter-spacing: 1px;
     cursor:pointer;
+    @media only screen and (max-width: 820px) {
+      padding: 18px 18px;
+      font-size: 16px;
+      }
     @media only screen and (max-width: 480px) {
       padding: 16px 20px;
       font-size: 15px;
@@ -1171,6 +1188,10 @@ const ProjectsDescriptionLfet = styled.div`
   img {
     float: right;
     margin: 4px 0px 0px 24px;
+    @media only screen and (max-width: 820px) {
+      margin: 4px 0px 0px 10px;
+          width: 30px;
+      }
     @media only screen and (max-width: 480px) {
       margin: 4px 0px 0px 4px;
       width: 30px;
@@ -1218,6 +1239,11 @@ height: 150px;
 border-radius: 20px;
 margin-top: -70px ;
 margin-left: 25px;
+@media only screen and (max-width: 820px) {
+  width: 100px;
+  height: 100px;
+  margin-top: -31px;
+  }
 @media only screen and (max-width: 480px) {
   width: 100px;
   height: 100px;

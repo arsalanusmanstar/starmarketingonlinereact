@@ -10,7 +10,7 @@ import Button from "../elements/button"
 import Input from "../elements/input"
 import Textarea from "../elements/textarea"
 
-const Callrequest = ({state, bg, location}) => {
+const Callrequest = ({state, bg, title, location}) => {
     const [success,setSuccess] = useState('');
     const [loader,setLoader] = useState(false);
     const submitHandler = e => {
@@ -34,9 +34,7 @@ const Callrequest = ({state, bg, location}) => {
 
             <SectionContainerOverRight  bg={bg}>
             <CallSectionMain>
-                <CallRequests background={Call}>
-                    <h2>Request Instant Call Back</h2>
-                </CallRequests>
+                <CallRequests  background={Call}><h2>{title}</h2></CallRequests>
                 <form className="callform" method="POST" id="contactForm" onSubmit={(e)=>submitHandler(e)}>
                     <Input type="text" name="Name" placeholder="" title="Full Name" />
                     <Input type="number" name="Phone" placeholder="" title="Phone" />
@@ -130,7 +128,7 @@ const CallRequests = styled.div`
           @media only screen and (max-width: 480px) {
             font-size: 22px;
             width: 90%;
-            line-height: 43px;
+            line-height: 26px;
             margin: 20px auto;
 
         }
