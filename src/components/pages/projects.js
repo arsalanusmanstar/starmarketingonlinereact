@@ -355,6 +355,7 @@ const ProjectHeadersectionB = styled.div`
       }
       @media only screen and (max-width: 1024px) {
         grid-template-columns: 100%;
+        
     
    }
 
@@ -576,7 +577,7 @@ const ProjectHeaderleft = styled.div`
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
       @media only screen and (max-width: 480px) {
-        top: 5px;
+        top: 9px;
             left: 7px;
             width: 4px;
             height: 6px;
@@ -702,6 +703,7 @@ const ProjectSearch = styled.div`
         @media only screen and (max-width: 480px) {
           width: 100%;
           position: relative;
+          margin-bottom: 10px;
         }
     }
     
@@ -752,6 +754,9 @@ h1{
     letter-spacing: 1px;
     text-align: center;
     color: #fff;
+    @media only screen and (max-width: 480px) {
+      margin-top: 10px!important;
+      }
   }
   h1:after{
     content: "";
@@ -786,6 +791,8 @@ h1{
     @media only screen and (max-width: 480px) {
 
       width: 100%;
+      height: 65px;
+       top: -4px;
 
 
   }    

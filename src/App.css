@@ -786,6 +786,28 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
 }
 
 @media only screen and (max-width: 480px) {
+  img.contactTopimg {
+    position: relative;
+    right: 0;
+    top: 0;
+}
+.getinTouch {
+ 
+  font-size: 18px;
+  
+}
+.contactMainHeading {
+ 
+  font-size: 38px;
+
+}
+h2.have {
+
+  font-size: 27px;
+}
+.contactPages .dkXZwm {
+  padding: 30px 0px !important;
+}
   h1.featured-heading.banners.custom {
     text-align: left;
     margin: 6px 0px;

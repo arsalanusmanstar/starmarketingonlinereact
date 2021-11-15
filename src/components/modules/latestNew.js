@@ -452,10 +452,23 @@ const  LatestBoxesSlides = styled.div`
     box-shadow: 0px 3px 10px #00000029;
     border-radius: 20px;
     padding: 30px 30px;
+    @media only screen and (max-width: 480px) {
+      figure {
+        margin: 0;
+        img {
+          height: auto;
+         
+      }
+        
+    }
+      }
+   
     img {
       width: 100%;
       margin-bottom: 10px;
       border-radius: 8px;
+     
+     
   }
 }
 .popupheadermain {
@@ -465,6 +478,10 @@ const  LatestBoxesSlides = styled.div`
   width: 90%;
   margin: 0 auto;
   padding: 30px 0px;
+  @media only screen and (max-width: 480px) {
+    text-align: left;
+    grid-template-columns: 100%;
+    }
    tag {
     display: flex;
     background: #58AF78;
@@ -477,6 +494,9 @@ const  LatestBoxesSlides = styled.div`
     font-weight: 300;
     letter-spacing: 0.5px;
     left: 23px;
+    @media only screen and (max-width: 480px) {
+      left: 10px;
+      }
     img {
       position: absolute;
       left: -24px;
@@ -489,6 +509,11 @@ text {
   display: flex;
   justify-content: end;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    grid-template-columns: 100%;
+    gap: 6%;
+    display: grid;
+    }
    img {
     height: fit-content;
     width: fit-content;
@@ -526,6 +551,7 @@ tag.red.secound {
   position: relative;
   margin-top: 22px;
   margin-bottom: 30px;
+  
   img {
     float: left;
     position: relative;
@@ -571,5 +597,10 @@ const Back = styled.button`
   position: absolute;
     left: 30px;
     top: 30px;
+    @media only screen and (max-width: 480px) {
+      position: relative;
+      left: 9px;
+      top: 17px;
+      }
 `
 
