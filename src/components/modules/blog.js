@@ -830,8 +830,13 @@ const Back = styled.button`
   margin-bottom: 20px;
   cursor:pointer;
   position: absolute;
-    left: 30px;
-    top: 30px;
+  left: 30px;
+  top: 30px;
+    @media only screen and (max-width: 480px) {
+      position: relative;
+      left: 20px;
+      top: 20px;
+      }
 `
 
 

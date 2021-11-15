@@ -121,7 +121,8 @@ h1{
     font-weight: 600;
     letter-spacing: 1px;
     @media only screen and (max-width: 480px) {
-      text-align: center;
+      margin-top: 20px!important;
+      margin-bottom: 0px !important;
 
     }
     
@@ -159,6 +160,8 @@ h1{
       }
     @media only screen and (max-width: 480px) {
       width: 100%;
+      height: 50px;
+      top: -5px;
     }
   }
   

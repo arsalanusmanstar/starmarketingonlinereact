@@ -586,7 +586,7 @@ const LocationSection = styled.div`
   @media only screen and (max-width: 480px) {
     font-size: 30px;
 
-    margin: 10% 0px 60px 0px;
+    margin: 10% 0px 30px 0px;
   }
 }
 `
@@ -665,8 +665,8 @@ const GallerySection = styled.div`
   letter-spacing: 1px;
   margin: 100px 0px 60px 0px;
   @media only screen and (max-width: 480px) {
-    margin: 0;
-    
+    margin: 50px 0px 30px 0px;
+    font-size: 30px;
   }
 }
 
@@ -676,6 +676,11 @@ display: grid;
 grid-template-columns: 24% 24% 24% 24%;
 gap: 1%;
 
+@media only screen and (max-width: 480px) {
+  img {
+    height: 70px;
+}
+  }
 `
 
 const GBoxes = styled.div`
@@ -731,7 +736,7 @@ h1 {
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 8px;
   @media only screen and (max-width: 480px) {
-    padding: 20px 0px;
+    padding: 20px 20px;
   margin: 20px 0px 20px 0px;
   }
  img {
@@ -825,6 +830,8 @@ const FacilitiesBack = styled.div`
   position: relative;
   @media only screen and (max-width: 480px) {
     padding: 20px 10px 60px 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 `
 
@@ -1308,6 +1315,9 @@ const  ProjectContentSlides = styled.div`
     -moz-transition: all 0.5s 0s ease;
     -o-transition: all 0.5s 0s ease;
     transition: all 0.5s 0s ease;
+    @media only screen and (max-width: 480px) {
+      width: 100%;
+      }
     h1 {
       padding: 0;
       margin: 0;
