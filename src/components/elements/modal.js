@@ -18,15 +18,17 @@ const Modal = (state) => {
                     <source src="https://staging.starmarketingonline.com/wp-content/uploads/2021/11/lallypor_2_10_teaser1.mp4" type="video/mp4" />
                 </video>
                 {/* <Imge className="full_img" src="https://staging.starmarketingonline.com/wp-content/uploads/2021/11/lyllpur-galleria.jpg" width="100%"></Imge> */}
+                <h2 className="popupheadings">Lyallpur Galleria II</h2>
                 <div className="popupheadermain">
-                    <Link className="tag" to="/project/lyallpur-galleria-ii/"  onClick={()=>state.offModule(false)}>View Page</Link>
                     <text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY"></Moment></date>
                         {/* <views><Imge src={latest_icon05}></Imge>1 Views</views>? */}
                         <user><Imge src={latest_icon06}></Imge> Star Marketing Online</user>
                     </text> 
+                    <Link className="tag" to="/project/lyallpur-galleria-ii/"  onClick={()=>state.offModule(false)}>View Page</Link>
+
                 </div>
-                <h2 className="popupheadings">Lyallpur Galleria II</h2>
+                
                
                 </>
             </div>
@@ -53,13 +55,13 @@ const  LatestBoxesSlides = styled.div`
     right: -2000px;
     padding: 0px;
     height: 80vh;
-    overflow: scroll;
+    overflow: auto;
     top: 10%;
     -webkit-transition: all 0.5s 0s ease;
     -moz-transition: all 0.5s 0s ease;
     -o-transition: all 0.5s 0s ease;
     transition: all 0.5s 0s ease;
-    border-radius: 20px;
+    border-radius: 3px;
     @media only screen and (max-width: 1024px) {
       height: fit-content;
       
@@ -70,8 +72,9 @@ const  LatestBoxesSlides = styled.div`
     h2.popupheadings {
       text-align: center;
       font-weight: 300;
-      font-size: 29px;
-      padding: 14px 0px 40px 0px;
+      font-size: 40px;
+      padding: 10px 0px 0px 0px;
+      text-transform: uppercase;
       @media only screen and (max-width: 480px) {
         padding: 30px 0px 40px 0px;
       }
@@ -123,11 +126,11 @@ const  LatestBoxesSlides = styled.div`
 }
 .popupheadermain {
   display: grid;
-  grid-template-columns: 20% 70%;
+  grid-template-columns: 100%;
   gap: 10%;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  padding: 30px 0px;
+  padding: 10px 0px;
   @media only screen and (max-width: 480px) {
     grid-template-columns: 100%;
     padding: 0px;
@@ -136,15 +139,23 @@ const  LatestBoxesSlides = styled.div`
        text-decoration:none;
         background: #58AF78;
         color: #fff;
-        font-size: 20px;
-        border-radius: 16px;
+        font-size: 18px;
+        border-radius: 5px;
         box-shadow: 0px 5px 5px #00000029;
         position: relative;
-        padding: 10px;
+        padding: 14px 50px;
         font-weight: 300;
-        letter-spacing: 0.5px;
-        left: 23px;
-        text-align:center;
+        letter-spacing: 1.5px;
+        left: 0;
+        text-align: center;
+        text-transform: uppercase;
+        width: fit-content;
+        margin: 0 auto;
+        top: 20px;
+        transition: all 0.35s linear;
+        :hover {
+          background: #ff4148 !important;
+      }
         @media only screen and (max-width: 480px) {
           left: 0px;
         }
@@ -158,8 +169,9 @@ const  LatestBoxesSlides = styled.div`
 
 text {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
+  gap: 15px;
   @media only screen and (max-width: 480px) {
     display: contents;
   }
@@ -255,7 +267,7 @@ const Back = styled.button`
   position: absolute;
   z-index:999;
     left: 30px;
-    top: 30px;
+    top: 15px;
     @media only screen and (max-width: 480px) {
       height: 20px;
       width: 20px;

@@ -9,11 +9,14 @@ const Careers = (career)=>{
 
 
 return (
+  <div>
     <SectionContainer>
         <Heading>
         <h1 className="featured-heading" style={{color:'white'}}>Careers</h1>
         </Heading>
+      </SectionContainer>  
 
+      <SectionContainer>
          <MainContainer>
       <HeaderSection>
            <div className="headingSection">
@@ -80,7 +83,10 @@ return (
            </CategorySection>
          </MainContainer>
 
-      </SectionContainer>  
+
+         </SectionContainer>  
+         </div>
+    
         )
 
     }

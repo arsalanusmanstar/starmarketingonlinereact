@@ -56,14 +56,16 @@ const Latestnews = () => {
       
     return (
     <LatestNewContainer left_arrow={left_arrow}>    
-        <SectionContainer>
+        <SectionContainer style={{paddingTop:'0px'}}>
             <h1 className="featured-heading banners custom" style={{color:"#fff"}}>Latest</h1>
             <div className="featured-project-line"></div>
             <div className="mainSlide">
             <Slider  {...settings}>
                 {data ? data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
                     <Post key={index} onClick={()=>setActiveContent(post)}>
+                      
                         <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
+                     
                         <Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title>
                         <Details>
                        
@@ -183,7 +185,11 @@ const LatestNewContainer = styled.div`
                 font-size: 0px;
                 background-size: cover;
                 cursor: pointer;
+                transition: all 0.35s linear;
                 transform: rotate(179deg);
+                :hover {
+                  opacity: 0.8;
+                 }
                 @media only screen and (max-width: 1366px) {
                     display: none !important;
                 
@@ -199,6 +205,10 @@ const LatestNewContainer = styled.div`
                 font-size: 0px;
                 background-size: cover;
                 cursor: pointer;
+                transition: all 0.35s linear;
+                :hover {
+                  opacity: 0.8;
+                 }
                 @media only screen and (max-width: 1366px) {
                     display: none !important;
                 
@@ -207,7 +217,7 @@ const LatestNewContainer = styled.div`
         }
         .slick-list{
             div.slick-slide{
-                padding:1% 28px 1.2% 30px;
+                padding:1% 14px 1.2% 14px;
                 @media only screen and (max-width: 1024px) {
                     padding: 1% 30px 0.2% 30px;
                 
@@ -341,8 +351,10 @@ const Details = styled.div`
 `
 const Date = styled.div`
     color: #929292;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
+    display: flex;
+    align-items: center;
     @media only screen and (max-width: 820px) {
       font-size: 14px;
       display: flex;
@@ -361,8 +373,10 @@ const Date = styled.div`
 `
 const Auth = styled.div`
     color: #929292;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 17px;
+    display: flex;
+    align-items: center;
     @media only screen and (max-width: 820px) {
       font-size: 14px;
       display: flex;
