@@ -40,18 +40,19 @@ const Projects = (state) => {
   const [redirect,setRedirect] = useState(false);
   const [sendRegion,setSendRegion] = useState(false);
   const [sendCity,setSendCity] = useState(false);
-  const [data,setData] = useState();
+  const [data,setData] = useState(JSON.parse(localStorage.getItem('projects')));
   const [cities,setCities] = useState(Cities);
   const [currentLocation,setCurrentLocation] = useState({"key":0,"label":"All Cities","value":""})
   const [currentRegions,setCurrentRegions] = useState({"key":0,"label":"All Regions","value":""})
-
+  let projects = []
   useEffect(async ()=>{
     try {
-     await axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      projects = JSON.parse(localStorage.getItem('projects'));
+      !projects && axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
+        localStorage.setItem('projects',JSON.stringify(response.data))
         setData(response.data)
       })
-      setRedirect(false)
     } catch (e) {
         console.error(e);
     }
@@ -323,7 +324,7 @@ const Projects = (state) => {
                 </div>
 
               </div>
-            ): <div className="notfounded">NOT FOUND</div>  }
+            ): data && <div className="notfounded">NOT FOUND</div>  }
           </div>
           </SectionContainer>
           </ProjectHeadersectionB>

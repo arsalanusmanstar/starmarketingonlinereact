@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import useSWR from 'swr'
+import axios from "axios";
 import SectionContainer from "../styles/section-container";
 import grayBackground from "../../assets/grayBackground.png";
 import Button from "../styles/button";
@@ -27,8 +27,9 @@ const PrevArrow = ({ onClick }) => {
       </div>
     );
 };
-const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 const FeatureProducts = ({state}) => {
+    
+    const [data,setData] = useState(JSON.parse(localStorage.getItem('projects')));
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
     const [nav3, setNav3] = useState(null)
@@ -85,7 +86,21 @@ const FeatureProducts = ({state}) => {
     centerPadding: 0,
     centerMode: true,
   };
-  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=20', fetcher)
+
+  
+  let projects = []
+    useEffect(async ()=>{
+        try {
+        projects = JSON.parse(localStorage.getItem('projects'));
+        !projects && axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+        .then(response => {
+            localStorage.setItem('projects',JSON.stringify(response.data))
+            setData(response.data)
+        })
+        } catch (e) {
+            console.error(e);
+        }
+    })
   
     return (
         <FeautureProductsMain  background={grayBackground}>
