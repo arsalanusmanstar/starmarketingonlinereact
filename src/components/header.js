@@ -1,15 +1,26 @@
 import styled from 'styled-components'
+import { useState } from "react";
 import Navigation from "./navigation/navigation";
 import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
 import {  Logo, DownArrow } from "./icons";
 import Sticky from 'react-sticky-el';
 
-
-
-
 const Header = ({params}) => {
-  
+  const [projects,setProjects] = useState(JSON.parse(localStorage.getItem('projects')))
+  const [filter,setFilter] = useState('');
+  const [active,setActive] = useState(false);
+
+  const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
+  const filteredData = projects && projects.filter(item => {
+    const index = lowercasedFilter.split('');
+    console.log(index.length)
+    if(index.length > 2)
+    return Object.keys(item).some(key =>
+     item['title'].rendered.toLowerCase().includes(lowercasedFilter)
+    );
+  })
+
   return (
     <StickyUpdate style={{transform:'inherit !important'}}>
      <PageHeader  id="site-header">
@@ -53,9 +64,18 @@ const Header = ({params}) => {
               </div>
           </HotProject>
           <div className="searchFilter">
-              <i className="fa fa-search"></i>
-              <div className="searchInput"><input type="text" className="serach" /><button type="submit"><i className="fa fa-search"></i></button></div>
-              <div className="searchResult"></div>
+              <i className="fa fa-search" onClick={()=>setActive(active ? false:true)}></i>
+              {active && <div className="searchDropdown">
+              <div className="searchInput"><input type="text" className="serach" pattern=".{3,}" onChange={(x)=> setFilter(x.target.value)}/></div>
+              <div className="searchResult">
+                <ul>
+                    {filteredData.map((post,indx) => <li><Link  to={post.link.replace('https://staging.starmarketingonline.com','')} key={indx}>
+                      <span><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} /></span>
+                      <h3 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h3>
+                      <p dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p></Link></li>)}
+                </ul>
+              </div>
+              </div>}
           </div>
           {/* Desktop search button */}
         </HeaderNavigationWrapper>
