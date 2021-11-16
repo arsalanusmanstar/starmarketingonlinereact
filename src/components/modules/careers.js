@@ -14,9 +14,10 @@ return (
         <Heading>
         <h1 className="featured-heading" style={{color:'white'}}>Careers</h1>
         </Heading>
-      </SectionContainer>  
-
-      <SectionContainer>
+      </SectionContainer >  
+       
+      <div className="careersMain">
+      <SectionContainer style={{paddingTop:'2px'}} >
          <MainContainer>
       <HeaderSection>
            <div className="headingSection">
@@ -35,21 +36,27 @@ return (
              <div className="job_single">
              <div className="job_top_line"></div>
              <h3>Sales Executive</h3>
-             <p style={{float:'left', marginLeft:'40px'}}> <img src={latest_icon06} style={{marginBottom:'-4px'}}></img>  2</p>
-             <p style={{float:'right', marginRight:'40px', marginTop:'-4px'}}> <i style={{color:'#9adfa3',fontSize:'28px'}} class="fa fa-map-marker"></i>   Karachi</p>
-          
+             <div className="job_bottom_main">
+             <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
+             <div className="job_bottom"> <i class="fa fa-map-marker"></i>   Karachi</div>
+             </div>
+
              </div>
              <div className="job_single">
              <div className="job_top_line"></div>
              <h3>Mern Stack Dev.</h3>
-             <p style={{float:'left', marginLeft:'40px'}}> <img src={latest_icon06} style={{marginBottom:'-4px'}}></img>  2</p>
-             <p style={{float:'right', marginRight:'40px', marginTop:'-4px'}}> <i style={{color:'#9adfa3',fontSize:'28px'}} class="fa fa-map-marker"></i>   Karachi</p>
+             <div className="job_bottom_main">
+             <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
+             <div className="job_bottom"> <i class="fa fa-map-marker"></i>   Karachi</div>
+             </div>
              </div>
              <div className="job_single">
              <div className="job_top_line"></div>
              <h3>Accountant</h3>
-             <p style={{float:'left', marginLeft:'40px'}}> <img src={latest_icon06} style={{marginBottom:'-4px'}}></img>  2</p>
-             <p style={{float:'right', marginRight:'40px', marginTop:'-4px'}}> <i style={{color:'#9adfa3',fontSize:'28px'}} class="fa fa-map-marker"></i>   Lahore</p>
+             <div className="job_bottom_main">
+             <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
+             <div className="job_bottom"> <i  class="fa fa-map-marker"></i>   Lahore</div>
+             </div>
              </div>
            </JobSection>
            <CategorySection>
@@ -71,20 +78,22 @@ return (
                 <h4 className="catgory_subheading_details">HR Executive</h4>
               
                 </div>
-                </div>
-              
-              <div className="other_categories">
+                <div className="other_categories">
               <p className="other_categories_description">Sales & Marketing</p>
               <p className="other_categories_description">Information Technology</p>
               <p className="other_categories_description">Accounts & Finance</p>
               <p className="other_categories_description">Administration</p>
               </div>
+                </div>
+              
+             
                 
            </CategorySection>
          </MainContainer>
 
-
+      
          </SectionContainer>  
+         </div>
          </div>
     
         )
@@ -145,18 +154,20 @@ return (
     display:grid;
     grid-template-columns: 40% 40%;
     grid-gap: 20%;
+    align-items: center;
 
 
     .headingSection{
       background: #001439 0% 0% no-repeat padding-box;
-      border-radius: 34px 34px 34px 0px;
+      border-radius: 100px 0px 100px 0px;
       opacity: 1;
+      text-transform: uppercase;
     
     
       h2{
         text-align: center;
         font: normal normal 500 48px/77px Poppins;
-        letter-spacing: 0px;
+        letter-spacing: 2px;
         color: #FFFFFF;
         opacity: 1;
         margin-top: 23px;
@@ -172,17 +183,18 @@ return (
     
 const JobSearch = styled.div`
 position: relative;
-margin: 40px 0px 0px 0px;
+
 
 
 input {
   border: none;
   width: 100%;
-  font-size: 22px;
-  padding: 18px 36px;
+  font-size: 26px;
+  padding: 30px 36px;
   border-radius: 49px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 5px 8px #00000029;
+  letter-spacing: 1px;
   :focus {
     outline: none;
 }
@@ -190,9 +202,9 @@ input {
 button {
   position: absolute;
   right: 35px;
-  top: 16px;
+  top: 25px;
   background: none;
-  font-size: 27px;
+  font-size: 34px;
 }
 `
 
@@ -200,31 +212,35 @@ button {
 const JobSection = styled.div`
 
 display:grid;
-grid-template-columns: 32% 32% 32%;
+grid-template-columns: 31% 31% 31%;
 justify-content:space-between;
 margin-top:40px;
+gap: 3%;
 
-.job_top_line{
-  background: #248043 0% 0% no-repeat padding-box;
-border-radius: 100px;
-opacity: 1;
-height:7px;
-margin-top:-2px;
-}
+
 
 .job_single{
   background: #40C351 0% 0% no-repeat padding-box;
-  border: 1px solid #C0D2C6;
-  border-radius: 16px;
+  border-top: 10pxsolid #248043;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   opacity: 1;
+  padding: 40px 40px;
+  border-top: 10px solid #248043;
 
   h3{
-     margin-left:41px;
-     margin-top:25px;
-     font: normal normal 400 30px/50px Poppins;
-     letter-spacing: 0px;
-     color: #FFFFFF;
-     opacity: 1;
+   
+    font: normal normal 500 35px/50px Poppins;
+        -webkit-letter-spacing: 0px;
+        -moz-letter-spacing: 0px;
+        -ms-letter-spacing: 0px;
+        letter-spacing: 2px;
+        color: #FFFFFF;
+        opacity: 1;
+        margin: 0px 0px 40px 0px;
+       
+        text-transform: uppercase;
+        font-family: -webkit-pictograph;
   }
 
   p{
@@ -247,10 +263,11 @@ margin-top:40px;
 .category_heading
 {
   text-align: left;
-font: normal normal 500 57px/106px Poppins;
-letter-spacing: 0px;
+font: normal normal 500 52px/106px Poppins;
+letter-spacing: 1px;
 color: #000000;
 opacity: 1;
+text-transform: uppercase;
 }
 
 .category_details

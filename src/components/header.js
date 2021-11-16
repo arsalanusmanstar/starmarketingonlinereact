@@ -44,7 +44,22 @@ const Header = ({params}) => {
 
         <HeaderNavigationWrapper>
           {/* Desktop navigation links */}
+          
           <Navigation />
+          <div className="searchFilter">
+              <i className="fa fa-search" onClick={()=>setActive(active ? false:true)}></i>
+              {active && <div className="searchDropdown">
+              <div className="searchInput"><input type="text" className="serach" pattern=".{3,}" onChange={(x)=> setFilter(x.target.value)}/></div>
+              <div className="searchResult">
+                <ul>
+                    {filteredData.map((post,indx) => <li><Link  to={post.link.replace('https://staging.starmarketingonline.com','')} key={indx}>
+                      <span><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} /></span>
+                      <h3 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h3>
+                      <p dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p></Link></li>)}
+                </ul>
+              </div>
+              </div>}
+          </div>
           <HotProject className="hotMenuMain">Hot Projects <span><DownArrow /></span>
             <div className="hotMenu">
              <ul>
@@ -63,20 +78,7 @@ const Header = ({params}) => {
               </ul>
               </div>
           </HotProject>
-          <div className="searchFilter">
-              <i className="fa fa-search" onClick={()=>setActive(active ? false:true)}></i>
-              {active && <div className="searchDropdown">
-              <div className="searchInput"><input type="text" className="serach" pattern=".{3,}" onChange={(x)=> setFilter(x.target.value)}/></div>
-              <div className="searchResult">
-                <ul>
-                    {filteredData.map((post,indx) => <li><Link  to={post.link.replace('https://staging.starmarketingonline.com','')} key={indx}>
-                      <span><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} /></span>
-                      <h3 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h3>
-                      <p dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p></Link></li>)}
-                </ul>
-              </div>
-              </div>}
-          </div>
+        
           {/* Desktop search button */}
         </HeaderNavigationWrapper>
       </HeaderInner>
@@ -171,9 +173,30 @@ const HeaderInner = styled.div`
   
   .searchFilter {
     color: #98add3;
-    padding: 0px 0px 0px 25px;
+    width: 96px;
     font-size: 29px;
     cursor: pointer;
+        text-align: center;
+    
+  .searchDropdown {
+    position: absolute;
+    right: 0px;
+    margin-top: -109px;
+    width: 20%;
+    transition: all 0.55s linear;
+    input.serach {
+      width: 100%;
+      padding: 12px 20px;
+      border: 0;
+      background: #ffffffe0;
+     
+      letter-spacing: 1px;
+      font-size: 16px;
+      :focus {
+        outline: none;
+    }
+  }
+}
 }
 
 .searchFilter:hover {
@@ -251,7 +274,7 @@ const HeaderNavigationWrapper = styled.div`
 `;
 
 const HotProject = styled.div`
-  margin-left:40px;
+  margin-left:2px;
   width: 196px;
   height: 52px;
   background: #DB2D34 0% 0% no-repeat padding-box;

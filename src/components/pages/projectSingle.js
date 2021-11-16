@@ -1145,7 +1145,7 @@ background-size: cover;
 `
 const ProjectsDescriptionLfet = styled.div`
 
-  padding: 50px 20% 50px 50px;
+  padding: 50px 4% 50px 50px;
   letter-spacing: 1px;
   @media only screen and (max-width: 1366px) {
     padding: 50px 1% 50px 50px;
