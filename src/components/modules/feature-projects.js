@@ -231,6 +231,8 @@ const FeautureProductsMain = styled.div`
     opacity: 1;
     padding: 0px 0px 90px 0px;
     background-position: bottom;
+    background-attachment: fixed;
+    background-size: cover;
 
     @media only screen and (max-width: 820px) {
         background-size: cover;
@@ -255,9 +257,12 @@ const FeautureProductsMain = styled.div`
         border: 1px solid #ccc;
         color: #202741;
         padding: 5px 15px;
-        border-radius: 10px;
-        font: normal normal 300 16px/27px Poppins;
+        border-radius: 5px;
+        font: normal normal 300 14px/27px Poppins;
         margin: 9px 9px 0px 0px;
+        letter-spacing: 0.5px;
+    text-transform: capitalize;
+    background: #f1f1f1;
         @media only screen and (max-width: 820px) {
             margin: 0px 4px 0px 0px;
             font-size: 12px;
@@ -275,6 +280,8 @@ const FeautureProductsMain = styled.div`
   `;
 const ContentArea = styled.div`
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     @media only screen and (max-width: 1366px) {
         justify-content: space-between;
     
@@ -302,22 +309,25 @@ const LeftArea = styled.div`
 `
 const RightArea = styled.div` 
 width: 50%;
+position: relative;
 @media only screen and (max-width: 786px) {
     width:100%;
 
   }
     .left_line{
         position: absolute;
-        left: 69%;
-        top: 84%;
-        width: 16%;
+        right: 4%;
+        width: 40%;
+        bottom: 56px;
+        height: 2.5px;
         
     }
     .right_line{
         position: absolute;
-        left: 47%;
-        top: 84%;
-        width: 16%;
+        left: 9%;
+        width: 40%;
+        bottom: 56px;
+        height: 2.5px;
     }
   .slick-slide {
     position: flex;
