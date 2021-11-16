@@ -47,13 +47,17 @@ const Header = ({params}) => {
               </li><li>
               <Link to='/project/jan-heights/'>Jan Heights</Link></li>
               <li>
-              <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link></li>
+               <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link></li>
               
               </ul>
               </div>
           </HotProject>
+          <div className="searchFilter">
+              <i className="fa fa-search"></i>
+              <div className="searchInput"><input type="text" className="serach" /><button type="submit"><i className="fa fa-search"></i></button></div>
+              <div className="searchResult"></div>
+          </div>
           {/* Desktop search button */}
-          {/* {state.theme.showSearchInHeader && <SearchButton />} */}
         </HeaderNavigationWrapper>
       </HeaderInner>
       {/* Global search modal */}
@@ -145,7 +149,16 @@ const HeaderInner = styled.div`
   margin-left: auto;
   margin-right: auto;
   
-  
+  .searchFilter {
+    color: #98add3;
+    padding: 0px 0px 0px 25px;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+.searchFilter:hover {
+    color: #fff;
+}
   @media (min-width: 700px) {
     max-width: 1440px;
   }

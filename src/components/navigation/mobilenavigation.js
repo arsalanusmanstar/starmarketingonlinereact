@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import back from "../../assets/back.png";
 import { useEffect, useState } from "react";
 /**
@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
  */
 const MobileNavigation = ({location}) =>  {
   const [openNav,setOpenNav] = useState(false);
+  const [activeSubmenu,setActiveSubmenu] = useState();
   useEffect(()=>{
     setOpenNav(false)
   },[location])
@@ -32,11 +33,11 @@ const MobileNavigation = ({location}) =>  {
       <Menu>
         {state.map(([name, link, target, child]) => {
           return (
-            <MenuItem key={name} className={child.length > 0 ? 'submenu' : ''}>
+            <MenuItem key={name} className={child.length > 0 ?  name == activeSubmenu ? 'submenu active' : 'submenu' : ''} onClick={()=>setActiveSubmenu(name == activeSubmenu ? null:name )}>
               <MenuLink  to={link}>
                 {name}
               </MenuLink>
-              <MenuSub>
+              <MenuSub >
                 {child.length > 0 && child.map(([subName,subLink,target,subChild]) => {
                    return (
                    <MenuItem key={subName}>
@@ -44,7 +45,6 @@ const MobileNavigation = ({location}) =>  {
                       <MenuLinkTarget
                         href={subLink}
                         target="_blank"
-                        
                       >
                         {subName}
                       </MenuLinkTarget>
@@ -117,13 +117,6 @@ color: #333;
           border:0px;
         }
       }
-      &:hover {
-        
-          ul{
-            display:block;
-    
-          }
-      }
       :after{
         
         border-color: #000 !important;
@@ -186,6 +179,17 @@ const Menu = styled.ul`
     right: -15px;
     top: 10px;
 }
+li.submenu{
+  ul{
+    display:none;
+  }
+  &.active{
+    ul{
+      display:block;
+    }
+  }
+
+}
 
 
 
@@ -206,16 +210,11 @@ const MenuItem = styled.li`
   @media (min-width: 1220px) {
     margin: 0.8rem 0 0 3.5rem !important;
   }
-  &.submenu:hover > ul{
-   
-    display: block;
-   
-  }
  
 
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
   display: block;
   line-height: 1.2;
   text-decoration: none;

@@ -58,6 +58,7 @@ const Blog = (state) => {
           <li
             key={number}
             id={number}
+            className={currentPage == number && "active"}
             onClick={(event)=>setCurrentPage(event.target.id)}
           >
             {number}
@@ -72,6 +73,11 @@ const Blog = (state) => {
         : [ ...filterCategory,value ] // add item
         setFilterCategory(arr)
     }  
+
+    useEffect(()=>{
+      window.scrollTo({top: 250,behavior: 'smooth'}); 
+    },[renderPageNumbers])
+
     return (
         <div>
         <SectionContainer>
@@ -153,8 +159,8 @@ const Blog = (state) => {
             <div className="pagi">
             <ul className="pagination">{renderPageNumbers}</ul>
             {console.log(currentPage)}
-                  <img src={LeftPag} className="left" onClick={()=> setCurrentPage(currentPage != 1 ?  currentPage - 1  : 1)} />
-                     <img src={RightPag} className="right" onClick={()=> setCurrentPage(currentPage < pageNumbers.length ? currentPage + 1 : pageNumbers.length)}  />
+                  <img src={LeftPag} className="left" onClick={()=> setCurrentPage(currentPage != 1 ?  parseInt(currentPage) - 1  : 1)} />
+                     <img src={RightPag} className="right" onClick={()=> setCurrentPage(currentPage < pageNumbers.length ?  parseInt(currentPage) + 1 : pageNumbers.length)}  />
            </div>
             {/* <Button style={{float:'left'}}>
      <BiChevronLeftCircle 
