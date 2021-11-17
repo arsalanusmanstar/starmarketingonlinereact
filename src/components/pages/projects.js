@@ -696,7 +696,11 @@ const ProjectSearch = styled.div`
           width: 100%;
           margin-bottom: 10px;
         }
+
     }
+   .pr {
+      width: 38%;
+  }
     
     .searchKeyword {
         width: 50%;
