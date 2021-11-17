@@ -59,7 +59,6 @@ const Projects = (state) => {
     const lock =  Regions.filter((loc,index)=>
       loc.value == state.match.params.region 
     )
-    console.log(lock,'lock')
     lock.length != 0 && setAllRegions(false)
     setCurrentRegions(lock.length > 0 ? lock[0] : {"key":0,"label":"All Regions","value":""})
     

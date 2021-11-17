@@ -3,7 +3,6 @@ import SectionContainer from "../styles/section-container";
 import Locations from "../modules/locations";
 
 const SignlePage = ({data}) => {
-    console.log(data)
     return (
         data ?
         <>

@@ -217,7 +217,6 @@ const FeatureProducts = ({state}) => {
                         <Slider  {...settings_img}>     
                         {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>    
                             <div key={index}>
-                                {console.log(latest._embedded['wp:featuredmedia'][0].media_details)}
                                 <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} alt={video}  />
                             </div> 
                         )}

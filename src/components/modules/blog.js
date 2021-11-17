@@ -31,6 +31,7 @@ const Blog = (state) => {
     const [todosPerPage,setTodosPerPage] = useState(3);
     const [filter,setFilter] = useState('');
     const [next,setNext] = useState(1);
+    const [counter,setCounter] = useState();
     
     const [filterCategory,setFilterCategory] = useState([47,2673]);
     const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/posts?categories=47,2673&per_page=100&_embed=true', fetcher)
@@ -73,6 +74,10 @@ const Blog = (state) => {
         : [ ...filterCategory,value ] // add item
         setFilterCategory(arr)
     }  
+
+    const viewPost = (id) => {
+      axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/views/'+id)
+    }
 
     useEffect(()=>{
       window.scrollTo({top: 250,behavior: 'smooth'}); 
@@ -121,7 +126,9 @@ const Blog = (state) => {
 
             {currentTodos.length > 0 ? currentTodos.map((post,index)=>
                 
-                <LatestBoxes key={index}>
+                <LatestBoxes key={index} onClick={()=> viewPost(post.id)}>
+                  
+                 {console.log(post)}
                     <LatestBoxesImg>
                         {post.categories[0] == 47 ? 
                             <tag><Imge src={latest_icon01}></Imge>Events</tag> : <tag className="red"><Imge src={latest_icon08}></Imge>Announcements</tag>
@@ -158,7 +165,6 @@ const Blog = (state) => {
             ) : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
             <div className="pagi">
             <ul className="pagination">{renderPageNumbers}</ul>
-            {console.log(currentPage)}
                   <img src={LeftPag} className="left" onClick={()=> setCurrentPage(currentPage != 1 ?  parseInt(currentPage) - 1  : 1)} />
                      <img src={RightPag} className="right" onClick={()=> setCurrentPage(currentPage < pageNumbers.length ?  parseInt(currentPage) + 1 : pageNumbers.length)}  />
            </div>
@@ -182,7 +188,6 @@ const Blog = (state) => {
                   ).map((post,index)=>
                    post.categories[0] == 47 ? 
                   <>
-                  {console.log(post,'subpost')}
                            <Back bg={back} onClick={()=>setActiveContent(false)}></Back>
                            {post.acf ? post.acf.video_url && 
                             <iframe width="560" height="315" src={post.acf.video_url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" height="450" allowfullscreen width="100%"></iframe>

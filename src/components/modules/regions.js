@@ -4,7 +4,6 @@ import Card_reg from "../../assets/Card_reg.png";
 import { Link } from 'react-router-dom';
 
 const Regions = ({data}) => {
-  console.log(data);
     return (
         <MainContainer >
          <SectionContainer>

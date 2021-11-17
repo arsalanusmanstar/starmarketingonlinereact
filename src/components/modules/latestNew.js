@@ -87,7 +87,6 @@ const Latestnews = () => {
         <LatestBoxesSlides className={activeContent && 'active'}>
                         {activeContent &&
             <div className="projectContent">
-              {console.log(activeContent)}
               { activeContent.categories[0] == 47 ? 
                 <> 
                         <Back bg={back} onClick={()=>setActiveContent(false)}></Back>

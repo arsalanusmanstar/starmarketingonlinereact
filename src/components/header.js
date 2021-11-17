@@ -14,7 +14,6 @@ const Header = ({params}) => {
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const filteredData = projects && projects.filter(item => {
     const index = lowercasedFilter.split('');
-    console.log(index.length)
     if(index.length > 2)
     return Object.keys(item).some(key =>
      item['title'].rendered.toLowerCase().includes(lowercasedFilter)
