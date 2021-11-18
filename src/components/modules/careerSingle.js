@@ -5,6 +5,7 @@ import Footer from "../../components/footer";
 import SectionContainer from "../styles/section-container";
 import Locations from "./locations";
 import useSWR from 'swr';
+import axios from "axios";
 import CareerImage from "../../assets/career_image.PNG";
 import ReactLoading from "react-loading";
 import CareerUserIcon from "../../assets/career_user_icon.PNG";
@@ -19,21 +20,42 @@ import TwitterIcon from "../../assets/twitter_icon.PNG";
 import LinkedinIcon from "../../assets/linkedin_icon.PNG";
 import WhatsappIcon from "../../assets/whatsapp_icon.PNG";
 
+import {FacebookShareButton, TwitterShareButton,LinkedinShareButton,WhatsappShareButton} from "react-share"
+
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
+const shareURL=window.location.href;
+
+
 const CareerSingle=({match,location})=>{
 
+ 
   const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&slug='+match.params.slug, fetcher)
   const baseUrl = 'https://starmarketingonline.com';
 
-  {console.log(data)}
+ 
   useEffect(()=>{
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   },[match.path])
+
+
+  //get simliar jobs
+  const [similarData,setSimilarData] = useState([]);
+  useEffect(async ()=>{
+    try {
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&per_page=100')
+      .then(response => {
+          setSimilarData(response.data)
+          //console.log(response.data,'details')
+      })
+      } catch (e) {
+          console.error(e);
+      }
+  },[])
 
     return(
         <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
@@ -59,7 +81,7 @@ const CareerSingle=({match,location})=>{
                 <img src={CareerImage} className="careerImage"></img>
                 <CareerSubSectionLeft>
                 <img src={CareerDetails}></img>
-                <h3 className="careerSubsectionHeading">{data[0].acf.designation} <span style={{color:'#777777', fontWeight:'300', fontSize:'22px'}}>{data[0].acf.job_type}</span></h3>
+                <h3 className="careerSubsectionHeading">{data[0].acf.designation} <span style={{color:'#777777', fontWeight:'300', fontSize:'22px'}}>({data[0].acf.job_type})</span></h3>
                 <h3 className="careerSubsectionAddress">{data[0].acf.location}, {data[0].acf.city}</h3>
                 <h3 className="careerSubsectionSalary">{data[0].acf.salary_range}  <span>PKR</span></h3>
                 <p className="careerDescription">{data[0].acf.description}</p>
@@ -90,18 +112,20 @@ const CareerSingle=({match,location})=>{
 
                  <h3 className="skillsHeading">Find Similar Jobs</h3>
                  <div className="similarjobs">
-                   <div className="similarJobsDetails">
+                 {similarData.length>0 && similarData.filter((jobs)=> jobs.acf && jobs.acf.job_category === data[0].acf.job_category).map((jobs,index)=>
+                   <div className="similarJobsDetails" key={index}>
+                   <img src={CareerDetails}></img>
+                   <h3>{jobs.acf.designation}</h3>
+                   <h4>{jobs.acf.location}, {jobs.acf.city}</h4>
+                   <h4 style={{marginTop:'-12px'}}><span>PKR</span>  {jobs.acf.salary_range}  <span className="similarSalary">Benefits</span></h4> 
+                     </div>
+                 )}
+                   {/* <div className="similarJobsDetails">
                    <img src={CareerDetails}></img>
                    <h3>Sr. Executive</h3>
                    <h4>Star Marketing PVT. Ltd - Manhill, Karachi</h4>
                    <h4 style={{marginTop:'-12px'}}><span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
-                     </div>
-                   <div className="similarJobsDetails">
-                   <img src={CareerDetails}></img>
-                   <h3>Sr. Executive</h3>
-                   <h4>Star Marketing PVT. Ltd - Manhill, Karachi</h4>
-                   <h4 style={{marginTop:'-12px'}}><span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
-                     </div>
+                     </div> */}
                  </div>
                 </CareerSubSectionLeft>
                 <CareerSubSectionRight>
@@ -110,7 +134,9 @@ const CareerSingle=({match,location})=>{
                    </div>
                    <div className="shareButton">
                      <p style={{marginLeft:'5px'}} ><img className="facebookImage" src={FacebookIcon}></img>Share on Facebook</p>
+                   
                    </div>
+                   <FacebookShareButton url={shareURL}>dsd</FacebookShareButton>
                    <div className="shareButton">
                      <p style={{marginLeft:'-19px'}}><img className="twitterImage" src={TwitterIcon}></img>Share on Twitter</p>
                    </div>

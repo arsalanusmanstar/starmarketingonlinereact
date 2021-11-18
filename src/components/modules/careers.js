@@ -12,7 +12,7 @@ const Careers = (career)=>{
     axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&per_page=100')
       .then(response => {
           setData(response.data)
-          console.log(response.data,'details')
+        //  console.log(response.data,'details')
       })
       } catch (e) {
           console.error(e);
