@@ -62,18 +62,25 @@ const Header = ({params}) => {
           </div>
           <HotProject className="hotMenuMain">Hot Projects <span><DownArrow /></span>
             <div className="hotMenu">
-             <ul>
-               <li> <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
-               </li> <li>
+            <ul>
+             <li>
+               <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link>
+               </li>
+               <li>
               <Link to='/project/whiteley-mall/'>Whitely Mall</Link>
-              </li><li>
-              <Link to='/project/mall-of-gulgasht/'>Mall of Gulgasht</Link>
-              </li><li>
-              <Link to='/project/safari-garden-housing-scheme/'>Safari Garden</Link>
-              </li><li>
-              <Link to='/project/jan-heights/'>Jan Heights</Link></li>
+              </li>
               <li>
-               <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link></li>
+              <Link to='/project/sun-overseas-city'>Sun Overseas City</Link>
+              </li>
+               <li> 
+                 <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
+               </li>    
+             
+              <li>
+              <Link to='/project/5-west'>5 West – Mumtaz City</Link>
+              </li>
+            
+             
               
               </ul>
               </div>
@@ -291,7 +298,7 @@ const HotProject = styled.div`
   position:relative;
   
   span{
-    box-shadow: 0px 19px 49px #000000b5;
+    box-shadow: rgb(0 0 0 / 71%) 0 3px 13px;
     
   }
   

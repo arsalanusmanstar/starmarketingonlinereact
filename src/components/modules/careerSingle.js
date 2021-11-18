@@ -5,6 +5,7 @@ import Footer from "../../components/footer";
 import SectionContainer from "../styles/section-container";
 import Locations from "./locations";
 import useSWR from 'swr';
+import axios from "axios";
 import CareerImage from "../../assets/career_image.PNG";
 import ReactLoading from "react-loading";
 import CareerUserIcon from "../../assets/career_user_icon.PNG";
@@ -14,16 +15,21 @@ import CareerLocationIcon from "../../assets/career_location_icon.PNG";
 import CareerDetails from "../../assets/career_details.PNG";
 
 
+import {FacebookShareButton, TwitterShareButton,LinkedinShareButton,WhatsappShareButton} from "react-share"
 
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
+const shareURL=window.location.href;
+
+
 const CareerSingle=({match,location})=>{
 
+ 
   const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&slug='+match.params.slug, fetcher)
   const baseUrl = 'https://starmarketingonline.com';
 
-  {console.log(data)}
+ 
   useEffect(()=>{
     window.scrollTo({
       top: 0,
@@ -31,103 +37,127 @@ const CareerSingle=({match,location})=>{
     });
   },[match.path])
 
+
+  //get simliar jobs
+  const [similarData,setSimilarData] = useState([]);
+  useEffect(async ()=>{
+    try {
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&per_page=100')
+      .then(response => {
+          setSimilarData(response.data)
+          //console.log(response.data,'details')
+      })
+      } catch (e) {
+          console.error(e);
+      }
+  },[])
+
     return(
         <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
              <Header />
              {data ?  data[0] && data[0].acf &&
-      <>
-        <SectionContainer>
-              <Heading>
-              <h1 className="featured-heading banners custom" style={{color:'white'}}>Careers</h1>
+                <SectionContainer>
+                        <Heading>
+                        <h1 className="featured-heading banners custom" style={{color:'white'}}>Careers</h1>
+                      </Heading>
+                      <CareerSection>
+                      
+                          <h2 className="careerHeading">{data[0].acf.designation}</h2>
+                          <h3 className="careerSubheading">{data[0].acf.job_category}</h3>
+                          <div className="careerDetails">
+                          <p><img style={{marginBottom:'-5px'}} src={CareerUserIcon}></img> {data[0].acf.no_of_vacancies}</p>
+                          <p><img style={{marginBottom:'-9px'}} src={CareerCalenderIcon}></img> {data[0].acf.starting_date} - {data[0].acf.ending_date}</p>
+                          <p><img style={{marginBottom:'-6px'}} src={CareerLocationIcon}></img> {data[0].acf.city}</p>
+                          </div>
+                          <img src={CareerImage} className="careerImage"></img>
+                          <CareerSubSectionMain>
+                          <CareerSubSectionLeft>
+                          <img src={CareerDetails} className="userImg"></img>
+                          <h3 className="careerSubsectionHeading">{data[0].acf.designation} <span style={{color:'#777777', fontWeight:'300', fontSize:'22px'}}>{data[0].acf.job_type}</span></h3>
+                          <h3 className="careerSubsectionAddress">{data[0].acf.location}, {data[0].acf.city}</h3>
+                          <h3 className="careerSubsectionSalary">{data[0].acf.salary_range}  <span>PKR</span></h3>
+                          <p className="careerDescription">{data[0].acf.description}</p>
+                          
+                          <h3 className="skillsHeading">Skills</h3>
+                          <div className="skillsDetails">
+                          { data[0].acf.skills && data[0].acf.skills.map((skill,index)=>
+                            <p className="skills" key={index}>{skill.skill_title}</p>
+                            )}
+                            {/* <p className="skills">Group Manager HR</p>
+                            <p className="skills">Asst. Manager HR & Admin</p>
+                            <p className="skills">HR Executive</p>
+                            <p className="skills">Asst. Manager HR & Admin</p>
+                            <p className="skills">Director HR</p>
+                            <p className="skills">Director HR</p> */}
+                            
+                          </div>
 
-            </Heading>
-           
-          
-            <CareerSection>
-             
-                <h2 className="careerHeading">{data[0].acf.designation}</h2>
-                <h3 className="careerSubheading">{data[0].acf.job_category}</h3>
-                <div className="careerDetails">
-                <p><img style={{marginBottom:'-5px'}} src={CareerUserIcon}></img> {data[0].acf.no_of_vacancies}</p>
-                <p><img style={{marginBottom:'-9px'}} src={CareerCalenderIcon}></img> {data[0].acf.starting_date} - {data[0].acf.ending_date}</p>
-                <p><img style={{marginBottom:'-6px'}} src={CareerLocationIcon}></img> {data[0].acf.city}</p>
-                </div>
-                <img src={CareerImage} className="careerImage"></img>
-                <CareerSubSectionMain>
-                <CareerSubSectionLeft>
-                <img src={CareerDetails} className="userImg"></img>
-                <h3 className="careerSubsectionHeading">{data[0].acf.designation} <span style={{color:'#777777', fontWeight:'300', fontSize:'22px'}}>{data[0].acf.job_type}</span></h3>
-                <h3 className="careerSubsectionAddress">{data[0].acf.location}, {data[0].acf.city}</h3>
-                <h3 className="careerSubsectionSalary">{data[0].acf.salary_range}  <span>PKR</span></h3>
-                <p className="careerDescription">{data[0].acf.description}</p>
-                 
-                 <h3 className="skillsHeading">Skills</h3>
-                 <div className="skillsDetails">
-                 { data[0].acf.skills && data[0].acf.skills.map((skill,index)=>
-                   <p className="skills" key={index}>{skill.skill_title}</p>
-                   )}
-                   {/* <p className="skills">Group Manager HR</p>
-                   <p className="skills">Asst. Manager HR & Admin</p>
-                   <p className="skills">HR Executive</p>
-                   <p className="skills">Asst. Manager HR & Admin</p>
-                   <p className="skills">Director HR</p>
-                   <p className="skills">Director HR</p> */}
-                  
-                 </div>
+                          <h3 className="skillsHeading Benefits">Benefits</h3>
+                          <div className="skillsDetails">
+                          { data[0].acf.benefits && data[0].acf.benefits.map((benefit,index)=>
+                            <p className="benefits" key={index}>{benefit.benefit_title}</p>
+                            )}
+                            {/* <p className="benefits">Medical Facility</p>
+                            <p className="benefits">Yearly Bonus</p> */}
+                            
+                          </div>
 
-                 <h3 className="skillsHeading Benefits">Benefits</h3>
-                 <div className="skillsDetails">
-                 { data[0].acf.benefits && data[0].acf.benefits.map((benefit,index)=>
-                   <p className="benefits" key={index}>{benefit.benefit_title}</p>
-                   )}
-                   {/* <p className="benefits">Medical Facility</p>
-                   <p className="benefits">Yearly Bonus</p> */}
-                  
-                 </div>
-
-                
-                </CareerSubSectionLeft>
-                <CareerSubSectionRight>
-                   <div className="shareButton active">
-                   <i class="fa fa-id-badge" aria-hidden="true"></i><p>Apply for this job</p>
-                   </div>
-                   <div className="shareButton">
-                   <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p>
-                   </div>
-                   <div className="shareButton">
-                   <i class="fa fa-twitter" aria-hidden="true"></i><p>Share on Twitter</p>
-                   </div>
-                   <div className="shareButton">
-                   <i class="fa fa-linkedin" aria-hidden="true"></i><p>Share on Linkedin</p>
-                   </div>
-                   <div className="shareButton">
-                   <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p>
-                   </div>
-                </CareerSubSectionRight>
-                </CareerSubSectionMain>
-                <h3 className="skillsHeading similar">Find Similar Jobs</h3>
-                 <div className="similarjobs">
-                   <div className="similarJobsDetails">
-                   <img src={CareerDetails} className="userImg"></img>
-                   <h3>Sr. Executive</h3>
-                   <h4>Star Marketing PVT. Ltd - Manhill, Karachi
-                   <span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
-                     </div>
-                   <div className="similarJobsDetails">
-                   <img src={CareerDetails} className="userImg"></img>
-                   <h3>Sr. Executive</h3>
-                   <h4>Star Marketing PVT. Ltd - Manhill, Karachi
-                   <span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
-                     </div>
-                 </div>
-            </CareerSection>
-        
-            
-        </SectionContainer>
-        <Locations/>
-        </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
-        }
-        <Footer />
+                        
+                          </CareerSubSectionLeft>
+                          <CareerSubSectionRight>
+                            <div className="shareButton active">
+                            <i class="fa fa-id-badge" aria-hidden="true"></i><p>Apply for this job</p>
+                            </div>
+                            <div className="shareButton">
+                            <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p>
+                            </div>
+                           
+                            <div className="shareButton">
+                            <i class="fa fa-twitter" aria-hidden="true"></i><p>Share on Twitter</p>
+                            </div>
+                            <div className="shareButton">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i><p>Share on Linkedin</p>
+                            </div>
+                            <div className="shareButton">
+                            <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p>
+                            </div>
+                          </CareerSubSectionRight>
+                          </CareerSubSectionMain>
+                          <h3 className="skillsHeading">Find Similar Jobs</h3>
+                          <div className="similarjobs">
+                          {similarData.length>0 && similarData.filter((jobs)=> jobs.acf && jobs.acf.job_category === data[0].acf.job_category).map((jobs,index)=>
+                            <div className="similarJobsDetails" key={index}>
+                            <img src={CareerDetails} class="userImg"></img>
+                            <h3>{jobs.acf.designation}</h3>
+                            <h4>{jobs.acf.location}, {jobs.acf.city}</h4>
+                            <h4 style={{marginTop:'-12px'}}><span>PKR</span>  {jobs.acf.salary_range}  <span className="similarSalary">Benefits</span></h4> 
+                              </div>
+                          )}
+                            {/* <div className="similarJobsDetails">
+                            <img src={CareerDetails}></img>
+                            <h3>Sr. Executive</h3>
+                            <h4>Star Marketing PVT. Ltd - Manhill, Karachi</h4>
+                            <h4 style={{marginTop:'-12px'}}><span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
+                              </div> */}
+                          </div>
+                          {/* <h3 className="skillsHeading similar">Find Similar Jobs</h3>
+                          <div className="similarjobs">
+                            <div className="similarJobsDetails">
+                            <img src={CareerDetails} className="userImg"></img>
+                            <h3>Sr. Executive</h3>
+                            <h4>Star Marketing PVT. Ltd - Manhill, Karachi
+                            <span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
+                              </div>
+                            <div className="similarJobsDetails">
+                            <img src={CareerDetails} className="userImg"></img>
+                            <h3>Sr. Executive</h3>
+                            <h4>Star Marketing PVT. Ltd - Manhill, Karachi
+                            <span>PKR</span>  85 - 95000  <span className="similarSalary">Benefits</span></h4> 
+                              </div>
+                          </div> */}
+                      </CareerSection>
+                </SectionContainer>
+           : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> } <Footer />
         </Mainproject>
     )
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
-
+import { Link,NavLink,Redirect } from 'react-router-dom';
 import latest_icon06 from "../../assets/latest_icon06.png";
 
 const Careers = (career)=>{
@@ -45,6 +45,7 @@ return (
            
            
            {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.trending ===true).map((jobs,index)=>
+           <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
              <div className="job_single" key={index}>
             
              <div className="job_top_line"></div>
@@ -55,6 +56,7 @@ return (
              </div>
 
              </div>
+             </Link>
               )}
              {/* <div className="job_single">
              <div className="job_top_line"></div>
@@ -90,8 +92,9 @@ return (
                 
                     <div className="sub_categories">
                     {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Human Resource').map((jobs,index)=>
-                    <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
-                  
+                    <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+                   <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                  </Link>
                     
                   
                     /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
@@ -130,6 +133,10 @@ return (
         text-transform: uppercase;
         font-weight: 600;
         letter-spacing: 1px
+        @media only screen and (max-width: 820px) {
+          text-align: center !important;
+  
+      }
         
       }
       h1:after{
@@ -158,6 +165,12 @@ return (
         top: -59px;
         text-align: center;
         background-size: cover;
+        @media only screen and (max-width: 820px) {
+          width: 100%;
+          height: 50px;
+          top: -28px;
+  
+      }
        
       }
       
@@ -168,6 +181,11 @@ return (
     background-color:white;
     width:100%;
     margin-top:50px; 
+    @media only screen and (max-width: 480px) {
+      padding: 0px;
+      margin-top:10px; 
+
+  }
       
     }
     `
@@ -178,6 +196,14 @@ return (
     grid-template-columns: 40% 40%;
     grid-gap: 20%;
     align-items: center;
+    @media only screen and (max-width: 820px) {
+      grid-template-columns: 100%;
+      margin-bottom: 85px;
+    }
+    @media only screen and (max-width: 480px) {
+      grid-template-columns: 100%;
+      gap: 5%;
+    }
 
 
     .headingSection{
@@ -239,6 +265,14 @@ grid-template-columns: 31% 31% 31%;
 justify-content:space-between;
 margin-top:40px;
 gap: 3%;
+@media only screen and (max-width: 820px) {
+  grid-template-columns: 50% 50%;
+  gap: 2%;
+}
+@media only screen and (max-width: 480px) {
+  grid-template-columns: 100%;
+  gap: 1%;
+}
 
 
 
@@ -250,6 +284,9 @@ gap: 3%;
   opacity: 1;
   padding: 40px 40px;
   border-top: 10px solid #248043;
+  @media only screen and (max-width: 820px) {
+    padding: 20px 20px;
+  }
 
   h3{
    

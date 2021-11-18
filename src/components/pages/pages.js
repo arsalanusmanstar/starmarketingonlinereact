@@ -24,7 +24,7 @@ const Pages = ({ match,location }) => {
 
   return (
     <div > 
-      {data && data[0] && <Meta meta={data && data[0].yoast_meta} />}
+      {data && data[0] && <Meta meta={data && data[0].yoast_meta} page="page" />}
       <Header params={match.path} />
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
           data[0] && data[0].acf ? <Modules data={data[0].acf} location={location}  /> : <SinglePage data={data[0]}/>  }
