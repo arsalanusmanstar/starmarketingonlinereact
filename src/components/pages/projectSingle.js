@@ -37,6 +37,8 @@ import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
 import {EmailShareButton,FacebookShareButton,LinkedinShareButton,TwitterShareButton,WhatsappShareButton} from "react-share";
 import {EmailIcon,FacebookIcon,LinkedinIcon,TwitterIcon,WhatsappIcon} from "react-share";
+import Meta from "../elements/meta"
+
 
 import Select from 'react-select';
 
@@ -328,6 +330,7 @@ const countries = [
   return (
     <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
       <Header />
+      {data && data[0] && <Meta meta={data && data[0].yoast_meta} page="project"  />}
       {data ?  data[0] && data[0].acf.filters &&
       <>
         <DescriptionBanner background={data[0]._embedded['wp:featuredmedia'][0].source_url}>
