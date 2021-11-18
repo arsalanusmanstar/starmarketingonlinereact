@@ -16,9 +16,9 @@ const Regions = ({data}) => {
          <RegionsBoxesMain>
             {data && data.region_listing && data.region_listing.map((region,index)=>
               <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.slug.toLowerCase()} style={{textDecoration:'none'}}>
-                <h1 style={{color:'#000000'}}><Bounce left cascade>{region.country}</Bounce></h1>
+                <h1 style={{color:'#000000'}}><Bounce bottom cascade>{region.country}</Bounce></h1>
               
-                <Bounce left><Imge src={region.image}></Imge></Bounce>
+                <Imge src={region.image}></Imge>
               </RegionsBoxes>
             )}
          </RegionsBoxesMain>

@@ -195,7 +195,9 @@ const HeaderInner = styled.div`
       width: 100%;
       padding: 12px 20px;
       border: 0;
-      background: #ffffffe0;
+      background: #ffffff;
+      box-shadow: 1px 5px 10px 3px #00000024;
+      border-radius: 0px 0px 10px 10px;
      
       letter-spacing: 1px;
       font-size: 16px;

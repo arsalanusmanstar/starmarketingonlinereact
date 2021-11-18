@@ -20,7 +20,7 @@ const MobileNavigation = ({location}) =>  {
     ["Projects","/projects","",[]],
     // ["Projects","/projects","",[['Islamabad','/projects/islamabad','',[['Murree','/projects/islamabad/multan','',]]],['Punjab','/projects/Punjab',''],['KPK','/projects/kpk',''],['Sindh','/projects/sindh',''],['Baluchistan','/projects/baluchistan','']]],
     ["Products","#","",[['Manhill Advertising','https://www.manhilladvertising.com/','new'],['Star Digital','https://digital.starmarketingonline.com/','new'],['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new']]],
-    // ["Careers","#","",[]],
+    // ["Careers","/careers","",[]],
     ["Contact Us","/contact-us","",[]],
   ]
   return (

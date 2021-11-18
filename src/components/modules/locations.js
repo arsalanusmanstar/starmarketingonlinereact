@@ -14,6 +14,13 @@ import grayBackground from "../../assets/map.png";
 import { useEffect,useState } from "react";
 import Mailchimp from 'react-mailchimp-form';
 import axios from "axios";
+import Bounce from 'react-reveal/Bounce';
+import Zoom from 'react-reveal/Zoom';
+import Shake from 'react-reveal/Shake';
+import RubberBand from 'react-reveal/RubberBand';
+import Slide from 'react-reveal/Slide';
+import Reveal from 'react-reveal/Reveal';
+
 
 const Locations = ({state}) => {
     const [success,setSuccess] = useState('');
@@ -42,8 +49,8 @@ const Locations = ({state}) => {
     <ContactSectionTouch className="maincontactsection" style={{marginTop:'-50px'}}>
   
          <ContactSectionTouchLeft>
-         <h1>Let's Stay In Touch</h1>
-         <p>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</p>
+         <h1> <Bounce top cascade>Let's Stay In Touch  </Bounce></h1>
+         <p>  <Zoom bottom cascade>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</Zoom></p>
          <Mailchimp
                 action='https://starmarketingonline.us1.list-manage.com/subscribe/post?u=c310c5c3b46ff223b92ac57e6&amp;id=5baec4271f'
                 fields={[
@@ -76,7 +83,7 @@ const Locations = ({state}) => {
          </ContactSectionTouchLeft>
 
          <ContactSectionTouchRight>
-            <Imge className="responsive" src={Touch}></Imge>
+         <Shake> <Imge className="responsive" src={Touch}></Imge>  </Shake>
          </ContactSectionTouchRight>
         
     </ContactSectionTouch>
@@ -84,20 +91,20 @@ const Locations = ({state}) => {
         <ContactSection>
 
              <ContactSectionLeft>
-                <h1 className="Head_C">Contact Us</h1>
-                <h2 className="head_n"><img src={PhoneImage} />  111 111 160</h2>
-                <h2 className="head_n"><img src={WhatsappImage} /> +92 301 116 1116</h2>
+                <h1 className="Head_C"><Bounce top cascade>Contact Us</Bounce></h1>
+                <h2 className="head_n"> <Bounce left cascade><img src={PhoneImage} />  111 111 160 </Bounce></h2>
+                <h2 className="head_n"><Bounce bottom cascade><img src={WhatsappImage} />+92 301 116 1116</Bounce></h2>
              </ContactSectionLeft>
 
              <ContactSectionRight>
                 
-                <Flogo className="logo_f" src={Logo_f}></Flogo>
+             <RubberBand> <Flogo className="logo_f" src={Logo_f}></Flogo></RubberBand>
                 <SL>
-               <a href="https://twitter.com/starmarketingon" target="_blank"> <IconTW className="FS" src={TW}></IconTW></a>
-               <a href="https://www.facebook.com/starmarketingpk" target="_blank"> <IconTW className="FS" src={FB}></IconTW></a>
-               <a href="https://www.youtube.com/c/StarMarketingPvtLtd" target="_blank"> <IconTW className="FS" src={YT}></IconTW></a>
-               <a href="https://www.linkedin.com/company/starmarketingpvtltd/mycompany/" target="_blank"><IconTW className="FS" src={In}></IconTW></a>
-               <a href="https://www.instagram.com/starmarketingpvtltd/" target="_blank"> <IconTW className="FS" src={INSTA}></IconTW></a>
+                <Slide bottom> <a href="https://twitter.com/starmarketingon" target="_blank"> <IconTW className="FS" src={TW}></IconTW></a> </Slide>
+                <Slide bottom> <a href="https://www.facebook.com/starmarketingpk" target="_blank"> <IconTW className="FS" src={FB}></IconTW></a> </Slide>
+                <Slide bottom><a href="https://www.youtube.com/c/StarMarketingPvtLtd" target="_blank"> <IconTW className="FS" src={YT}></IconTW></a> </Slide>
+                <Slide bottom><a href="https://www.linkedin.com/company/starmarketingpvtltd/mycompany/" target="_blank"><IconTW className="FS" src={In}></IconTW></a> </Slide>
+                <Slide bottom> <a href="https://www.instagram.com/starmarketingpvtltd/" target="_blank"> <IconTW className="FS" src={INSTA}></IconTW></a> </Slide>
                 </SL>
              </ContactSectionRight>
 
@@ -108,33 +115,33 @@ const Locations = ({state}) => {
         <LocationList>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle>Karachi Office</ListTitle>
-                <ListContent>Mezzanine Floor, Topra Plaza, Main University Road, Opp. Urdu Science College Gulshan-e-Iqbal, Karachi.</ListContent>
+                <ListTitle><Bounce left cascade>Karachi Office  </Bounce></ListTitle>
+                <ListContent>   Mezzanine Floor, Topra Plaza, Main University Road, Opp. Urdu Science College Gulshan-e-Iqbal, Karachi.  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle>Islamabad Office</ListTitle>
-                <ListContent>Roshan Center, Jinnah Avenue Islamabad, Punjab</ListContent>
+                <ListTitle><Bounce left cascade>Islamabad Office  </Bounce></ListTitle>
+                <ListContent>  Roshan Center, Jinnah Avenue Islamabad, Punjab  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle>Lahore Office</ListTitle>
-                <ListContent>Office No. 106, 1st Floor, Siddiq Trade Center, 72, Main Boulevard Lahore, Punjab</ListContent>
+                <ListTitle><Bounce left cascade>Lahore Office  </Bounce></ListTitle>
+                <ListContent>  Office No. 106, 1st Floor, Siddiq Trade Center, 72, Main Boulevard Lahore, Punjab  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle>Peshawar Office</ListTitle>
-                <ListContent>Deans Trade Center, UG-7 & UG-8, Opposite F.C Headquarters, Saddar Peshawar, Khyber Pakhtunkhwa</ListContent>
+                <ListTitle><Bounce left cascade>Peshawar Office  </Bounce></ListTitle>
+                <ListContent>  Deans Trade Center, UG-7 & UG-8, Opposite F.C Headquarters, Saddar Peshawar, Khyber Pakhtunkhwa  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle>Multan Office</ListTitle>
-                <ListContent>Office No. 09, 10, 11, 2nd Floor, Chenone Tower, Abdali Road, Multan</ListContent>
+                <ListTitle><Bounce left cascade>Multan Office  </Bounce></ListTitle>
+                <ListContent> Office No. 09, 10, 11, 2nd Floor, Chenone Tower, Abdali Road, Multan  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle>Hyderabad Office</ListTitle>
-                <ListContent>Shop No. 10, 11, Garrison Complex, Main Saddar Road, Near Bombay Bakery, Hyderabad, Sindh, Pakistan</ListContent>
+                <ListTitle><Bounce left cascade>Hyderabad Office  </Bounce></ListTitle>
+                <ListContent>  Shop No. 10, 11, Garrison Complex, Main Saddar Road, Near Bombay Bakery, Hyderabad, Sindh, Pakistan  </ListContent>
             </List>
         </LocationList>
     </SectionContainer>  
@@ -386,6 +393,13 @@ const ContactSectionLeft = styled.div`
     font-size: 63px;
     margin: 10px 0px 13px 0px;
     padding-bottom: 0px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    img{
+        height: fit-content;
+
+    }
     @media only screen and (max-width: 1366px) {
         font-size: 50px;
 

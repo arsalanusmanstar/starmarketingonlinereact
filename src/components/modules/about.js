@@ -164,7 +164,7 @@ const Count = styled.div`
     `
 const Title = styled.div`
     text-align: left;
-    font: normal normal 200 38px/42px Poppins;
+    font: normal normal 200 30px/42px Poppins;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;

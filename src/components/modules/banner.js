@@ -20,10 +20,10 @@ const BannerText = ({state}) => {
                     <BannerCont >
                    <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
                    <Heading ><Fade left big cascade>{state.heading}</Fade></Heading>   
-                    <Subheading >  <Fade right big cascade>{state.sub_heading} </Fade></Subheading>
-                    <Content >   <Bounce top cascade>{state.content}  </Bounce></Content>
-                    <Button  href="#about"  style={{cursor:'pointer'}} >   <Bounce bottom cascade> Learn More <LeftArrow src={latest_icon07} /> </Bounce> </Button>
-  <SubButton >                    <Bounce top cascade>  Know us in 2 mintues <i className="fa fa-long-arrow-right"></i> </Bounce></SubButton>   
+                    <Subheading >  <Fade top big cascade>{state.sub_heading} </Fade></Subheading>
+                    <Content >  {state.content}  </Content>
+                    <Button  href="#about"  style={{cursor:'pointer'}} >  Learn More <LeftArrow src={latest_icon07} /> </Button>
+                    <SubButton >    Know us in 2 mintues <i className="fa fa-long-arrow-right"></i> </SubButton>   
                     </BannerCont> 
                   
               
@@ -152,6 +152,7 @@ const Content = styled.p`
 
     color: #fff;
     text-shadow: 1px 2px 1px #000000b5;
+    margin: 10px 0px 50px 0px;
     @media only screen and (max-width: 480px) {
         font-size: 14px;
         margin: 22px 0px;
@@ -183,9 +184,7 @@ const Button = styled.a`
     font-size: 14px;
     letter-spacing: 1px;
     transition: all 0.35s linear;
-    display: flex;
-    width: fit-content;
-    float: left;
+   
     :hover{
         background: #000  0% 0% no-repeat padding-box;
 
@@ -222,10 +221,10 @@ const SubButton = styled.a`
     letter-spacing: 1px;
     position: relative;
     padding-right: 30px;
-    margin: 17px 0px;
+    
     .fa {
         font-size: 28px;
-        right: 0;
+        right: -12px;
         position: absolute;
         top: 0;
     }

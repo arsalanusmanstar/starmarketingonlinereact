@@ -13,7 +13,7 @@ const Navigation = () =>  {
     ["Projects","/projects/","",[]],
     // ["Projects","/projects","",[['Islamabad','/projects/islamabad','',[['Murree','/projects/islamabad/multan','',]]],['Punjab','/projects/Punjab',''],['KPK','/projects/kpk',''],['Sindh','/projects/sindh',''],['Baluchistan','/projects/baluchistan','']]],
     ["Products","#","",[['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new'],['Star Digital','https://digital.starmarketingonline.com/','new']]],
-    // ["Careers","#","",[]],
+    // ["Careers","/careers","",[]],
     ["Contact Us","/contact-us","",[]],
   ]
   return (
