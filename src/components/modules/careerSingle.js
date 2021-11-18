@@ -4,9 +4,9 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import SectionContainer from "../styles/section-container";
 import Locations from "./locations";
-
+import useSWR from 'swr';
 import CareerImage from "../../assets/career_image.PNG";
-
+import ReactLoading from "react-loading";
 import CareerUserIcon from "../../assets/career_user_icon.PNG";
 import CareerCalenderIcon from "../../assets/career_calender_icon.PNG";
 import CareerLocationIcon from "../../assets/career_location_icon.PNG";
@@ -19,47 +19,72 @@ import TwitterIcon from "../../assets/twitter_icon.PNG";
 import LinkedinIcon from "../../assets/linkedin_icon.PNG";
 import WhatsappIcon from "../../assets/whatsapp_icon.PNG";
 
-const CareerSingle=()=>{
+
+const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
+
+const CareerSingle=({match,location})=>{
+
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&slug='+match.params.slug, fetcher)
+  const baseUrl = 'https://starmarketingonline.com';
+
+  {console.log(data)}
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  },[match.path])
+
     return(
         <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
              <Header />
+             {data ?  data[0] && data[0].acf &&
+      <>
         <SectionContainer>
               <Heading>
               <h1 className="featured-heading" style={{color:'white'}}>Careers</h1>
 
             </Heading>
+           
+          
             <CareerSection>
-                <h2 className="careerHeading">SALES EXECUTIVE</h2>
-                <h3 className="careerSubheading">Sales & Marketing</h3>
+             
+                <h2 className="careerHeading">{data[0].acf.designation}</h2>
+                <h3 className="careerSubheading">{data[0].acf.job_category}</h3>
                 <div className="careerDetails">
-                <p><img style={{marginBottom:'-5px'}} src={CareerUserIcon}></img> 2</p>
-                <p><img style={{marginBottom:'-9px'}} src={CareerCalenderIcon}></img> 1st Oct - 25 Oct</p>
-                <p><img style={{marginBottom:'-6px'}} src={CareerLocationIcon}></img> Lahore</p>
+                <p><img style={{marginBottom:'-5px'}} src={CareerUserIcon}></img> {data[0].acf.no_of_vacancies}</p>
+                <p><img style={{marginBottom:'-9px'}} src={CareerCalenderIcon}></img> {data[0].acf.starting_date} - {data[0].acf.ending_date}</p>
+                <p><img style={{marginBottom:'-6px'}} src={CareerLocationIcon}></img> {data[0].acf.city}</p>
                 </div>
                 <img src={CareerImage} className="careerImage"></img>
                 <CareerSubSectionLeft>
                 <img src={CareerDetails}></img>
-                <h3 className="careerSubsectionHeading">Sales Executive <span style={{color:'#777777', fontWeight:'300', fontSize:'22px'}}>(Full Time)</span></h3>
-                <h3 className="careerSubsectionAddress">Manhill, Karachi</h3>
-                <h3 className="careerSubsectionSalary">30,000 - 45,000  <span>PKR</span></h3>
-                <p className="careerDescription">We need educated, confident and self motivated male and female potential leaders with a pleasing personality, excellent communication skills and public dealing capabilities. A minimum 2 Years experience in Marketing and Sales required preferably in real estate. Selected self driven and experienced candidates will be offered an attractive package between Rs. 25,000 and 50,000 with medical facilities, and other incentives.</p>
+                <h3 className="careerSubsectionHeading">{data[0].acf.designation} <span style={{color:'#777777', fontWeight:'300', fontSize:'22px'}}>{data[0].acf.job_type}</span></h3>
+                <h3 className="careerSubsectionAddress">{data[0].acf.location}, {data[0].acf.city}</h3>
+                <h3 className="careerSubsectionSalary">{data[0].acf.salary_range}  <span>PKR</span></h3>
+                <p className="careerDescription">{data[0].acf.description}</p>
                  
                  <h3 className="skillsHeading">Skills</h3>
                  <div className="skillsDetails">
-                   <p className="skills">Director HR</p>
-                   <p className="skills">Group Manager HR</p>
+                 { data[0].acf.skills && data[0].acf.skills.map((skill,index)=>
+                   <p className="skills" key={index}>{skill.skill_title}</p>
+                   )}
+                   {/* <p className="skills">Group Manager HR</p>
                    <p className="skills">Asst. Manager HR & Admin</p>
                    <p className="skills">HR Executive</p>
                    <p className="skills">Asst. Manager HR & Admin</p>
                    <p className="skills">Director HR</p>
-                   <p className="skills">Director HR</p>
+                   <p className="skills">Director HR</p> */}
+                  
                  </div>
 
                  <h3 className="skillsHeading">Benefits</h3>
                  <div className="skillsDetails">
-                   <p className="benefits">Annual Leaves</p>
-                   <p className="benefits">Medical Facility</p>
-                   <p className="benefits">Yearly Bonus</p>
+                 { data[0].acf.benefits && data[0].acf.benefits.map((benefit,index)=>
+                   <p className="benefits" key={index}>{benefit.benefit_title}</p>
+                   )}
+                   {/* <p className="benefits">Medical Facility</p>
+                   <p className="benefits">Yearly Bonus</p> */}
                   
                  </div>
 
@@ -96,9 +121,14 @@ const CareerSingle=()=>{
                      <p style={{marginLeft:'24px'}}><img className="whatsappImage" src={WhatsappIcon}></img>Share on Whatsapp</p>
                    </div>
                 </CareerSubSectionRight>
+
             </CareerSection>
+        
+            
         </SectionContainer>
         <Locations/>
+        </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
+        }
         <Footer />
         </Mainproject>
     )

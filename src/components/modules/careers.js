@@ -1,13 +1,23 @@
 import styled from 'styled-components';
+import axios from "axios";
 import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
 
 import latest_icon06 from "../../assets/latest_icon06.png";
 
 const Careers = (career)=>{
-
-
-
+  const [data,setData] = useState([]);
+  useEffect(async ()=>{
+    try {
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&per_page=100')
+      .then(response => {
+          setData(response.data)
+          console.log(response.data,'details')
+      })
+      } catch (e) {
+          console.error(e);
+      }
+  },[])
 return (
   <div>
     <SectionContainer>
@@ -32,17 +42,21 @@ return (
            </HeaderSection>
 
            <JobSection>
+           
+           
+           {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.trending ===true).map((jobs,index)=>
+             <div className="job_single" key={index}>
             
-             <div className="job_single">
              <div className="job_top_line"></div>
-             <h3>Sales Executive</h3>
+             <h3>{jobs.acf.designation}</h3>
              <div className="job_bottom_main">
-             <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
-             <div className="job_bottom"> <i class="fa fa-map-marker"></i>   Karachi</div>
+             <div className="job_bottom"> <i class="fa fa-user"></i>  {jobs.acf.no_of_vacancies}</div>
+             <div className="job_bottom"> <i class="fa fa-map-marker"></i>   {jobs.acf.city}</div>
              </div>
 
              </div>
-             <div className="job_single">
+              )}
+             {/* <div className="job_single">
              <div className="job_top_line"></div>
              <h3>Mern Stack Dev.</h3>
              <div className="job_bottom_main">
@@ -57,35 +71,44 @@ return (
              <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
              <div className="job_bottom"> <i  class="fa fa-map-marker"></i>   Lahore</div>
              </div>
-             </div>
+             </div> */}
+             
            </JobSection>
            <CategorySection>
            
              <h2 className="category_heading">Browse by Category</h2>
-             <div className="category_details">
-               <h3 className="category_subheading">Human Resource</h3>
-                <div className="sub_categories">
-                <h4 className="catgory_subheading_details">Director HR</h4>
-               
-                <h4 className="catgory_subheading_details">Group Manager HR</h4>
-               
-                <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
-                <h4 className="catgory_subheading_details">HR Executive</h4>
-                <h4 className="catgory_subheading_details">HR Executive</h4>
 
-                <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
-                <h4 className="catgory_subheading_details">HR Executive</h4>
-                <h4 className="catgory_subheading_details">HR Executive</h4>
-              
+
+            
+
+             
+             
+                <div className="category_details">
+                  
+                  <h3 className="category_subheading">Human Resource</h3>
+                  
+                
+                    <div className="sub_categories">
+                    {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Human Resource').map((jobs,index)=>
+                    <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                  
+                    
+                  
+                    /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                    <h4 className="catgory_subheading_details">HR Executive</h4>
+                    <h4 className="catgory_subheading_details">HR Executive</h4>
+
+                    <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                    <h4 className="catgory_subheading_details">HR Executive</h4>
+                    <h4 className="catgory_subheading_details">HR Executive</h4> */
+                    )}
                 </div>
-                <div className="other_categories">
-              <p className="other_categories_description">Sales & Marketing</p>
-              <p className="other_categories_description">Information Technology</p>
-              <p className="other_categories_description">Accounts & Finance</p>
-              <p className="other_categories_description">Administration</p>
-              </div>
+
+               
                 </div>
               
+                
+            
              
                 
            </CategorySection>
