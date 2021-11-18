@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
-
+import { Link,NavLink,Redirect } from 'react-router-dom';
 import latest_icon06 from "../../assets/latest_icon06.png";
 
 const Careers = (career)=>{
@@ -45,6 +45,7 @@ return (
            
            
            {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.trending ===true).map((jobs,index)=>
+           <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
              <div className="job_single" key={index}>
             
              <div className="job_top_line"></div>
@@ -55,6 +56,7 @@ return (
              </div>
 
              </div>
+             </Link>
               )}
              {/* <div className="job_single">
              <div className="job_top_line"></div>
@@ -90,8 +92,9 @@ return (
                 
                     <div className="sub_categories">
                     {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Human Resource').map((jobs,index)=>
-                    <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
-                  
+                    <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+                   <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                  </Link>
                     
                   
                     /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
