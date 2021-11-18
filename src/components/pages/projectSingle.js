@@ -50,6 +50,7 @@ const ProjectSingle = ({match,location}) => {
   const [videoModel,setVideoModel] = useState();
   const [imageModel,setImageModel] = useState();
   const [success,setSuccess] = useState('');
+  const [loader,setLoader] = useState(false);
   const [shareActive,setShareActive] = useState(false);
   
   useEffect(()=>{
@@ -61,7 +62,8 @@ const ProjectSingle = ({match,location}) => {
 
 
   const submitHandler = e => {
-      e.preventDefault();
+    e.preventDefault();
+    setLoader(true);
       const data = new FormData(e.target);
       axios.post('https://sheet.best/api/sheets/3f32dba9-712b-4a21-8585-48cc2c2da400', data, {
           headers: {
@@ -69,7 +71,9 @@ const ProjectSingle = ({match,location}) => {
           }
       })
       .then(response => {
-          setSuccess('Thank you for submit your request. We will contact you shortily.')
+        document.getElementById("contactForm").reset();
+        setLoader(false)
+        setSuccess('Thank you for submit your request. We will contact you shortily.')
       })
    }
 
@@ -414,6 +418,7 @@ const countries = [
                     <br />
                     {success}
                 </form>
+                {loader && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"red",height:'100vh',width:"80px"}} />}
                 </CallSectionMain>
                 <SaveShare>
                   {/* <SaveShareLfet>

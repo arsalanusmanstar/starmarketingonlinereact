@@ -5,6 +5,7 @@ import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
 import {  Logo, DownArrow } from "./icons";
 import Sticky from 'react-sticky-el';
+import LightSpeed from 'react-reveal/LightSpeed';
 
 const Header = ({params}) => {
   const [projects,setProjects] = useState(JSON.parse(localStorage.getItem('projects')))
@@ -31,20 +32,20 @@ const Header = ({params}) => {
           {/* Heading and Description of the site */}
           <TitleGroup>
             <SiteTitle>
-            <StyledLink to="/" className="Sticky_l"><Logo /></StyledLink> 
+            <LightSpeed left> <StyledLink to="/" className="Sticky_l"><Logo /></StyledLink>    </LightSpeed>
               
             </SiteTitle>
             {/* <SiteDescription>{description}</SiteDescription> */}
           </TitleGroup>
 
-          <MobileNavigation  location={params} />
+           <MobileNavigation  location={params} />  
           {/* Mobile menu button and modal */}
         </TitleWrapper>
 
-        <HeaderNavigationWrapper>
+        <LightSpeed right>  <HeaderNavigationWrapper>
           {/* Desktop navigation links */}
           
-          <Navigation />
+         <Navigation />
           <div className="searchFilter">
               <i className="fa fa-search" onClick={()=>setActive(active ? false:true)}></i>
               {active && <div className="searchDropdown">
@@ -79,7 +80,7 @@ const Header = ({params}) => {
           </HotProject>
         
           {/* Desktop search button */}
-        </HeaderNavigationWrapper>
+        </HeaderNavigationWrapper></LightSpeed>
       </HeaderInner>
       {/* Global search modal */}
       {/* <SearchModal /> */}

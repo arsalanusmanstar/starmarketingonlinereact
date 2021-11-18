@@ -281,7 +281,7 @@ const Projects = (state) => {
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
               {post.acf.filters.upcoming &&
-              <div className="upcoming"><img src={comingsoon} alt="" /></div>}
+              <div className="upcoming">Coming Soon</div>}
                <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
                 <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
               </Link>
@@ -447,8 +447,16 @@ h1.listing_heading {
 }
 .upcoming {
   position: absolute;
-  right: 17px;
-  top: -53px;}
+  background: #ff000a;
+  right: 22px;
+  top: -40px;
+  border-radius: 20px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 0;
+    padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;}
 `
 const ProjectButtonSection = styled.div`
 button {

@@ -15,6 +15,8 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import ReactLoading from "react-loading";
 import Moment from 'react-moment';
+import Bounce from 'react-reveal/Bounce';
+import Slide from 'react-reveal/Slide';
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
@@ -57,8 +59,8 @@ const Latestnews = () => {
     return (
     <LatestNewContainer left_arrow={left_arrow}>    
         <SectionContainer style={{paddingTop:'0px'}}>
-            <h1 className="featured-heading banners custom" style={{color:"#fff"}}>Latest</h1>
-            <div className="featured-project-line"></div>
+            <h1 className="featured-heading banners custom" style={{color:"#fff"}}><Bounce top cascade>Latest</Bounce></h1>
+            <Slide bottom><div className="featured-project-line"></div></Slide>
             <div className="mainSlide">
             <Slider  {...settings}>
                 {data ? data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
@@ -66,17 +68,17 @@ const Latestnews = () => {
                       
                         <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
                      
-                        <Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title>
+                        <Slide bottom><Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title> </Slide>
                         <Details>
                        
-                            <Date> <Imge src={clock}></Imge><Moment format="MMM D, YYYY ">{post.date}</Moment></Date>
-                            <Auth><Imge src={user}></Imge> {
+                        <Slide left><Date> <Imge src={clock}></Imge><Moment format="MMM D, YYYY ">{post.date}</Moment></Date></Slide>
+                        <Slide right><Auth><Imge src={user}></Imge> {
                             post.author == 789 ? "Aamir Saeeduddin" :
                             post.author == 788 ? "Arif Mustafa" :
                             post.author == 787 ? "Haris Sonija" :
                             post.author == 1 && "Star Marketing" 
                             
-                        }</Auth>
+                        }</Auth></Slide>
                         </Details>
                     </Post>
                 ): <div className="loaderFilter"><ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /></div>}

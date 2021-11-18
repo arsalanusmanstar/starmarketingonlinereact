@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import AboutBackground from "../../assets/about_background.png";
-
-
+import Bounce from 'react-reveal/Bounce';
+import Slide from 'react-reveal/Slide';
+import LightSpeed from 'react-reveal/LightSpeed';
 
 
 
@@ -11,9 +12,9 @@ const ScoreCounter = (state) => {
     return (
         <Score >
             <ScoreCont>
-                <Icon><img src={state.icon} alt={state.title} /></Icon>
-                <Count>{state.score}</Count>
-                <Title>{state.title}</Title>
+                <Icon><LightSpeed top cascade><img src={state.icon} alt={state.title} /></LightSpeed></Icon>
+                <Count> <Bounce bottom cascade>{state.score}</Bounce></Count>
+                <Title><Bounce top cascade>{state.title}</Bounce></Title>
             </ScoreCont>
         </Score>
     )
@@ -23,15 +24,15 @@ const About = ({data}) => {
     return (
         <MainContainer background={AboutBackground} id="about">
             <SectionContainer>
-                <h2  className="featured-heading " >{data.heading}</h2>
-                <div className="featured-project-line"></div>
+                <h2  className="featured-heading " ><Bounce left cascade>{data.heading}</Bounce></h2>
+                <Bounce right cascade> <div className="featured-project-line"></div>  </Bounce>
                 <AboutContent>
-                    <Cont dangerouslySetInnerHTML={{ __html:data.content}}></Cont>
-                    <SectionThree>
-                        {data.counter && data.counter.map((count,index)=> 
+                <Bounce right cascade><Cont dangerouslySetInnerHTML={{ __html:data.content}}></Cont></Bounce>
+                <Slide bottom cascade> <SectionThree>
+                  {data.counter && data.counter.map((count,index)=> 
                             <ScoreCounter score={count.number} title={count.title} icon={count.icon} key={index}/>
-                        )}
-                    </SectionThree>
+                        )}  
+                    </SectionThree>       </Slide>
                 </AboutContent>
             </SectionContainer>
         </MainContainer>

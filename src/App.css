@@ -199,7 +199,7 @@ html,
   .featured-project-city-name-text
   {
     text-align: center;
-    font: normal normal 300 16px/27px 'Poppins', sans-serif;;
+    font: normal normal 300 16px/8px 'Poppins', sans-serif;;
     letter-spacing: 1px;
     color: #FFFFFF;
     opacity: 1;
@@ -586,6 +586,136 @@ ul.pagination li.active {
   padding: 5px 16px;
   border-radius: 100px;
 }
+.shareButton.active {
+  background: #40C351;
+}
+.shareButton i.fa.fa-id-badge {
+  font-size: 28px;
+  color: #fff;
+}
+.shareButton.active p {
+  color: #fff !important;
+}
+.shareButton i.fa.fa-facebook {
+  background: #3C5A92;
+  color: #fff;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px 0px;
+}
+
+.shareButton i.fa.fa-twitter {
+  background: #03A9F4;
+  color: #fff;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px 0px;
+}
+
+.shareButton i.fa.fa-linkedin {
+  background: #0288D1;
+  color: #fff;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px 0px;
+}
+
+.shareButton i.fa.fa-whatsapp {
+  background: #40c351;
+  color: #fff;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px 0px;
+}
+.userImg{
+  float: left;
+  margin: 0px 20px 10px 0px;
+
+}
+h3.skillsHeading.Benefits {
+  color: #9bc2c7;
+}
+h3.skillsHeading.similar {
+  text-align: left;
+  font: normal normal 600 25px/40px Poppins;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  color: #143063;
+  text-transform: uppercase;
+}
+
+.similarjobs {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 6%;
+  margin-top: 2%;
+}
+
+.similarJobsDetails {
+  border: 1px   solid #14306342;
+      padding: 30px 30px;
+      border-radius: 54px  ;
+      border-bottom-left-radius: 0;
+}
+
+
+
+.similarJobsDetails h3 {
+  margin: 0px;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.similarJobsDetails h4 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+
+
+
+.similarJobsDetails h4 span {
+  background-color: rgb(98 141 219 / 43%);
+  color: rgb(20 48 99);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 10px;
+  border-bottom-left-radius: 0px;
+  position: relative;
+  top: -4px;
+  letter-spacing: 0.5px;
+}
+
+.similarJobsDetails h4 span.similarSalary {
+  background: none;
+  top: 0;
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0px 0px 0px 22px;
+  color: #ff000a;
+}
+
+.similarJobsDetails h4 span.similarSalary:before {content: "";width: 10px;height: 10px;background: #ff000a;font-size: 10px;position: absolute;border-radius: 100px;left: 6px;top: 9px;}
+    
+  
 @media only screen and (max-width: 1366px) {
   .sticky .hotMenuMain {
   
@@ -608,7 +738,7 @@ ul.pagination li.active {
 
 .fFBWBR .left_line {
  
-  left: 80% !important;
+  left: 80% ;
  
 }
 img.responsive {

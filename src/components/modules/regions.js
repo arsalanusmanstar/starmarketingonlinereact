@@ -2,21 +2,23 @@ import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import Card_reg from "../../assets/Card_reg.png";
 import { Link } from 'react-router-dom';
+import Bounce from 'react-reveal/Bounce';
+
 
 const Regions = ({data}) => {
     return (
         <MainContainer >
          <SectionContainer>
-          <h2 className="featured-heading">REGIONS</h2>
-          <div className="featured-project-line"></div>
+          <h2 className="featured-heading"><Bounce bottom cascade>REGIONS </Bounce></h2>
+          <Bounce top cascade><div className="featured-project-line"></div></Bounce>
 
 
          <RegionsBoxesMain>
             {data && data.region_listing && data.region_listing.map((region,index)=>
               <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.slug.toLowerCase()} style={{textDecoration:'none'}}>
-                <h1 style={{color:'#000000'}}>{region.country}</h1>
+                <h1 style={{color:'#000000'}}><Bounce left cascade>{region.country}</Bounce></h1>
               
-                <Imge src={region.image}></Imge>
+                <Bounce left><Imge src={region.image}></Imge></Bounce>
               </RegionsBoxes>
             )}
          </RegionsBoxesMain>

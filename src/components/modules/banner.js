@@ -4,26 +4,28 @@ import BackgroundImage from "../../assets/WebBg.png";
 import VideoImage from "../../assets/homepage.webm";
 import GuarantLogo from "../../assets/1Icon.png";
 import latest_icon07 from "../../assets/latest_icon07.png";
-import ReactAnime from 'react-animejs'
-
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+import Bounce from 'react-reveal/Bounce';
+import Slide from 'react-reveal/Slide';
 
 const BannerText = ({state}) => {
     
-    const {Anime, stagger} = ReactAnime
+    
     return (
       
                
               
-             
-               <BannerCont >
-                    <GuaranteeLogo  background={GuarantLogo}/> 
-                    <Heading >{state.heading}</Heading> 
-                    <Subheading >{state.sub_heading}</Subheading>
-                    <Content >{state.content}</Content>
-                    <Button  href="#about"  style={{cursor:'pointer'}} > Learn More <LeftArrow src={latest_icon07} /></Button>
-                    <SubButton >Know us in 2 mintues <i className="fa fa-long-arrow-right"></i></SubButton>
+      
+                    <BannerCont >
+                   <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
+                   <Heading ><Fade left big cascade>{state.heading}</Fade></Heading>   
+                    <Subheading >  <Fade right big cascade>{state.sub_heading} </Fade></Subheading>
+                    <Content >   <Bounce top cascade>{state.content}  </Bounce></Content>
+                    <Button  href="#about"  style={{cursor:'pointer'}} >   <Bounce bottom cascade> Learn More <LeftArrow src={latest_icon07} /> </Bounce> </Button>
+  <SubButton >                    <Bounce top cascade>  Know us in 2 mintues <i className="fa fa-long-arrow-right"></i> </Bounce></SubButton>   
                     </BannerCont> 
-              
+                  
               
              
                 
@@ -35,9 +37,9 @@ const BannerText = ({state}) => {
 const Video = ({state}) => {
     return (
         
-        <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
-            <source src={VideoImage} type="video/mp4" />
-        </VideoImg>
+        <Slide right> <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
+               <source src={VideoImage} type="video/mp4" />  
+        </VideoImg>    </Slide>
     )
 }
 const TopBanner = ({state,data}) => {
@@ -147,8 +149,7 @@ const Subheading = styled.h2`
     }
     `;
 const Content = styled.p`
-    margin-top:40px;
-    margin-bottom:30px;
+
     color: #fff;
     text-shadow: 1px 2px 1px #000000b5;
     @media only screen and (max-width: 480px) {
@@ -182,6 +183,9 @@ const Button = styled.a`
     font-size: 14px;
     letter-spacing: 1px;
     transition: all 0.35s linear;
+    display: flex;
+    width: fit-content;
+    float: left;
     :hover{
         background: #000  0% 0% no-repeat padding-box;
 
@@ -216,11 +220,14 @@ const SubButton = styled.a`
     text-decoration:none;
     font-size: 14px;
     letter-spacing: 1px;
+    position: relative;
+    padding-right: 30px;
+    margin: 17px 0px;
     .fa {
         font-size: 28px;
-        margin-left: 8px;
-        position: relative;
-        top: 5px;
+        right: 0;
+        position: absolute;
+        top: 0;
     }
     @media only screen and (max-width: 480px) {
         float: left;

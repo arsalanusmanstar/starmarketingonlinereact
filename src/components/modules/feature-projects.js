@@ -10,8 +10,10 @@ import line from "../../assets/line.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import ReactAnime from 'react-animejs'
+import Fade from 'react-reveal/Fade';
 import ReactLoading from "react-loading";
+import Roll from 'react-reveal/Roll';
+import Bounce from 'react-reveal/Bounce';
 
 const NextArrow = ({ onClick }) => {
     return (
@@ -106,8 +108,8 @@ const FeatureProducts = ({state}) => {
         <FeautureProductsMain  background={grayBackground}>
             <SectionContainer>
                 <div>
-                    <h2 className="featured-heading wow slideInUp" data-wow-duration="5s">FEATURED PROJECTS</h2>
-                    <div className="featured-project-line "></div>
+                    <h2 className="featured-heading wow slideInUp" data-wow-duration="5s">     <Roll bottom cascade>FEATURED PROJECTS      </Roll></h2>
+                    <Fade bottom> <div className="featured-project-line "></div>   </Fade>
                 </div>
                 <ContentArea>
                     <LeftArea className="wow slideInUp" data-wow-duration="3s">
@@ -115,18 +117,18 @@ const FeatureProducts = ({state}) => {
                     
                         {data ? data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
                             <div key={index}>
-                                <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>
-                                <p className="featured-project-description"  dangerouslySetInnerHTML={{ __html:latest.excerpt.rendered}}></p>
+                                    <h3 className="featured-project-heading"><Bounce top cascade>{latest.title.rendered}</Bounce> </h3>  
+                                     <p className="featured-project-description" dangerouslySetInnerHTML={{ __html:latest.excerpt.rendered}}></p> 
                                     <br />
                                     <div>
                                     <div className="featured-project-city-name">  
-                                        <p className="featured-project-city-name-text" >{latest.acf && latest.acf.filters && latest.acf.filters.city}</p>
+                                        <p className="featured-project-city-name-text" > <Bounce left cascade> {latest.acf && latest.acf.filters && latest.acf.filters.city}     </Bounce></p>
                                     </div>
                                     <br/><br/>
                                     <ul  className="featured-project-tag" style={{marginLeft:'-9px'}}>
                                     {latest.acf && latest.acf.filters && latest.acf.filters.categories.map((cat,index)=>
                                     
-                                     <li key={index}><i className="fa fa-tag"></i> {cat}</li>
+                                     <li key={index}><i className="fa fa-tag"></i> <Bounce bottom cascade>{cat}</Bounce> </li>
                                     ) }
                                     </ul>
                                 </div>
@@ -134,7 +136,7 @@ const FeatureProducts = ({state}) => {
                                 <br/>
                                 <br/>
                                 <ReadMore>
-                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://staging.starmarketingonline.com','')}>Read More <LeftArrow src={latest_icon07} /></Link>
+                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://staging.starmarketingonline.com','')}> <Bounce right cascade>Read More <LeftArrow src={latest_icon07} /></Bounce></Link>
                                 </ReadMore>
                                 {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
@@ -272,11 +274,15 @@ const FeautureProductsMain = styled.div`
         color: #202741;
         padding: 5px 15px;
         border-radius: 5px;
-        font: normal normal 300 14px/27px Poppins;
+        font: normal normal 300 14px/24px Poppins;
         margin: 9px 9px 0px 0px;
         letter-spacing: 0.5px;
     text-transform: capitalize;
     background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
         @media only screen and (max-width: 820px) {
             margin: 0px 4px 0px 0px;
             font-size: 12px;

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
 /**
  * Navigation Component
  *
@@ -22,14 +23,14 @@ const Navigation = () =>  {
         {state.map(([name, link, target, child]) => {
           
           return (
-            <MenuItem key={name} className={child.length > 0 ? 'submenu' : ''}>
+           <MenuItem key={name} className={child.length > 0 ? 'submenu' : ''}>
               <MenuLink  to={link}>
                 {name}
               </MenuLink>
               <MenuSub className="McD">
                 {child.length > 0 && child.map(([subName,subLink,target,subChild]) => {
                    return (
-                   <MenuItem key={subName}>
+                    <Fade bottom>  <MenuItem key={subName}>
                       {target == 'new' ? 
                       <MenuLinkTarget
                         href={subLink}
@@ -52,11 +53,11 @@ const Navigation = () =>  {
                             </MenuLink>
                         </MenuItem>
                         )})}
-                  </MenuItem>
+                  </MenuItem> </Fade>
                 )})}
                 
                 </MenuSub> 
-            </MenuItem>
+            </MenuItem>  
           );
         })}
       </Menu> 
