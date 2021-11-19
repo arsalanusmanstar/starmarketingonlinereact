@@ -11,11 +11,13 @@ import ReactLoading from "react-loading";
 import CareerUserIcon from "../../assets/career_user_icon.PNG";
 import CareerCalenderIcon from "../../assets/career_calender_icon.PNG";
 import CareerLocationIcon from "../../assets/career_location_icon.PNG";
+import { Link,NavLink,Redirect } from 'react-router-dom';
 
 import CareerDetails from "../../assets/career_details.PNG";
 
 
 import {FacebookShareButton, TwitterShareButton,LinkedinShareButton,WhatsappShareButton} from "react-share"
+
 
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
@@ -108,30 +110,60 @@ const CareerSingle=({match,location})=>{
                             <div className="shareButton active">
                             <i class="fa fa-id-badge" aria-hidden="true"></i><p>Apply for this job</p>
                             </div>
+
                             <div className="shareButton">
-                            <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p>
+                            {/* <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p> */}
+                            <FacebookShareButton 
+                url={shareURL}
+                quote={""}
+                hashtag=""
+                >
+               <i class="fa fa-facebook" aria-hidden="true"></i>
+              <p>SHARE ON FACEBOOK</p>
+              </FacebookShareButton> 
                             </div>
                            
                             <div className="shareButton">
-                            <i class="fa fa-twitter" aria-hidden="true"></i><p>Share on Twitter</p>
+                            {/* <i class="fa fa-twitter" aria-hidden="true"></i><p>Share on Twitter</p> */}
+                            <TwitterShareButton
+                             url={shareURL}
+                            >
+                            <i class="fa fa-twitter" aria-hidden="true"></i><p>SHARE ON TWITTER</p>
+                            </TwitterShareButton>
                             </div>
                             <div className="shareButton">
-                            <i class="fa fa-linkedin" aria-hidden="true"></i><p>Share on Linkedin</p>
+                            {/* <i class="fa fa-linkedin" aria-hidden="true"></i><p>Share on Linkedin</p> */}
+                            <LinkedinShareButton
+                            url={shareURL}
+                            
+                            >
+                              <i class="fa fa-linkedin" aria-hidden="true"></i><p>SHARE ON LINKEDIN</p>
+                            </LinkedinShareButton>
                             </div>
                             <div className="shareButton">
-                            <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p>
+
+                            {/* <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p> */}
+                            <WhatsappShareButton
+                            url={shareURL}
+                            >
+                             <i class="fa fa-whatsapp" aria-hidden="true"></i><p>SHARE ON WHATSAPP</p>
+                            </WhatsappShareButton>
                             </div>
                           </CareerSubSectionRight>
                           </CareerSubSectionMain>
                           <h3 className="skillsHeading">Find Similar Jobs</h3>
                           <div className="similarjobs">
                           {similarData.length>0 && similarData.filter((jobs)=> jobs.acf && jobs.acf.job_category === data[0].acf.job_category).map((jobs,index)=>
+                            
+                             <Link to={`/career/${jobs.slug}`} style={{ textDecoration: 'none', color:'black' }}>
                             <div className="similarJobsDetails" key={index}>
+                             
                             <img src={CareerDetails} class="userImg"></img>
                             <h3>{jobs.acf.designation}</h3>
                             <h4>{jobs.acf.location}, {jobs.acf.city}</h4>
                             <h4 style={{marginTop:'-12px'}}><span>PKR</span>  {jobs.acf.salary_range}  <span className="similarSalary">Benefits</span></h4> 
                               </div>
+                              </Link>
                           )}
                             {/* <div className="similarJobsDetails">
                             <img src={CareerDetails}></img>
@@ -427,10 +459,30 @@ const CareerSubSectionRight = styled.div`
     color: #000000;
     opacity: 1;
     margin: 0px;
+   
     
   
   }
  
+  button{
+    p{
+      float:right;
+      font: normal normal 300 18px/28px Poppins;
+      -webkit-letter-spacing: 0px;
+      -moz-letter-spacing: 0px;
+      -ms-letter-spacing: 0px;
+      letter-spacing: 1px;
+      color: #000000;
+      opacity: 1;
+      margin-top:6px;
+      margin-left:7px;
+      
+    }
+    i
+    {
+      float:left;
+    }
+  }
   
 }
 
