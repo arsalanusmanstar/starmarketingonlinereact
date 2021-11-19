@@ -44,13 +44,12 @@ const Projects = (state) => {
   const [cities,setCities] = useState(Cities);
   const [currentLocation,setCurrentLocation] = useState({"key":0,"label":"All Cities","value":""})
   const [currentRegions,setCurrentRegions] = useState({"key":0,"label":"All Regions","value":""})
-  let projects = []
+
+  
   useEffect(async ()=>{
     try {
-      projects = JSON.parse(localStorage.getItem('projects'));
-      !projects && axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
-        localStorage.setItem('projects',JSON.stringify(response.data))
         setData(response.data)
       })
     } catch (e) {
@@ -281,7 +280,7 @@ const Projects = (state) => {
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
               <div className="listing_boxes" key={index}> 
               {post.acf.filters.upcoming &&
-              <div className="upcoming">Coming Soon</div>}
+              <div className="upcoming"><img src={comingsoon} alt="" /></div>}
                <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
                 <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
               </Link>
@@ -447,16 +446,8 @@ h1.listing_heading {
 }
 .upcoming {
   position: absolute;
-  background: #ff000a;
-  right: 22px;
-  top: -40px;
-  border-radius: 20px;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 0;
-    padding: 12px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;}
+  right: 17px;
+  top: -53px;}
 `
 const ProjectButtonSection = styled.div`
 button {
