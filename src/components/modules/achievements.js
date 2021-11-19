@@ -9,7 +9,7 @@ const Achievements = ({state}) => {
             <Heading>
             <h1 className="featured-heading banners"  style={{marginTop:'-40px',color:'white'}}><Bounce top cascade>Achievements</Bounce></h1>
             </Heading>
-            <br/><br/><br/><br/>
+           
            <Body>
             <div className="entries">
                
@@ -150,8 +150,10 @@ const Body=styled.div`
           margin: auto;
           position: relative;
           left: -5px;
+          margin-top: 120px;
           @media only screen and (max-width: 480px) {
             width: calc(100% - 56px);
+            margin-top: 10px;
           }
    
     .entry {

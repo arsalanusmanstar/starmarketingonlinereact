@@ -20,12 +20,12 @@ const Team = ({ team, owner }) => {
             </Heading>
           <TeamMeetSectionMain>
             <TeamMeetSectionLeft>
-            <Bounce left cascade> <h4>Meet our<span>CEO</span></h4></Bounce>
-              <h1> <Bounce left cascade>{owner.firstname}</Bounce></h1>
-              <h2> <Bounce bottom cascade>{owner.lastname}  </Bounce></h2>
+            <Bounce left cascade><h4>Meet our<span>CEO</span></h4></Bounce>
+              <h1><Bounce left cascade>{owner.firstname}</Bounce></h1>
+              <h2><Bounce bottom cascade>{owner.lastname}</Bounce></h2>
             </TeamMeetSectionLeft>
             <TeamMeetSectionRight>
-            <Slide right cascade><RF className="logo_f" src={Meet_lft}></RF> </Slide>
+            <Slide right cascade><RF className="logo_f" src={Meet_lft}></RF></Slide>
             </TeamMeetSectionRight>
           </TeamMeetSectionMain>
           <TeamMeetSectionBottom>
@@ -226,6 +226,10 @@ const Img = styled.div`
 const Text = styled.div`
 width: 50%;
 margin: auto;
+@media only screen and (max-width: 480px) {
+ 
+    width: 100%;
+}
 h2 {
     font-size: 29px;
     font-weight: 500;
