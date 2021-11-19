@@ -49,8 +49,8 @@ const Locations = ({state}) => {
     <ContactSectionTouch className="maincontactsection" style={{marginTop:'-50px'}}>
   
          <ContactSectionTouchLeft>
-         <h1> <Bounce top cascade>Let's Stay In Touch  </Bounce></h1>
-         <p>  <Zoom bottom cascade>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</Zoom></p>
+         <h1> <Bounce left cascade>Let's Stay In Touch  </Bounce></h1>
+         <p>  <Zoom left cascade>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</Zoom></p>
          <Mailchimp
                 action='https://starmarketingonline.us1.list-manage.com/subscribe/post?u=c310c5c3b46ff223b92ac57e6&amp;id=5baec4271f'
                 fields={[
@@ -91,7 +91,7 @@ const Locations = ({state}) => {
         <ContactSection>
 
              <ContactSectionLeft>
-                <h1 className="Head_C"><Bounce top cascade>Contact Us</Bounce></h1>
+                <h1 className="Head_C"><Bounce left cascade>Contact Us</Bounce></h1>
                 <h2 className="head_n"> <Bounce left cascade><img src={PhoneImage} />  111 111 160 </Bounce></h2>
                 <h2 className="head_n"><Bounce bottom cascade><img src={WhatsappImage} />+92 301 116 1116</Bounce></h2>
              </ContactSectionLeft>
@@ -115,32 +115,32 @@ const Locations = ({state}) => {
         <LocationList>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle><Bounce left cascade>Karachi Office  </Bounce></ListTitle>
+                <ListTitle>Karachi Office  </ListTitle>
                 <ListContent>   Mezzanine Floor, Topra Plaza, Main University Road, Opp. Urdu Science College Gulshan-e-Iqbal, Karachi.  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle><Bounce left cascade>Islamabad Office  </Bounce></ListTitle>
+                <ListTitle>Islamabad Office  </ListTitle>
                 <ListContent>  Roshan Center, Jinnah Avenue Islamabad, Punjab  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle><Bounce left cascade>Lahore Office  </Bounce></ListTitle>
+                <ListTitle>Lahore Office  </ListTitle>
                 <ListContent>  Office No. 106, 1st Floor, Siddiq Trade Center, 72, Main Boulevard Lahore, Punjab  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle><Bounce left cascade>Peshawar Office  </Bounce></ListTitle>
+                <ListTitle>Peshawar Office  </ListTitle>
                 <ListContent>  Deans Trade Center, UG-7 & UG-8, Opposite F.C Headquarters, Saddar Peshawar, Khyber Pakhtunkhwa  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle><Bounce left cascade>Multan Office  </Bounce></ListTitle>
+                <ListTitle>Multan Office  </ListTitle>
                 <ListContent> Office No. 09, 10, 11, 2nd Floor, Chenone Tower, Abdali Road, Multan  </ListContent>
             </List>
             <List>
                 <Icon className="footer_icons" src={footer_icon}></Icon>
-                <ListTitle><Bounce left cascade>Hyderabad Office  </Bounce></ListTitle>
+                <ListTitle>Hyderabad Office  </ListTitle>
                 <ListContent>  Shop No. 10, 11, Garrison Complex, Main Saddar Road, Near Bombay Bakery, Hyderabad, Sindh, Pakistan  </ListContent>
             </List>
         </LocationList>
@@ -178,6 +178,7 @@ h1 {
 }
  p {
     font-size: 24px;
+    width: 80%;
    
     @media only screen and (max-width: 820px) {
         font-size: 18px;

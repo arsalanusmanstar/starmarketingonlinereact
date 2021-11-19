@@ -75,7 +75,7 @@ const ProjectSingle = ({match,location}) => {
       .then(response => {
         document.getElementById("contactForm").reset();
         setLoader(false)
-        setSuccess('Thank you for submit your request. We will contact you shortily.')
+        setSuccess('Thank you for submitting the request. Our representative will contact you shortly.')
       })
    }
 
@@ -504,7 +504,7 @@ const countries = [
                 <h1>GALLERY</h1>
                 <GalleryMain>
                 {data[0].acf.filters.gallery && data[0].acf.filters.gallery.map((gallery,index)=>
-                   <GBoxes key={index} onClick={()=>setImageModel(gallery)}>
+                   <GBoxes key={index} onClick={()=>setImageModel(index + 1)}>
                      <Imge src={gallery} width="100%"></Imge>
                    </GBoxes>
                 )}
@@ -558,10 +558,15 @@ const countries = [
             </VideoImg> 
           }
         </VideoModel>
-        <ImageModel className={imageModel && 'active'}>
-          <div className="back" onClick={()=>setImageModel()}>X</div>
-          <img src={imageModel} alt="" />
-        </ImageModel>
+        {console.log(imageModel,'imageModel')}
+       <ImageModel className={imageModel && 'active'}>
+      <div className="back" onClick={()=>setImageModel()}>X</div>
+          
+          {data[0].acf.filters.gallery && data[0].acf.filters.gallery.filter((grl,ind) => (ind+1) == imageModel ).map((gallery,index)=>  <img src={gallery} key={index} alt="" /> )}
+          
+          <div className="next" onClick={()=>setImageModel(data[0].acf.filters.gallery.length > imageModel && imageModel + 1)}><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+          <div className="prev" onClick={()=>setImageModel(imageModel - 1)}><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+        </ImageModel> 
 
         </> : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> 
         }

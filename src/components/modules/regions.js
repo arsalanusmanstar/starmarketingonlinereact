@@ -13,15 +13,15 @@ const Regions = ({data}) => {
           <Bounce top cascade><div className="featured-project-line"></div></Bounce>
 
 
-         <RegionsBoxesMain>
+          <Bounce bottom cascade> <RegionsBoxesMain>
             {data && data.region_listing && data.region_listing.map((region,index)=>
               <RegionsBoxes background={Card_reg} key={index} to={"/projects/"+region.slug.toLowerCase()} style={{textDecoration:'none'}}>
-                <h1 style={{color:'#000000'}}><Bounce bottom cascade>{region.country}</Bounce></h1>
+                <h1 style={{color:'#000000'}}>{region.country}</h1>
               
                 <Imge src={region.image}></Imge>
               </RegionsBoxes>
             )}
-         </RegionsBoxesMain>
+         </RegionsBoxesMain></Bounce>
 
 
 

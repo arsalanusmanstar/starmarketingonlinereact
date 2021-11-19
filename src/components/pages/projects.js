@@ -25,6 +25,8 @@ import ReactLoading from "react-loading";
 import Cities from "./../../data/cities.json";
 import Regions from "./../../data/regions.json";
 import axios from "axios";
+import Bounce from 'react-reveal/Bounce'
+import Fade from 'react-reveal/Fade'
 
 
 const Projects = (state) => {
@@ -47,10 +49,11 @@ const Projects = (state) => {
   let projects = []
   useEffect(async ()=>{
     try {
-      projects = JSON.parse(localStorage.getItem('projects'));
-      !projects && axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      //projects = JSON.parse(sessionStorage.getItem('projects')) ? JSON.parse(sessionStorage.getItem('projects')) : [];
+      //projects.length == 0 && 
+      axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
       .then(response => {
-        localStorage.setItem('projects',JSON.stringify(response.data))
+       // sessionStorage.setItem('projects',JSON.stringify(response.data))
         setData(response.data)
       })
     } catch (e) {
@@ -146,7 +149,7 @@ const Projects = (state) => {
       <Mainproject>
       <SectionContainer>
           <InnerBannerSection>
-             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}>Projects</h1>
+             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}><Bounce top cascade>Projects</Bounce></h1>
           </InnerBannerSection> 
         </SectionContainer>
       {redirect && <Redirect strict to={"/projects/"} />} 
@@ -277,17 +280,17 @@ const Projects = (state) => {
         <SectionContainer className="pt-0">
           {!data && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
            {FilterData.length > 0 && <h1 className="listing_heading">Found {FilterData.length} projects</h1>}
-          <div className="listing">
+           <div className="listing">
           {FilterData.length > 0 ? FilterData.map((post,index)=> 
-              <div className="listing_boxes" key={index}> 
+                 <div className="listing_boxes" key={index}> 
               {post.acf.filters.upcoming &&
               <div className="upcoming">Coming Soon</div>}
                <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
                 <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
               </Link>
-                <h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2>
+              <Fade bottom cascade><h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2></Fade>
 
-                <div className="listing_shop">
+                <Fade bottom cascade><div className="listing_shop">
                   {post.acf.filters && post.acf.filters.categories &&
                   post.acf.filters.categories.map((cat,index)=>
                   <div className="listing_shop_box" key={index}>
@@ -308,9 +311,10 @@ const Projects = (state) => {
                     {/* <button>{cat}</button> */}
                   </div>
                   ) }
-                </div>
+                </div></Fade>
 
-                <div className="listing_shop secound">
+               
+                <Fade bottom cascade><div className="listing_shop secound">
                   <div className="listing_shop_box button">
                    <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>Read more</Link>
                   </div>
@@ -320,7 +324,7 @@ const Projects = (state) => {
                     <button>{post.acf.filters.city}</button>
                   </div>
                   }
-                </div>
+                </div></Fade>
 
               </div>
             ): data && <div className="notfounded">NOT FOUND</div>  }
@@ -701,7 +705,7 @@ const ProjectSearch = styled.div`
     .searchCity {
         width: 25%;
         @media only screen and (max-width: 480px) {
-          width: 100%;
+          width: 100%  !important;
           margin-bottom: 10px;
         }
 
@@ -777,10 +781,15 @@ h1{
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 10%;
-    bottom: -16px;
+    width: 7%;
+    bottom: 5px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+    @media only screen and (max-width: 480px) {
+      width: 10%;
+      bottom: -4px;
+      height: 6px;
+      }
   }
   h1:before{
     content: "";
@@ -792,7 +801,7 @@ h1{
     position: absolute;
     right: 0;
     left: 0;
-    top: -59px;
+    top: -33px;
     text-align: center; 
     background-size: cover;
     @media only screen and (max-width: 820px) {

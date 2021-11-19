@@ -519,6 +519,7 @@ h2.have {
 .searchResult {
   position: absolute;
   background: #fff;
+  z-index: 9;
  
 }
 .searchResult ul {
@@ -688,7 +689,14 @@ h3.skillsHeading.similar {
 }
 
 
-
+.close {
+  color: #000;
+  position: absolute;
+  right: 12px;
+  top: 13px;
+  font-size: 16px;
+  font-weight: 100;
+}
 .similarJobsDetails h4 span {
   background-color: rgb(98 141 219 / 43%);
   color: rgb(20 48 99);
@@ -714,9 +722,26 @@ h3.skillsHeading.similar {
 }
 
 .similarJobsDetails h4 span.similarSalary:before {content: "";width: 10px;height: 10px;background: #ff000a;font-size: 10px;position: absolute;border-radius: 100px;left: 6px;top: 9px;}
-    
+.next .fa.fa-arrow-circle-o-right {
+  color: #fff;
+  font-size: 50px;
+  position: absolute;
+  right: 15%;
+  top: 45%;
+  cursor: pointer;
+}
+
+.prev .fa.fa-arrow-circle-o-left {
+  color: #fff;
+  font-size: 50px;
+  position: absolute;
+  left: 15%;
+  top: 45%;
+  cursor: pointer;
+}   
   
 @media only screen and (max-width: 1366px) {
+  
   .sticky .hotMenuMain {
   
     line-height: 17px;
@@ -923,7 +948,24 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
 
 @media only screen and (max-width: 820px) {
   
+  .searchFilter .fa.fa-search {
+    position: absolute;
+    right: 16%;
+    bottom: 50px;
+}
+.searchFilter .searchDropdown{
+  margin-top: -72px !important;
+      width: 50% !important;
 
+}
+.sticky .searchFilter .searchDropdown {
+  margin-top: 30px!important;
+}
+.sticky .searchFilter .fa.fa-search {
+
+  right: 16%;
+  bottom: 25px;
+}
   img.responsive {
   
     top: 5px;

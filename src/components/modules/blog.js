@@ -16,7 +16,8 @@ import ReactLoading from "react-loading";
 import back from "../../assets/back.png";
 import LeftPag from "../../assets/left_pag.png";
 import RightPag from "../../assets/right_pag.png";
-
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce'
 
 import {BiChevronLeftCircle, BiChevronRightCircle} from 'react-icons/bi';
 import { Prev } from 'react-bootstrap/esm/PageItem';
@@ -87,7 +88,7 @@ const Blog = (state) => {
         <div>
         <SectionContainer>
           <InnerBannerSection>
-             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}>Latest </h1>
+             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}><Bounce top cascade>Latest</Bounce> </h1>
           </InnerBannerSection> 
         
         </SectionContainer>  
@@ -129,7 +130,7 @@ const Blog = (state) => {
                 <LatestBoxes key={index} onClick={()=> viewPost(post.id)}>
                   
                  {console.log(post)}
-                    <LatestBoxesImg>
+                 <Fade left cascade><LatestBoxesImg>
                         {post.categories[0] == 47 ? 
                             <tag><Imge src={latest_icon01}></Imge>Events</tag> : <tag className="red"><Imge src={latest_icon08}></Imge>Announcements</tag>
                          }
@@ -137,7 +138,7 @@ const Blog = (state) => {
                             setActiveContent(true)
                             setContent(index)
                         }} className="full_img" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} width="100%"></Imge>
-                        <text>
+                        <Fade right cascade><text>
                         <date><Imge src={clock}></Imge> <Moment  format="MMM DD, YYYY">{post.date}</Moment></date>
                         <views><Imge src={latest_icon05}></Imge>{post['post-meta-fields'].post_views_count[0]} Views</views>
                         <user><Imge src={latest_icon06}></Imge> {
@@ -147,10 +148,10 @@ const Blog = (state) => {
                             post.author == 1 && "Star Marketing" 
                             
                         }</user>
-                        </text>
-                    </LatestBoxesImg>  
+                        </text></Fade>
+                    </LatestBoxesImg></Fade>
         
-                    <LatestBoxesText>
+                    <Fade right cascade><LatestBoxesText>
                         <h1 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h1>
                         <p  dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p>
                         <button onClick={()=>{
@@ -160,7 +161,7 @@ const Blog = (state) => {
                         Read more
                         <Imge src={latest_icon07}></Imge>
                         </button>
-                    </LatestBoxesText>  
+                    </LatestBoxesText></Fade>
                  </LatestBoxes>
             ) : <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
             <div className="pagi">
@@ -469,23 +470,29 @@ h1{
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 10%;
-    bottom: -16px;
+    width: 5%;
+    bottom: 8px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+    @media only screen and (max-width: 480px) {
+      width: 10%;
+      bottom: -16px;
+      height: 7px;
+
+    }
 
   }
   h1:before{
     content: "";
     background: url(./assets/whiteImage.png) 0% 0% no-repeat padding-box;
-    width: 393px;
-    height: 180px;
+    width: 284px;
+    height: 150px;
     display: table;
     margin: 0 auto;
     position: absolute;
     right: 0;
     left: 0;
-    top: -59px;
+    top: -13px;
     text-align: center;
     background-size: cover;
     @media only screen and (max-width: 820px) {

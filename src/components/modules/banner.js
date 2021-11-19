@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import BackgroundImage from "../../assets/WebBg.png";
-import VideoImage from "../../assets/homepage.webm";
+import VideoImage from "../../assets/homepage.mp4";
 import GuarantLogo from "../../assets/1Icon.png";
 import latest_icon07 from "../../assets/latest_icon07.png";
 import Fade from 'react-reveal/Fade';
@@ -37,9 +37,9 @@ const BannerText = ({state}) => {
 const Video = ({state}) => {
     return (
         
-        <Slide right> <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
+         <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
                <source src={VideoImage} type="video/mp4" />  
-        </VideoImg>    </Slide>
+        </VideoImg>    
     )
 }
 const TopBanner = ({state,data}) => {

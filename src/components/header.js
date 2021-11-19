@@ -1,13 +1,15 @@
 import styled from 'styled-components'
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navigation from "./navigation/navigation";
 import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
 import {  Logo, DownArrow } from "./icons";
 import Sticky from 'react-sticky-el';
 import LightSpeed from 'react-reveal/LightSpeed';
+import Slide from 'react-reveal/Slide';
 
 const Header = ({params}) => {
+  const input1 = useRef(null);
   const [projects,setProjects] = useState(JSON.parse(localStorage.getItem('projects')))
   const [filter,setFilter] = useState('');
   const [active,setActive] = useState(false);
@@ -20,6 +22,12 @@ const Header = ({params}) => {
      item['title'].rendered.toLowerCase().includes(lowercasedFilter)
     );
   })
+
+  const handleClick1 = () => {
+    
+    setActive(active ? false:true)
+    input1.current.focus();
+  };
 
   return (
     <StickyUpdate style={{transform:'inherit !important'}}>
@@ -47,22 +55,23 @@ const Header = ({params}) => {
           
          <Navigation />
           <div className="searchFilter">
-              <i className="fa fa-search" onClick={()=>setActive(active ? false:true)}></i>
-              {active && <div className="searchDropdown">
-              <div className="searchInput"><input type="text" className="serach" pattern=".{3,}" onChange={(x)=> setFilter(x.target.value)}/></div>
+              <i className="fa fa-search" onClick={()=>handleClick1()}></i>
+               <div className={active ? "searchDropdown active" : "searchDropdown"}>
+              <div className="searchInput"><input type="text" placeholder="Search Here ..." ref={input1} className="serach" value={filter} pattern=".{3,}" onChange={(x)=> setFilter(x.target.value)}/>{filter &&<div className="close" onClick={()=>{ 
+                setFilter('')   }}><i class="fa fa-times" aria-hidden="true"></i></div>}</div>
               <div className="searchResult">
                 <ul>
-                    {filteredData.map((post,indx) => <li><Link  to={post.link.replace('https://staging.starmarketingonline.com','')} key={indx}>
+                    {filteredData && filteredData.map((post,indx) => <li><Link  to={post.link.replace('https://staging.starmarketingonline.com','')} key={indx}>
                       <span><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} /></span>
                       <h3 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h3>
                       <p dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p></Link></li>)}
                 </ul>
               </div>
-              </div>}
+              </div>
           </div>
-          <HotProject className="hotMenuMain">Hot Projects <span><DownArrow /></span>
-            <div className="hotMenu">
-            <ul>
+           <HotProject className="hotMenuMain">Hot Projects <span><DownArrow /></span>
+          <div className="hotMenu">
+          <Slide bottom>   <ul>
              <li>
                <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link>
                </li>
@@ -79,10 +88,7 @@ const Header = ({params}) => {
               <li>
               <Link to='/project/5-west'>5 West – Mumtaz City</Link>
               </li>
-            
-             
-              
-              </ul>
+              </ul></Slide>
               </div>
           </HotProject>
         
@@ -148,6 +154,7 @@ const PageHeader = styled.header`
   ul{
     text-align: left;
     color: #FFFFFF;
+    list-style: none;
     li {
       a{
         color:#fff;
@@ -185,8 +192,12 @@ const HeaderInner = styled.div`
     cursor: pointer;
         text-align: center;
     
+  .searchDropdown.active{
+    opacity:1;
+  }
   .searchDropdown {
     position: absolute;
+    opacity:0;
     right: 0px;
     margin-top: -109px;
     width: 20%;
@@ -249,7 +260,7 @@ const SiteDescription = styled.div`
   color: #6d6d6d;
   font-size: 1.8rem;
   font-weight: 500;
-  display: none;
+  
   letter-spacing: -0.0311em;
   transition: all 0.15s linear;
 
@@ -273,7 +284,7 @@ const StyledLink = styled(Link)`
 `;
 
 const HeaderNavigationWrapper = styled.div`
-  display: none;
+  
 
   @media (min-width: 1000px) {
     align-items: center;
@@ -298,6 +309,9 @@ const HotProject = styled.div`
   -o-transition: all 1s 0s ease;
   transition: all 1s 0s ease;
   position:relative;
+  @media only screen and (max-width: 820px) {
+    display: none;
+  }
   
   span{
     box-shadow: rgb(0 0 0 / 71%) 0 3px 13px;

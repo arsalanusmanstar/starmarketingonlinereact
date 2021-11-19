@@ -41,6 +41,7 @@ const SiteFooter = styled.footer`
   border-width: 0;
   padding: 3rem 0;
   background: #f3f3f3;
+  padding-bottom: 0px;
   background-color: ${(props) => props.bg};
   color: #000000;
   @media only screen and (max-width: 820px) {

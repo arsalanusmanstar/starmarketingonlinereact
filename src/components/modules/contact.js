@@ -3,7 +3,7 @@ import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
 import CallRequest from "./callrequest";
 import { Row, Col, Alert, Container,FormGroup} from "react-bootstrap";
-
+import Bounce from 'react-reveal/Bounce';
 import Select from 'react-select';
 
 
@@ -26,12 +26,12 @@ const Contact = ({offices,get_in_touch}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading banners" style={{marginTop:'-40px',color:'white'}}>CONTACT US</h1>
+            <h1 className="featured-heading banners" style={{marginTop:'-40px',color:'white'}}><Bounce top cascade>CONTACT US</Bounce></h1>
             </Heading>
            
             <br/> <br/>
             <div className="contactMain" style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
-             <h2 className="contactMainHeading"> {get_in_touch.heading}</h2>
+             <h2 className="contactMainHeading"> <Bounce left cascade>{get_in_touch.heading}</Bounce></h2>
              <p  className="getinTouch">{get_in_touch.content}</p>
              {get_in_touch.image && <img className="contactTopimg" src={get_in_touch.image}  alt="Get in touch"/>}
              <CallRequestMain className="contactPages"><CallRequest  title={"Request Instant Call Back"} bg={'off'} >
@@ -134,23 +134,29 @@ h1{
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 10%;
-    bottom: -16px;
+    width: 7%;
+    bottom: 3px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+    @media only screen and (max-width: 480px) {
+      width: 10%;
+      bottom: -2px;
+      height: 6px;
+
+    }
     
   }
   h1:before{
     content: "";
     background: url(./assets/whiteImage.png) 0% 0% no-repeat padding-box;
-    width: 393px;
+    width: 500px;
     height: 180px;
     display: table;
     margin: 0 auto;
     position: absolute;
     right: 0;
     left: 0;
-    top: -59px;
+    top: -31px;
     text-align: center;
     background-size: cover;
     @media only screen and (max-width: 820px) {

@@ -25,7 +25,7 @@ const Callrequest = ({state, bg, title, location}) => {
         .then(response => {
             document.getElementById("contactForm").reset();
             setLoader(false)
-            setSuccess('Thank you for submit your request. We will contact you shortily.')
+            setSuccess('Thank you for submitting the request. Our representative will contact you shortly.')
         })
      }
 
@@ -157,6 +157,10 @@ grid-template-columns: 35% 65%;
 .callform{
     background: #fff;
     padding: 65px 70px 42px;
+    border: 1px solid #b1b1b1;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     @media only screen and (max-width: 1366px) {
         padding: 44px 30px 42px;
        

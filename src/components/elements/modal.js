@@ -6,12 +6,13 @@ import latest_icon06 from "../../assets/latest_icon06.png";
 import back from "../../assets/back.png";
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import Slide from 'react-reveal/Slide';
 
 const Modal = (state) => {
   console.log(state,'modal')
     const [activeContent,setActiveContent] = useState(true);
     return <LatestBoxesSlides className={activeContent && 'active'}>
-        <div className="projectContent">
+            <Slide bottom> <div className="projectContent">
             <> 
                 <Back bg={back} onClick={()=>state.offModule(false)}></Back>
                 <video style={{width:'100%'}} controls loop  playsInline  defer >
@@ -31,7 +32,7 @@ const Modal = (state) => {
                 
                
                 </>
-            </div>
+            </div>  </Slide>
         </LatestBoxesSlides>
 }
 
@@ -76,7 +77,8 @@ const  LatestBoxesSlides = styled.div`
       padding: 10px 0px 0px 0px;
       text-transform: uppercase;
       @media only screen and (max-width: 480px) {
-        padding: 30px 0px 40px 0px;
+        padding: 10px 0px 10px 0px;
+        font-size: 25px;
       }
     }
     h1 {

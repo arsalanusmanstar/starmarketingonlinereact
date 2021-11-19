@@ -3,6 +3,8 @@ import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
 import Meet_lft from "../../assets/meet_lft.png";
 import Team_box from "../../assets/team_box.png";
+import Bounce from 'react-reveal/Bounce';
+import Slide from 'react-reveal/Slide';
 
 const Team = ({ team, owner }) => {
   
@@ -14,16 +16,16 @@ const Team = ({ team, owner }) => {
       <TeamMeetSection>
         <SectionContainer style={{marginTop:'-100px'}}>
         <Heading>
-            <h1 className="featured-heading banners" style={{color:'white'}}>OUR TEAM</h1>
+            <h1 className="featured-heading banners" style={{color:'white'}}><Bounce top cascade>OUR TEAM</Bounce></h1>
             </Heading>
           <TeamMeetSectionMain>
             <TeamMeetSectionLeft>
-              <h4>Meet our<span>CEO</span></h4>
-              <h1>{owner.firstname}</h1>
-              <h2>{owner.lastname}</h2>
+            <Bounce left cascade> <h4>Meet our<span>CEO</span></h4></Bounce>
+              <h1> <Bounce left cascade>{owner.firstname}</Bounce></h1>
+              <h2> <Bounce bottom cascade>{owner.lastname}  </Bounce></h2>
             </TeamMeetSectionLeft>
             <TeamMeetSectionRight>
-              <RF className="logo_f" src={Meet_lft}></RF>
+            <Slide right cascade><RF className="logo_f" src={Meet_lft}></RF> </Slide>
             </TeamMeetSectionRight>
           </TeamMeetSectionMain>
           <TeamMeetSectionBottom>
@@ -34,12 +36,12 @@ const Team = ({ team, owner }) => {
             {team && team.people && team.people.map((peop, index) =>
               <TeamMeetBoxes key={index}>
                 <Img>
-                  <Imge src={Team_box}></Imge>
+                <Slide bottom cascade> <Imge src={Team_box}></Imge></Slide>
                 </Img>
-                <Text>
+                <Slide bottom cascade><Text>
                   <h2>{peop.name}</h2>
                   <p>{peop.position}</p>
-                </Text>
+                </Text></Slide>
               </TeamMeetBoxes>
             )}
           </TeamMeetBoxesMain>
@@ -60,7 +62,7 @@ h4{
     font-size: 44px;
     font-weight: 400;
     letter-spacing: 1px;
-    margin: 0px 0px 100px 0px;
+    margin: 0px 0px 50px 0px;
     @media only screen and (max-width: 820px) {
       margin: 0px 0px 0px 0px;
       font-size: 34px;
@@ -96,7 +98,7 @@ h1 {
    
 }
 h2 {
-    font-size: 130px;
+    font-size: 110px;
     font-weight: 200;
     text-transform: capitalize;
     margin: 0px;
@@ -222,6 +224,8 @@ const Img = styled.div`
 
 `;
 const Text = styled.div`
+width: 50%;
+margin: auto;
 h2 {
     font-size: 29px;
     font-weight: 500;
@@ -230,6 +234,7 @@ h2 {
 p {
     font-size: 22px;
     font-weight: 100;
+  
 }
 
 `;
@@ -258,11 +263,13 @@ h1{
     right: 0;
     margin: 0 auto;
     width: 10%;
-    bottom: -16px;
+    bottom: 4px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
     @media only screen and (max-width: 480px) {
       margin: revert;
+      bottom: -10px;
+      height: 6px;
        
     }
    
@@ -278,7 +285,7 @@ h1{
     position: absolute;
     right: 0;
     left: 0;
-    top: -59px;
+    top: -27px;
     text-align: center;
     background-size: cover;
     @media only screen and (max-width: 480px) {
