@@ -89,14 +89,11 @@ const FeatureProducts = ({state}) => {
     centerMode: true,
   };
 
-  let projects = []
+  
     useEffect(async ()=>{
         try {
-        //projects = JSON.parse(sessionStorage.getItem('projects')) ? JSON.parse(sessionStorage.getItem('projects')) : [];
-        //projects.length == 0 && 
-        axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+       axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
         .then(response => {
-           // sessionStorage.setItem('projects',JSON.stringify(response.data))
             setData(response.data)
         })
         } catch (e) {

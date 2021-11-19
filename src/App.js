@@ -25,20 +25,11 @@ import {
 
 export default function App(state) {
   //const  headerBg  = data.isHome ? HomeBackground : PageBackground;
-  let projects = []
-  try {
-    projects = JSON.parse(localStorage.getItem('projects'));
-    projects.length > 0 && axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
-    .then(response => {
-     localStorage.setItem('projects',JSON.stringify(response.data))
-    })
-  } catch (e) {
-      console.error(e);
-  }
+  
+  const [data,setData] = useState('');
 
   const { pathname } = useLocation();
    
-  const [data,setData] = useState('');
   const [moduleOff,setModuleOff] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
 
