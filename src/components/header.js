@@ -1,13 +1,38 @@
 import styled from 'styled-components'
+import { useState, useRef } from "react";
 import Navigation from "./navigation/navigation";
+import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
 import {  Logo, DownArrow } from "./icons";
+import Sticky from 'react-sticky-el';
+import LightSpeed from 'react-reveal/LightSpeed';
+import Slide from 'react-reveal/Slide';
 
-const Header = () => {
+const Header = ({params}) => {
+  const input1 = useRef(null);
+  const [projects,setProjects] = useState(JSON.parse(localStorage.getItem('projects')))
+  const [filter,setFilter] = useState('');
+  const [active,setActive] = useState(false);
+
+  const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
+  const filteredData = projects && projects.filter(item => {
+    const index = lowercasedFilter.split('');
+    if(index.length > 2)
+    return Object.keys(item).some(key =>
+     item['title'].rendered.toLowerCase().includes(lowercasedFilter)
+    );
+  })
+
+  const handleClick1 = () => {
+    
+    setActive(active ? false:true)
+    input1.current.focus();
+  };
 
   return (
-    <PageHeader id="site-header">
-      <HeaderInner>
+    <StickyUpdate style={{transform:'inherit !important'}}>
+     <PageHeader  id="site-header">
+      <HeaderInner  className="Sticky_p">
         <TitleWrapper>
           {/* Search button on mobile */}
           {/* {state.theme.showSearchInHeader && <MobileSearchButton />} */}
@@ -15,35 +40,74 @@ const Header = () => {
           {/* Heading and Description of the site */}
           <TitleGroup>
             <SiteTitle>
-            <StyledLink to="/"><Logo /></StyledLink> 
+            <LightSpeed left> <StyledLink to="/" className="Sticky_l"><Logo /></StyledLink>    </LightSpeed>
               
             </SiteTitle>
             {/* <SiteDescription>{description}</SiteDescription> */}
           </TitleGroup>
 
+           <MobileNavigation  location={params} />  
           {/* Mobile menu button and modal */}
-          {/* <MobileMenuButton />
-          <MobileMenuModal /> */}
         </TitleWrapper>
 
-        <HeaderNavigationWrapper>
+        <LightSpeed right>  <HeaderNavigationWrapper>
           {/* Desktop navigation links */}
-          <Navigation />
-          <HotProject>Hot Projects <span><DownArrow /></span>
-            <div className="hotMenu"><Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link></div>
+          
+         <Navigation />
+          <div className="searchFilter">
+              <i className="fa fa-search" onClick={()=>handleClick1()}></i>
+               <div className={active ? "searchDropdown active" : "searchDropdown"}>
+              <div className="searchInput"><input type="text" placeholder="Search Here ..." ref={input1} className="serach" value={filter} pattern=".{3,}" onChange={(x)=> setFilter(x.target.value)}/>{filter &&<div className="close" onClick={()=>{ 
+                setFilter('')   }}><i class="fa fa-times" aria-hidden="true"></i></div>}</div>
+              <div className="searchResult">
+                <ul>
+                    {filteredData && filteredData.map((post,indx) => <li><Link  to={post.link.replace('https://staging.starmarketingonline.com','')} key={indx}>
+                      <span><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} /></span>
+                      <h3 dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h3>
+                      <p dangerouslySetInnerHTML={{ __html:post.excerpt.rendered}}></p></Link></li>)}
+                </ul>
+              </div>
+              </div>
+          </div>
+           <HotProject className="hotMenuMain">Hot Projects <span><DownArrow /></span>
+          <div className="hotMenu">
+          <Slide bottom>   <ul>
+             <li>
+               <Link to='/project/lyallpur-galleria-ii/'>Lyallpur Galleria 2</Link>
+               </li>
+               <li>
+              <Link to='/project/whiteley-mall/'>Whitely Mall</Link>
+              </li>
+              <li>
+              <Link to='/project/sun-overseas-city'>Sun Overseas City</Link>
+              </li>
+               <li> 
+                 <Link to='/project/marble-arch-enclave'>Marble Arch Enclave</Link>
+               </li>    
+             
+              <li>
+              <Link to='/project/5-west'>5 West – Mumtaz City</Link>
+              </li>
+              </ul></Slide>
+              </div>
           </HotProject>
+        
           {/* Desktop search button */}
-          {/* {state.theme.showSearchInHeader && <SearchButton />} */}
-        </HeaderNavigationWrapper>
+        </HeaderNavigationWrapper></LightSpeed>
       </HeaderInner>
       {/* Global search modal */}
       {/* <SearchModal /> */}
     </PageHeader>
+    </StickyUpdate>
   );
 };
 
+
+
 // Connect the Header component to get access to the `state` in it's `props`
 export default Header
+
+
 
 const TitleGroup = styled.div`
   @media (min-width: 1000px) {
@@ -53,6 +117,8 @@ const TitleGroup = styled.div`
     justify-content: flex-start;
     margin: -1rem 0 0 -2.4rem;
   }
+  
+
 `;
 
 const TitleWrapper = styled.div`
@@ -70,6 +136,14 @@ const TitleWrapper = styled.div`
     padding: 0;
     text-align: left;
   }
+  @media only screen and (max-width: 1024px) {
+    
+    text-align: left;
+    justify-content: left;
+  }
+  @media only screen and (max-width: 480px) {
+    padding: 0;
+  }
 `;
 
 const PageHeader = styled.header`
@@ -80,6 +154,7 @@ const PageHeader = styled.header`
   ul{
     text-align: left;
     color: #FFFFFF;
+    list-style: none;
     li {
       a{
         color:#fff;
@@ -88,10 +163,14 @@ const PageHeader = styled.header`
         text-decoration:none !important;
         font-weight:400;
         letter-spacing: 0px;
+        @media only screen and (max-width: 1366px) {
+          font-size: 14px;
+      
+        }
       }
     }
     
-
+     
 
   }
 `;
@@ -100,15 +179,63 @@ const HeaderInner = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 4.8rem 0;
+  padding: 2.8rem 0;
   max-width: 168rem;
   z-index: 100;
   margin-left: auto;
   margin-right: auto;
   
+  .searchFilter {
+    color: #98add3;
+    width: 96px;
+    font-size: 29px;
+    cursor: pointer;
+        text-align: center;
+    
+  .searchDropdown.active{
+    opacity:1;
+  }
+  .searchDropdown {
+    position: absolute;
+    opacity:0;
+    right: 0px;
+    margin-top: -109px;
+    width: 20%;
+    transition: all 0.55s linear;
+    input.serach {
+      width: 100%;
+      padding: 12px 20px;
+      border: 0;
+      background: #ffffff;
+      box-shadow: 1px 5px 10px 3px #00000024;
+      border-radius: 0px 0px 10px 10px;
+     
+      letter-spacing: 1px;
+      font-size: 16px;
+      :focus {
+        outline: none;
+    }
+  }
+}
+}
+
+.searchFilter:hover {
+    color: #fff;
+}
   @media (min-width: 700px) {
     max-width: 1440px;
   }
+  @media only screen and (max-width: 1366px) {
+    max-width: 94%;
+  
+
+  }
+  @media only screen and (max-width: 480px) {
+    padding: 0px;
+
+  }
+ 
+
 `;
 
 const SiteTitle = styled.h1`
@@ -124,6 +251,7 @@ const SiteTitle = styled.h1`
     font-size: 2.4rem;
     font-weight: 700;
   }
+  
 `;
 
 const SiteDescription = styled.div`
@@ -132,7 +260,7 @@ const SiteDescription = styled.div`
   color: #6d6d6d;
   font-size: 1.8rem;
   font-weight: 500;
-  display: none;
+  
   letter-spacing: -0.0311em;
   transition: all 0.15s linear;
 
@@ -156,22 +284,23 @@ const StyledLink = styled(Link)`
 `;
 
 const HeaderNavigationWrapper = styled.div`
-  display: none;
+  
 
   @media (min-width: 1000px) {
     align-items: center;
     display: flex;
   }
+  
 `;
 
 const HotProject = styled.div`
-  margin-left:40px;
-  width: 215px;
+  margin-left:2px;
+  width: 196px;
   height: 52px;
   background: #DB2D34 0% 0% no-repeat padding-box;
   border-radius: 8px;
   opacity: 1;
-  font-size: 18px;
+  font-size: 16px;
   padding: 13px 14px;
   text-transform: uppercase;
   cursor: pointer;
@@ -180,14 +309,38 @@ const HotProject = styled.div`
   -o-transition: all 1s 0s ease;
   transition: all 1s 0s ease;
   position:relative;
-  &:hover{
-    span{
-      box-shadow: 0px 19px 49px #000000b5;
+  @media only screen and (max-width: 820px) {
+    display: none;
+  }
+  
+  span{
+    box-shadow: rgb(0 0 0 / 71%) 0 3px 13px;
+    
+  }
+  
+
+  }
+  @media only screen and (max-width: 1366px) {
+    margin-left: 24px;
+    width: 180px;
+    font-size: 14px;
+    padding: 17px 14px;
+    
+    span {
+      
+      padding: 15px 19px 35px !important;
+     
+      }
     }
+
+
+  }  
+  &:hover{
     .hotMenu{
       display:block;
     }
   }
+
   span{
     background: #DB2D34 0% 0% no-repeat padding-box;
     border: 1px solid #00000000;
@@ -196,10 +349,12 @@ const HotProject = styled.div`
     display: block;
     float: right;
     height: 100%;
-    padding:13px 19px 38px;
-    position: relative;
-    top: -14px;
-    right: -14px;
+    padding:13px 17px 38px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    
   }
   .hotMenu{
     display:none;
@@ -219,5 +374,12 @@ const HotProject = styled.div`
       width: 100%;
       padding-right: 11px;
     }
+    
   }
 `;
+
+const StickyUpdate = styled(Sticky)`
+div{
+transform: inherit !important;
+}
+`

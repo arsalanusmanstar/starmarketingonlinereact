@@ -1,59 +1,55 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
-
+import Bounce from 'react-reveal/Bounce';
+import Fade from 'react-reveal/Fade';
 
 const Achievements = ({state}) => {
     return (
-        <SectionContainer style={{height:'2000px'}}>
+        <SectionContainer>
             <Heading>
-            <h1 className="featured-heading" style={{color:'white'}}>Achievements</h1>
+            <h1 className="featured-heading banners"  style={{marginTop:'-40px',color:'white'}}><Bounce top cascade>Achievements</Bounce></h1>
             </Heading>
-            <br/><br/><br/><br/>
+           
            <Body>
             <div className="entries">
-  <div className="entry">
-    <div className="title"><b>2005</b> - 2007</div>
-    <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
-    </div>
+               
+     <div className="entry">
+    <div className="title"><Fade right cascade><b>2005</b></Fade> - 2007</div>  
+    <Fade left cascade><div className="body">
+    <p>The founding members rebrand themselves to Star Marketing after having worked for 10 years in real estate marketing under different names. Right from the start, Star Marketing establishes itself as a trustworthy, ethical and professional real estate marketing agency.</p>
+    </div></Fade>
   </div>
   <div className="entry">
-  <div className="title"><b>2007</b> - 2009</div>
-    <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
-    </div>
+  <div className="title"><Fade right cascade><b>2008</b></Fade> - 2010</div>
+  <Fade right cascade><div className="body">
+     <p>Star Marketing launches its first foreign office in the city of Dubai in the UAE. The best builders and developers partner up with Star Marketing to successfully launch their projects across the country. Star Marketing starts getting local and international attention for their creative and innovative marketing strategies.</p>
+    </div></Fade>
   </div>
   <div className="entry">
-  <div className="title"><b>2010</b> - 2012</div>
-    <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
-    </div>
+ <div className="title"><Fade right cascade><b>2011</b></Fade> - 2013</div>
+ <Fade left cascade><div className="body">
+      <p>During this period, Star Marketing landed their biggest client ever – Gulberg Residence Islamabad! This mega project enabled Star Marketing to expand its team and add even more talented and skilled professionals to their organization.</p>
+    </div></Fade>
   </div>
   <div className="entry">
-  <div className="title"><b>2012</b> - 2014</div>
-    <div className="body">
-      <p>Voluptatibus veniam ea reprehenderit atque. Reiciendis non laborum adipisci ipsa pariatur omnis. Sed ipsam repudiandae velit. Omnis libero nostrum aperiam nemo dolor ea eos eius. Esse a non itaque quidem.</p>
-    </div>
+  <div className="title"><Fade right cascade><b>2014</b></Fade> - 2016</div>
+  <Fade right cascade><div className="body">
+      <p>This period was also very eventful and productive for Star Marketing, as it landed another huge Gulberg project called Gulberg Greens. Not only this, but Star Marketing also worked on other major projects like DHA Oasis Karachi and LDA City Lahore.</p>
+    </div></Fade>
   </div>
   <div className="entry">
-  <div className="title"><b>2014</b> - 2016</div>
-    <div className="body">
-      <p>VAdipisci totam omnis cum et suscipit excepturi et excepturi. Inventore sequi sit ut aliquid. Modi aut dolores dignissimos.</p>
-      <p>Delectus facere officia consequuntur molestias deserunt illo. Placeat laudantium beatae natus excepturi ab nihil voluptates.</p>
-    </div>
+  <div className="title"><Fade right cascade><b>2017</b></Fade> - 2019</div>
+  <Fade left cascade><div className="body">
+      <p>Star Marketing proudly marketed Top City Islamabad along with other major projects like Chen One Mall and Heaven Heights Lahore. Star Marketing also completely redesigned and revitalized their website – starmarketingonline.com.</p>
+    </div></Fade>
   </div>
   <div className="entry">
-  <div className="title"><b>2016</b> - 2018</div>
-    <div className="body">
-      <p>Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam earum rerum quae dicta quibusdam aliquam ut.</p>
-    </div>
+  <div className="title"><Fade right cascade><b>2020</b></Fade> - Present</div>  
+  <Fade right cascade><div className="body">
+      <p>Star Marketing continues to be the leading real estate marketing company in Pakistan. We have over 30 ongoing projects in all the major cities of Pakistan. We have organized multiple property expos across the country with the next one in the Festival Arena in Dubai Festival City! Star Marketing has also launched their new state-of-the-art Star Digital department.</p>
+    </div></Fade>
   </div>
-  <div className="entry">
-  <div className="title"><b>2020</b> - 2021</div>
-    <div className="body">
-      <p>Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum suscipit eveniet amet dignissimos. Doloremque et distinctio quod molestiae ut.</p>
-    </div>
-  </div>
+  
   
   
 </div>
@@ -61,7 +57,7 @@ const Achievements = ({state}) => {
   
 </Body>
        
- <div style={{height:'35px', width:'35px', backgroundColor:'#e24f53', margin:'auto', marginTop:'500px', borderRadius:'100%'}}></div>
+ <div style={{height:'35px', width:'35px', backgroundColor:'#e24f53', margin:'auto', marginTop:'265px', borderRadius:'100%'}}></div>
         </SectionContainer>   
     )
 
@@ -75,7 +71,11 @@ h1{
     position: relative;
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    @media only screen and (max-width: 480px) {
+      
+      margin-top: 0px!important;
+    }
     
   }
   h1:after{
@@ -86,24 +86,40 @@ h1{
     right: 0;
     margin: 0 auto;
     width: 10%;
-    bottom: -16px;
+    bottom: 5px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+    @media only screen and (max-width: 480px) {
+      height: 6px;
+      bottom: -8px;
+    
+    }
     
   }
   h1:before{
     content: "";
     background: url(./assets/whiteImage.png) 0% 0% no-repeat padding-box;
-    width: 393px;
+    width: 580px;
     height: 180px;
     display: table;
     margin: 0 auto;
     position: absolute;
     right: 0;
     left: 0;
-    top: -59px;
+    top: -34px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+    width: 300px;
+    height: 130px;
+    top: 10px;
+    }
+    @media only screen and (max-width: 480px) {
+
+      width: 100%;
+      height: 50px;
+          top: -1px;
+    }
    
   }
 `
@@ -121,35 +137,49 @@ const Body=styled.div`
     position: absolute;
     top:290px;
     left:50%;
-    bottom:400px;
+    bottom: 218px;
     transform:translateX(-50%);
     width:20px;
     border-radius:30px;
     background-color:#e24f53;
+    
   }
   .entries {
-    width:calc(100% - 80px);
-    max-width:900px;
-    margin:auto;
-    position: relative;
-    left:-5px;
+    width: calc(100% - 80px);
+          max-width: 100%;
+          margin: auto;
+          position: relative;
+          left: -5px;
+          margin-top: 120px;
+          @media only screen and (max-width: 480px) {
+            width: calc(100% - 56px);
+            margin-top: 10px;
+          }
    
     .entry {
       border-radius: 25px;
-      width:calc(50% - 80px);
-      float:left; 
-      padding:20px;
-      clear:both;
-      text-align:right;
-      background-color:white;
+    width: calc(50% - 64px);
+    float: left;
+    padding: 35px;
+    clear: both;
+    text-align: right;
+    background-color: white;
+    border-bottom-left-radius: 0px;
+    margin-bottom: 50px;
+      @media only screen and (max-width: 480px) {
+        width: calc(100% - 0px);
+        margin-bottom: 80px;
+        text-align: left;
+        padding: 20px;
+      }
       &:not(:first-child) {
         margin-top:-60px;
       }
       .title {
-        font-size:32px;
-        margin-bottom:12px;
+        font-size: 40px;
+        margin-bottom: 12px;
         position: relative;
-        color:#001439;
+        color: #001439;
         &:before {
           content: '';
           position: absolute;
@@ -161,7 +191,13 @@ const Body=styled.div`
           top:50%;
           transform:translateY(-50%);
           right:-135px;
-          z-index:1000;
+         
+          @media only screen and (max-width: 480px) {
+               width: 30px;
+                height: 30px;
+                border: 8px solid #e24f53;
+                right: -60px;
+          }
         }
         &.big:before {
           width:24px;
@@ -171,9 +207,10 @@ const Body=styled.div`
       }
       .body {
         color:#001439;
-        font: normal normal 400 13px/19px Poppins;
+        font: normal normal 400 16px/19px Poppins;
+        letter-spacing: 1px;
         p {
-          line-height:1.4em;
+          line-height:27px;
         }
       }
       &:nth-child(2n) {
@@ -182,6 +219,9 @@ const Body=styled.div`
         .title {
           &:before {
             left:-124px;
+            @media only screen and (max-width: 480px) {
+              left:-58px;
+            }
           }
           &.big:before {
             transform:translate(-8px,-50%);

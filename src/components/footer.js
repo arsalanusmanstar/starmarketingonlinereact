@@ -12,7 +12,7 @@ const Footer = ({ state }) => {
         <Credits>
           <Copyright>
             Copyright &copy; {currentYear}{" "} By 
-             <Link href={'/'}> Star Marketing PVT LTD</Link>
+             <Link href={'https://digital.starmarketingonline.com/'} target="_blank"> Star Digital</Link>
           </Copyright> <PoweredBy>| All rights reserved.</PoweredBy>
         </Credits>
           <FooterNavigation />
@@ -29,6 +29,10 @@ const SiteFooterInner = styled(SectionContainer)`
   margin:0 auto;
   display: flex;
   justify-content: space-between;
+  @media only screen and (max-width: 1366px) {
+    display: block;
+
+  }
 `;
 const Link = styled.a``
 const SiteFooter = styled.footer`
@@ -37,18 +41,51 @@ const SiteFooter = styled.footer`
   border-width: 0;
   padding: 3rem 0;
   background: #f3f3f3;
+  padding-bottom: 0px;
   background-color: ${(props) => props.bg};
   color: #000000;
+  @media only screen and (max-width: 820px) {
+    padding-top: 0px;
+  }
+  @media only screen and (max-width: 480px) {
+    padding-top: 0px;
+  }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+  @media only screen and (max-width: 480px) {
+   ul{
+    float: left;
+    margin: 0;
+
+   }
+   a{
+  
+    padding: 0;
+
+   }
+   ul li{
+   
+    margin: 0;
+}
   }
 `;
 
 const Credits = styled.div`
   @media (min-width: 700px) {
     display: flex;
+    
+    @media only screen and (max-width: 1366px) {
+      justify-content: center;
+      
+  
+    }
+   
+
+    }
+
   }
 `;
 
@@ -57,6 +94,10 @@ const Copyright = styled.p`
   font:italic normal normal 18px/26px 'Raleway',sans-serif;
   letter-spacing: 0px;
   color: #757575;
+  @media only screen and (max-width: 480px) {
+    text-align: left;
+    
+  }
   a{
     text-align: left;
     font:italic normal normal 18px/26px 'Raleway',sans-serif;

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 /**
  * Navigation Component
@@ -12,17 +13,13 @@ const FooterNavigation = () => (
         
             <MenuItem key="1">
               <MenuLink
-                href='#'
+                href='https://starjaidad.com/'
               > Star Jaidad
               </MenuLink>
-              <MenuLink
-                href='#'
-              > Star Blogs
-              </MenuLink>
-              <MenuLink
-                href='#'
-              > Privacy Policy
-              </MenuLink>
+              <LinkNew
+                to='/privacy-policy'
+              >  Privacy Policy
+              </LinkNew>
             </MenuItem>
           
       </Menu>
@@ -44,9 +41,18 @@ const MenuItem = styled.li`
   color: #8E8E8E;
   opacity: 1;
   list-style:none;
+  @media only screen and (max-width: 1366px) {
+    text-align: center;
+
+  }
 `;
 
 const MenuLink = styled.a`
+  font: normal normal 300 18px/26px 'Poppins',sans-serif;    
+  padding-left: 11px;
+`;
+
+const LinkNew = styled(Link)`
   font: normal normal 300 18px/26px 'Poppins',sans-serif;    
   padding-left: 11px;
 `;

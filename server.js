@@ -22,7 +22,7 @@ app.get('/express_backend', (req, res) => { //Line 93
 
 app.post('/expressPost', (req, res) => { //Line 93
      var url = req.query.slug ?  baseUrl+req.query.data+'&slug='+req.query.slug.replace('/','') : baseUrl+req.query.categories ? baseUrl+req.query.data+'&categories='+req.query.slug.replace('/','') : baseUrl+req.query.data;
-    console.log(url)
+    
 
     request({
         method: 'GET',
@@ -34,32 +34,6 @@ app.post('/expressPost', (req, res) => { //Line 93
 }); //Line 11
 
 app.get('/latest', (req, res) => { //Line 93
-     var url = baseUrl+'/posts?_embed=true&?categories=47';
-    console.log(url)
-
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
-  
-}); //Line 11
-
-app.get('/featureProject', (req, res) => { //Line 93
-     var url = baseUrl+'/portf?_embed=true';
-    console.log(url)
-
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
-  
-}); //Line 11
-
-app.get('/blog', (req, res) => { //Line 93
      var url = baseUrl+'/posts?_embed=true&?categories=47,2673&per_page=100';
     console.log(url)
 
@@ -72,9 +46,30 @@ app.get('/blog', (req, res) => { //Line 93
   
 }); //Line 11
 
+app.get('/featureProject', (req, res) => { //Line 93
+     var url = baseUrl+'/portf?_embed=true&per_page=100';
+    request({
+        method: 'GET',
+        uri: url,
+     },function (error, response, body){
+        res.send(body); //Line 10
+     });
+  
+}); //Line 11
+
+app.get('/blog', (req, res) => { //Line 93
+     var url = baseUrl+'/posts?_embed=true&?categories=47,2673&per_page=100';
+    request({
+        method: 'GET',
+        uri: url,
+     },function (error, response, body){
+        res.send(body); //Line 10
+     });
+  
+}); //Line 11
+
 app.get('/projects', (req, res) => { //Line 93
    var url = baseUrl+'/portf?_embed=true&per_page=100';
-  console.log(url)
 
   request({
       method: 'GET',
@@ -88,7 +83,6 @@ app.get('/projects', (req, res) => { //Line 93
 
 app.post('/singleprojects', (req, res) => { //Line 93
    var url = req.query.slug && baseUrl+'/portf?_embed=true&slug='+req.query.slug.replace('/','');
-  console.log(url)
 
   request({
       method: 'GET',

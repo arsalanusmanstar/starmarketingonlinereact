@@ -1,14 +1,20 @@
 import styled from 'styled-components'
-import useSWR from 'swr'
+import axios from "axios";
 import SectionContainer from "../styles/section-container";
 import grayBackground from "../../assets/grayBackground.png";
 import Button from "../styles/button";
-import arrowLeft from "../../assets/arrowLeft.png";
+import latest_icon07 from "../../assets/latest_icon07.png";
 import Slider from "react-slick";
 import video from  "../../assets/video.png"
 import line from "../../assets/line.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+import ReactLoading from "react-loading";
+import Roll from 'react-reveal/Roll';
+import Bounce from 'react-reveal/Bounce';
+
 const NextArrow = ({ onClick }) => {
     return (
         <div className="arrow next" onClick={onClick}>
@@ -23,8 +29,9 @@ const PrevArrow = ({ onClick }) => {
       </div>
     );
 };
-const fetcher = (url) => fetch(url).then((res) => res.json());
 const FeatureProducts = ({state}) => {
+    
+    const [data,setData] = useState(JSON.parse(localStorage.getItem('projects')));
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
     const [nav3, setNav3] = useState(null)
@@ -41,12 +48,15 @@ const FeatureProducts = ({state}) => {
 
     const settings_img = {
     infinite: true,
+    lazyLoad: true,
     dots:false,
     speed: 1000,
     slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
     asNavFor: nav2,
+    autoplay: true,
+    autoplaySpeed: 7000,
     ref : slider => (slider1 = slider),
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -68,6 +78,7 @@ const FeatureProducts = ({state}) => {
   const settings_num = {
       
     infinite: true,
+    lazyLoad: true,
     speed: 300,
     arrows: false,
     slidesToShow: 3,
@@ -77,42 +88,56 @@ const FeatureProducts = ({state}) => {
     centerPadding: 0,
     centerMode: true,
   };
-    const { data, error } = useSWR('/wp-json/wp/v2/portf?_embed=true', fetcher)
-    console.log(data,error)
+
+  
+    useEffect(async ()=>{
+        try {
+       axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+        .then(response => {
+            setData(response.data)
+        })
+        } catch (e) {
+            console.error(e);
+        }
+    })
+  
     return (
         <FeautureProductsMain  background={grayBackground}>
             <SectionContainer>
                 <div>
-                    <h2 className="featured-heading">FEATURED PROJECTS</h2>
-                    <div className="featured-project-line"></div>
+                    <h2 className="featured-heading wow slideInUp" data-wow-duration="5s">     <Roll bottom cascade>FEATURED PROJECTS      </Roll></h2>
+                    <Fade bottom> <div className="featured-project-line "></div>   </Fade>
                 </div>
                 <ContentArea>
-                    <LeftArea>
+                    <LeftArea className="wow slideInUp" data-wow-duration="3s">
                     <Slider  {...settings}>   
-                        {data && data.map((latest,index)=>
-                            latest.acf && latest.acf.feature_project == 'yes' &&
-                            <div>
-                                {console.log(latest)}
-                                <h3 className="featured-project-heading"  dangerouslySetInnerHTML={{ __html:latest.title.rendered}}></h3>
-                                <p className="featured-project-description"  dangerouslySetInnerHTML={{ __html:latest.excerpt.rendered}}></p>
+                    
+                        {data ? data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
+                            <div key={index}>
+                                    <h3 className="featured-project-heading"><Bounce top cascade>{latest.title.rendered}</Bounce> </h3>  
+                                     <p className="featured-project-description" dangerouslySetInnerHTML={{ __html:latest.excerpt.rendered}}></p> 
                                     <br />
                                     <div>
                                     <div className="featured-project-city-name">  
-                                        <p className="featured-project-city-name-text" >{latest.acf && latest.acf.filters && latest.acf.filters.country}</p>
+                                        <p className="featured-project-city-name-text" > <Bounce left cascade> {latest.acf && latest.acf.filters && latest.acf.filters.city}     </Bounce></p>
                                     </div>
-                                    <ul  className="featured-project-tag">
+                                    <br/><br/>
+                                    <ul  className="featured-project-tag" style={{marginLeft:'-9px'}}>
                                     {latest.acf && latest.acf.filters && latest.acf.filters.categories.map((cat,index)=>
                                     
-                                     <li key={index}><i className="fa fa-tag"></i> {cat}</li>
+                                     <li key={index}><i className="fa fa-tag"></i> <Bounce bottom cascade>{cat}</Bounce> </li>
                                     ) }
                                     </ul>
                                 </div>
                                 <br/>
                                 <br/>
                                 <br/>
-                                <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button>
+                                <ReadMore>
+                                    <Link style={{color:'#fff', textDecoration:'none'}} to={latest.link.replace('https://staging.starmarketingonline.com','')}> <Bounce right cascade>Read More <LeftArrow src={latest_icon07} /></Bounce></Link>
+                                </ReadMore>
+                                {/* <Button bg='#DB2D34'>Read More <LeftArrow src={arrowLeft} /></Button> */}
                             </div>
-                        )}
+                        ): <div className="loaderFilter"><ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /></div>}
                         {/* <div>
                         <h3 className="featured-project-heading">Heaven Heights 2</h3>
                         <p className="featured-project-description">Heaven Heights Luxury Apartments Lahore. Heaven Heights Apartments in Lahore are new style apartments on main Shah Jamal roundabout. The Apartment building offers 1, 2, and 3 bed Apartments for Sale. It includes all modern day to day facilities that have now become a necessity. Heaven Heights Apartments are designed to be the perfect choice for your living being offered on easy installments</p>
@@ -187,24 +212,19 @@ const FeatureProducts = ({state}) => {
                         </div> */}
                         </Slider>
                     </LeftArea>
-                    <RightArea>
+                    <RightArea className="wow slideInRight" data-wow-duration="3s">
                         <Slider  {...settings_img}>     
-                        {data && data.map((latest,index)=>
-                            latest.acf && latest.acf.feature_project == 'yes' &&                            
-                            <div>
-                                <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].source_url} alt={video}  />
+                        {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>    
+                            <div key={index}>
+                                <img className='image_slide' src={latest._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url} alt={video}  />
                             </div> 
                         )}
                          </Slider>
                          <Slider  {...settings_num}>
-                            {data && data.map((latest,index)=>
-                                latest.acf && latest.acf.feature_project == 'yes' &&    
-                                <p className='number_slider'>{index}</p>
+                            {data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map((latest,index)=>
+                                   
+                                <p className='number_slider' key={index}>{index + 1}</p>
                             )}
-                            <p className='number_slider'>2</p>
-                             <p className='number_slider'>3</p>
-                             <p className='number_slider'>4</p>
-                             <p className='number_slider'>5</p>
                          </Slider>
                     <img className='left_line' src={line} alt={line}  />
                     <img className='right_line' src={line} alt={line}  />
@@ -222,14 +242,27 @@ const Section = styled.section`
 const FeautureProductsMain = styled.div`
     background:#ebebeb  url(${(props) => props.background})  0% 0% no-repeat padding-box;
     opacity: 1;
-    padding:0px 0 0px;
+    padding: 0px 0px 90px 0px;
     background-position: bottom;
-    margin-bottom: -191px;
+    background-attachment: fixed;
+    background-size: cover;
+
+    @media only screen and (max-width: 820px) {
+        background-size: cover;
+        background-position: right;
+    }
+    @media only screen and (max-width: 480px) {
+        padding: 0px 0px 0px 0px;
+        background-size: contain;
+    }
+   
     position: relative;
     ul.featured-project-tag {
         list-style: none;
-        margin: 0;
+        margin: 0 auto !important;
+        display: block;
         padding: 0;
+        clear: both;
     }
     
     ul.featured-project-tag li {
@@ -237,33 +270,81 @@ const FeautureProductsMain = styled.div`
         border: 1px solid #ccc;
         color: #202741;
         padding: 5px 15px;
-        border-radius: 10px;
-        font: normal normal 300 16px/27px Poppins;
-        margin: 0 9px;
+        border-radius: 5px;
+        font: normal normal 300 14px/24px Poppins;
+        margin: 9px 9px 0px 0px;
+        letter-spacing: 0.5px;
+    text-transform: capitalize;
+    background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+        @media only screen and (max-width: 820px) {
+            margin: 0px 4px 0px 0px;
+            font-size: 12px;
+            text-transform: capitalize;
+            padding: 3px 12px;
+
+        }
+        @media only screen and (max-width: 480px) {
+                margin: 6px 6px 0px 0px;
+                font-size: 14px;
+                padding: 3px 10px;
+
+        }
     }
   `;
 const ContentArea = styled.div`
-    display: flex;`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media only screen and (max-width: 1366px) {
+        justify-content: space-between;
+    
+      }
+      @media only screen and (max-width: 786px) {
+        display: block;
+    
+      }
+    
+    
+    
+    `
+    
 const LeftArea = styled.div`
-    width:50%;
+    width:40%;
+    @media only screen and (max-width: 786px) {
+        width:100%;
+    
+      }
+    
     button{
         clear:both;
         display:block;
     }
 `
 const RightArea = styled.div` 
-width: 60%;
+width: 50%;
+position: relative;
+@media only screen and (max-width: 786px) {
+    width:100%;
+
+  }
     .left_line{
         position: absolute;
-        left: 85%;
-        top: 84%;
-        width: 20%
+        right: 4%;
+        width: 40%;
+        bottom: 56px;
+        height: 2.5px;
+        
     }
     .right_line{
         position: absolute;
-        left: 58%;
-        top: 84%;
-        width: 20%
+        left: 9%;
+        width: 40%;
+        bottom: 56px;
+        height: 2.5px;
     }
   .slick-slide {
     position: flex;
@@ -272,6 +353,16 @@ width: 60%;
     .image_slide{
         width: 551px;
         height: 665px;
+        @media only screen and (max-width: 1366px) {
+            width: 345px;
+            height: 490px;
+
+        }
+        @media only screen and (max-width: 480px) {
+            width: 200px;
+                height: 260px;
+
+        }
     }
     
 }
@@ -293,7 +384,8 @@ width: 60%;
               opacity: 1;
               transform: scale(.8);
               position: relative;
-              right: 2%
+              right: 2%;
+              z-index: 999;
             }
             
         }
@@ -301,13 +393,25 @@ width: 60%;
             position: absolute;
             right: 0%;
             bottom: -45px;
-            z-index: 999;            
+            z-index: 999;   
+            @media only screen and (max-width: 786px) {
+                bottom: 14px;
+            }
+            @media only screen and (max-width: 480px) {
+                display: none;
+            }
         }
         .prev{
             z-index: 999;
             position: absolute;
             left: 5%;
             bottom: -45px;
+            @media only screen and (max-width: 786px) {
+                bottom: 14px;
+            }
+            @media only screen and (max-width: 480px) {
+                display: none;
+            }
         }
 }  
 `
@@ -315,3 +419,70 @@ const BackgroundImage = styled.div`
 `
 const LeftArrow = styled.img`
 `
+
+const ReadMore = styled.button`
+  background: #DB2D34 0% 0% no-repeat padding-box;
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  font: normal normal 300 18px/30px Poppins;
+  margin: 20px 0;
+  position:relative;
+  z-index: 123;
+  transition: all 0.35s linear;
+  :hover {
+    background: #ff000a 0% 0% no-repeat padding-box;
+ }
+  :hover img {
+    right: 15px;
+    width: 35px;
+   }
+   a {
+    padding: 18px 70px 18px 30px;
+        display: block;
+        font-size: 16px;
+        font-weight: 200;
+       
+    @media only screen and (max-width: 1366px) {
+        padding: 20px 80px 20px 24px;
+        font-size: 16px;
+   
+    }
+    @media only screen and (max-width: 820px) {
+        padding: 14px 58px 14px 20px;
+    }
+    @media only screen and (max-width: 480px) {
+            padding: 12px 40px 12px 18px;
+            font-size: 14px;
+         
+    
+      }
+}
+  img {
+    top: 27px;
+        right: 26px;
+        position: absolute;
+        width: 32px;
+        transition: all 0.35s linear;
+        @media only screen and (max-width: 1366px) {
+            top: 26px;
+            right: 20px;
+        }
+        @media only screen and (max-width: 820px) {
+            top: 23px;
+            right: 16px;
+        }
+        @media only screen and (max-width: 480px) {
+            top: 24px;
+                right: 16px;
+                width: 20px;
+             
+        
+          }
+  }
+  @media only screen and (max-width: 480px) {
+   
+    margin: 0px 0;
+}
+ 
+`;

@@ -7,7 +7,6 @@ const DEFAULT_OPTIONS = {
 
 export const useNumberSpinner = (currentValue, options) => {
 	const config = { ...DEFAULT_OPTIONS, ...options };
-	console.log(config);
 	const { decimals } = config;
 	const props = useSpring({ num: currentValue });
 

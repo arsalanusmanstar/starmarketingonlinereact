@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
 /**
  * Navigation Component
  *
@@ -8,29 +9,28 @@ import { Link } from 'react-router-dom';
 const Navigation = () =>  {
   const state = [
     ["About","#","",[['Our Team','/our-team',''],['Achievements','/achievements','']]],
-    ["Media","#","",[['Latest','/latest',''],['News','https://star.news','new'],['Blogs','https://starmarketingonline.com/blogs','new']]],
-    ["Projects","/projects","",[]],
+    ["Media","#","",[['Latest','/latest',''],['News','https://star.news','new']]],
+    ["Projects","/projects/","",[]],
     // ["Projects","/projects","",[['Islamabad','/projects/islamabad','',[['Murree','/projects/islamabad/multan','',]]],['Punjab','/projects/Punjab',''],['KPK','/projects/kpk',''],['Sindh','/projects/sindh',''],['Baluchistan','/projects/baluchistan','']]],
-    ["Products","#","",[['Manhill Advertising','https://www.manhilladvertising.com/','new'],['Digital Starmarketonline','https://digital.starmarketingonline.com/','new'],['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new']]],
-    // ["Careers","#","",[]],
+    ["Products","#","",[['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new'],['Star Digital','https://digital.starmarketingonline.com/','new']]],
+    // ["Careers","/careers","",[]],
     ["Contact Us","/contact-us","",[]],
   ]
   return (
   <NavWrapper>
     <MenuNav>
       <Menu>
-        {console.log(state)}
         {state.map(([name, link, target, child]) => {
           
           return (
-            <MenuItem key={name} className={child.length > 0 ? 'submenu' : ''}>
+           <MenuItem key={name} className={child.length > 0 ? 'submenu' : ''}>
               <MenuLink  to={link}>
                 {name}
               </MenuLink>
-              <MenuSub>
+              <MenuSub className="McD">
                 {child.length > 0 && child.map(([subName,subLink,target,subChild]) => {
                    return (
-                   <MenuItem key={subName}>
+                    <Fade bottom>  <MenuItem key={subName}>
                       {target == 'new' ? 
                       <MenuLinkTarget
                         href={subLink}
@@ -53,12 +53,11 @@ const Navigation = () =>  {
                             </MenuLink>
                         </MenuItem>
                         )})}
-                        {console.log(subChild  )}
-                  </MenuItem>
+                  </MenuItem> </Fade>
                 )})}
                 
                 </MenuSub> 
-            </MenuItem>
+            </MenuItem>  
           );
         })}
       </Menu> 
@@ -93,6 +92,7 @@ const Menu = styled.ul`
   justify-content: flex-end;
   list-style: none;
   margin: 0;
+ 
 
   @media (min-width: 1220px) {
     margin-top: -0.8rem;
@@ -119,6 +119,10 @@ const Menu = styled.ul`
     right: -15px;
     top: 10px;
 }
+
+
+
+}
 `;
 
 const MenuItem = styled.li`
@@ -126,13 +130,21 @@ const MenuItem = styled.li`
   line-height: 1.25;
   position: relative;
   margin: 0.8rem 0 0 1.6rem !important;
+  @media only screen and (max-width: 1366px) {
+    margin: 0px 12px 0px 11px !important;
+
+  }
 
   @media (min-width: 1220px) {
     margin: 0.8rem 0 0 3.5rem !important;
   }
   &.submenu:hover > ul{
    
+    opacity: 1;
+    margin-top: 0;
     display: block;
+    transition: all 0.35s linear;
+   
    
   }
  
@@ -165,17 +177,22 @@ const MenuLinkTarget = styled.a`
   }
   
 `;
+
 const MenuSub = styled.ul`
-display: none;
+
 position: absolute;
 right: 0;
 list-style: none;
 background: #ffffff;
-min-width: 250px;
-top: 30px;
+min-width: 200px;
 margin: 0px;
 border-radius: 15px 0px 15px 15px;
 padding: 12px 10px;
+opacity: 0;
+transition: all 0.5s ease;
+margin: 0;
+display: none;
+
     li {
      
       margin: 0px 0px 0px 0px !important;
@@ -190,5 +207,10 @@ padding: 12px 10px;
       }
       
     }
+   
   }
+  
+ 
+
+
 `;

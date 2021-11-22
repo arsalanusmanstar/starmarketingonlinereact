@@ -1,22 +1,33 @@
 import useSWR from 'swr'
+import { useEffect,useState } from "react";
 import Modules from "../modules"
+import SinglePage from "./singlePage"
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ReactLoading from "react-loading";
-import WebImage from "../../assets/page_bg.png";
+import axios from "axios";
+import Meta from "../elements/meta"
 
+const Pages = ({ match,location }) => {
+  const [data,setData] = useState('');
+  
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.path)
+      .then(response => {
+        setData(response.data)
+      })
+  },[match.path])
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-const Pages = ({ match }) => {
-  
-  const { data, error } = useSWR('/wp-json/wp/v2/pages?_embed=true&slug='+match.path, fetcher,{refreshInterval: 0,
-    refreshWhenOffline : false})
-  
   return (
-    <div style={{backgroundImage:`url(${WebImage})`}}> 
-      <Header />
+    <div > 
+      {data && data[0] && <Meta meta={data && data[0].yoast_meta} page="page" />}
+      <Header params={match.path} />
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
-          <Modules data={data && data[0]['acf']} /> } 
+          data[0] && data[0].acf ? <Modules data={data[0].acf} location={location}  /> : <SinglePage data={data[0]}/>  }
       <Footer />
     </div>
   );

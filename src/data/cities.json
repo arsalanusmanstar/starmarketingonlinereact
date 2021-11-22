@@ -1,0 +1,18 @@
+[
+    {"key":0,"label":"All Cities","value":"","region":0},
+    {"key":5,"label":"faisalabad","value":"faisalabad","region":2},
+    {"key":12,"label":"gwadar","value":"gwadar","region":5},
+    {"key":2,"label":"hyderabad","value":"hyderabad","region":3},
+    {"key":4,"label":"islamabad","value":"islamabad","region":1},
+    {"key":11,"label":"kalam","value":"kalam","region":4},
+    {"key":1,"label":"karachi","value":"karachi","region":3},
+    {"key":3,"label":"lahore","value":"lahore","region":2},
+    {"key":6,"label":"multan","value":"multan","region":2},
+    {"key":8,"label":"mardan","value":"mardan","region":4},
+    {"key":9,"label":"murree","value":"murree","region":1},
+    {"key":9,"label":"nowshera","value":"nowshera","region":4},
+    {"key":10,"label":"peshawar","value":"peshawar","region":4},
+    {"key":10,"label":"quetta","value":"quetta","region":5},
+    {"key":10,"label":"sialkot","value":"sialkot","region":2},
+    {"key":10,"label":"rawalpindi","value":"rawalpindi","region":1}
+]
