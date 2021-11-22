@@ -1034,6 +1034,9 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
 }
 
 @media only screen and (max-width: 480px) {
+  .searchFilter {
+    display: none;
+}
   ul.pagination li.active {
     padding: 0px 10px;
   

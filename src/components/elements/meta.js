@@ -1,10 +1,9 @@
 import React from 'react';
-import {Helmet} from "react-helmet";
+import  {Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Meta = ({meta,page}) => {
     return (
         <div className="wrapper">
-          {console.log(meta,'meta')}
            {meta && 
               page == "project" ? <Helmet>
                   <meta charSet="utf-8" />

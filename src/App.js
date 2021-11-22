@@ -1,6 +1,6 @@
 import './App.css';
 
-import React from "react";
+import React, { useContext } from "react";
 import Modal from "./components/elements/modal";
 import Home from "./components/pages/home";
 import Pages from "./components/pages/pages";
@@ -11,7 +11,9 @@ import { useEffect,useState } from "react";
 import axios from "axios";
 import {MobileView,isMobile} from 'react-device-detect';
 import CareerSingle from './components/modules/careerSingle';
+import  {Helmet, HelmetProvider } from 'react-helmet-async';
 
+import  { UserContext } from './components/elements/UserContext';
 
 
 import {
@@ -28,6 +30,17 @@ export default function App(state) {
   
   const [data,setData] = useState('');
 
+ useEffect(async ()=>{
+    try {
+     await axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      .then(response => {
+        setData(response.data)
+      })
+    } catch (e) {
+        console.error(e);
+    }
+  },[])
+  
   const { pathname } = useLocation();
    
   const [moduleOff,setModuleOff] = useState(true);
@@ -45,6 +58,7 @@ export default function App(state) {
   }, [pathname]);
 
   return (
+    <HelmetProvider>
     <div className="App">
       {/*parseInt(width) < 767 &&
        <MobileView>
@@ -63,9 +77,9 @@ export default function App(state) {
         <Route path="/privacy-policy" exact component={Pages}></Route>
         <Route path="/careers" exact component={Pages}></Route>
         <Route path="/career/:slug"  exact component={CareerSingle} data={data}></Route>
-        <Route path="/projects" exact render={(props) => <Projects {...props} data="" />} />
-        <Route path="/projects/:region" exact render={(props) => <Projects {...props} />} />
-        <Route path="/projects/:region/:id" exact render={(props) => <Projects {...props} />} />
+        <Route path="/projects" exact render={(props) => <UserContext.Provider value={[data,setData]}> <Projects {...props} data="" /> </UserContext.Provider>} />
+        <Route path="/projects/:region" exact render={(props) =><UserContext.Provider value={[data,setData]}>  <Projects {...props} /> </UserContext.Provider>} />
+        <Route path="/projects/:region/:id" exact render={(props) =><UserContext.Provider value={[data,setData]}>  <Projects {...props} /> </UserContext.Provider>} />
         <Route path="/hot-projects/" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>
@@ -78,5 +92,6 @@ export default function App(state) {
       <ScrollButton />
       
     </div>
+    </HelmetProvider>
   );
 }
