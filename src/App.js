@@ -45,7 +45,7 @@ export default function App(state) {
    
  
 
-  const [moduleOff,setModuleOff] = useState(true);
+  const [moduleOff,setModuleOff] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
