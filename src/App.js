@@ -11,7 +11,7 @@ import { useEffect,useState } from "react";
 import axios from "axios";
 import {MobileView,isMobile} from 'react-device-detect';
 import CareerSingle from './components/modules/careerSingle';
-
+import ReactLoading from "react-loading";
 
 
 import {
@@ -30,6 +30,8 @@ export default function App(state) {
 
   const { pathname } = useLocation();
    
+ 
+
   const [moduleOff,setModuleOff] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -51,6 +53,7 @@ export default function App(state) {
             <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
           </MobileView>
          */}
+        
         <Switch>
         {/* <Route path="/about">
           <About />

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useEffect,useState } from "react";
+import { useEffect,useState, useCallback } from "react";
 import { Link,NavLink,Redirect } from 'react-router-dom';
 import SectionContainer from "../styles/section-container";
 import Header from "../../components/header";
@@ -28,6 +28,7 @@ import axios from "axios";
 import Bounce from 'react-reveal/Bounce'
 import Fade from 'react-reveal/Fade'
 
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 
 const Projects = (state) => {
   const [allType,setAllType] = useState(true);
@@ -48,9 +49,11 @@ const Projects = (state) => {
   const [currentRegions,setCurrentRegions] = useState({"key":0,"label":"All Regions","value":""})
 
   
+  
+
   useEffect(async ()=>{
     try {
-      axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      axios.get(`https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100`)
       .then(response => {
         setData(response.data)
       })
@@ -79,6 +82,10 @@ const Projects = (state) => {
   },[])
 
   
+
+  
+
+
   const region = state.match.params.region == 'other' ? '' : state.match.params.region
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  

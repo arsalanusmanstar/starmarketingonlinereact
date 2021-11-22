@@ -25,6 +25,7 @@ const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 const shareURL=window.location.href;
 
 
+
 const CareerSingle=({match,location})=>{
 
  
