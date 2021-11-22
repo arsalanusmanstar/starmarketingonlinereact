@@ -329,6 +329,13 @@ const countries = [
   
 ]
 
+//get todays date
+
+let newDate = new Date()
+let date = newDate.getDate();
+let month = newDate.getMonth() + 1;
+let year = newDate.getFullYear();
+let dateFormat= date+'/'+month+'/'+year;
 
 
   return (
@@ -399,6 +406,10 @@ const countries = [
                 <form className="callform" method="POST" id="contactForm"  onSubmit={(e)=>submitHandler(e)}>
                     <Input type="text" name="Name" placeholder="Name" title="Name" />
                     <br/><br/>
+                    <Input type="email" name="Email" title="Email" placeholder="Email" />
+                    <br/><br/>
+                    <Input type="number" name="Phone" placeholder="Phone" title="Phone" />
+                    <br/><br/>     <br/>
                     {/* <Input type="text" name="Country" placeholder="Your Country" title="Email" /> */}
                     <span className="country">
                     <Select
@@ -413,10 +424,12 @@ const countries = [
         required
       />
    </span>
-                    <Input type="text" name="City" placeholder="Your City" title="City" />
-                    <Input type="number" name="Phone" placeholder="Phone" title="Phone" />
-                    <Input type="hidden" name="Url" title="Url" value={location.pathname} />
+                    <Input type="text" name="City" placeholder="City" title="City" />
+                  
+                   
+                    <Input type="hidden" name="Url" title="Url" value={location.pathname} />                   
                     <Textarea name="Details" placeholder="Enter your message..." title="Details" />
+                    <Input type="hidden" name="Date" title="Date" value={dateFormat} />
                     <Button type="submit" value="Request info" />
                     <br />
                     {success}
