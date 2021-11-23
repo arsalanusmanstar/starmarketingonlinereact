@@ -17,6 +17,7 @@ import ReactLoading from "react-loading";
 import Moment from 'react-moment';
 import Bounce from 'react-reveal/Bounce';
 import Slide from 'react-reveal/Slide';
+import th from "../../assets/th.jpg";
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
@@ -64,14 +65,14 @@ const Latestnews = () => {
             <div className="mainSlide">
             <Slider  {...settings}>
                 {data ? data.filter((post)=> post.categories.includes(parseInt(cat)) ).map((post,index) => 
-                    <Post key={index} onClick={()=>setActiveContent(post)}>
+                    <Post className="ccc" key={index} onClick={()=>setActiveContent(post)}>
                       
-                        <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
+                        <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}>
                      
-                        <Slide bottom><Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title> </Slide>
-                        <Details>
                        
-                        <Slide left><Date> <Imge src={clock}></Imge><Moment format="MMM D, YYYY ">{post.date}</Moment></Date></Slide>
+                        <Details>
+                        <Slide bottom><Title dangerouslySetInnerHTML={{ __html:post.title.rendered}}></Title> </Slide>
+                      
                         <Slide right><Auth><Imge src={user}></Imge> {
                             post.author == 789 ? "Aamir Saeeduddin" :
                             post.author == 788 ? "Arif Mustafa" :
@@ -79,7 +80,15 @@ const Latestnews = () => {
                             post.author == 1 && "Star Marketing" 
                             
                         }</Auth></Slide>
+                          <Slide left><Date> <Imge src={clock}></Imge><Moment format="MMM D, YYYY ">{post.date}</Moment></Date></Slide>
+                       <ShareMain>
+                          <tag><Imge src={latest_icon01}></Imge>Events</tag>
+                          <SaveShareLfet style={{cursor:'pointer'}}>
+                             <Imge src={th}></Imge>
+                          </SaveShareLfet>
+                       </ShareMain>
                         </Details>
+                        </Image>
                     </Post>
                 ): <div className="loaderFilter"><ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /></div>}
                       
@@ -130,8 +139,13 @@ const Latestnews = () => {
                    activeContent.author == 1 && "Star Marketing" 
                    
                }</user>
+               
+                
+               
+                        
                </text>
                </div>
+              
           </div> }   
             </div>
             }
@@ -142,6 +156,17 @@ const Latestnews = () => {
 
 
 export default Latestnews;
+
+const SaveShareLfet = styled.div`
+`
+const  ShareMain = styled.div`
+  display: grid;
+  grid-template-columns: 89% 10%;
+  gap: 1%;
+  align-items: center;
+  margin-top: 8%;
+
+`
 
 const LatestNewContainer = styled.div`
 
@@ -218,7 +243,7 @@ const LatestNewContainer = styled.div`
         }
         .slick-list{
             div.slick-slide{
-                padding:1% 14px 1.2% 14px;
+                padding:1% 30px 1.2% 30px;
                 @media only screen and (max-width: 1024px) {
                     padding: 1% 30px 0.2% 30px;
                 
@@ -281,9 +306,9 @@ const LatestNewContainer = styled.div`
              }
 `
 const Post = styled.div`
-    background: #f9f9f9   0% 0% no-repeat padding-box;
+  
     opacity: 1;
-    padding: 0px 0px 0px 30px;
+  
     text-decoration:none;
     cursor:pointer;
     @media only screen and (max-width: 480px) {
@@ -292,16 +317,18 @@ const Post = styled.div`
     }
 `
 const Image = styled.div`
-    background: url(${(props) => props.background})  0% 0% no-repeat padding-box;
-    height: 300px    ;
-        width: 100%;
-        background-size: cover;
-        border-radius: 10px;
-        margin-top: -50px;
+    background: linear-gradient(179deg, rgb(2 0 36 / 0%) 0%, rgb(9 9 121 / 0%) 20%, rgb(255 255 255) 100%), url(${(props) => props.background})  0% 0% no-repeat padding-box;
+    height: 500px;
+    width: 100%;
+    background-size: cover;
+    border-radius: 20px;
+    margin-top: 0;
+    background-position: top center;
+    position: relative;
 `
 const Title = styled.h3`
     text-align: left;
-    font-size: 22px;
+    font-size: 18px;
     letter-spacing: 0px;
     color: #1D253F;
     opacity: 1;
@@ -309,10 +336,10 @@ const Title = styled.h3`
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    margin: 20px 30px 20px 0px;
+    margin: 0px 0px;
     font-weight: 500;
     overflow: hidden;
-    line-height: 30px;
+    line-height: 23px;
     min-height: 60px;
     @media only screen and (max-width: 480px) {
       margin: 10px 20px 6px 0px;
@@ -320,12 +347,14 @@ const Title = styled.h3`
     }
     `
 const Details = styled.div`
-    border-top: 1px solid #1d253f40;
-    margin: 20px 30px 20px 0px;
-    padding: 18px 0px;
-    display: grid;
-    grid-template-columns: 48% 51%;
-    grid-gap: 2%;
+margin: 20px 20px;
+padding: 20px 20px;
+background: #fff;
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+border-radius: 20px;
     :after{
         content: "";
         display: block;
@@ -333,8 +362,8 @@ const Details = styled.div`
 
     }
     img{
-        height: auto;
-        width: auto;
+        height: 16px;
+        width: 16px;
         float: left;
         margin: 0px 10px 0px 0px;
         @media only screen and (max-width: 820px) {
@@ -349,13 +378,37 @@ const Details = styled.div`
 
     }
 
+
+    tag {
+      background: rgb(88, 175, 120);
+      width: fit-content;
+      display: flex;
+      font-size: 14px;
+      color: rgb(255, 255, 255);
+      padding: 10px 25px 10px 36px;
+      border-radius: 14px;
+      box-shadow: rgb(0 0 0 / 16%) 0px 12px 13px;
+      position: relative;
+      letter-spacing: 0.5px;
+      margin: 0px 0px 0px 16px;
+      img{
+        width: 40px;
+        height: fit-content;
+        position: absolute;
+        left: -16px;
+        top: 0;
+    }
+  }
+
+
 `
 const Date = styled.div`
-    color: #929292;
+    color: #666666;
     font-size: 16px;
     line-height: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
     @media only screen and (max-width: 820px) {
       font-size: 14px;
       display: flex;
@@ -373,11 +426,12 @@ const Date = styled.div`
 
 `
 const Auth = styled.div`
-    color: #929292;
+    color: #666666;
     font-size: 16px;
-    line-height: 17px;
+    line-height: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
     @media only screen and (max-width: 820px) {
       font-size: 14px;
       display: flex;

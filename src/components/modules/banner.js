@@ -1,63 +1,251 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import BackgroundImage from "../../assets/WebBg.png";
+import roket from "../../assets/roket.jpg";
 import VideoImage from "../../assets/homepage.mp4";
 import GuarantLogo from "../../assets/1Icon.png";
-import latest_icon07 from "../../assets/latest_icon07.png";
 import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom';
-import Bounce from 'react-reveal/Bounce';
-import Slide from 'react-reveal/Slide';
+import FB from "../../assets/FB.png";
+import TW from "../../assets/TW.png";
+import YT from "../../assets/YT.png";
+import In from "../../assets/In.png";
+import INSTA from "../../assets/INSTA.png";
 
 const BannerText = ({state}) => {
     
     
     return (
-      
-               
-              
-      
-                    <BannerCont >
-                   <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
-                   <Heading ><Fade left big cascade>{state.heading}</Fade></Heading>   
-                    <Subheading >  <Fade top big cascade>{state.sub_heading} </Fade></Subheading>
-                    <Content >  {state.content}  </Content>
-                    <Button  href="#about"  style={{cursor:'pointer'}} >  Learn More <LeftArrow src={latest_icon07} /> </Button>
-                    <SubButton >    Know us in 2 mintues <i className="fa fa-long-arrow-right"></i> </SubButton>   
-                    </BannerCont> 
-                  
-              
-             
-                
-               
+    
+    <BannerCont >
+        <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
+        <Heading ><Fade left big cascade>{state.heading}</Fade></Heading>   
+        <Subheading >  <Fade top big cascade>{state.sub_heading} </Fade></Subheading>
+        <Content >  {state.content}  </Content>
+        <Button  href="#about"  style={{cursor:'pointer'}} >  Learn More  </Button>
+        <SubButton> Work With Us <i className="fa fa-long-arrow-right"></i> </SubButton>   
+    </BannerCont> 
                
           
     )
 }
 const Video = ({state}) => {
     return (
-        
-         <VideoImg  controls loop autoPlay playsInline muted defer  id="video">
-               <source src={VideoImage} type="video/mp4" />  
-        </VideoImg>    
+        <>
+        {/*<VideoImg  controls loop autoPlay playsInline muted defer  id="video">
+                <source src={VideoImage} type="video/mp4" />  
+        </VideoImg>*/}
+         <BannerFormSection>
+                <h1><Fade left big cascade>Manage your Real Estate marketing with us!</Fade></h1>
+                <p>it takes less than <span>5 mintues</span>to fill out the information requrired know about your project.</p>
+                <div className="BannerMainSection">
+                <div className="left">
+                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Name" /></div>
+                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Email"/></div>
+                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Mobile"/></div>
+                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Project Location"/></div>
+                
+                   <div className="projectMain">
+                      <div className="projectMainLeft">
+                         <h4>Project type</h4>
+                         <div className="checkboxBanner"><input type="checkbox" />apartments</div>
+                         <div className="checkboxBanner"><input type="checkbox" />plots</div>
+                         <div className="checkboxBanner"><input type="checkbox" />Housing Scheme</div>
+                         <div className="checkboxBanner"><input type="checkbox" />Shops & Shwrooms</div>
+                         <div className="checkboxBanner"><input type="checkbox" />Resorts & Farmhouse</div>
+                         <div className="checkboxBanner"><input type="checkbox" />other</div>
+                      </div>
+                      <div className="projectMainRight">
+                      <h4>Choose Services</h4>
+                      <div className="checkboxBanner"><input type="checkbox" />360 Marketing</div>
+                         <div className="checkboxBanner"><input type="checkbox" />Digital Marketing</div>
+                         <div className="checkboxBanner"><input type="checkbox" />project website</div>
+                         <div className="checkboxBanner"><input type="checkbox" />mobile app</div>
+                      </div>
+
+
+                   </div>
+                   <Button className="submit">Submit</Button>
+                </div>
+
+                <div className="right">
+                    <Imge style={{width:'80% '}} src={roket} ></Imge>
+                    <h5>Let's connect</h5>
+                    <h3>111 111 160</h3>
+                    <SL>
+                        <Slide bottom> <a href="https://twitter.com/starmarketingon" target="_blank"> <IconTW className="FS" src={TW}></IconTW></a> </Slide>
+                        <Slide bottom> <a href="https://www.facebook.com/starmarketingpk" target="_blank"> <IconTW className="FS" src={FB}></IconTW></a> </Slide>
+                        <Slide bottom><a href="https://www.youtube.com/c/StarMarketingPvtLtd" target="_blank"> <IconTW className="FS" src={YT}></IconTW></a> </Slide>
+                        <Slide bottom><a href="https://www.linkedin.com/company/starmarketingpvtltd/mycompany/" target="_blank"><IconTW className="FS" src={In}></IconTW></a> </Slide>
+                        <Slide bottom> <a href="https://www.instagram.com/starmarketingpvtltd/" target="_blank"> <IconTW className="FS" src={INSTA}></IconTW></a> </Slide>
+                    </SL>
+
+                </div>   
+                </div>
+            
+
+         </BannerFormSection>
+       </>
     )
 }
 const TopBanner = ({state,data}) => {
     return (
     <MainSection background={BackgroundImage}>
         <SectionContainer  style={{paddingTop:0, paddingBottom: 40}}>
+           <BannerMainSection>
                  <BannerText state={data} />
             
-                 {VideoImage && <Video state={state} />}
+                 {VideoImg && <Video state={state} />} 
+          </BannerMainSection>
         </SectionContainer>
     </MainSection>    
     )
 }
 
 
+
 export default TopBanner;
 
 
+const BannerMainSection = styled.section`
+display: grid;
+grid-template-columns: 49% 49%;
+gap: 2%;
+margin-top: 3%;
+align-items: center;
+`;
+const Slide = styled.div`
+
+`;
+
+const SL = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 16px;
+img{
+    width: 24px;
+}
+
+`;
+const IconTW = styled.img`
+   
+`;
+const Imge = styled.img`
+  
+`;
+const BannerFormSection = styled.section`
+background: #fff;
+padding: 30px 30px;
+border-radius: 20px;
+    border-bottom-left-radius: 0px;
+h1 {
+    font-size: 25px;
+    margin: 0px;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+ p {
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #939393;
+  span {
+        font-size: 16px;
+        margin: 0px 6px;
+        color: #000;
+    }
+}
+
+.BannerMainSection {
+    display: grid;
+    grid-template-columns: 60% 38%;
+    gap: 2%;
+    align-items: center;
+    padding: 20px 0px 0px 0px;
+}
+.fildeBanner input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 16px 22px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+}
+
+.fildeBanner {
+    margin: 0px 0px 6px 0px;
+}
+
+.fildeBanner input:focus {
+    outline: none;
+}
+.projectMain {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    
+}
+
+.projectMain h4 {
+    font-size: 16px;
+    text-transform: capitalize;
+    margin: 16px 0px 14px 0px;
+    color: #fe000a;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+}
+
+.checkboxBanner {
+    font-size: 12px;
+    text-transform: capitalize;
+    margin: 0px 0px 4px 0px;
+    gap: 10px;
+    display: flex;
+    letter-spacing: 0.5px;
+}
+
+.checkboxBanner input {
+    margin: 0px;
+    width: 16px;
+    height: 16px;
+}
+.submit {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius: 0px;
+    padding: 10px 0px;
+    background: #fe000a;
+    margin: 8px 0px 0px 0px;
+    font-size: 16px;
+}
+.BannerMainSection .right {
+    text-align: center;
+}
+
+.BannerMainSection .right h5 {
+    margin: 0px 0px 0px 0px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #9b9b9b;
+}
+
+.BannerMainSection .right h3 {
+    margin: 0px 0px;
+    color: #fe000a;
+    font-size: 46px;
+    font-weight: 600;
+}
+.BannerMainSection .left {
+    border-right: 1px solid #ededed;
+    padding: 0px 30px 0px 0px;
+}
+
+`;
 
 const MainSection = styled.section`
     background: url(${(props) => props.background})no-repeat;
@@ -73,10 +261,8 @@ const MainSection = styled.section`
     }
 `;
 const BannerCont = styled.div`
-    width: 691px;
-    height: 393px;
-    position:absolute; 
-    transform: translateY(40%);
+  
+    
     
     background: rgb(255 255 255 / 28%) 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -84,6 +270,9 @@ const BannerCont = styled.div`
     -webkit-backdrop-filter: blur(50px);
     padding: 35px;
     z-index: 123;
+    height: fit-content;
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
     @media only screen and (max-width: 820px) {
         position: relative;
         transform: translateY(0%);
@@ -109,8 +298,9 @@ const GuaranteeLogo = styled.section`
     width: 135px;
     height: 135px;
     background-size: contain;
-    position: absolute;
-    right: 20px;
+    position: relative;
+    float: right;
+    top: -10px;
     @media only screen and (max-width: 480px) {
             width: 70px;
             height: 70px;
@@ -123,7 +313,7 @@ const Heading = styled.h1`
     padding:0px;
     margin:0px;
     text-align: left;
-    font: normal normal 900 64px/103px 'Poppins',sans-serif;
+    font: normal normal 900 44px/80px 'Poppins',sans-serif;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
@@ -135,13 +325,14 @@ const Heading = styled.h1`
     }
 `;
 const Subheading = styled.h2`
-    font: normal normal 300 32px/29px 'Poppins',sans-serif;
+    font: normal normal 300 32px/10px 'Poppins',sans-serif;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
     padding:0px;
     margin:0px;
     text-shadow: 1px 2px 1px #000000b5;
+    
     @media only screen and (max-width: 480px) {
         font-size: 15px;
         line-height: 0px;
@@ -152,7 +343,8 @@ const Content = styled.p`
 
     color: #fff;
     text-shadow: 1px 2px 1px #000000b5;
-    margin: 10px 0px 50px 0px;
+    margin: 44px 0px 50px 0px;
+    letter-spacing: 0.5px;
     @media only screen and (max-width: 480px) {
         font-size: 14px;
         margin: 22px 0px;
@@ -172,18 +364,28 @@ const Content = styled.p`
     
     `;
 const Button = styled.a`
-    background: #13213A 0% 0% no-repeat padding-box;
-    box-shadow: 0px 20px 29px #00000029;
-    border-radius: 8px;
-    font: normal normal 300 20px/30px 'Poppins',sans-serif;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-    padding: 18px 32px 18px 20px;
-    text-decoration:none;
-    font-size: 14px;
-    letter-spacing: 1px;
-    transition: all 0.35s linear;
+background: #13213A 0% 0% no-repeat padding-box;
+box-shadow: 0px 20px 29px #00000029;
+border-radius: 15px;
+font: normal normal 300 20px/30px 'Poppins',sans-serif;
+-webkit-letter-spacing: 0px;
+-moz-letter-spacing: 0px;
+-ms-letter-spacing: 0px;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+padding: 14px 30px;
+-webkit-text-decoration: none;
+text-decoration: none;
+font-size: 14px;
+-webkit-letter-spacing: 1px;
+-moz-letter-spacing: 1px;
+-ms-letter-spacing: 1px;
+letter-spacing: 1px;
+-webkit-transition: all 0.35s linear;
+transition: all 0.35s linear;
+float: left;
+border-bottom-left-radius: 0px;
    
     :hover{
         background: #000  0% 0% no-repeat padding-box;
@@ -210,23 +412,34 @@ const LeftArrow = styled.img`
     transition: all 0.35s linear;
 `;
 const SubButton = styled.a`
-    float:right;
-    background:none;
-    font: normal normal 300 16px/25px  'Poppins',sans-serif;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-    text-decoration:none;
-    font-size: 14px;
-    letter-spacing: 1px;
-    position: relative;
-    padding-right: 30px;
+float: right;
+background: none;
+font: normal normal 300 16px/25px 'Poppins',sans-serif;
+-webkit-letter-spacing: 0px;
+-moz-letter-spacing: 0px;
+-ms-letter-spacing: 0px;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+-webkit-text-decoration: none;
+text-decoration: none;
+font-size: 14px;
+-webkit-letter-spacing: 1px;
+-moz-letter-spacing: 1px;
+-ms-letter-spacing: 1px;
+letter-spacing: 1px;
+position: relative;
+background: #13213A 0% 0% no-repeat padding-box;
+padding: 16px 40px 16px 20px;
+border-radius: 15px;
+border-bottom-right-radius: 0px;
+cursor: pointer;
     
     .fa {
-        font-size: 28px;
-        right: -12px;
+        font-size: 16px;
+        right: 17px;
         position: absolute;
-        top: 0;
+        top: 21px;
     }
     @media only screen and (max-width: 480px) {
         float: left;
