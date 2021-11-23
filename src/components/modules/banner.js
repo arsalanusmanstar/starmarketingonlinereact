@@ -112,6 +112,9 @@ grid-template-columns: 49% 49%;
 gap: 2%;
 margin-top: 3%;
 align-items: center;
+@media only screen and (max-width: 820px) {
+    grid-template-columns: 100%;
+}
 `;
 const Slide = styled.div`
 

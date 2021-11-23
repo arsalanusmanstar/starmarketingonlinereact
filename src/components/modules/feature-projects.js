@@ -164,5 +164,9 @@ export default FeatureProducts;
 const FeatureProductsMain = styled.div`
 background: #fff;
 padding-bottom: 8%;
+@media only screen and (max-width: 820px) {
+  padding-bottom: 22%;
+  overflow: hidden;
+}
 
 `
