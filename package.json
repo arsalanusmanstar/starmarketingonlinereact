@@ -13,6 +13,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.25.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-animate-on-scroll": "^2.1.5",
@@ -83,5 +84,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "react-spa-prerender": "^1.0.12"
+  }
 }
