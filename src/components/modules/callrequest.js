@@ -29,6 +29,15 @@ const Callrequest = ({state, bg, title, location}) => {
         })
      }
 
+ //get current date
+
+ let newDate = new Date()
+let date = newDate.getDate();
+let month = newDate.getMonth() + 1;
+let year = newDate.getFullYear();
+let dateFormat= date+'/'+month+'/'+year;
+    
+
     return (
         <MainContainer background={callRequestBg} bg={bg}>
 
@@ -41,6 +50,7 @@ const Callrequest = ({state, bg, title, location}) => {
                     <Input type="email" name="Email" placeholder="" title="Email" />
                     <Input type="hidden" name="Url" value={location && location.pathname} />
                     <Textarea name="Details" placeholder="Write your message" title="Details" />
+                    <Input type="hidden" name="Date"  value={dateFormat} />
                     <Success>{success}</Success>
                     <Button type="submit" value="Send Message" />
                 </form>
@@ -83,7 +93,7 @@ const CallRequests = styled.div`
     background:url(${(props) => props.background}) no-repeat center;
     width: 100%;
     display: block;
-    height: 591px;
+    height: 621px;
     @media only screen and (max-width: 1366px) {
         background-size: contain;
         background-position: center;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useEffect,useState } from "react";
+import { useContext, useEffect,useState,useCallback } from "react";
 import { Link,NavLink,Redirect } from 'react-router-dom';
 import SectionContainer from "../styles/section-container";
 import Header from "../../components/header";
@@ -27,9 +27,12 @@ import Regions from "./../../data/regions.json";
 import axios from "axios";
 import Bounce from 'react-reveal/Bounce'
 import Fade from 'react-reveal/Fade'
+import { UserContext } from '../elements/UserContext';
 
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 
 const Projects = (state) => {
+  const [data,setData] = useContext(UserContext);
   const [allType,setAllType] = useState(true);
   const [allReigons,setAllRegions] = useState(true);
   const [completed,setCompleted] = useState(false);
@@ -42,15 +45,16 @@ const Projects = (state) => {
   const [redirect,setRedirect] = useState(false);
   const [sendRegion,setSendRegion] = useState(false);
   const [sendCity,setSendCity] = useState(false);
-  const [data,setData] = useState(JSON.parse(localStorage.getItem('projects')));
   const [cities,setCities] = useState(Cities);
   const [currentLocation,setCurrentLocation] = useState({"key":0,"label":"All Cities","value":""})
   const [currentRegions,setCurrentRegions] = useState({"key":0,"label":"All Regions","value":""})
 
   
+  
+
   useEffect(async ()=>{
     try {
-      axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+      axios.get(`https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100`)
       .then(response => {
         setData(response.data)
       })
@@ -79,6 +83,10 @@ const Projects = (state) => {
   },[])
 
   
+
+  
+
+
   const region = state.match.params.region == 'other' ? '' : state.match.params.region
   const lowercasedFilter = typeof filter === 'string' && filter.toLowerCase();
   const serachFilter = data ? data.filter((post) =>  
@@ -462,6 +470,9 @@ h1.listing_heading {
   -moz-letter-spacing: 1px;
   -ms-letter-spacing: 1px;
   letter-spacing: 1px;
+  @media only screen and (max-width: 480px) {
+    right: 0px;
+  }
 
 
 }
