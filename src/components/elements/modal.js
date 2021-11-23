@@ -46,6 +46,7 @@ const  LatestBoxesSlides = styled.div`
   height: 100%;
   z-index: 9999;
   top: 0;
+  display: none;
  
   
   .projectContent {

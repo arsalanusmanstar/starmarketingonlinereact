@@ -950,8 +950,9 @@ div[data-popper-placement="right"] {color: #fff;background: #000 !important;padd
   
   .searchFilter .fa.fa-search {
     position: absolute;
-    right: 16%;
-    bottom: 50px;
+    right: 90%;
+    bottom: -20px;
+   
 }
 .searchFilter .searchDropdown{
   margin-top: -72px !important;
@@ -1197,3 +1198,164 @@ h1.featured-heading.banners {
 .disable.searchCity {
     position: relative;
 }
+
+.slides {
+  display: grid;
+}
+.slides > .slide {
+  grid-area: 1/-1;
+}
+.slides > button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: transparent;
+  border: none;
+  color: white;
+  position: absolute;
+  font-size: 8rem;
+  width: 5rem;
+  height: 5rem;
+  top: 44%;
+  transition: opacity 0.3s;
+  opacity: 1;
+  z-index: 5;
+  cursor: pointer;
+}
+.slides > button:hover {
+  opacity: 1;
+}
+.slides > button:focus {
+  outline: none;
+}
+.slides > button:first-child {
+  left: -8%;
+}
+.slides > button:last-child {
+  right: -8%;
+}
+
+.slideContent {
+  width: 64vw;
+  color: #fff;
+  height: 40vw;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease-in-out;
+  opacity: 0.5;
+  display: grid;
+  align-content: center;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+  margin: auto;
+}
+
+.slideContentInner {
+  transform-style: preserve-3d;
+  transform: translateZ(0rem);
+  transition: opacity 0.3s linear;
+  text-shadow: 0 0.1rem 1rem #000;
+  opacity: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.69);
+  padding: 20px;
+}
+.slideContentInner .slideSubtitle,
+.slideContentInner .slideTitle {
+  font-size: 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-weight: normal;
+  letter-spacing: 0.1ch;
+  text-transform: uppercase;
+  margin: 0;
+}
+.slideContentInner .slideSubtitle {
+  font-size: 3rem !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+.slideContentInner .slideSubtitle::before {
+  content: "— ";
+}
+.slideContentInner .slideSubtitle::after {
+  content: " —";
+}
+.slideContentInner .slideDescription {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.2ch;
+}
+
+.slideBackground {
+  position: static;
+  top: 0;
+  left: -10%;
+  right: -10%;
+  bottom: 0;
+  background: #ebebeb;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.3s linear, transform 0.3s ease-in-out;
+  pointer-events: none;
+  transform: translateX(calc(10% * var(--dir)));
+}
+
+.slide[data-active] {
+  z-index: 2;
+  pointer-events: auto;
+}
+.slide[data-active] .slideBackground {
+  opacity: 0.2;
+  transform: none;
+}
+.slide[data-active] .slideContentInner {
+  opacity: 1;
+}
+.slide[data-active] .slideContent {
+  --x: calc(var(--px) - 0.5);
+  --y: calc(var(--py) - 0.5);
+  opacity: 1;
+  transform: perspective(1000px);
+}
+.slide[data-active] .slideContent:hover {
+  transition: none;
+}
+
+.readMore {
+  background: 0% 0% no-repeat padding-box padding-box #db2d34;
+  color: white;
+  text-align: left;
+  border-radius: 8px;
+  font: 300 16px/30px Poppins;
+  margin: 20px 0px;
+  position: relative;
+  z-index: 123;
+  transition: all 0.35s linear 0s;
+  border: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  
+}
+
+.arrow {
+  width: 23px;
+  margin-left: 10px;
+}
+
+h1.featuredProjects {
+  text-align: center;
+  font: normal normal 900 2.5rem/21px "Poppins", sans-serif;
+  letter-spacing: 0;
+  color: #ffffff;
+  opacity: 1;
+  margin: 0;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
