@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_URI} !\.(index|gif|jpe?g|png|css|js)$
+RewriteRule . /index.html [L]
+</IfModule>

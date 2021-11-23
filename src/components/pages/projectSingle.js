@@ -45,7 +45,7 @@ import Select from 'react-select';
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match,location}) => {
-  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher)
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.url.replace('.html',''), fetcher)
   const baseUrl = 'https://starmarketingonline.com';
   const [pdf,setPdf] = useState(0);
   const [activeContent,setActiveContent] = useState(false);

@@ -1,94 +1,56 @@
-const express = require('express'); //Line 1
+const express = require('express');
+const serveStatic = require('serve-static');
+const app = express();
+const resolve = require('path').resolve;
 const request = require('request');
-var cors = require('cors')
-const app = express(); //Line 2
-const port = process.env.PORT || 5000; //Line 3
-app.options('*', cors()) // include before other routes
-// This displays message that the server running and listening to specified port
-app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
-const baseUrl = 'https://starmarketingonline.com/wp-json/wp/v2';
+const fs = require('fs');
 
-// create a GET route
-app.get('/express_backend', (req, res) => { //Line 93
-    var url = baseUrl+req.query['link'];
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
   
-}); //Line 11
+const file = '/.rsp.json';
 
-app.post('/expressPost', (req, res) => { //Line 93
-     var url = req.query.slug ?  baseUrl+req.query.data+'&slug='+req.query.slug.replace('/','') : baseUrl+req.query.categories ? baseUrl+req.query.data+'&categories='+req.query.slug.replace('/','') : baseUrl+req.query.data;
+app.use(serveStatic(resolve('./build')));
+app.get('/', (req, res) => res.sendFile(resolve('./build/index.html')))
+app.get('/our-team', (req, res) => res.sendFile(resolve('./build/our-team.html')));
+app.get('/achievements', (req, res) => res.sendFile(resolve('./build/achievements.html')));
+app.get('/latest', (req, res) => res.sendFile(resolve('./build/latest.html')));
+app.get('/contact-us', (req, res) => res.sendFile(resolve('./build/contact-us.html')));
+
+// app.get('/projects',  (req, res) =>res.sendFile(resolve('./build/projects.html')));
+const data = [
+        "/",
+      "/our-team",
+      "/achievements",
+      "/latest",
+      "/projects",
+      "/contact-us",
+];
+const  projects = []
+request('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100', function (error, response, body) {
+    
     
 
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
+    let Data = JSON.parse(body);
+        Data.map((itm,index)=> {
+        //     app.get("/"+itm.slug, (req, res) => res.sendFile(resolve('./build/'+itm.slug+".html")))
+        // console.log('./build/project/'+itm.slug+".html")}
+        projects[index] = "/project/"+itm.slug
+                
+        const content = {
+            "port": 3000,
+            "buildDirectory": "./build",
+            "routes":[...data,...projects]
+        };
+
   
-}); //Line 11
+        fs.writeFile('.rsp.json',JSON.stringify(content),{
+        },(err)=> { console.log(err)})
+    }
+    )
+    //  && body.map(itm=>
+    //     console.log(itm)    
+    // )
 
-app.get('/latest', (req, res) => { //Line 93
-     var url = baseUrl+'/posts?_embed=true&?categories=47,2673&per_page=100';
-    console.log(url)
-
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
-  
-}); //Line 11
-
-app.get('/featureProject', (req, res) => { //Line 93
-     var url = baseUrl+'/portf?_embed=true&per_page=100';
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
-  
-}); //Line 11
-
-app.get('/blog', (req, res) => { //Line 93
-     var url = baseUrl+'/posts?_embed=true&?categories=47,2673&per_page=100';
-    request({
-        method: 'GET',
-        uri: url,
-     },function (error, response, body){
-        res.send(body); //Line 10
-     });
-  
-}); //Line 11
-
-app.get('/projects', (req, res) => { //Line 93
-   var url = baseUrl+'/portf?_embed=true&per_page=100';
-
-  request({
-      method: 'GET',
-      uri: url,
-   },function (error, response, body){
-      res.send(body); //Line 10
-   });
-
-}); //Line 11
+})
 
 
-app.post('/singleprojects', (req, res) => { //Line 93
-   var url = req.query.slug && baseUrl+'/portf?_embed=true&slug='+req.query.slug.replace('/','');
-
-  request({
-      method: 'GET',
-      uri: url,
-   },function (error, response, body){
-      res.send(body); //Line 10
-   });
-
-}); //Line 11
+app.listen(3000, () => console.log('Started on PORT 3000'));

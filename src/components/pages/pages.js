@@ -11,12 +11,13 @@ import Meta from "../elements/meta"
 const Pages = ({ match,location }) => {
   const [data,setData] = useState('');
   
+  console.log(match)
   useEffect(()=>{
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.path)
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.url.replace('.html',''))
       .then(response => {
         setData(response.data)
       })

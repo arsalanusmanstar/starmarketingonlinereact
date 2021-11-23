@@ -291,7 +291,7 @@ const Projects = (state) => {
                  <div className="listing_boxes" key={index}> 
               {post.acf.filters.upcoming &&
               <div className="upcoming">Coming Soon</div>}
-               <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>
+               <Link to={post.link.replace('https://staging.starmarketingonline.com','')+".html"}>
                 <Image background={post._embedded['wp:featuredmedia'][0] && post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url :  post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url}></Image>
               </Link>
               <Fade bottom cascade><h2  dangerouslySetInnerHTML={{ __html:post.title.rendered}}></h2></Fade>
@@ -322,7 +322,7 @@ const Projects = (state) => {
                
                 <Fade bottom cascade><div className="listing_shop secound">
                   <div className="listing_shop_box button">
-                   <Link to={post.link.replace('https://staging.starmarketingonline.com','')}>Read more</Link>
+                   <Link to={post.link.replace('https://staging.starmarketingonline.com','')+".html"}>Read more</Link>
                   </div>
                   {post.acf.filters && post.acf.filters.city &&
                   <div className="listing_shop_box location">
