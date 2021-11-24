@@ -8,13 +8,13 @@ import Fade from 'react-reveal/Fade';
  */
 const Navigation = () =>  {
   const state = [
-    ["About","#","",[['Our Team','/our-team.html',''],['Achievements','/achievements.html','']]],
-    ["Media","#","",[['Latest','/latest.html',''],['News','https://star.news','new']]],
-    ["Projects","/projects.html/","",[]],
+    ["About","#","",[['Our Team','/our-team',''],['Achievements','/achievements','']]],
+    ["Media","#","",[['Latest','/latest',''],['News','https://star.news','new']]],
+    ["Projects","/projects/","",[]],
     // ["Projects","/projects","",[['Islamabad','/projects/islamabad','',[['Murree','/projects/islamabad/multan','',]]],['Punjab','/projects/Punjab',''],['KPK','/projects/kpk',''],['Sindh','/projects/sindh',''],['Baluchistan','/projects/baluchistan','']]],
     ["Products","#","",[['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new'],['Star Digital','https://digital.starmarketingonline.com/','new']]],
     // ["Careers","/careers","",[]],
-    ["Contact Us","/contact-us.html","",[]],
+    ["Contact Us","/contact-us","",[]],
   ]
   return (
   <NavWrapper>

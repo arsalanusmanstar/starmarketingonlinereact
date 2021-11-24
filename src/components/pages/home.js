@@ -24,7 +24,6 @@ useEffect(()=>{
   return (
     <div style={{backgroundImage:`url("/assets/WebBg.png")`}}> 
       <Meta meta={data && data[0].yoast_meta} page="home" />
-      <Header  params={match.path}/>
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
          <Modules data={data && data[0]['acf']} location={location} /> } 
       <Footer />

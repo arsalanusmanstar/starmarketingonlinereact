@@ -17,7 +17,7 @@ const Pages = ({ match,location }) => {
       top: 0,
       behavior: 'smooth'
     });
-    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.url.replace('.html',''))
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.url.replace('.html',' '))
       .then(response => {
         setData(response.data)
       })
@@ -26,7 +26,6 @@ const Pages = ({ match,location }) => {
   return (
     <div > 
       {data && data[0] && <Meta meta={data && data[0].yoast_meta} page="page" />}
-      <Header params={match.path} />
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
           data[0] && data[0].acf ? <Modules data={data[0].acf} location={location}  /> : <SinglePage data={data[0]}/>  }
       <Footer />

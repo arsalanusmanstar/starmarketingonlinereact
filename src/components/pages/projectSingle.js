@@ -45,7 +45,8 @@ import Select from 'react-select';
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match,location}) => {
-  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.url.replace('.html',''), fetcher)
+  console.log(match,location)
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug, fetcher)
   const baseUrl = 'https://starmarketingonline.com';
   const [pdf,setPdf] = useState(0);
   const [activeContent,setActiveContent] = useState(false);
@@ -340,7 +341,6 @@ let dateFormat= date+'/'+month+'/'+year;
 
   return (
     <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
-      <Header />
       {data && data[0] && <Meta meta={data && data[0].yoast_meta} page="project"  />}
       {data ?  data[0] && data[0].acf.filters &&
       <>

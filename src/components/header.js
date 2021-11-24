@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Navigation from "./navigation/navigation";
 import MobileNavigation from "./navigation/mobilenavigation";
 import { Link } from 'react-router-dom';
@@ -7,10 +7,11 @@ import {  Logo, DownArrow } from "./icons";
 import Sticky from 'react-sticky-el';
 import LightSpeed from 'react-reveal/LightSpeed';
 import Slide from 'react-reveal/Slide';
+import { UserContext } from './elements/UserContext';
 
-const Header = ({params}) => {
+const Header = ({params,data}) => {
   const input1 = useRef(null);
-  const [projects,setProjects] = useState(JSON.parse(localStorage.getItem('projects')))
+  const [projects,setProjects] = useContext(UserContext);
   const [filter,setFilter] = useState('');
   const [active,setActive] = useState(false);
 
@@ -147,7 +148,7 @@ const TitleWrapper = styled.div`
 `;
 
 const PageHeader = styled.header`
-  z-index: 1;
+  z-index: 99999;
   background: url(${(props) => props.bg});
   color:#FFFFFF;
   position: relative;
