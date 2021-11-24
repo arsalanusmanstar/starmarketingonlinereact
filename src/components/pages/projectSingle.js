@@ -45,7 +45,7 @@ import Select from 'react-select';
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 const ProjectSingle = ({match,location}) => {
-  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.url.replace('.html',''), fetcher)
+  const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&slug='+match.params.slug.replace('.html',''), fetcher)
   const baseUrl = 'https://starmarketingonline.com';
   const [pdf,setPdf] = useState(0);
   const [activeContent,setActiveContent] = useState(false);
@@ -405,11 +405,11 @@ let dateFormat= date+'/'+month+'/'+year;
                 </CallRequests>
                 <form className="callform" method="POST" id="contactForm"  onSubmit={(e)=>submitHandler(e)}>
                     <Input type="text" name="Name" placeholder="Name" title="Name" />
-                    <br/><br/>
+                   
                     <Input type="email" name="Email" title="Email" placeholder="Email" />
-                    <br/><br/>
+                   
                     <Input type="number" name="Phone" placeholder="Phone" title="Phone" />
-                    <br/><br/>     <br/>
+                   
                     {/* <Input type="text" name="Country" placeholder="Your Country" title="Email" /> */}
                     <span className="country">
                     <Select
@@ -599,10 +599,10 @@ const  htmlDecode = (content) => {
 
 const LocationSection = styled.div`
  h1 {
-  font-size: 53px;
+  font-size: 44px;
   font-weight: 600;
   letter-spacing: 1px;
-  margin: 14% 0px 60px 0px;
+  margin: 6% 0px 60px 0px;
   clear: both;
   @media only screen and (max-width: 820px) {
    
@@ -619,8 +619,8 @@ const LocationSection = styled.div`
 
 const LocationSectionyMain = styled.div`
 display: grid;
-grid-template-columns: 65% 30%;
-gap: 5%;
+grid-template-columns: 65% 34%;
+gap: 1%;
 background: #000;
 color: #fff;
 padding: 60px 60px;
@@ -686,7 +686,7 @@ h2 {
 
 const GallerySection = styled.div`
  h1 {
-  font-size: 53px;
+  font-size: 50px;
   font-weight: 600;
   letter-spacing: 1px;
   margin: 100px 0px 60px 0px;
@@ -710,8 +710,9 @@ gap: 1%;
 `
 
 const GBoxes = styled.div`
-
-
+img{
+  min-height: 290px;
+}
 `
 
 
@@ -719,7 +720,7 @@ const GBoxes = styled.div`
 
 const PropertySection = styled.div`
 h1 {
-  font-size: 53px;
+  font-size: 44px;
   font-weight: 600;
   letter-spacing: 1px;
   margin: 80px 0px 40px 0px;
@@ -806,7 +807,7 @@ const FacilitiesBoxesBottom = styled.div`
 `
 const Facilities = styled.div`
 h1 {
-  font-size: 53px;
+  font-size: 44px;
   font-weight: 600;
   letter-spacing: 1px;
   margin: 80px 0px 40px 0px;
@@ -863,10 +864,12 @@ const FacilitiesBack = styled.div`
 
 const DescriptionBanner = styled.div`
 background:url(${(props) => props.background}) no-repeat center;
-height: 716px;
-display: block;
-background-size: cover;
-position: relative;
+height: auto;
+    display: block;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+    background-position: center bottom;
 @media only screen and (max-width: 820px) {
   height: auto;
  
@@ -892,8 +895,8 @@ button {
   display: flex;
   justify-content: center;
   position: relative;
-  padding: 33px 80px 33px 35px;
-  font-size: 20px;
+  padding: 26px 60px 26px 26px;
+    font-size: 16px;
   letter-spacing: 1px;
   font-weight: 100;
   text-transform: capitalize;
@@ -907,8 +910,8 @@ button {
 
   img {
     position: absolute;
-    right: 38px;
-    top: 28px;
+    right: 26px;
+    top: 18px;
     @media only screen and (max-width: 480px) {
       right: 28px;
       top: 18px; 
@@ -942,9 +945,12 @@ button {
   letter-spacing: 1px;
   font-weight: 600;
   text-shadow: 0px 4px #000;
+  font-size: 6.4rem;
+  text-transform: uppercase;
+  margin-top: 0px;
 }
  h5 {
-  font-size: 28px;
+  font-size: 22px;
   color: #fff;
   font-weight: 300;
   letter-spacing: 1px;
@@ -1018,10 +1024,11 @@ display: grid;
   border: 0px;
   border-bottom: 1px solid #929292;
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
-  line-height: 45px;
+  line-height: 32px;
   letter-spacing: 1px;
+  border-bottom-left-radius: 0;
   @media only screen and (max-width: 480px) {
     
     font-size: 14px;
@@ -1033,12 +1040,13 @@ display: grid;
 }
 textarea {
     width: 100%;
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
     line-height: 24px;
     letter-spacing: 1px;
     border: 0px;
     border-bottom: 1px solid #929292;
+    border-bottom-left-radius: 0;
     @media only screen and (max-width: 480px) {
     
       font-size: 14px;
@@ -1055,13 +1063,16 @@ textarea, input:focus {
   color: #333;
   margin-block: 10px;
   display: block;
+  clear: both;
 }
 .country > div > div {
   margin: 0;
-  padding: 17px 6px;
-  border-radius: 10px;
-  border: 0;
-  text-transform: uppercase;
+    padding: 8px 6px;
+    border-radius: 10px;
+    border: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-bottom-left-radius: 0;
   @media only screen and (max-width: 480px) {
     padding: 10px 6px;
     font-size: 14px;
@@ -1148,7 +1159,7 @@ background:url(${(props) => props.background}) no-repeat right;
 background-size: cover;
   color: #fff;
   display: grid;
-  grid-template-columns: 74% 26%;
+  grid-template-columns: 70% 30%;
   @media only screen and (max-width: 1366px) {
     grid-template-columns: 66% 34%;
 
@@ -1180,7 +1191,7 @@ const ProjectsDescriptionLfet = styled.div`
     padding: 20px 20% 52px 20px;
   }
   h1 {
-  font-size: 53px;
+  font-size: 44px;
   font-weight: 600;
   @media only screen and (max-width: 820px) {
     margin: 0;
@@ -1193,7 +1204,7 @@ const ProjectsDescriptionLfet = styled.div`
   }
 
   p {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 300;
   color: #ffffffe6;
   @media only screen and (max-width: 480px) {
@@ -1203,12 +1214,14 @@ const ProjectsDescriptionLfet = styled.div`
 
   button {
     background: #afafaf4f;
-    padding: 23px 44px;
+    padding: 20px 30px;
     color: #ffffffc7;
     border-radius: 10px;
-    font-size: 21px;
+    font-size: 16px;
     letter-spacing: 1px;
     cursor:pointer;
+    margin: 40px 0px 0px 0px;
+    border-bottom-left-radius: 0;
     @media only screen and (max-width: 820px) {
       padding: 18px 18px;
       font-size: 16px;
@@ -1220,7 +1233,8 @@ const ProjectsDescriptionLfet = styled.div`
     }
   img {
     float: right;
-    margin: 4px 0px 0px 24px;
+    margin: 4px 0px 0px 10px;
+    width: 26px;
     @media only screen and (max-width: 820px) {
       margin: 4px 0px 0px 10px;
           width: 30px;
@@ -1294,6 +1308,7 @@ textarea {
   padding: 12px 20px;
   border-radius: 10px;
   height: 130px;
+  border-bottom-left-radius: 0;
 }
 .fild_button button {
   background: none;
@@ -1306,6 +1321,7 @@ textarea {
   border-radius: 10px;
   cursor:pointer;
   color: #fff;
+  border-bottom-left-radius: 0;
   @media only screen and (max-width: 480px) {
     font-size: 16px;
   }

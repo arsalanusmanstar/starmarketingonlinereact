@@ -153,18 +153,18 @@ const Projects = (state) => {
     <div style={{backgroundImage:`url("/assets/page_bg.png")`}}> 
       <Header />
       <Mainproject>
-      <SectionContainer>
+        <div className="SectionContainer">
           <InnerBannerSection>
-             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}><Bounce top cascade>Projects</Bounce></h1>
+            <h1 className="featured-heading banners" style={{marginTop:'-40px'}}><Bounce top cascade>Projects</Bounce></h1>
           </InnerBannerSection> 
-        </SectionContainer>
+        </div>
       {redirect && <Redirect strict to={"/projects/"} />} 
         {sendRegion && <Redirect to={"/projects/"+currentRegions.value} />}
         {sendCity && <Redirect to={"/projects/"+currentRegions.value+"/"+currentLocation.value} />}
 
 
         <ProjectHeadersection>
-          <SectionContainer className="pb-0">
+          <div className="SectionContainer pb-0" >
           <ProjectHeadersectionMain>
            <ProjectHeaderleft>
             <div className="form-group">
@@ -279,11 +279,11 @@ const Projects = (state) => {
               upcoming  && 
               <Link style={{float:'right', marginLeft:'20px',font:'normal normal 300 18px/30px Poppins',color:'red', textDecoration:'none'}} to='/projects' onClick={()=>clearFilters()}>Clear Filters</Link> 
               }
-            </SectionContainer>
+            </div>
         </ProjectHeadersection>
 
         <ProjectHeadersectionB>
-        <SectionContainer className="pt-0">
+        <div className="SectionContainer pt-0" >
           {!data && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} />}
            {FilterData.length > 0 && <h1 className="listing_heading">Found {FilterData.length} projects</h1>}
            <div className="listing">
@@ -335,7 +335,7 @@ const Projects = (state) => {
               </div>
             ): data && <div className="notfounded">NOT FOUND</div>  }
           </div>
-          </SectionContainer>
+          </div>
           </ProjectHeadersectionB>
 
    </Mainproject>
@@ -351,7 +351,7 @@ const Imge = styled.img`
 const ProjectHeadersectionB = styled.div`
     background: #fff;
     .pt-0 {
-      padding-top: 0px;
+      padding-top: 0px !important;
     }
     .listing {
       display: grid;
@@ -774,8 +774,19 @@ const ProjectSearch = styled.div`
 const Mainproject = styled.div`
   color:#fff;
   .pb-0 {
-    padding-bottom: 0px;
+    padding-bottom: 0px!important;
 }
+  .SectionContainer {
+    margin: 0 auto;
+    padding: 120px 0;
+    position: relative;
+    display: block;
+    clear: both;
+    position: relative;
+    max-width: 1440px;
+}
+ 
+
 `
 const InnerBannerSection = styled.div`
 h1{

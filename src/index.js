@@ -12,9 +12,9 @@ import reportWebVitals from './reportWebVitals';
 const rootElement = document.getElementById("root");
 
 if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(<React.StrictMode><BrowserRouter basename="react"><App /></BrowserRouter></React.StrictMode>, rootElement);
+  ReactDOM.hydrate(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>, rootElement);
 } else {
-  ReactDOM.render(<React.StrictMode><BrowserRouter basename="react"><App /></BrowserRouter></React.StrictMode>, rootElement);
+  ReactDOM.render(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>, rootElement);
 }
 
 reportWebVitals();

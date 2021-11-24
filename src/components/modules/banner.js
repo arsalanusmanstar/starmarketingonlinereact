@@ -10,25 +10,45 @@ import TW from "../../assets/TW.png";
 import YT from "../../assets/YT.png";
 import In from "../../assets/In.png";
 import INSTA from "../../assets/INSTA.png";
+import axios from "axios";
+import ReactLoading from "react-loading";
+import { useEffect,useState } from "react";
+
 
 const BannerText = ({state}) => {
     
-    
     return (
     
-    <BannerCont >
-        <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
-        <Heading ><Fade left big cascade>{state.heading}</Fade></Heading>   
-        <Subheading >  <Fade top big cascade>{state.sub_heading} </Fade></Subheading>
-        <Content >  {state.content}  </Content>
-        <Button  href="#about"  style={{cursor:'pointer'}} >  Learn More  </Button>
-        <SubButton> Work With Us <i className="fa fa-long-arrow-right"></i> </SubButton>   
-    </BannerCont> 
-               
+        <BannerCont >
+            <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
+            <Heading><Fade left big cascade>{state.heading}</Fade></Heading>   
+            <Subheading><Fade left big cascade>{state.sub_heading} </Fade></Subheading>
+            <Content>{state.content}</Content>
+            <Button  href="#about"  style={{cursor:'pointer'}} >  Learn More  </Button>
+            <SubButton> Work With Us <i className="fa fa-long-arrow-right"></i> </SubButton>   
+        </BannerCont> 
           
     )
 }
 const Video = ({state}) => {
+    const [success,setSuccess] = useState('');
+  const [loader,setLoader] = useState(false);
+    const submitHandler = e => {
+        e.preventDefault();
+        setLoader(true);
+          const data = new FormData(e.target);
+          axios.post('https://starclubcard.info/api/api.php', data, {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+          .then(response => {
+              console.log(response)
+            document.getElementById("queryForm").reset();
+            setLoader(false)
+            setSuccess('Thank you for submitting the request. Our representative will contact you shortly.')
+          })
+       }
     return (
         <>
         {/*<VideoImg  controls loop autoPlay playsInline muted defer  id="video">
@@ -38,37 +58,38 @@ const Video = ({state}) => {
                 <h1><Fade left big cascade>Manage your Real Estate marketing with us!</Fade></h1>
                 <p>it takes less than <span>5 mintues</span>to fill out the information requrired know about your project.</p>
                 <div className="BannerMainSection">
+                <form method="POST" id="queryForm" onSubmit={(e)=>submitHandler(e)}>
                 <div className="left">
-                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Name" /></div>
-                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Email"/></div>
-                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Mobile"/></div>
-                   <div className="fildeBanner"><input type="text" name="name" placeholder="your Project Location"/></div>
-                
+                   <div className="fildeBanner"><input type="text" name="name" placeholder="Your Name" required /></div>
+                   <div className="fildeBanner"><input type="text" name="email" placeholder="Your Email" required/></div>
+                   <div className="fildeBanner"><input type="text" name="mobile" placeholder="Your Mobile" required/></div>
+                   <div className="fildeBanner"><input type="text" name="project_location" placeholder="Your Project Location" required/></div>
                    <div className="projectMain">
                       <div className="projectMainLeft">
                          <h4>Project type</h4>
-                         <div className="checkboxBanner"><input type="checkbox" />apartments</div>
-                         <div className="checkboxBanner"><input type="checkbox" />plots</div>
-                         <div className="checkboxBanner"><input type="checkbox" />Housing Scheme</div>
-                         <div className="checkboxBanner"><input type="checkbox" />Shops & Shwrooms</div>
-                         <div className="checkboxBanner"><input type="checkbox" />Resorts & Farmhouse</div>
-                         <div className="checkboxBanner"><input type="checkbox" />other</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Apartments" />Apartments</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Plots" />Plots</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Housing Scheme"/>Housing Scheme</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Shops & Showrooms"/>Shops & Showrooms</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Resorts & Farmhouse"/>Resorts & Farmhouse</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Other"/>Other</div>
                       </div>
                       <div className="projectMainRight">
                       <h4>Choose Services</h4>
-                      <div className="checkboxBanner"><input type="checkbox" />360 Marketing</div>
-                         <div className="checkboxBanner"><input type="checkbox" />Digital Marketing</div>
-                         <div className="checkboxBanner"><input type="checkbox" />project website</div>
-                         <div className="checkboxBanner"><input type="checkbox" />mobile app</div>
+                      <div className="checkboxBanner"><input type="checkbox" name="service[]" value="360 Marketing" />360 Marketing</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Digital Marketing" />Digital Marketing</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Project website" />Project website</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Mobile app" />Mobile app</div>
                       </div>
-
-
                    </div>
-                   <Button className="submit">Submit</Button>
+                   <button className="submit" type="submit">Submit</button>
+                   {/* <Button type="submit" className="submit">Submit</Button> */}
                 </div>
-
+                {success}
+                </form>
+                {loader && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"red",height:'100vh',width:"80px"}} />}
                 <div className="right">
-                    <Imge style={{width:'80% '}} src={roket} ></Imge>
+                    <Imge className="roket" style={{width:'80% '}} src={roket} ></Imge>
                     <h5>Let's connect</h5>
                     <h3>111 111 160</h3>
                     <SL>
@@ -78,11 +99,8 @@ const Video = ({state}) => {
                         <Slide bottom><a href="https://www.linkedin.com/company/starmarketingpvtltd/mycompany/" target="_blank"><IconTW className="FS" src={In}></IconTW></a> </Slide>
                         <Slide bottom> <a href="https://www.instagram.com/starmarketingpvtltd/" target="_blank"> <IconTW className="FS" src={INSTA}></IconTW></a> </Slide>
                     </SL>
-
-                </div>   
+                </div>  
                 </div>
-            
-
          </BannerFormSection>
        </>
     )
@@ -93,7 +111,6 @@ const TopBanner = ({state,data}) => {
         <SectionContainer  style={{paddingTop:0, paddingBottom: 40}}>
            <BannerMainSection>
                  <BannerText state={data} />
-            
                  {VideoImg && <Video state={state} />} 
           </BannerMainSection>
         </SectionContainer>
@@ -107,27 +124,29 @@ export default TopBanner;
 
 
 const BannerMainSection = styled.section`
-display: grid;
-grid-template-columns: 49% 49%;
-gap: 2%;
-margin-top: 3%;
-align-items: center;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    
+    align-items: center;
 @media only screen and (max-width: 820px) {
     grid-template-columns: 100%;
 }
+@media only screen and (max-width: 1366px) {
+}
+
 `;
 const Slide = styled.div`
-
 `;
 
 const SL = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 16px;
-img{
-    width: 24px;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    img{
+        width: 24px;
+    }
 
 `;
 const IconTW = styled.img`
@@ -137,9 +156,9 @@ const Imge = styled.img`
   
 `;
 const BannerFormSection = styled.section`
-background: #fff;
-padding: 30px 30px;
-border-radius: 20px;
+    background: #fff;
+    padding: 30px 30px;
+    border-radius: 20px;
     border-bottom-left-radius: 0px;
 h1 {
     font-size: 25px;
@@ -149,7 +168,7 @@ h1 {
     margin-bottom: 10px;
     font-weight: 600;
 }
- p {
+p {
     font-size: 14px;
     text-transform: capitalize;
     color: #939393;
@@ -166,6 +185,9 @@ h1 {
     gap: 2%;
     align-items: center;
     padding: 20px 0px 0px 0px;
+    @media only screen and (max-width: 1366px) {
+        grid-template-columns: 100%;
+    }
 }
 .fildeBanner input {
     width: 100%;
@@ -189,7 +211,6 @@ h1 {
     display: grid;
     grid-template-columns: 49% 49%;
     gap: 2%;
-    
 }
 
 .projectMain h4 {
@@ -199,6 +220,7 @@ h1 {
     color: #fe000a;
     font-weight: 600;
     letter-spacing: 0.1px;
+    
 }
 
 .checkboxBanner {
@@ -224,6 +246,10 @@ h1 {
     background: #fe000a;
     margin: 8px 0px 0px 0px;
     font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    border-bottom-left-radius: 0px;
+    color: #fff;
 }
 .BannerMainSection .right {
     text-align: center;
@@ -252,21 +278,22 @@ h1 {
 
 const MainSection = styled.section`
     background: url(${(props) => props.background})no-repeat;
-    margin-top: -210px;
-    padding-top: 200px;
+   
     display: flex;
     background-attachment: fixed;
     background-position: right;
     background-size: cover;
-    height: 100vh;
+    height: 87vh;
+    justify-content: center;
+    align-items: center;
     @media only screen and (max-width: 1024px) {
+        height: 100%;
+    }
+    @media only screen and (max-width: 1366px) {
         height: 100%;
     }
 `;
 const BannerCont = styled.div`
-  
-    
-    
     background: rgb(255 255 255 / 28%) 0% 0% no-repeat padding-box;
     opacity: 1;
     backdrop-filter: blur(50px);
@@ -276,24 +303,25 @@ const BannerCont = styled.div`
     height: fit-content;
     border-radius: 20px;
     border-bottom-left-radius: 0px;
+    @media only screen and (max-width: 1100px) {
+        z-index: revert;
+
+    }
     @media only screen and (max-width: 820px) {
         position: relative;
         transform: translateY(0%);
         width: 100%;
         height: auto;
         z-index: revert;
-        @media only screen and (max-width: 480px) {
-            top: 0%;
-            height: auto;
-            padding: 20px;
-            padding-bottom: 90px;
-            margin-bottom: -30px;
-            z-index: revert;
-
+    @media only screen and (max-width: 480px) {
+        top: 0%;
+        height: auto;
+        padding: 20px;
+        padding-bottom: 90px;
+        margin-bottom: -30px;
+        z-index: revert;
         }
-    
       }
-
 `;
     
 const GuaranteeLogo = styled.section`
@@ -305,10 +333,10 @@ const GuaranteeLogo = styled.section`
     float: right;
     top: -10px;
     @media only screen and (max-width: 480px) {
-            width: 70px;
-            height: 70px;
-            right: 14px;
-            top: 25px;
+        width: 70px;
+        height: 70px;
+        right: 14px;
+        top: 25px;
 
     }
 `;
@@ -321,6 +349,10 @@ const Heading = styled.h1`
     color: #FFFFFF;
     opacity: 1;
     text-shadow: 1px 2px 1px #000;
+    @media only screen and (max-width: 1100px) {
+        line-height: 45px;
+
+    }
     @media only screen and (max-width: 480px) {
         font-size: 30px;
         line-height: 60px;
@@ -335,19 +367,25 @@ const Subheading = styled.h2`
     padding:0px;
     margin:0px;
     text-shadow: 1px 2px 1px #000000b5;
-    
+    @media only screen and (max-width: 1100px) {
+        line-height: 30px;
+        font-size: 23px;
+
+    }
     @media only screen and (max-width: 480px) {
         font-size: 15px;
         line-height: 0px;
-
     }
     `;
 const Content = styled.p`
-
     color: #fff;
     text-shadow: 1px 2px 1px #000000b5;
     margin: 44px 0px 50px 0px;
     letter-spacing: 0.5px;
+    @media only screen and (max-width: 1100px) {
+        margin: 0px 0px 30px 0px;
+
+    }
     @media only screen and (max-width: 480px) {
         font-size: 14px;
         margin: 22px 0px;
@@ -357,43 +395,38 @@ const Content = styled.p`
         -webkit-line-clamp: 2;
         line-clamp: 2;
         -webkit-box-orient: vertical;
-
     }
     @media only screen and (max-width: 820px) {
         margin-top:15px;
         margin-bottom:19px;
     }
     
-    
     `;
 const Button = styled.a`
-background: #13213A 0% 0% no-repeat padding-box;
-box-shadow: 0px 20px 29px #00000029;
-border-radius: 15px;
-font: normal normal 300 20px/30px 'Poppins',sans-serif;
--webkit-letter-spacing: 0px;
--moz-letter-spacing: 0px;
--ms-letter-spacing: 0px;
-letter-spacing: 0px;
-color: #FFFFFF;
-opacity: 1;
-padding: 14px 30px;
--webkit-text-decoration: none;
-text-decoration: none;
-font-size: 14px;
--webkit-letter-spacing: 1px;
--moz-letter-spacing: 1px;
--ms-letter-spacing: 1px;
-letter-spacing: 1px;
--webkit-transition: all 0.35s linear;
-transition: all 0.35s linear;
-float: left;
-border-bottom-left-radius: 0px;
-   
+    background: #13213A 0% 0% no-repeat padding-box;
+    box-shadow: 0px 20px 29px #00000029;
+    border-radius: 15px;
+    font: normal normal 300 20px/30px 'Poppins',sans-serif;
+    -webkit-letter-spacing: 0px;
+    -moz-letter-spacing: 0px;
+    -ms-letter-spacing: 0px;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    padding: 14px 30px;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    font-size: 14px;
+    -webkit-letter-spacing: 1px;
+    -moz-letter-spacing: 1px;
+    -ms-letter-spacing: 1px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.35s linear;
+    transition: all 0.35s linear;
+    float: left;
+    border-bottom-left-radius: 0px;
     :hover{
         background: #000  0% 0% no-repeat padding-box;
-
-
     }
     :hover img {
         right: -10px;
@@ -403,10 +436,7 @@ border-bottom-left-radius: 0px;
         font-size: 12px;
         padding: 4px 16px ;
         float: left;
-
     }
-    
-
 `;
 const LeftArrow = styled.img`
     width: 26px;
@@ -415,29 +445,28 @@ const LeftArrow = styled.img`
     transition: all 0.35s linear;
 `;
 const SubButton = styled.a`
-float: right;
-background: none;
-font: normal normal 300 16px/25px 'Poppins',sans-serif;
--webkit-letter-spacing: 0px;
--moz-letter-spacing: 0px;
--ms-letter-spacing: 0px;
-letter-spacing: 0px;
-color: #FFFFFF;
-opacity: 1;
--webkit-text-decoration: none;
-text-decoration: none;
-font-size: 14px;
--webkit-letter-spacing: 1px;
--moz-letter-spacing: 1px;
--ms-letter-spacing: 1px;
-letter-spacing: 1px;
-position: relative;
-background: #13213A 0% 0% no-repeat padding-box;
-padding: 16px 40px 16px 20px;
-border-radius: 15px;
-border-bottom-right-radius: 0px;
-cursor: pointer;
-    
+    float: right;
+    background: none;
+    font: normal normal 300 16px/25px 'Poppins',sans-serif;
+    -webkit-letter-spacing: 0px;
+    -moz-letter-spacing: 0px;
+    -ms-letter-spacing: 0px;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    font-size: 14px;
+    -webkit-letter-spacing: 1px;
+    -moz-letter-spacing: 1px;
+    -ms-letter-spacing: 1px;
+    letter-spacing: 1px;
+    position: relative;
+    background: #13213A 0% 0% no-repeat padding-box;
+    padding: 16px 40px 16px 20px;
+    border-radius: 15px;
+    border-bottom-right-radius: 0px;
+    cursor: pointer;
     .fa {
         font-size: 16px;
         right: 17px;
@@ -450,10 +479,6 @@ cursor: pointer;
         font-size: 12px;
         clear: both;
     }
-    
-    
-    
-    
     `;
 
 const VideoImg = styled.video`
@@ -463,20 +488,16 @@ const VideoImg = styled.video`
     box-shadow: -1px 0px 19px rgb(0 0 0 / 47%);
     object-fit: cover;
     height: -webkit-fill-available;
-    
-    
  @media only screen and (max-width: 1366px) {
     height: 727px;
     object-fit: cover;
     @media only screen and (max-width: 480px) {
         height: auto;
- 
     }
   }
   @media only screen and (max-width: 820px) {
     width: 100%;
     height: 400px;
-
   }
 
 

@@ -10,10 +10,10 @@ const Navigation = () =>  {
   const state = [
     ["About","#","",[['Our Team','/our-team.html',''],['Achievements','/achievements.html','']]],
     ["Media","#","",[['Latest','/latest.html',''],['News','https://star.news','new']]],
-    ["Projects","/projects.html/","",[]],
+    ["Projects","/projects/","",[]],
     // ["Projects","/projects","",[['Islamabad','/projects/islamabad','',[['Murree','/projects/islamabad/multan','',]]],['Punjab','/projects/Punjab',''],['KPK','/projects/kpk',''],['Sindh','/projects/sindh',''],['Baluchistan','/projects/baluchistan','']]],
     ["Products","#","",[['Star Clubcard','https://starclubcard.info/','new'],['Star Jaidad','https://starjaidad.com/','new'],['Star Digital','https://digital.starmarketingonline.com/','new']]],
-    // ["Careers","/careers","",[]],
+     ["Careers","/careers","",[]],
     ["Contact Us","/contact-us.html","",[]],
   ]
   return (
@@ -76,7 +76,7 @@ const NavWrapper = styled.div`
 
 const MenuNav = styled.nav`
   display: none;
-  @media (min-width: 1000px) {
+  @media (min-width: 1100px) {
     display: block;
     width: 100%;
   }

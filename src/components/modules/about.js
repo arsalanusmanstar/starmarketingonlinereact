@@ -5,17 +5,14 @@ import Bounce from 'react-reveal/Bounce';
 import Slide from 'react-reveal/Slide';
 import LightSpeed from 'react-reveal/LightSpeed';
 
-
-
-
 const ScoreCounter = (state) => {
     return (
         <Score >
-            <ScoreCont>
-                <Icon><LightSpeed top cascade><img src={state.icon} alt={state.title} /></LightSpeed></Icon>
-                <Count> <Bounce bottom cascade>{state.score}</Bounce></Count>
-                <Title><Bounce top cascade>{state.title}</Bounce></Title>
-            </ScoreCont>
+          <ScoreCont>
+            <Icon><LightSpeed top cascade><img src={state.icon} alt={state.title} /></LightSpeed></Icon>
+            <Count> <Bounce bottom cascade>{state.score}</Bounce></Count>
+            <Title><Bounce top cascade>{state.title}</Bounce></Title>
+          </ScoreCont>
         </Score>
     )
 }
@@ -28,11 +25,11 @@ const About = ({data}) => {
                 <Bounce right cascade> <div className="featured-project-line"></div>  </Bounce>
                 <AboutContent>
                 <Bounce right cascade><Cont dangerouslySetInnerHTML={{ __html:data.content}}></Cont></Bounce>
-                <Slide bottom cascade> <SectionThree>
-                  {data.counter && data.counter.map((count,index)=> 
-                            <ScoreCounter score={count.number} title={count.title} icon={count.icon} key={index}/>
-                        )}  
-                    </SectionThree>       </Slide>
+                 <Slide bottom cascade> <SectionThree>
+                    {data.counter && data.counter.map((count,index)=> 
+                    <ScoreCounter score={count.number} title={count.title} icon={count.icon} key={index}/>
+                    )}  
+                    </SectionThree></Slide>
                 </AboutContent>
             </SectionContainer>
         </MainContainer>
@@ -40,16 +37,13 @@ const About = ({data}) => {
 }
 
 export default About;
-
-
 const MainContainer = styled.div`
     background: #fff url(${(props) => props.background});
-    @media only screen and (max-width: 480px) {
-        padding-bottom: 40px;
-    }
+@media only screen and (max-width: 480px) {
+    padding-bottom: 40px;
+}
 `
 const AboutContent = styled.div`
-
 `
 const Cont = styled.p`
     text-align: center;
@@ -62,78 +56,71 @@ const Cont = styled.p`
     opacity: 1;
     padding: 60px 30px;
     text-rendering: optimizeLegibility;
-    @media only screen and (max-width: 1024px) {
-        font-size: 16px;
-        line-height: 30px;
-        padding: 30px 0px;
-    }
-
-    @media only screen and (max-width: 480px) {
-        text-align: left;
-        font-size: 14px;
-        line-height: 26px;
-        padding: 14px 6px;
-
-    }
+@media only screen and (max-width: 1024px) {
+    font-size: 16px;
+    line-height: 30px;
+    padding: 30px 0px;
+}
+@media only screen and (max-width: 480px) {
+    text-align: left;
+    font-size: 14px;
+    line-height: 26px;
+    padding: 14px 6px;
+}
 ` 
 const Score = styled.div`
     opacity: 1;
     color:#fff;
     position: relative;
-    &:before{
-        content:'';
-        background: #333B58 0% 0% no-repeat padding-box;
-        box-shadow: 0px 68px 79px #8585854A;
-        border-radius: 19px;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top:0;
-        left: 0;
-        z-index: 1;
-    }
-    &:after{
-        content:'';
-        background: #212841 0% 0% no-repeat padding-box;
-        border-radius: 19px 19px 463px 19px;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        z-index: 2;
-        left: 0;
-        top:0;
-    }
+&:before{
+    content:'';
+    background: #333B58 0% 0% no-repeat padding-box;
+    box-shadow: 0px 68px 79px #8585854A;
+    border-radius: 19px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+&:after{
+    content:'';
+    background: #212841 0% 0% no-repeat padding-box;
+    border-radius: 19px 19px 463px 19px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    top:0;
+}
 `  
 const ScoreCont = styled.div`
     position: relative;
     z-index: 3;
     padding:40px;
-    @media only screen and (max-width: 820px) {
-        padding:20px;
-    
-      }
-    @media only screen and (max-width: 480px) {
-        padding:20px;
-    
-      }
+@media only screen and (max-width: 820px) {
+    padding:20px;
+}
+@media only screen and (max-width: 480px) {
+    padding:20px;
+}
 `
 const SectionThree = styled.div`
     display: grid;
     grid-template-columns: 28% 28% 28%;
     grid-gap:8%;
-    @media only screen and (max-width: 1366px) {
-        grid-template-columns: 32% 32% 32%;
-        grid-gap: 2%;
-        
-      }
-      @media only screen and (max-width: 1024px) {
-        grid-template-columns: 32% 32% 32% ;
-    
-      }
-      @media only screen and (max-width: 480px) {
-        grid-template-columns: 100% ;
-    
-      }
+@media only screen and (max-width: 1366px) {
+    grid-template-columns: 32% 32% 32%;
+    grid-gap: 2%;
+}
+@media only screen and (max-width: 1024px) {
+    grid-template-columns: 32% 32% 32% ;
+}
+@media only screen and (max-width: 480px) {
+    grid-template-columns: 100% ;
+}
 `
 const Icon = styled.div``
 const Count = styled.div`
@@ -142,41 +129,31 @@ const Count = styled.div`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-    @media only screen and (max-width: 1024px) {
-        font-size: 48px;
-
-    } 
-    @media only screen and (max-width: 1024px) {
-        font-size: 38px;
-
-    } 
-    @media only screen and (max-width: 820px) {
-        line-height: 40px;
-
-    }  
-    @media only screen and (max-width: 480px) {
-        line-height: 44px;
-
-    } 
-    
-    
-    
-    `
+@media only screen and (max-width: 1024px) {
+    font-size: 48px;
+} 
+@media only screen and (max-width: 1024px) {
+    font-size: 38px;
+} 
+@media only screen and (max-width: 820px) {
+    line-height: 40px;
+}  
+@media only screen and (max-width: 480px) {
+    line-height: 44px;
+} 
+ `
 const Title = styled.div`
     text-align: left;
     font: normal normal 200 30px/42px Poppins;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-    @media only screen and (max-width: 1024px) {
-        font-size: 22px;
-        line-height: 28px;
-
-    }  
-    @media only screen and (max-width: 820px) {
-        font-size: 20px;
-        line-height: 25px;
-
-    } 
-    
-    `
+@media only screen and (max-width: 1024px) {
+    font-size: 22px;
+    line-height: 28px;
+}  
+@media only screen and (max-width: 820px) {
+    font-size: 18px;
+    line-height: 25px;
+} 
+`
