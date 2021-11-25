@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
+import { hydrate, render } from "react-dom";
 import App from './App';
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // import reportWebVitals from './reportWebVitals';
@@ -10,11 +11,10 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById("root");
-
 if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>, rootElement);
+  hydrate(<BrowserRouter><App /></BrowserRouter>, rootElement);
 } else {
-  ReactDOM.render(<React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>, rootElement);
+  render(<BrowserRouter basename="react"><App /></BrowserRouter>, rootElement);
 }
 
 reportWebVitals();

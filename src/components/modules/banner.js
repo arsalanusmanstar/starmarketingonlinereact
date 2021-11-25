@@ -35,7 +35,34 @@ const Video = ({state}) => {
   const [loader,setLoader] = useState(false);
     const submitHandler = e => {
         e.preventDefault();
-        setLoader(true);
+        //validate project Type checkbox
+        var project_type = document.getElementsByName('project_type[]')
+        var pt_length = 0;
+        for(var i=0; i< project_type.length; i++) {
+            if(project_type[i].checked)
+                pt_length++
+        }
+       if(pt_length<1)
+       {
+          setSuccess('Please select atleast one project type')
+          return false;
+       }
+        
+       //validate service checkbox
+       
+       var service = document.getElementsByName('service[]')
+       var service_length = 0;
+       for(var i=0; i< service.length; i++) {
+           if(service[i].checked)
+               service_length++
+       }
+      if(service_length<1)
+      {
+        setSuccess('Please select atleast one service')
+         return false;
+      }
+
+         setLoader(true);
           const data = new FormData(e.target);
           axios.post('https://starclubcard.info/api/api.php', data, {
               headers: {
@@ -60,10 +87,10 @@ const Video = ({state}) => {
                 <div className="BannerMainSection">
                 <form method="POST" id="queryForm" onSubmit={(e)=>submitHandler(e)}>
                 <div className="left">
-                   <div className="fildeBanner"><input type="text" name="name" placeholder="Your Name" required /></div>
-                   <div className="fildeBanner"><input type="text" name="email" placeholder="Your Email" required/></div>
-                   <div className="fildeBanner"><input type="text" name="mobile" placeholder="Your Mobile" required/></div>
-                   <div className="fildeBanner"><input type="text" name="project_location" placeholder="Your Project Location" required/></div>
+                   <div className="fildeBanner"><input type="text" name="name" placeholder="Name" required /></div>
+                   <div className="fildeBanner"><input type="text" name="email" placeholder="Email" required/></div>
+                   <div className="fildeBanner"><input type="text" name="mobile" placeholder="Phone" required/></div>
+                   <div className="fildeBanner"><input type="text" name="project_location" placeholder="Project Name" required/></div>
                    <div className="projectMain">
                       <div className="projectMainLeft">
                          <h4>Project type</h4>
@@ -282,6 +309,7 @@ p {
     height: 16px;
 }
 .submit {
+    cursor:pointer;
     display: block;
     width: 100%;
     text-align: center;

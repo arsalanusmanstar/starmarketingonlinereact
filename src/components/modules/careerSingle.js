@@ -22,7 +22,7 @@ import {FacebookShareButton, TwitterShareButton,LinkedinShareButton,WhatsappShar
 
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
-const shareURL=window.location.href;
+
 
 
 
@@ -57,7 +57,7 @@ const CareerSingle=({match,location})=>{
 
     return(
         <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
-             <Header />
+             {/* <Header /> */}
              {data ?  data[0] && data[0].acf &&
                 <SectionContainer className="classContainerCustom">
                         <Heading>
@@ -115,7 +115,7 @@ const CareerSingle=({match,location})=>{
                             <div className="shareButton">
                             {/* <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p> */}
                             <FacebookShareButton 
-                url={shareURL}
+                url={baseUrl+location.pathname}
                 quote={""}
                 hashtag=""
                 >
@@ -127,7 +127,7 @@ const CareerSingle=({match,location})=>{
                             <div className="shareButton">
                             {/* <i class="fa fa-twitter" aria-hidden="true"></i><p>Share on Twitter</p> */}
                             <TwitterShareButton
-                             url={shareURL}
+                             url={baseUrl+location.pathname}
                             >
                             <i class="fa fa-twitter" aria-hidden="true"></i><p>SHARE ON TWITTER</p>
                             </TwitterShareButton>
@@ -135,7 +135,7 @@ const CareerSingle=({match,location})=>{
                             <div className="shareButton">
                             {/* <i class="fa fa-linkedin" aria-hidden="true"></i><p>Share on Linkedin</p> */}
                             <LinkedinShareButton
-                            url={shareURL}
+                            url={baseUrl+location.pathname}
                             
                             >
                               <i class="fa fa-linkedin" aria-hidden="true"></i><p>SHARE ON LINKEDIN</p>
@@ -145,7 +145,7 @@ const CareerSingle=({match,location})=>{
 
                             {/* <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p> */}
                             <WhatsappShareButton
-                            url={shareURL}
+                            url={baseUrl+location.pathname}
                             >
                              <i class="fa fa-whatsapp" aria-hidden="true"></i><p>SHARE ON WHATSAPP</p>
                             </WhatsappShareButton>

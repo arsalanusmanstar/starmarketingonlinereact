@@ -24,11 +24,13 @@ import {
   Redirect,
   useLocation
 } from "react-router-dom";
+import Header from './components/header';
 
 export default function App(state) {
   //const  headerBg  = data.isHome ? HomeBackground : PageBackground;
   
   const [data,setData] = useState('');
+  const [isActive,setIsActive] = useState(true);
 
  useEffect(async ()=>{
     try {
@@ -52,26 +54,19 @@ export default function App(state) {
       setWidth(window.innerWidth);
   }
   useEffect(() => {
-      window.addEventListener('resize', handleWindowSizeChange);
-      return () => {
-          window.removeEventListener('resize', handleWindowSizeChange);
-      }
-   
+      setIsActive(true)
+      setTimeout(()=>{
+        setIsActive(false)
+      },2000)
   }, [pathname]);
 
   return (
     <HelmetProvider>
-    <div className="App">
-      {/*parseInt(width) < 767 &&
-       <MobileView>
-            <meta http-equiv="Refresh" content={"0; url=https://m.starmarketingonline.com"+pathname} /> 
-          </MobileView>
-         */}
-        
+   <div className="App">
+         <UserContext.Provider value={[data,setData]}> <Header  params={pathname} data={data}/></UserContext.Provider>
+          {isActive && <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"100%",background:"rgb(0 20 57 / 100%)",position:"fixed",left:'0',right:'0',top:"0",zIndex:"9999"}} />}
+
         <Switch>
-        {/* <Route path="/about">
-          <About />
-        </Route>*/}
         <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
         <Route path="/our-team" exact component={Pages}></Route>
         <Route path="/achievements" exact component={Pages}></Route>
@@ -80,7 +75,7 @@ export default function App(state) {
         <Route path="/privacy-policy" exact component={Pages}></Route>
         <Route path="/careers" exact component={Pages}></Route>
         <Route path="/career/:slug"  exact component={CareerSingle} data={data}></Route>
-        <Route path="/projects" exact render={(props) => <UserContext.Provider value={[data,setData]}> <Projects {...props} data="" /> </UserContext.Provider>} />
+        <Route path="/projects/" exact render={(props) => <UserContext.Provider value={[data,setData]}> <Projects {...props} data="" /> </UserContext.Provider>} />
         <Route path="/projects/:region" exact render={(props) =><UserContext.Provider value={[data,setData]}>  <Projects {...props} /> </UserContext.Provider>} />
         <Route path="/projects/:region/:id" exact render={(props) =><UserContext.Provider value={[data,setData]}>  <Projects {...props} /> </UserContext.Provider>} />
         <Route path="/hot-projects/" exact render={(props) => <Projects data={data} {...props} />} />

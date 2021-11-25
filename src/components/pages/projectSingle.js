@@ -340,7 +340,6 @@ let dateFormat= date+'/'+month+'/'+year;
 
   return (
     <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
-      <Header />
       {data && data[0] && <Meta meta={data && data[0].yoast_meta} page="project"  />}
       {data ?  data[0] && data[0].acf.filters &&
       <>

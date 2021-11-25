@@ -1,47 +1,81 @@
 import React, { Component } from 'react';
 import SectionContainer from "../styles/section-container";
 import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const FeatureProducts = () => {
   
-  const slides = [
-    {
-      title: "Highway City",
-      subtitle: "Karachi",
-      description: "Redefining Luxury, Comfort and Security",
-      image:
-        "https://staging.starmarketingonline.com/wp-content/uploads/2021/11/Entrance-portal-1.jpg"
-    },
-    {
-      title: "Lyallpur Galleria II",
-      subtitle: "Faisalabad ",
-      description: "The Mall Experience of a Lifetime",
-      image:
-        "https://staging.starmarketingonline.com/wp-content/uploads/2021/11/5_lyllpur-galleria.jpg"
-    },
-    {
-      title: "Whiteley Mall",
-      subtitle: "Islamabad ",
-      description: "A High-End Business and Residential Complex",
-      image:
-        "https://staging.starmarketingonline.com/wp-content/uploads/2021/10/lifestyle-3-scaled.jpg"
-    },
-
-    {
-      title: "Rawal Mall and Residencia",
-      subtitle: "Rawalpindi",
-      description: "A Mall of Dreams and Destiny",
-      image:
-        "https://staging.starmarketingonline.com/wp-content/uploads/2021/11/2.jpg"
-    },
-    {
-      title: "Ahmed Residency Hyderabad",
-      subtitle: "Hyderabad",
-      description: "The most promising and exclusive project",
-      image:
-        "https://staging.starmarketingonline.com/wp-content/uploads/2021/05/ahmed-resize.jpg"
+  const [data,setData] = useState(JSON.parse(localStorage.getItem('projects')));
+  
+  //wait for slider data to load
+  const [loading,setLoading] = useState(false);
+ 
+  useEffect(async ()=>{
+    try {
+   axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+    .then(response => {
+        setData(response.data)
+        setLoading(true)
+       
+    })
+    } catch (e) {
+        console.error(e);
     }
-  ];
+})
+
+const slides= data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map(latest => ({
+  "title" : latest.title.rendered,
+  "subtitle" : latest.acf && latest.acf.filters && latest.acf.filters.city,
+  "description":latest.excerpt.rendered,
+  "image":latest._embedded['wp:featuredmedia'][0].media_details.sizes['tx-m-thumb'].source_url,
+  "link":latest.link.replace('https://staging.starmarketingonline.com','')
+}))
+
+
+
+  // const slides = [
+  //   {
+  //     title: "Highway City",
+  //     subtitle: "Karachi",
+  //     description: "Redefining Luxury, Comfort and Security",
+  //     image:
+  //       "https://staging.starmarketingonline.com/wp-content/uploads/2021/11/Entrance-portal-1.jpg"
+  //   },
+  //   {
+  //     title: "Lyallpur Galleria II",
+  //     subtitle: "Faisalabad ",
+  //     description: "The Mall Experience of a Lifetime",
+  //     image:
+  //       "https://staging.starmarketingonline.com/wp-content/uploads/2021/11/5_lyllpur-galleria.jpg"
+  //   },
+  //   {
+  //     title: "Whiteley Mall",
+  //     subtitle: "Islamabad ",
+  //     description: "A High-End Business and Residential Complex",
+  //     image:
+  //       "https://staging.starmarketingonline.com/wp-content/uploads/2021/10/lifestyle-3-scaled.jpg"
+  //   },
+
+  //   {
+  //     title: "Rawal Mall and Residencia",
+  //     subtitle: "Rawalpindi",
+  //     description: "A Mall of Dreams and Destiny",
+  //     image:
+  //       "https://staging.starmarketingonline.com/wp-content/uploads/2021/11/2.jpg"
+  //   },
+  //   {
+  //     title: "Ahmed Residency Hyderabad",
+  //     subtitle: "Hyderabad",
+  //     description: "The most promising and exclusive project",
+  //     image:
+  //       "https://staging.starmarketingonline.com/wp-content/uploads/2021/05/ahmed-resize.jpg"
+  //   }
+  // ];
+
+// console.log(slides)
+  
 
   function useTilt(active) {
     const ref = React.useRef(null);
@@ -116,10 +150,10 @@ const FeatureProducts = () => {
             <div className="slideContentInner">
               <h2 className="slideTitle">{slide.title}</h2>
               <h3 className="slideSubtitle"> {slide.subtitle}</h3>
-              <p className="slideDescription">{slide.description}</p>
+              <p className="slideDescription" dangerouslySetInnerHTML={{ __html:slide.description}}></p>
               <button className="readMore">
-              <a>Read More<img className="arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATCAYAAAAAn1R6AAAABHNCSVQICAgIfAhkiAAAAOJJREFUSEvV1sENgkAUBFD+3YMl2IF0ICXYgaEStQNKoAQ7wLMnSsAOTCxgnTmQrJvdDcf5JD8hcHmzTHaxRvAKIQxgzWY21ngmaG+Af8J1wvS1AKr4PeBc/UstgCR+bQO+AGtTDCCNZ4gowA0Vusc1l8cnAUYE6NcALvClAG7wuQCGTl3xolPcMgumA55zXsQ/cMOtycu1A/SI+XqrTQv0hHmzLW7waMg/3OzjAp+Ds+Py+BJcHh/BucgtDqjFxQmbwDvA53Q7lKzNFrhsbYBnPXj2ZFdc+t8G+DOAS64qcXV+eG9h0r2BPmcAAAAASUVORK5CYII="/>
-              </a>
+              <Link style={{color:'#fff', textDecoration:'none'}} to={slide.link}>Read More<img className="arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAATCAYAAAAAn1R6AAAABHNCSVQICAgIfAhkiAAAAOJJREFUSEvV1sENgkAUBFD+3YMl2IF0ICXYgaEStQNKoAQ7wLMnSsAOTCxgnTmQrJvdDcf5JD8hcHmzTHaxRvAKIQxgzWY21ngmaG+Af8J1wvS1AKr4PeBc/UstgCR+bQO+AGtTDCCNZ4gowA0Vusc1l8cnAUYE6NcALvClAG7wuQCGTl3xolPcMgumA55zXsQ/cMOtycu1A/SI+XqrTQv0hHmzLW7waMg/3OzjAp+Ds+Py+BJcHh/BucgtDqjFxQmbwDvA53Q7lKzNFrhsbYBnPXj2ZFdc+t8G+DOAS64qcXV+eG9h0r2BPmcAAAAASUVORK5CYII="/>
+              </Link>
               </button>
             </div>
           </div>
@@ -127,7 +161,11 @@ const FeatureProducts = () => {
     );
   }
   const [state, dispatch] = React.useReducer(slidesReducer, initialState);
-
+  
+  if(!loading){
+    return <div>Loading...</div>
+  }
+  else{
   return (
     <FeatureProductsMain>
       <SectionContainer>
@@ -143,6 +181,7 @@ const FeatureProducts = () => {
     </FeatureProductsMain>
     
   )
+}
 }
 
 export default FeatureProducts;

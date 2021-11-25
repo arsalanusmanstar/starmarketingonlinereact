@@ -7,6 +7,14 @@ import latest_icon06 from "../../assets/latest_icon06.png";
 
 const Careers = (career)=>{
   const [data,setData] = useState([]);
+
+
+  //For Search
+ 
+ const [searchTerm,setSearchTerm] = useState('');
+
+ console.log(searchTerm);
+
   useEffect(async ()=>{
     try {
     axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/awsm_job_openings?_embed=true&per_page=100')
@@ -28,21 +36,40 @@ return (
       <div className="careersMain">
       <SectionContainer style={{paddingTop:'2px'}} >
          <MainContainer>
-             <HeaderSection>
-                <div className="headingSection">
-                  <h2>Trending Jobs</h2>
-                </div>
-                <div>
-                  <JobSearch>
-                    <input type="text" placeholder="Search"></input>
-                    <button> <i className="fa fa-search"></i></button>
-                  </JobSearch>
-                </div>
-            </HeaderSection>
+      <HeaderSection>
+           <div className="headingSection">
+           <h2>Trending Jobs</h2>
+           </div>
+           <div>
+             <JobSearch>
+           <input type="text" placeholder="Search"  onChange={e=>setSearchTerm(e.target.value)}></input>
+           <button> <i className="fa fa-search"></i></button>
+           </JobSearch>
+           </div>
+           </HeaderSection>
 
            <JobSection>
-             {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.trending ===true).map((jobs,index)=>
-                <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+           
+           
+           {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.trending ===true).filter((jobs)=>{
+             if(searchTerm==""){
+               return jobs;
+             }
+             else if(jobs.acf.designation.toLowerCase().includes(searchTerm.toLowerCase()))
+             {
+               return jobs;
+             }
+             else if(jobs.acf.no_of_vacancies.toLowerCase().includes(searchTerm.toLowerCase()))
+             {
+               return jobs;
+             }
+             else if(jobs.acf.city.toLowerCase().includes(searchTerm.toLowerCase()))
+             {
+               return jobs;
+             }
+
+           }).map((jobs,index)=>
+           <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
              <div className="job_single" key={index}>
                 <div className="job_top_line"></div>
                 <h3>{jobs.acf.designation}</h3>
@@ -52,23 +79,24 @@ return (
                 </div>
              </div>
              </Link>
-              )}
-                {/* <div className="job_single">
-                  <div className="job_top_line"></div>
-                  <h3>Mern Stack Dev.</h3>
-                  <div className="job_bottom_main">
-                  <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
-                  <div className="job_bottom"> <i class="fa fa-map-marker"></i>   Karachi</div>
-                  </div>
-                  </div>
-                  <div className="job_single">
-                  <div className="job_top_line"></div>
-                  <h3>Accountant</h3>
-                  <div className="job_bottom_main">
-                  <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
-                  <div className="job_bottom"> <i  class="fa fa-map-marker"></i>   Lahore</div>
-                  </div>
-                </div> */}
+           )}
+             {/* <div className="job_single">
+             <div className="job_top_line"></div>
+             <h3>Mern Stack Dev.</h3>
+             <div className="job_bottom_main">
+             <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
+             <div className="job_bottom"> <i class="fa fa-map-marker"></i>   Karachi</div>
+             </div>
+             </div>
+             <div className="job_single">
+             <div className="job_top_line"></div>
+             <h3>Accountant</h3>
+             <div className="job_bottom_main">
+             <div className="job_bottom"> <i class="fa fa-user"></i>  2</div>
+             <div className="job_bottom"> <i  class="fa fa-map-marker"></i>   Lahore</div>
+             </div>
+             </div> */}
+             
            </JobSection>
            <CategorySection>
              <h2 className="category_heading">Browse by Category</h2>
