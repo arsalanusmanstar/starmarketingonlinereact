@@ -57,7 +57,7 @@ const CareerSingle=({match,location})=>{
 
     return(
         <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
-             <Header />
+             {/* <Header /> */}
              {data ?  data[0] && data[0].acf &&
                 <SectionContainer>
                         <Heading>
