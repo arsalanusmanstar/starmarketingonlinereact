@@ -19,6 +19,7 @@ import Bounce from 'react-reveal/Bounce';
 import Slide from 'react-reveal/Slide';
 import th from "../../assets/th.jpg";
 
+
 const  fetcher =  async (url) => await fetch(url).then((res) => res.json());
 
 const Latestnews = () => {
