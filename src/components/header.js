@@ -115,7 +115,7 @@ const TitleWrapper = styled.div`
     padding: 0;
     text-align: left;
   }
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1080px) {
     text-align: left;
     justify-content: left;
   }
@@ -176,6 +176,9 @@ const HeaderInner = styled.div`
     width: 20%;
     transition: all 0.55s linear;
     z-index: 999;
+    @media only screen and (max-width: 1080px) {
+      margin-top: -70px;
+    }
     input.serach {
       width: 100%;
       padding: 12px 20px;
@@ -268,7 +271,7 @@ const HotProject = styled.div`
   -o-transition: all 1s 0s ease;
   transition: all 1s 0s ease;
   position:relative;
-  @media only screen and (max-width: 1100px) {
+  @media only screen and (max-width: 1080px) {
     display: none;
   
   }

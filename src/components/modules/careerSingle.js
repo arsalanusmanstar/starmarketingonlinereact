@@ -59,7 +59,7 @@ const CareerSingle=({match,location})=>{
         <Mainproject  style={{backgroundImage:`url('/assets/page_bg.png')`}}>
              <Header />
              {data ?  data[0] && data[0].acf &&
-                <SectionContainer>
+                <SectionContainer className="classContainerCustom">
                         <Heading>
                         <h1 className="featured-heading banners custom" style={{color:'white'}}>Careers</h1>
                       </Heading>
@@ -202,12 +202,24 @@ display: grid;
     grid-template-columns: 69% 25%;
     gap: 6%;
     margin-top: 4%;
+    @media only screen and (max-width: 1080px) {
+      grid-template-columns: 62% 35%;
+      gap: 3%;
+  }
+  @media only screen and (max-width: 820px) {
+    grid-template-columns: 100%;
+    gap: 0%;
+}
 
 `
 const Mainproject = styled.div`
 h1.featured-heading.banners.custom {
   margin-top: -70px;
   margin-bottom: 100px;
+  @media only screen and (max-width: 820px) {
+    margin-top: 0px;
+    line-height: 50px;
+}
 }
 `
 
@@ -247,6 +259,10 @@ h1{
     top: -21px;
     text-align: center;
     background-size: cover;
+    @media only screen and (max-width: 820px) {
+      width: 266px;
+      height: 110px;
+  }
    
   }
   
@@ -260,7 +276,13 @@ padding: 40px 76px;
 margin-top: 40px;
 position: relative;
 
-
+@media only screen and (max-width: 1080px) {
+  padding: 40px 40px;
+}
+@media only screen and (max-width: 480px) {
+  padding: 10px 10px;
+  border-radius: 10px;
+}
 
 .careerHeading{
   text-align: left;
@@ -273,6 +295,9 @@ position: relative;
   opacity: 1;
   margin: 50px 0px 10px 0px;
   text-transform: uppercase;
+  @media only screen and (max-width: 1080px) {
+    font: normal normal 700 36px/10px Poppins;
+}
 }
 
 
@@ -286,12 +311,32 @@ position: relative;
   color: #8790a2;
   opacity: 1;
   margin: 0px 0px 30px 0px;
+  @media only screen and (max-width: 1080px) {
+    margin: 0px 0px 15px 0px;
+}
 }
 
 .careerImage{
   position: absolute;
   right: 86px;
   top: 30px;
+  @media only screen and (max-width: 1080px) {
+    top: 14px;
+    width: 26%;
+    right: 69px;
+}
+@media only screen and (max-width: 820px) {
+  top: 14px;
+  width: 30%;
+  right: 20px;
+}
+@media only screen and (max-width: 480px) {
+  top: 14px;
+    width: 100%;
+    right: 0;
+    position: relative;
+    left: 0;
+}
 }
 
 
@@ -306,6 +351,17 @@ color: #001439;
 opacity: 1;
 gap: 40px;
  align-items: center;
+ @media only screen and (max-width: 1080px) {
+  gap: 16px;
+}
+@media only screen and (max-width: 820px) {
+  font: normal normal normal 14px/25px Poppins;
+  
+}
+@media only screen and (max-width: 480px) {
+  display: inline;
+  
+}
 }
 
 `
@@ -341,7 +397,9 @@ letter-spacing: 0px;
 color: #000000;
 opacity: 1;
 margin: 0;
-
+@media only screen and (max-width: 1080px) {
+  font: normal normal 500 18px/66px 'Poppins', sans-serif;
+}
 span{
   background-color: rgb(209,236,239);
   color: rgb(96,123,155);
@@ -375,6 +433,9 @@ font-weight: 300;
   letter-spacing: 1px;
   color: #3a7cf2;
   text-transform: uppercase;
+  @media only screen and (max-width: 1080px) {
+    margin: 30px 0px 10px 0px;
+  }
 }
 
 
@@ -402,6 +463,9 @@ font-weight: 300;
     text-transform: capitalize;
     margin: 0px 10px 0px 0px;
     border-bottom-left-radius: 0px;
+    @media only screen and (max-width: 480px) {
+      margin: 0px 10px 10px 0px;
+    }
   }
 
   .benefits{
@@ -419,6 +483,9 @@ font-weight: 300;
     text-transform: capitalize;
     margin: 0px 10px 0px 0px;
     border-bottom-left-radius: 0px;
+    @media only screen and (max-width: 480px) {
+      margin: 0px 10px 10px 0px;
+    }
     
   }
   

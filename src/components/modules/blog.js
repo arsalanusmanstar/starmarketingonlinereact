@@ -628,7 +628,7 @@ const LatestSearchsectionMain = styled.div`
 
   }
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1080px) {
     grid-template-columns: 100%;
     grid-gap: 2%;
      label img {
@@ -832,7 +832,7 @@ tag.red.secound {
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
 
 }
 

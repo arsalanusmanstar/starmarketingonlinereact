@@ -231,7 +231,7 @@ const ContactSectionTouch = styled.section`
     padding: 20px 20px;
 }
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     grid-template-columns: 54% 46%;
     grid-template-columns: 100%;
 }
@@ -253,6 +253,10 @@ const LocationList = styled.div`
 @media only screen and (max-width: 1366px) {
     grid-template-columns: 50% 50%;
 }
+@media only screen and (max-width: 1080px) {
+    grid-template-columns: 49% 49%;
+    grid-gap: 20px;
+}
 @media only screen and (max-width: 820px) {
     grid-gap: 10px;
 }
@@ -268,7 +272,7 @@ const Icon = styled.img`
     float: left;
     margin: 0px 20px 20px 0px;
     width: 30px;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     margin: 0px 20px 66px 0px;
 }
 @media only screen and (max-width: 820px) {
@@ -312,7 +316,7 @@ h1{
     font-weight: 700;
     position: relative;
     margin-bottom: 90px;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width:1080px) {
     margin-bottom: 40px;
 }
 @media only screen and (max-width: 820px) {
@@ -350,6 +354,9 @@ img{
 @media only screen and (max-width: 1366px) {
     font-size: 50px;
 }
+@media only screen and (max-width: 1080px) {
+    justify-content: center;
+}
 @media only screen and (max-width: 820px) {
     font-size: 40px;
 }
@@ -368,7 +375,7 @@ const ContactSection = styled.div`
 @media only screen and (max-width: 1366px) {
     grid-template-columns: 48% 47%;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     grid-template-columns: 100%;
     text-align: center;
 h1:after {
@@ -394,7 +401,7 @@ const ContactSectionRight = styled.div`
 const Flogo = styled.img`
     width: 100%;
     margin-bottom: 70px;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     width: fit-content;
 }
 @media only screen and (max-width: 820px) {

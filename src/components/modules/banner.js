@@ -56,7 +56,7 @@ const Video = ({state}) => {
         </VideoImg>*/}
          <BannerFormSection>
                 <h1><Fade left big cascade>Manage your Real Estate marketing with us!</Fade></h1>
-                <p>it takes less than <span>5 mintues</span>to fill out the information requrired know about your project.</p>
+                <p>it takes less than <span>5 minutes</span>to fill out the information required know about your project.</p>
                 <div className="BannerMainSection">
                 <form method="POST" id="queryForm" onSubmit={(e)=>submitHandler(e)}>
                 <div className="left">
@@ -132,8 +132,10 @@ const BannerMainSection = styled.section`
 @media only screen and (max-width: 820px) {
     grid-template-columns: 100%;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 480px) {
+    gap: 1%;
 }
+
 
 `;
 const Slide = styled.div`
@@ -144,6 +146,12 @@ const SL = styled.div`
     justify-content: center;
     align-items: center;
     gap: 16px;
+    @media only screen and (max-width: 1080px) {
+        justify-content: flex-start;
+    }
+    @media only screen and (max-width: 820px) {
+        justify-content: center;
+    }
     img{
         width: 24px;
     }
@@ -160,6 +168,9 @@ const BannerFormSection = styled.section`
     padding: 30px 30px;
     border-radius: 20px;
     border-bottom-left-radius: 0px;
+    @media only screen and (max-width: 820px) {
+        padding: 20px 20px;
+    }
 h1 {
     font-size: 25px;
     margin: 0px;
@@ -185,8 +196,18 @@ p {
     gap: 2%;
     align-items: center;
     padding: 20px 0px 0px 0px;
-    @media only screen and (max-width: 1366px) {
+    @media only screen and (max-width: 1080px) {
         grid-template-columns: 100%;
+        gap: 0%;
+        padding: 0px 0px 0px 0px;
+    }
+    @media only screen and (max-width: 820px) {
+        grid-template-columns: 65% 35%;
+        gap: 0%;
+    }
+    @media only screen and (max-width: 480px) {
+        grid-template-columns: 100%;
+        gap: 0%;
     }
 }
 .fildeBanner input {
@@ -202,6 +223,16 @@ p {
 
 .fildeBanner {
     margin: 0px 0px 6px 0px;
+    @media only screen and (max-width: 1080px) {
+        margin: 0px 2px 6px 2px;
+        width: 49%;
+        float: left;
+    }
+    @media only screen and (max-width: 480px) {
+        margin: 0px 2px 6px 2px;
+        width: 100%;
+        float: none;
+    }
 }
 
 .fildeBanner input:focus {
@@ -211,6 +242,13 @@ p {
     display: grid;
     grid-template-columns: 49% 49%;
     gap: 2%;
+    @media only screen and (max-width: 1080px) {
+        clear: both;
+    }
+    @media only screen and (max-width: 480px) {
+        grid-template-columns: 100%;
+        gap: 0%;
+    }
 }
 
 .projectMain h4 {
@@ -220,6 +258,12 @@ p {
     color: #fe000a;
     font-weight: 600;
     letter-spacing: 0.1px;
+    @media only screen and (max-width: 1080px) {
+        width: fit-content;
+        padding: 10px 0px;
+        margin: 0px 0px 0px 0px;
+
+    }
     
 }
 
@@ -253,6 +297,14 @@ p {
 }
 .BannerMainSection .right {
     text-align: center;
+    @media only screen and (max-width: 1080px) {
+        text-align: left;
+        margin-top: 10px;
+    }
+    @media only screen and (max-width: 480px) {
+        text-align: center;
+        
+    }
 }
 
 .BannerMainSection .right h5 {
@@ -272,6 +324,10 @@ p {
 .BannerMainSection .left {
     border-right: 1px solid #ededed;
     padding: 0px 30px 0px 0px;
+    @media only screen and (max-width: 480px) {
+        border-right: 0px solid #ededed;
+        padding: 0px 0px 0px 0px;
+    }
 }
 
 `;
@@ -286,7 +342,7 @@ const MainSection = styled.section`
     height: 87vh;
     justify-content: center;
     align-items: center;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1080px) {
         height: 100%;
     }
     @media only screen and (max-width: 1366px) {
@@ -317,8 +373,8 @@ const BannerCont = styled.div`
         top: 0%;
         height: auto;
         padding: 20px;
-        padding-bottom: 90px;
-        margin-bottom: -30px;
+        padding-bottom: 30px;
+        margin-bottom: 0px;
         z-index: revert;
         }
       }
@@ -332,11 +388,21 @@ const GuaranteeLogo = styled.section`
     position: relative;
     float: right;
     top: -10px;
+    @media only screen and (max-width: 1080px) {
+        width: 80px;
+        height: 80px;
+
+    }
+    @media only screen and (max-width: 820px) {
+        width: 100px;
+        height: 100px;
+
+    }
     @media only screen and (max-width: 480px) {
         width: 70px;
         height: 70px;
-        right: 14px;
-        top: 25px;
+        right: -8px;
+        top: 8px;
 
     }
 `;
@@ -349,12 +415,18 @@ const Heading = styled.h1`
     color: #FFFFFF;
     opacity: 1;
     text-shadow: 1px 2px 1px #000;
-    @media only screen and (max-width: 1100px) {
-        line-height: 45px;
+    @media only screen and (max-width: 1080px) {
+       
+        font: normal normal 900 31px/45px 'Poppins',sans-serif;
+
+    }
+    @media only screen and (max-width: 820px) {
+       
+        font: normal normal 900 50px/45px 'Poppins',sans-serif;
 
     }
     @media only screen and (max-width: 480px) {
-        font-size: 30px;
+        font-size: 21px;
         line-height: 60px;
 
     }
@@ -367,14 +439,19 @@ const Subheading = styled.h2`
     padding:0px;
     margin:0px;
     text-shadow: 1px 2px 1px #000000b5;
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 1080px) {
+        line-height: 22px;
+        font-size: 19px;
+
+    }
+    @media only screen and (max-width: 820px) {
         line-height: 30px;
-        font-size: 23px;
+        font-size: 32px;
 
     }
     @media only screen and (max-width: 480px) {
         font-size: 15px;
-        line-height: 0px;
+        line-height: 5px;
     }
     `;
 const Content = styled.p`
@@ -382,8 +459,9 @@ const Content = styled.p`
     text-shadow: 1px 2px 1px #000000b5;
     margin: 44px 0px 50px 0px;
     letter-spacing: 0.5px;
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 1080px) {
         margin: 0px 0px 30px 0px;
+        font-size: 14px;
 
     }
     @media only screen and (max-width: 480px) {
@@ -472,12 +550,18 @@ const SubButton = styled.a`
         right: 17px;
         position: absolute;
         top: 21px;
+        @media only screen and (max-width: 480px) {
+            font-size: 16px;
+            right: 8px;
+            position: absolute;
+            top: 11px;
+        }
     }
     @media only screen and (max-width: 480px) {
-        float: left;
-        margin: 0px;
-        font-size: 12px;
-        clear: both;
+        float: right;
+    margin: 0px;
+    font-size: 12px;
+    padding: 6px 33px 7px 20px;
     }
     `;
 

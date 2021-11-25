@@ -26,10 +26,10 @@ const Contact = ({offices,get_in_touch}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading banners" style={{marginTop:'-40px',color:'white'}}><Bounce top cascade>CONTACT US</Bounce></h1>
+            <h1 className="featured-heading banners" ><Bounce top cascade>CONTACT US</Bounce></h1>
             </Heading>
            
-            <br/> <br/>
+            
             <div className="contactMain" style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
              <h2 className="contactMainHeading"> <Bounce left cascade>{get_in_touch.heading}</Bounce></h2>
              <p  className="getinTouch">{get_in_touch.content}</p>
@@ -120,6 +120,11 @@ h1{
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
+    color: #fff;
+    @media only screen and (max-width: 820px) {
+      margin: 0px 0px 80px 0px !important;
+
+    }
     @media only screen and (max-width: 480px) {
       margin-top: 20px!important;
       margin-bottom: 0px !important;
@@ -138,6 +143,10 @@ h1{
     bottom: 3px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
+    @media only screen and (max-width: 820px) {
+      bottom: 17px;
+
+    }
     @media only screen and (max-width: 480px) {
       width: 10%;
       bottom: -2px;
@@ -159,9 +168,9 @@ h1{
     top: -31px;
     text-align: center;
     background-size: cover;
-    @media only screen and (max-width: 820px) {
-      width: 300px;
-      height: 130px;
+    @media only screen and (max-width: 830px) {
+      width: 363px;
+      height: 120px;
       top: 10px;
       }
     @media only screen and (max-width: 480px) {

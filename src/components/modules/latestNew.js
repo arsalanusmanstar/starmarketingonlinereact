@@ -37,9 +37,16 @@ const Latestnews = () => {
             {
               breakpoint: 1366,
               settings: {
-                slidesToShow: 2,
+                slidesToShow: 3,
                 slidesToScroll: 2,
                 adaptiveHeight: true,
+              },
+            },
+            {
+              breakpoint: 820,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
               },
             },
             {
@@ -160,7 +167,7 @@ const LatestNewContainer = styled.div`
   color: white;
   background-size: 100% 10em , 100% calc(100% - 10em);
   top: -250px;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
   top: -249px;
 }
 @media only screen and (max-width: 480px) {
@@ -210,11 +217,15 @@ button {
 .slick-list{
 div.slick-slide{
   padding:1% 30px 1.2% 30px;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
   padding: 1% 30px 0.2% 30px;
   }
 @media only screen and (max-width: 820px) {
   padding: 1% 10px 0.2% 10px;
+
+}
+@media only screen and (max-width: 480px) {
+  padding: 0% 0px 0px 0px;
 
 }
 }
@@ -233,7 +244,7 @@ h1{
       line-height: 60px !important;
   
   }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
   font-size: 50px;
 }
 @media only screen and (max-width: 480px) {
@@ -269,7 +280,8 @@ ul.slick-dots {
   justify-content: center;
   margin: 0;
 @media only screen and (max-width: 480px) {
-  margin-top: 20px;
+  position: relative;
+  top: -30px;
 
 }
 }
@@ -279,7 +291,7 @@ const Post = styled.div`
   text-decoration:none;
   cursor:pointer;
 @media only screen and (max-width: 480px) {
-  padding: 0px 0px 0px 18px;
+ 
 
 }
 `
@@ -308,6 +320,10 @@ const Title = styled.h3`
   overflow: hidden;
   line-height: 23px;
   min-height: 60px;
+  @media only screen and (max-width: 1080px) {
+    min-height: 48px;
+    margin-bottom: 12px;
+  }
 @media only screen and (max-width: 480px) {
   margin: 10px 20px 6px 0px;
 }
@@ -337,8 +353,7 @@ img{
 }
 }
 @media only screen and (max-width: 480px) {
-  margin: 0px 30px 0px 0px;
-  padding: 16px 0px;
+ 
 }
 tag {
   background: rgb(88, 175, 120);
@@ -358,8 +373,12 @@ img{
   position: absolute;
   left: -16px;
   top: 0;
+  @media only screen and (max-width: 1080px) {
+    height: 55px;
+    width: 50px;
+  }
   @media only screen and (max-width: 820px) {
-    height: auto;
+    
   }
 }
 }

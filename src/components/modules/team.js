@@ -107,7 +107,7 @@ h2 {
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
   h1{font-size: 91px;}
   h2{font-size: 82px;}
 }
@@ -148,7 +148,7 @@ const TeamMeetSectionMain = styled.div`
   
     }
     
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1080px) {
     .logo_f {
       width: 100%;
   }
@@ -202,7 +202,7 @@ const TeamMeetBoxesMain = styled.div`
     
     grid-template-columns: 50% 50%;
     display: grid;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1080px) {
       grid-template-columns: 50% 50%;
     }
     @media only screen and (max-width: 480px) {
@@ -213,7 +213,7 @@ const TeamMeetBoxesMain = styled.div`
 const TeamMeetBoxes = styled.div`
     flex: 0 0 calc(31.66% - 0px);
 
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1080px) {
       img {
         width: 100%;
     }

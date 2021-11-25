@@ -153,7 +153,7 @@ const Projects = (state) => {
     <div style={{backgroundImage:`url("/assets/page_bg.png")`}}> 
       <Header />
       <Mainproject>
-        <div className="SectionContainer">
+        <div className="SectionContainer banner">
           <InnerBannerSection>
             <h1 className="featured-heading banners" style={{marginTop:'-40px'}}><Bounce top cascade>Projects</Bounce></h1>
           </InnerBannerSection> 
@@ -778,7 +778,7 @@ const Mainproject = styled.div`
 }
   .SectionContainer {
     margin: 0 auto;
-    padding: 120px 0;
+    padding: 120px 30px ;
     position: relative;
     display: block;
     clear: both;

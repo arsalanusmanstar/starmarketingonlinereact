@@ -116,7 +116,7 @@ h2 {
     margin: 44px auto;
     text-align: center;
     }
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1080px) {
     font-size: 28px;
     line-height: 36px;
     }
@@ -141,7 +141,7 @@ const CallSectionMain = styled.div`
 @media only screen and (max-width: 1366px) {
     background: #db2d34;
   }
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1080px) {
     grid-template-columns: 35% 65%;
   }
   @media only screen and (max-width: 820px) {

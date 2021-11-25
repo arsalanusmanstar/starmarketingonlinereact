@@ -56,7 +56,7 @@ const Cont = styled.p`
     opacity: 1;
     padding: 60px 30px;
     text-rendering: optimizeLegibility;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     font-size: 16px;
     line-height: 30px;
     padding: 30px 0px;
@@ -115,7 +115,7 @@ const SectionThree = styled.div`
     grid-template-columns: 32% 32% 32%;
     grid-gap: 2%;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     grid-template-columns: 32% 32% 32% ;
 }
 @media only screen and (max-width: 480px) {
@@ -129,10 +129,10 @@ const Count = styled.div`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     font-size: 48px;
 } 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     font-size: 38px;
 } 
 @media only screen and (max-width: 820px) {
@@ -148,7 +148,7 @@ const Title = styled.div`
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
     font-size: 22px;
     line-height: 28px;
 }  
