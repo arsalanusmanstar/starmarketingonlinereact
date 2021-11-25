@@ -61,6 +61,7 @@ export default function App(state) {
   }, [pathname]);
 
   return (
+    <HelmetProvider>
    <div className="App">
          <UserContext.Provider value={[data,setData]}> <Header  params={pathname} data={data}/></UserContext.Provider>
           {isActive && <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"100%",background:"rgb(0 20 57 / 100%)",position:"fixed",left:'0',right:'0',top:"0",zIndex:"9999"}} />}
@@ -89,5 +90,6 @@ export default function App(state) {
       <ScrollButton />
       
     </div>
+    </HelmetProvider>
   );
 }

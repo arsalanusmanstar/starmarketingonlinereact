@@ -17,7 +17,7 @@ const Pages = ({ match,location }) => {
       top: 0,
       behavior: 'smooth'
     });
-    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.url.replace('.html',' '))
+    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug='+match.url.replace('.html',''))
       .then(response => {
         setData(response.data)
       })
