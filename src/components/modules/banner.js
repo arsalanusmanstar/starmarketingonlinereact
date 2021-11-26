@@ -94,19 +94,19 @@ const Video = ({state}) => {
                    <div className="projectMain">
                       <div className="projectMainLeft">
                          <h4>Project type</h4>
-                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Apartments" />Apartments</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Plots" />Plots</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Housing Scheme"/>Housing Scheme</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Shops & Showrooms"/>Shops & Showrooms</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Resorts & Farmhouse"/>Resorts & Farmhouse</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Other"/>Other</div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Apartments" id="Apartments" /><label for="Apartments">Apartments</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Plots" id="Plots" /><label for="Plots">Plots</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Housing Scheme" id="Housing"/><label for="Housing">Housing Scheme</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Shops & Showrooms" id="Shops"/><label for="Shops">Shops & Showrooms</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Resorts & Farmhouse" id="Resorts"/><label for="Resorts">Resorts & Farmhouse</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="project_type[]" value="Other" id="Other"/><label for="Other">Other</label></div>
                       </div>
                       <div className="projectMainRight">
                       <h4>Choose Services</h4>
-                      <div className="checkboxBanner"><input type="checkbox" name="service[]" value="360 Marketing" />360 Marketing</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Digital Marketing" />Digital Marketing</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Project website" />Project website</div>
-                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Mobile app" />Mobile app</div>
+                      <div className="checkboxBanner"><input type="checkbox" name="service[]" value="360 Marketing" id="Marketing" /><label for="Marketing">360 Marketing</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Digital Marketing" id="Digital" /><label for="Digital">Digital Marketing</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Project website" id="Project" /><label for="Project">Project website</label></div>
+                         <div className="checkboxBanner"><input type="checkbox" name="service[]" value="Mobile app" id="Mobile" /><label for="Mobile">Mobile app</label></div>
                       </div>
                    </div>
                    <button className="submit" type="submit">Submit</button>
