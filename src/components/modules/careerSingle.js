@@ -24,6 +24,27 @@ const CareerSingle=({match,location})=>{
  
 
   const [activeContent,setActiveContent] = useState(false);
+
+  const [success,setSuccess] = useState('');
+  const [loader,setLoader] = useState(false);
+
+  const submitHandler = e => {
+    e.preventDefault();
+  
+     setLoader(true);
+      const data = new FormData(e.target);
+      axios.post('https://starclubcard.info/api/career-api.php', data, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => {
+          console.log(response)
+        document.getElementById("applicationForm").reset();
+        setLoader(false)
+        setSuccess('Thank you for your application. We will contact you shortly.')
+      })
+   }
   
   useEffect(()=>{
     window.scrollTo({
@@ -180,18 +201,24 @@ const CareerSingle=({match,location})=>{
                           <button className="close" onClick={()=>setActiveContent(false)}><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                             <h1>APPLY FOR THIS JOB</h1>
                            
-                         
+                         <form method="post" enctype="multipart/form-data" id="applicationForm" onSubmit={(e)=>submitHandler(e)}>
                           <div className="fild"><input type="text" name="name" placeholder="Name" required /></div>
                           <div className="fild"><input type="text" name="email" placeholder="Email" required/></div>
                           <div className="fild"><input type="text" name="mobile" placeholder="Phone" required/></div>
-                          <div className="fild"><input type="text" name="name" placeholder="Experience" required /></div>
+                          <div className="fild"><input type="text" name="experience" placeholder="Experience" required /></div>
+                          <input type="hidden" value={data[0].acf.designation} name="job_applied"/>
+                          <input type="hidden" value={match.params.slug} name="slug"/>
                           <div className="fild">
-                            <form action="/action_page.php">
-                            <input type="file" id="myFile" name="filename"/>
+                           
+                            <input type="file" id="myFile" name="cv" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf" required/>
 
-                            </form>
+                            
                             </div>
                           <button className="submit" type="submit">Submit</button>
+                          <br/>
+                          {success}
+                          </form>
+                          {loader && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"red",height:'100vh',width:"80px"}} />}
                           </div>
                       </LatestBoxesSlides>
 
@@ -461,6 +488,7 @@ span{
 `
 const CareerSubSectionRight = styled.div`
 .shareButton{
+  cursor:pointer;
   border: 1px   solid #ABABAB;
   border-radius: 13px;
   opacity: 1;
@@ -688,12 +716,13 @@ text {
   background: none;
   color: #000;
   font-size: 28px;
+  cursor:pointer;
 }
 
 .projectContent h1 {
   padding: 0;
   margin: 30px 0px 30px 0px;
-  font-size: 45px;
+  font-size: 43px;
   color: #c7292f;
   text-shadow: 1px 1px 1px #00000021;
 }
