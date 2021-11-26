@@ -216,6 +216,7 @@ const CareerSingle=({match,location})=>{
                             </div>
                           <button className="submit" type="submit">Submit</button>
                           <br/>
+                          <br/>
                           {success}
                           </form>
                           {loader && <ReactLoading type={'bubbles'}  className="loading red" style={{margin:'0 auto',color:"red",height:'100vh',width:"80px"}} />}
