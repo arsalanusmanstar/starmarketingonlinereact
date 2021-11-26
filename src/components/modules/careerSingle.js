@@ -297,6 +297,9 @@ padding: 10px 10px;
 @media only screen and (max-width: 1080px) {
   font: normal normal 700 36px/10px Poppins;
 }
+@media only screen and (max-width: 480px) {
+  font: normal normal 700 30px/28px Poppins;
+}
 }
 .careerSubheading{
   text-align: left;
@@ -531,6 +534,9 @@ const  LatestBoxesSlides = styled.div`
   background-size: cover !important;
   background-position: center!important;
   padding: 34px 60px;
+  @media only screen and (max-width: 480px) {
+    padding: 24px 20px;
+  }
   background: #ffffffe6;
 h2.popupheadings {
   text-align: center;
@@ -696,6 +702,9 @@ text {
   font-size: 45px;
   color: #c7292f;
   text-shadow: 1px 1px 1px #00000021;
+  @media only screen and (max-width: 480px) {
+    font-size: 26px;
+  }
 }
 
 .fild {

@@ -711,6 +711,9 @@ gap: 1%;
 const GBoxes = styled.div`
 img{
   min-height: 290px;
+  @media only screen and (max-width: 480px) {
+    min-height: fit-content;
+    }
 }
 `
 
@@ -748,6 +751,8 @@ h1 {
   }
   @media only screen and (max-width: 480px) {
     grid-template-columns: 100%;
+    min-height: auto;
+    gap: 0%;
   }
   `
   const PropertyLeft = styled.div`
@@ -947,6 +952,9 @@ button {
   font-size: 6.4rem;
   text-transform: uppercase;
   margin-top: 0px;
+  @media only screen and (max-width: 480px) {
+    font-size: 3.0rem;
+  }
 }
  h5 {
   font-size: 22px;
@@ -959,6 +967,8 @@ button {
   margin: 0px 0px 38px 0px;
   @media only screen and (max-width: 480px) {
     width: 100%;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 .loction_section {
@@ -975,6 +985,9 @@ button {
   padding-right: 9px; }
 p {
   letter-spacing: 1px;
+  @media only screen and (max-width: 480px) {
+    font-size: 16px;
+  }
 }
 
 }

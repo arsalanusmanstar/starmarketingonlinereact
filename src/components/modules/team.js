@@ -15,23 +15,22 @@ const Team = ({ team, owner }) => {
     <div>
       <TeamMeetSection>
         <SectionContainer style={{marginTop:'-100px'}}>
-        <Heading>
-            <h1 className="featured-heading banners" style={{color:'white'}}><Bounce top cascade>OUR TEAM</Bounce></h1>
-            </Heading>
+          <Heading>
+          <h1 className="featured-heading banners" style={{color:'white'}}><Bounce top cascade>OUR TEAM</Bounce></h1>
+          </Heading>
           <TeamMeetSectionMain>
-            <TeamMeetSectionLeft>
+          <TeamMeetSectionLeft>
             <Bounce left cascade><h4>Meet our<span>CEO</span></h4></Bounce>
-              <h1><Bounce left cascade>{owner.firstname}</Bounce></h1>
-              <h2><Bounce bottom cascade>{owner.lastname}</Bounce></h2>
-            </TeamMeetSectionLeft>
-            <TeamMeetSectionRight>
+            <h1><Bounce left cascade>{owner.firstname}</Bounce></h1>
+            <h2><Bounce bottom cascade>{owner.lastname}</Bounce></h2>
+          </TeamMeetSectionLeft>
+          <TeamMeetSectionRight>
             <Slide right cascade><RF className="logo_f" src={Meet_lft}></RF></Slide>
-            </TeamMeetSectionRight>
+          </TeamMeetSectionRight>
           </TeamMeetSectionMain>
           <TeamMeetSectionBottom>
             <p dangerouslySetInnerHTML={{ __html: owner.content }}></p>
           </TeamMeetSectionBottom>
-
           <TeamMeetBoxesMain>
             {team && team.people && team.people.map((peop, index) =>
               <TeamMeetBoxes key={index}>
@@ -48,16 +47,12 @@ const Team = ({ team, owner }) => {
         </SectionContainer>
       </TeamMeetSection>
     </div>
-
-
-
   )
 }
 
 export default Team;
 
 const TeamMeetSectionLeft = styled.div`
- 
 h4{
     font-size: 44px;
     font-weight: 400;
@@ -69,7 +64,6 @@ h4{
     }
     @media only screen and (max-width: 480px) {
       margin: 0px 0px 0px 0px;
-
     }
 }
 h4 span{
@@ -78,16 +72,14 @@ h4 span{
     padding: 0px 20px;
     margin-left: 26px;
     font-size: 46px;
-    @media only screen and (max-width: 820px) {
-      margin-left: 10px;
-      font-size: 24px;
-
+ @media only screen and (max-width: 820px) {
+    margin-left: 10px;
+    font-size: 24px;
 }
-    @media only screen and (max-width: 480px) {
-          margin-left: 10px;
-          font-size: 24px;
-
-    }
+@media only screen and (max-width: 480px) {
+    margin-left: 10px;
+    font-size: 24px;
+}
 }
 h1 {
     font-size: 130px;
@@ -95,18 +87,16 @@ h1 {
     text-transform: capitalize;
     margin: 0px;
     line-height: 80px;
-   
 }
 h2 {
     font-size: 110px;
     font-weight: 200;
     text-transform: capitalize;
     margin: 0px;
-    @media only screen and (max-width: 480px) {
-      font-size: 70px!important;
-    }
+@media only screen and (max-width: 480px) {
+   font-size: 70px!important;
 }
-
+}
 @media only screen and (max-width: 1080px) {
   h1{font-size: 91px;}
   h2{font-size: 82px;}
@@ -114,53 +104,39 @@ h2 {
 @media only screen and (max-width: 820px) {
   h1{font-size: 70px;}
   h2{font-size: 70px !important;}
-
 }
 @media only screen and (max-width: 480px) {
   h1{font-size: 70px !important;    }
   h2{font-size: 70px !important;line-height: 55px;}
 
 }
-
 `;
 
 const TeamMeetSectionRight = styled.div`
-
 `;
 
 const RF = styled.img`
-
 `;
 const TeamMeetSectionMain = styled.div`
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    @media only screen and (max-width: 1366px) {
-      .logo_f {
-        width: 100%;
-       }
-    @media only screen and (max-width: 480px) {
-      grid-template-columns: 100%;
-      
-
-      }
- 
-  
-    }
-    
-  @media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 1366px) {
     .logo_f {
       width: 100%;
+      }
+@media only screen and (max-width: 480px) {
+     grid-template-columns: 100%;
   }
+}
+@media only screen and (max-width: 1080px) {
+      .logo_f {
+      width: 100%;
+      }
  h2 {
     font-size: 110px;
-    
-   
 }
-
   }
- 
- 
 `;
 const TeamMeetSection = styled.div`
     margin: 0 auto;
@@ -171,35 +147,21 @@ const TeamMeetSection = styled.div`
     position: relative;
     max-width: 100%;
     color: #fff;
-
     .css-1mnxpzt-SectionContainer{
-
         padding: 0px;
-
-
-
     }
-
 `;
-
-
 const TeamMeetSectionBottom = styled.div`
     font-size: 26px;
     font-weight: 200;
     width: 90%;
     @media only screen and (max-width: 1366px) {
-      
       width:100%;
       font-size: 16px;
     }
 `;
-
 const TeamMeetBoxesMain = styled.div`
     text-align: center;
-    
-    
-    
-    
     grid-template-columns: 50% 50%;
     display: grid;
     @media only screen and (max-width: 1080px) {
@@ -209,25 +171,20 @@ const TeamMeetBoxesMain = styled.div`
       grid-template-columns: 100%;
     }
 `;
-
 const TeamMeetBoxes = styled.div`
     flex: 0 0 calc(31.66% - 0px);
-
     @media only screen and (max-width: 1080px) {
       img {
         width: 100%;
     }
     }
 `;
-
 const Img = styled.div`
-
 `;
 const Text = styled.div`
-width: 50%;
-margin: auto;
+  width: 50%;
+  margin: auto;
 @media only screen and (max-width: 480px) {
- 
     width: 100%;
 }
 h2 {
@@ -238,28 +195,23 @@ h2 {
 p {
     font-size: 22px;
     font-weight: 100;
-  
 }
-
-`;
+  `;
 const Imge = styled.img`
 margin-bottom: -53px;
 `;
-
-
 const Heading = styled.div`
 h1{
     position: relative;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
-    @media only screen and (max-width: 480px) {
-      text-align: left !important;
-      margin: 70px 0px !important;
-      }
-   
+@media only screen and (max-width: 480px) {
+  text-align: left !important;
+  margin: 70px 0px !important;
   }
-  h1:after{
+  }
+h1:after{
     content: "";
     height: 10px;
     position: absolute;
@@ -270,14 +222,11 @@ h1{
     bottom: 4px;
     border-radius: 107px;
     background: #fe5656e3 0% 0% no-repeat padding-box;
-    @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 480px) {
       margin: revert;
       bottom: -10px;
       height: 6px;
-       
     }
-   
-    
   }
   h1:before{
     content: "";
@@ -292,18 +241,15 @@ h1{
     top: -27px;
     text-align: center;
     background-size: cover;
-    @media only screen and (max-width: 480px) {
-      width: 300px;
-        height: 130px; 
-        top: 10px;
-       
+@media only screen and (max-width: 480px) {
+    width: 300px;
+    height: 130px; 
+    top: 10px;
     }
-    @media only screen and (max-width: 480px) {
-      width: 100%;
-      height: 65px;
-       top: -4px;
+@media only screen and (max-width: 480px) {
+    width: 100%;
+    height: 65px;
+    top: -4px;
     }
-   
   }
-  
 `

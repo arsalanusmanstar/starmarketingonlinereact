@@ -92,39 +92,37 @@ const Header = ({params,data}) => {
 export default Header
 
 const TitleGroup = styled.div`
-  @media (min-width: 1000px) {
+@media (min-width: 1000px) {
     align-items: baseline;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: -1rem 0 0 -2.4rem;
-  }
+}
 `;
 
 const TitleWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 0 4rem;
-  text-align: center;
-  width: 100%;
-
-  @media (min-width: 1000px) {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 4rem;
+    text-align: center;
+    width: 100%;
+@media (min-width: 1000px) {
     width: auto;
     margin-right: 4rem;
     max-width: 50%;
     padding: 0;
     text-align: left;
-  }
-  @media only screen and (max-width: 1080px) {
+}
+@media only screen and (max-width: 1080px) {
     text-align: left;
     justify-content: left;
-  }
-  @media only screen and (max-width: 480px) {
+}
+@media only screen and (max-width: 480px) {
     padding: 0;
-  }
+}
 `;
-
 const PageHeader = styled.header`
   z-index: 99999;
   background: url(${(props) => props.bg});
@@ -151,25 +149,24 @@ const PageHeader = styled.header`
 `;
 
 const HeaderInner = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 2.8rem 0;
-  max-width: 168rem;
-  z-index: 100;
-  margin-left: auto;
-  margin-right: auto;
-  .searchFilter {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 2.8rem 0;
+    max-width: 168rem;
+    z-index: 100;
+    margin-left: auto;
+    margin-right: auto;
+.searchFilter {
     color: #98add3;
     width: 96px;
     font-size: 29px;
     cursor: pointer;
     text-align: center;
-    
-  .searchDropdown.active{
+    .searchDropdown.active{
     opacity:1;
-  }
-  .searchDropdown {
+}
+.searchDropdown {
     position: absolute;
     opacity:0;
     right: 0px;
@@ -177,23 +174,22 @@ const HeaderInner = styled.div`
     width: 20%;
     transition: all 0.55s linear;
     z-index: 999;
-    @media only screen and (max-width: 1080px) {
-      margin-top: -70px;
-    }
-    input.serach {
-      width: 100%;
-      padding: 12px 20px;
-      border: 0;
-      background: #ffffff;
-      letter-spacing: 1px;
-      font-size: 16px;
-      :focus {
-        outline: none;
-    }
-  }
+@media only screen and (max-width: 1080px) {
+    margin-top: -70px;
+}
+input.serach {
+    width: 100%;
+    padding: 12px 20px;
+    border: 0;
+    background: #ffffff;
+    letter-spacing: 1px;
+    font-size: 16px;
+:focus {
+    outline: none;
 }
 }
-
+}
+}
 .searchFilter:hover {
     color: #fff;
 }

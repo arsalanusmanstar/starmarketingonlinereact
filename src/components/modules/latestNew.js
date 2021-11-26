@@ -260,13 +260,14 @@ ul.slick-dots button{
   height: 20px;
   border-radius: 100px;
   cursor: pointer;
+  opacity: 0.21;
 @media only screen and (max-width: 480px) {
   width: 10px;  
   height: 10px;
 }
 }
 ul.slick-dots li.slick-active button{
-  opacity: 0.21;
+  opacity: 1;
 }
 ul.slick-dots li{
   float: left;
@@ -282,7 +283,7 @@ ul.slick-dots {
   margin: 0;
 @media only screen and (max-width: 480px) {
   position: relative;
-  top: -30px;
+  top: 5px;
 
 }
 }

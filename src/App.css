@@ -1163,6 +1163,9 @@ h1.featured-heading.banners {text-align: center;  margin: 50px 0px;}
 .slides > button {top: 30% !important;}
 .careerDetails p {display: flex;  justify-content: flex-start; }
 .userImg {float: none;}
+.Sticky_p {
+  padding: 0px 0px !important;
+}
 
 }
 

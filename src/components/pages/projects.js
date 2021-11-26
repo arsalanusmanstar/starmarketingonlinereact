@@ -685,6 +685,9 @@ const ProjectSearch = styled.div`
           color: #333;
           font-size: 16px;
           display: flex;
+          @media only screen and (max-width: 1080px) {
+            padding: 7px 20px;
+          }
           @media only screen and (max-width: 480px) {
             padding: 8px 18px;
           }
@@ -783,6 +786,12 @@ const Mainproject = styled.div`
     clear: both;
     position: relative;
     max-width: 1440px;
+    @media only screen and (max-width: 1080px) {
+      padding: 30px 30px ;
+      }
+    @media only screen and (max-width: 480px) {
+      padding: 20px 20px ;
+      }
 }
  
 

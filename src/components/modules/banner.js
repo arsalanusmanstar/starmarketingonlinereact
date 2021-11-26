@@ -326,7 +326,7 @@ p {
 .BannerMainSection .right {
     text-align: center;
     @media only screen and (max-width: 1080px) {
-        text-align: left;
+        text-align: center;
         margin-top: 10px;
     }
     @media only screen and (max-width: 480px) {

@@ -293,6 +293,11 @@ const JobSection = styled.div`
     padding: 40px 40px;
     border-top: 10px solid #248043;
 @media only screen and (max-width: 820px) {
+    border-top: 6px solid #248043;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+@media only screen and (max-width: 480px) {
     padding: 20px 20px;
     padding-bottom: 40px;
 }
