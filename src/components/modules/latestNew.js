@@ -82,7 +82,7 @@ const Latestnews = () => {
                       <ShareMain>
                         <tag><Imge src={latest_icon01}></Imge>Events</tag>
                         <SaveShareLfet style={{cursor:'pointer'}}>
-                            <Imge src={th}></Imge>
+                            {/* <Imge src={th}></Imge> */}
                         </SaveShareLfet>
                       </ShareMain>
                       </Details>
