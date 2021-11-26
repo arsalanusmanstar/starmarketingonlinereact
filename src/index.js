@@ -14,7 +14,7 @@ const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
   hydrate(<BrowserRouter><App /></BrowserRouter>, rootElement);
 } else {
-  render(<BrowserRouter basename="react"><App /></BrowserRouter>, rootElement);
+  render(<BrowserRouter><App /></BrowserRouter>, rootElement);
 }
 
 reportWebVitals();
