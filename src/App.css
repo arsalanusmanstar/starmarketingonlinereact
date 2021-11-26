@@ -792,25 +792,53 @@ h3.skillsHeading.similar {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 2s ease;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
   opacity: 0.5;
   display: grid;
   align-content: center;
-  transform-style: preserve-3d;
-  transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
   margin: auto;
 }
+@keyframes transform {
+  0% {
+    
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+  }
+}
+
+
 
 .slideContentInner {
-  transform-style: preserve-3d;
-  transform: translateZ(0rem);
-  transition: opacity 0.3s linear;
+  animation: 0.4s ease-out fadeIn 1;
   text-shadow: 0 0.1rem 1rem #000;
   opacity: 0;
   text-align: center;
   background: rgba(0, 0, 0, 0.69);
   padding: 20px;
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform-style: preserve-3d;
+    transform: translateZ(0rem);
+    transition: opacity 0.3s linear;
+  }
+}
+
+
+@keyframes go487993996{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}
+@keyframes go1747222846{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+@keyframes go2652833988{from{transform:scale(0) rotate(90deg);opacity:0;}to{transform:scale(1) rotate(90deg);opacity:1;}}
+@keyframes go1268368563{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes go3344466522{0%{height:0;width:0;opacity:0;}40%{height:0;width:6px;opacity:1;}100%{opacity:1;height:10px;}}
+@keyframes go2190974446{from{transform:scale(0.6);opacity:0.4;}to{transform:scale(1);opacity:1;}}
+
 .slideContentInner .slideSubtitle,
 .slideContentInner .slideTitle {
   font-size: 4rem;
@@ -1168,5 +1196,4 @@ h1.featured-heading.banners {text-align: center;  margin: 50px 0px;}
 }
 
 }
-
 

@@ -23,7 +23,7 @@ useEffect(()=>{
   const { data, error } = useSWR('https://staging.starmarketingonline.com/wp-json/wp/v2/pages?_embed=true&slug=home-page', fetcher)
   return (
     <div style={{backgroundImage:`url("/assets/WebBg.png")`}}> 
-      <Meta meta={data && data[0].yoast_meta} page="home" />
+       <Meta meta={data && data[0].yoast_meta} page="home" />
          {!data ? <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"80px"}} /> :
          <Modules data={data && data[0]['acf']} location={location} /> } 
       <Footer />
