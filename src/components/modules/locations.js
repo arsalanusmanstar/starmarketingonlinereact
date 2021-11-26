@@ -19,23 +19,9 @@ import Zoom from 'react-reveal/Zoom';
 import Shake from 'react-reveal/Shake';
 import RubberBand from 'react-reveal/RubberBand';
 import Slide from 'react-reveal/Slide';
-import Reveal from 'react-reveal/Reveal';
 
 const Locations = ({state}) => {
     const [success,setSuccess] = useState('');
-    const url = "//xxxx.us13.list-manage.com/subscribe/post?u=zefzefzef&id=fnfgn";
-    const submitHandler = e => {
-        e.preventDefault();
-        const data = new FormData(e.target);
-        axios.post('https://sheet.best/api/sheets/efd596e6-94d9-477d-b1f3-d62664d31299', data, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            setSuccess('Thank you for submit your request. We will contact you shortily.')
-        })
-     }
 
     return (
 
@@ -58,22 +44,22 @@ const Locations = ({state}) => {
             ]}
             messages = {
                 {
-                sending: "Sending...",
-                success: "Thank you for subscribing!",
-                error: "An unexpected internal error has occurred.",
-                empty: "You must write an e-mail.",
-                duplicate: "Too many subscribe attempts for this email address",
-                button: "Subscribe!"
+                    sending: "Sending...",
+                    success: "Thank you for subscribing!",
+                    error: "An unexpected internal error has occurred.",
+                    empty: "You must write an e-mail.",
+                    duplicate: "Too many subscribe attempts for this email address",
+                    button: "Subscribe!"
                 }
             }
             className='mailchimpform'
             />
-        <form method="Post" action="https://marketing.us6.list-manage.com/subscribe/post?u=df313acb6a40efd656040f419&amp;id=faefd9810a"  id="mc-embedded-subscribe-form"  name="mc-embedded-subscribe-form" className="validate" target="_blank" >
+        {/* <form method="Post" action="https://marketing.us6.list-manage.com/subscribe/post?u=df313acb6a40efd656040f419&amp;id=faefd9810a"  id="mc-embedded-subscribe-form"  name="mc-embedded-subscribe-form" className="validate" target="_blank" > */}
             {/* <MailchimpSubscribe url={url}/> */}
             {/* <input type="text" name="EMAIL" placeholder="Email Address"  id="mce-EMAIL" required/>
             <button type="Submit" style={{cursor:'pointer'}} name="subscribe" id="mc-embedded-subscribe" className="button">Subscribe</button> */}
             {/* <div style={{paddingTop:'10px'}}>{success}</div> */}
-         </form>
+         {/* </form> */}
      </ContactSectionTouchLeft>
          <ContactSectionTouchRight>
            <Shake> <Imge className="responsive" src={Touch}></Imge>  </Shake>

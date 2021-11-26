@@ -30,6 +30,7 @@ import Fade from 'react-reveal/Fade'
 import { UserContext } from '../elements/UserContext';
 
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import { Helmet } from 'react-helmet';
 
 const Projects = (state) => {
   const [data,setData] = useContext(UserContext);
@@ -53,14 +54,14 @@ const Projects = (state) => {
   
 
   useEffect(async ()=>{
-    try {
-      axios.get(`https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100`)
-      .then(response => {
-        setData(response.data)
-      })
-    } catch (e) {
-        console.error(e);
-    }
+    // try {
+    //   axios.get(`https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100`)
+    //   .then(response => {
+    //     setData(response.data)
+    //   })
+    // } catch (e) {
+    //     console.error(e);
+    // }
     const lock =  Regions.filter((loc,index)=>
       loc.value == state.match.params.region 
     )
@@ -151,6 +152,13 @@ const Projects = (state) => {
   
   return (
     <div style={{backgroundImage:`url("/assets/page_bg.png")`}}> 
+    
+   <Helmet>  
+    <meta charSet="utf-8" />
+    <title>Projects - Star Marketing (PVT)Ltd</title>
+    <meta name="description" content="Projects - Star Marketing (PVT)Ltd" />
+    <meta property="og:title" content="Projects - Star Marketing (PVT)Ltd" />
+  </Helmet>
       <Mainproject>
         <div className="SectionContainer banner">
           <InnerBannerSection>

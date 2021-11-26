@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component,useContext } from 'react';
 import SectionContainer from "../styles/section-container";
 import styled from 'styled-components';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { UserContext } from '../elements/UserContext';
 
 const FeatureProducts = () => {
   
-  const [data,setData] = useState(JSON.parse(localStorage.getItem('projects')));
+  const [data,setData] = useContext(UserContext);
   
   //wait for slider data to load
   const [loading,setLoading] = useState(false);
  
-  useEffect(async ()=>{
-    try {
-   axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
-    .then(response => {
-        setData(response.data)
-        setLoading(true)
+//   useEffect(async ()=>{
+//     try {
+//    axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+//     .then(response => {
+//         setData(response.data)
+//         setLoading(true)
        
-    })
-    } catch (e) {
-        console.error(e);
-    }
-})
+//     })
+//     } catch (e) {
+//         console.error(e);
+//     }
+// })
 
 const slides= data && data.filter((latest)=> latest.acf && latest.acf.feature_project == 'yes' ).map(latest => ({
   "title" : latest.title.rendered,
@@ -162,7 +163,7 @@ const slides= data && data.filter((latest)=> latest.acf && latest.acf.feature_pr
   }
   const [state, dispatch] = React.useReducer(slidesReducer, initialState);
   
-  if(!loading){
+  if(!data){
     return <div>Loading...</div>
   }
   else{

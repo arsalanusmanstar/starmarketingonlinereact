@@ -31,17 +31,7 @@ export default function App(state) {
   
   const [data,setData] = useState('');
   const [isActive,setIsActive] = useState(true);
-
- useEffect(async ()=>{
-    try {
-     await axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
-      .then(response => {
-        setData(response.data)
-      })
-    } catch (e) {
-        console.error(e);
-    }
-  },[])
+  const [collectData,setColletData] = useState(false);
   
   const { pathname } = useLocation();
    
@@ -57,11 +47,22 @@ export default function App(state) {
       setIsActive(true)
       setTimeout(()=>{
         setIsActive(false)
-      },2000)
+      },1000)
+
+      try {
+        !collectData && axios.get('https://staging.starmarketingonline.com/wp-json/wp/v2/portf?_embed=true&per_page=100')
+         .then(response => {
+           setData(response.data)
+           setColletData(true)
+         })
+       } catch (e) {
+           console.error(e);
+       }
   }, [pathname]);
 
   return (
     <HelmetProvider>
+       <UserContext.Provider value={[data,setData]}>
    <div className="App">
          <UserContext.Provider value={[data,setData]}> <Header  params={pathname} data={data}/></UserContext.Provider>
           {isActive && <ReactLoading type={'bubbles'}  className="loading" style={{margin:'0 auto',color:"#fff",height:'100vh',width:"100%",background:"rgb(0 20 57 / 100%)",position:"fixed",left:'0',right:'0',top:"0",zIndex:"9999"}} />}
@@ -75,9 +76,9 @@ export default function App(state) {
         <Route path="/privacy-policy" exact component={Pages}></Route>
         <Route path="/careers" exact component={Pages}></Route>
         <Route path="/career/:slug"  exact component={CareerSingle} data={data}></Route>
-        <Route path="/projects/" exact render={(props) => <UserContext.Provider value={[data,setData]}> <Projects {...props} data="" /> </UserContext.Provider>} />
-        <Route path="/projects/:region" exact render={(props) =><UserContext.Provider value={[data,setData]}>  <Projects {...props} /> </UserContext.Provider>} />
-        <Route path="/projects/:region/:id" exact render={(props) =><UserContext.Provider value={[data,setData]}>  <Projects {...props} /> </UserContext.Provider>} />
+        <Route path="/projects/" exact render={(props) => <Projects {...props} data="" /> } />
+        <Route path="/projects/:region" exact render={(props) => <Projects {...props} /> } />
+        <Route path="/projects/:region/:id" exact render={(props) => <Projects {...props} />} />
         <Route path="/hot-projects/" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city" exact render={(props) => <Projects data={data} {...props} />} />
         <Route path="/hot-projects/:city/:id" exact  component={Projects} data={data}></Route>
@@ -88,8 +89,8 @@ export default function App(state) {
       </Switch>
         {moduleOff && <Modal offModule={()=>setModuleOff(false)}/>} 
       <ScrollButton />
-      
     </div>
+    </UserContext.Provider>
     </HelmetProvider>
   );
 }
