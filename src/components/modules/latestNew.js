@@ -63,7 +63,7 @@ const Latestnews = () => {
     return (
      <LatestNewContainer left_arrow={left_arrow}>    
         <SectionContainer style={{paddingTop:'0px'}}>
-            <h1 className="featured-heading banners custom" style={{color:"#fff"}}><Bounce top cascade>Latest</Bounce></h1>
+            <h1 className="featured-heading banners custom" style={{color:"#fff"}}><Bounce top >Latest</Bounce></h1>
             <Slide bottom><div className="featured-project-line"></div></Slide>
             <div className="mainSlide">
              <Slider  {...settings}>

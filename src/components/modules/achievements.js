@@ -7,7 +7,7 @@ const Achievements = ({state}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading banners"  style={{marginTop:'-40px',color:'white'}}><Bounce top cascade>Achievements</Bounce></h1>
+            <h1 className="featured-heading banners"  style={{marginTop:'-40px',color:'white'}}><Bounce top >Achievements</Bounce></h1>
             </Heading>
            
            <Body>

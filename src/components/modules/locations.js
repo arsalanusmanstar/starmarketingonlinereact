@@ -14,10 +14,6 @@ import grayBackground from "../../assets/map.png";
 import { useEffect,useState } from "react";
 import Mailchimp from 'react-mailchimp-form';
 import axios from "axios";
-import Bounce from 'react-reveal/Bounce';
-import Zoom from 'react-reveal/Zoom';
-import Shake from 'react-reveal/Shake';
-import RubberBand from 'react-reveal/RubberBand';
 import Slide from 'react-reveal/Slide';
 
 const Locations = ({state}) => {
@@ -30,8 +26,8 @@ const Locations = ({state}) => {
  <SectionContainer>
     <ContactSectionTouch className="maincontactsection" style={{marginTop:'-50px'}}>
       <ContactSectionTouchLeft>
-         <h1><Bounce left cascade>Let's Stay In Touch</Bounce></h1>
-         <p><Zoom left cascade>Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</Zoom></p>
+         <h1><Slide left >Let's Stay In Touch</Slide></h1>
+         <p><Slide left >Subscribe to our Newsletter to receive exclusive offers, latest news and updates.</Slide></p>
          <Mailchimp
             action='https://starmarketingonline.us1.list-manage.com/subscribe/post?u=c310c5c3b46ff223b92ac57e6&amp;id=5baec4271f'
             fields={[
@@ -62,17 +58,17 @@ const Locations = ({state}) => {
          {/* </form> */}
      </ContactSectionTouchLeft>
          <ContactSectionTouchRight>
-           <Shake> <Imge className="responsive" src={Touch}></Imge>  </Shake>
+            <Imge className="responsive" src={Touch}></Imge> 
          </ContactSectionTouchRight>
      </ContactSectionTouch>
         <ContactSection>
             <ContactSectionLeft>
-                <h1 className="Head_C"><Bounce left cascade>Contact Us</Bounce></h1>
-                <h2 className="head_n"> <Bounce left cascade><img src={PhoneImage} />  111 111 160 </Bounce></h2>
-                <h2 className="head_n"><Bounce bottom cascade><img src={WhatsappImage} />+92 301 116 1116</Bounce></h2>
+                <h1 className="Head_C"><Slide left >Contact Us</Slide></h1>
+                <h2 className="head_n"> <Slide left ><img src={PhoneImage} />  111 111 160 </Slide></h2>
+                <h2 className="head_n"><Slide bottom ><img src={WhatsappImage} />+92 301 116 1116</Slide></h2>
             </ContactSectionLeft>
              <ContactSectionRight>
-               <RubberBand> <Flogo className="logo_f" src={Logo_f}></Flogo></RubberBand>
+               <Flogo className="logo_f" src={Logo_f}></Flogo>
                 <SL>
                     <Slide bottom> <a href="https://twitter.com/starmarketingon" target="_blank"> <IconTW className="FS" src={TW}></IconTW></a> </Slide>
                     <Slide bottom> <a href="https://www.facebook.com/starmarketingpk" target="_blank"> <IconTW className="FS" src={FB}></IconTW></a> </Slide>
@@ -224,6 +220,7 @@ const ContactSectionTouch = styled.section`
 @media only screen and (max-width: 480px) {
 img.responsive {
     width: -webkit-fill-available;
+    top: 4px !important;
 }
 }
 `;

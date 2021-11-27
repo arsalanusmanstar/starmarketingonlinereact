@@ -16,16 +16,16 @@ const Team = ({ team, owner }) => {
       <TeamMeetSection>
         <SectionContainer style={{marginTop:'-100px'}}>
           <Heading>
-          <h1 className="featured-heading banners" style={{color:'white'}}><Bounce top cascade>OUR TEAM</Bounce></h1>
+          <h1 className="featured-heading banners" style={{color:'white'}}><Bounce top >OUR TEAM</Bounce></h1>
           </Heading>
           <TeamMeetSectionMain>
           <TeamMeetSectionLeft>
-            <Bounce left cascade><h4>Meet our<span>CEO</span></h4></Bounce>
-            <h1><Bounce left cascade>{owner.firstname}</Bounce></h1>
-            <h2><Bounce bottom cascade>{owner.lastname}</Bounce></h2>
+            <Bounce left ><h4>Meet our<span>CEO</span></h4></Bounce>
+            <h1><Bounce left >{owner.firstname}</Bounce></h1>
+            <h2><Bounce bottom >{owner.lastname}</Bounce></h2>
           </TeamMeetSectionLeft>
           <TeamMeetSectionRight>
-            <Slide right cascade><RF className="logo_f" src={Meet_lft}></RF></Slide>
+            <Slide right ><RF className="logo_f" src={Meet_lft}></RF></Slide>
           </TeamMeetSectionRight>
           </TeamMeetSectionMain>
           <TeamMeetSectionBottom>
@@ -35,9 +35,9 @@ const Team = ({ team, owner }) => {
             {team && team.people && team.people.map((peop, index) =>
               <TeamMeetBoxes key={index}>
                 <Img>
-                <Slide bottom cascade> <Imge src={Team_box}></Imge></Slide>
+                <Slide bottom > <Imge src={Team_box}></Imge></Slide>
                 </Img>
-                <Slide bottom cascade><Text>
+                <Slide bottom ><Text>
                   <h2>{peop.name}</h2>
                   <p>{peop.position}</p>
                 </Text></Slide>

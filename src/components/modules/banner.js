@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SectionContainer from "../styles/section-container";
 import BackgroundImage from "../../assets/WebBg.png";
-import roket from "../../assets/roket.jpg";
+import roket from "../../assets/roket.gif";
 import VideoImage from "../../assets/homepage.mp4";
 import GuarantLogo from "../../assets/1Icon.png";
 import Fade from 'react-reveal/Fade';
@@ -21,8 +21,8 @@ const BannerText = ({state}) => {
     
         <BannerCont >
             <GuaranteeLogo  background={GuarantLogo}></GuaranteeLogo> 
-            <Heading><Fade left big cascade>{state.heading}</Fade></Heading>   
-            <Subheading><Fade left big cascade>{state.sub_heading} </Fade></Subheading>
+            <Heading><Fade left big >{state.heading}</Fade></Heading>   
+            <Subheading><Fade left big >{state.sub_heading} </Fade></Subheading>
             <Content>{state.content}</Content>
             <Button  href="#about"  style={{cursor:'pointer'}} >  Learn More  </Button>
             <SubButton> Work With Us <i className="fa fa-long-arrow-right"></i> </SubButton>   
@@ -82,7 +82,7 @@ const Video = ({state}) => {
                 <source src={VideoImage} type="video/mp4" />  
         </VideoImg>*/}
          <BannerFormSection>
-                <h1><Fade left big cascade>Manage your Real Estate marketing with us!</Fade></h1>
+                <h1><Fade right big >Manage your Real Estate marketing with us!</Fade></h1>
                 <p>it takes less than <span>5 minutes</span>to fill out the information required know about your project.</p>
                 <div className="BannerMainSection">
                 <form method="POST" id="queryForm" onSubmit={(e)=>submitHandler(e)}>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { UserContext } from '../elements/UserContext';
-
+import Fade from 'react-reveal/Fade';
 const FeatureProducts = () => {
   
   const [data,setData] = useContext(UserContext);
@@ -170,6 +170,10 @@ const slides= data && data.filter((latest)=> latest.acf && latest.acf.feature_pr
   return (
     <FeatureProductsMain>
       <SectionContainer>
+        <div className="featuredheadingsection">
+            <h2 className="featured-heading wow slideInUp" data-wow-duration="5s"><Fade top> FEATURED PROJECTS</Fade></h2>
+            <Fade bottom> <div className="featured-project-line "></div>   </Fade>
+        </div>
         <div className="slides">
             <button onClick={() => dispatch({ type: "PREV" })}>‹</button>
             {[...slides, ...slides, ...slides].map((slide, i) => {
@@ -198,6 +202,9 @@ const FeatureProductsMain = styled.div`
 @media only screen and (max-width: 1366px) {
   padding-bottom: 22%;
   overflow: hidden;
+}
+.featuredheadingsection {
+  margin-bottom: 50px;
 }
 
 `

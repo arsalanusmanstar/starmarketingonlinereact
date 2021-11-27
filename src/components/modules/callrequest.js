@@ -41,7 +41,7 @@ let dateFormat= date+'/'+month+'/'+year;
         <MainContainer background={callRequestBg} bg={bg}>
             <SectionContainerOverRight  bg={bg}>
               <CallSectionMain>
-                <CallRequests  background={Call}><h2> <Bounce left cascade>{title}</Bounce></h2></CallRequests>
+                <CallRequests  background={Call}><h2> <Bounce left >{title}</Bounce></h2></CallRequests>
                   <form className="callform" method="POST" id="contactForm" onSubmit={(e)=>submitHandler(e)}>
                     <Input type="text" name="Name" placeholder="" title="Full Name" />
                     <Input type="number" name="Phone" placeholder="" title="Phone" />

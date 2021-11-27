@@ -9,9 +9,9 @@ const ScoreCounter = (state) => {
     return (
         <Score >
           <ScoreCont>
-            <Icon><LightSpeed top cascade><img src={state.icon} alt={state.title} /></LightSpeed></Icon>
-            <Count> <Bounce bottom cascade>{state.score}</Bounce></Count>
-            <Title><Bounce top cascade>{state.title}</Bounce></Title>
+            <Icon><LightSpeed top ><img src={state.icon} alt={state.title} /></LightSpeed></Icon>
+            <Count> <Bounce bottom >{state.score}</Bounce></Count>
+            <Title><Bounce top >{state.title}</Bounce></Title>
           </ScoreCont>
         </Score>
     )
@@ -21,11 +21,11 @@ const About = ({data}) => {
     return (
         <MainContainer background={AboutBackground} id="about">
             <SectionContainer>
-                <h2  className="featured-heading " ><Bounce left cascade>{data.heading}</Bounce></h2>
-                <Bounce right cascade> <div className="featured-project-line"></div>  </Bounce>
+                <h2  className="featured-heading " ><Bounce left >{data.heading}</Bounce></h2>
+                <Bounce right > <div className="featured-project-line"></div>  </Bounce>
                 <AboutContent>
-                <Bounce right cascade><Cont dangerouslySetInnerHTML={{ __html:data.content}}></Cont></Bounce>
-                 <Slide bottom cascade> <SectionThree>
+                <Bounce right ><Cont dangerouslySetInnerHTML={{ __html:data.content}}></Cont></Bounce>
+                 <Slide bottom > <SectionThree>
                     {data.counter && data.counter.map((count,index)=> 
                     <ScoreCounter score={count.number} title={count.title} icon={count.icon} key={index}/>
                     )}  

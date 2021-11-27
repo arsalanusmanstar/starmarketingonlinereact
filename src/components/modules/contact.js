@@ -26,12 +26,12 @@ const Contact = ({offices,get_in_touch}) => {
     return (
         <SectionContainer>
             <Heading>
-            <h1 className="featured-heading banners" ><Bounce top cascade>CONTACT US</Bounce></h1>
+            <h1 className="featured-heading banners" ><Bounce top >CONTACT US</Bounce></h1>
             </Heading>
            
             
             <div className="contactMain" style={{backgroundColor:'white', borderRadius:'20px', padding:'40px'}}>
-             <h2 className="contactMainHeading"> <Bounce left cascade>{get_in_touch.heading}</Bounce></h2>
+             <h2 className="contactMainHeading"> <Bounce left >{get_in_touch.heading}</Bounce></h2>
              <p  className="getinTouch">{get_in_touch.content}</p>
              {get_in_touch.image && <img className="contactTopimg" src={get_in_touch.image}  alt="Get in touch"/>}
              <CallRequestMain className="contactPages"><CallRequest  title={"Request Instant Call Back"} bg={'off'} >

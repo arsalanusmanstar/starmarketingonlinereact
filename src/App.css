@@ -765,7 +765,7 @@ h3.skillsHeading.similar {
     font-size: 8rem;
     width: 5rem;
     height: 5rem;
-    top: 44%;
+    top: 52%;
     transition: opacity 0.3s;
     opacity: 1;
     z-index: 5;
@@ -795,10 +795,21 @@ h3.skillsHeading.similar {
   transition: transform 2s ease;
   transform-style: preserve-3d;
   transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
-  opacity: 0.5;
+  position: relative;
   display: grid;
   align-content: center;
   margin: auto;
+}
+.slideContent:after {content: "";
+  background: #0000009e;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40vw;}
+
+.slide[data-active] .slideContent:after {
+    content: "";
+    background: none !important;
 }
 @keyframes transform {
   0% {
@@ -1045,7 +1056,15 @@ html::-webkit-scrollbar-thumb:active {
   background: rgb(68, 68, 68);
   border-radius: 10px;
 }
-  
+.mobiledownload {
+  display: none;
+}
+.mobiledownload .fa.fa-cloud-download {
+  position: absolute;
+  right: 24px;
+  font-size: 30px;
+  color: #079900;
+}
 
 @media only screen and (max-width: 1366px) {
   
@@ -1194,6 +1213,8 @@ h1.featured-heading.banners {text-align: center;  margin: 50px 0px;}
 .Sticky_p {
   padding: 0px 0px !important;
 }
-
+.mobiledownload {
+  display: block !important;
+}
 }
 

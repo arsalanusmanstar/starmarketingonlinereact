@@ -8,7 +8,7 @@ const Regions = ({data}) => {
     return (
         <MainContainer >
          <SectionContainer>
-            <h2 className="featured-heading"><Bounce bottom cascade>REGIONS </Bounce></h2>
+            <h2 className="featured-heading"><Bounce bottom >REGIONS </Bounce></h2>
             <Bounce top cascade><div className="featured-project-line"></div></Bounce>
             <Bounce bottom cascade><RegionsBoxesMain>
               {data && data.region_listing && data.region_listing.map((region,index)=>

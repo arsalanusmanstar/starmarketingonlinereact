@@ -493,10 +493,19 @@ let dateFormat= date+'/'+month+'/'+year;
                    <PropertyLeft>
                       {data && data[0].acf.filters.property_portfolio_f  && data[0].acf.filters.property_portfolio_f.property_file && data[0].acf.filters.property_portfolio_f.property_file.map((files,index)=>
                         <Boxes key={index} className={pdf == index && 'active'} onClick={()=>setPdf(index)}>
+
+                           <div className="mobiledownload">
+                            {data[0].acf.filters.property_portfolio_f  && data[0].acf.filters.property_portfolio_f.property_file &&  data[0].acf.filters.property_portfolio_f.property_file.filter((file,index)=> index == pdf).map((files,index)=>
+                                <a target="_blank" href={files.file_url.replace('http://','https://')}> <i class="fa fa-cloud-download" aria-hidden="true"></i></a>
+                            )}
+                            </div>
                           <Imge src={pdfImage}></Imge>
                           <h3>{files.file_title}</h3>
+                          
                         </Boxes>
                       )}
+
+                     
                    </PropertyLeft>
 
                    <PropertyRight>
@@ -766,6 +775,7 @@ h1 {
   margin: 30px 0px 30px 0px;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 8px;
+  position: relative;
   @media only screen and (max-width: 480px) {
     padding: 20px 20px;
   margin: 20px 0px 20px 0px;
@@ -793,6 +803,9 @@ h1 {
   `
   const PropertyRight = styled.div`
     background: #000;
+    @media only screen and (max-width: 480px) {
+      display: none;
+    }
     p{
       text-align: center;
       height: 600px;
@@ -880,9 +893,9 @@ height: auto;
   background-position: bottom;
 }
 @media only screen and (max-width: 480px) {
-  height: 560px;
-  background-size: contain;
-  background-position: bottom;
+  height: auto;
+  background-size: cover;
+  background-position: top center;
 }
 &:before{
   content: '';
@@ -909,6 +922,7 @@ button {
     padding: 26px 80px 26px 35px;
     font-size: 16px;
     width: 100%;
+    background: rgb(0 0 0 / 72%);
   }
 
 
