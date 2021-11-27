@@ -116,6 +116,76 @@ return (
                         )}
                     </div>
                 </div>
+                <br/>
+                <div className="category_details">
+                  <h3 className="category_subheading">Sales & Marketing</h3>
+                    <div className="sub_categories">
+                        {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Sales & Marketing').map((jobs,index)=>
+                        <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+                      <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                      </Link>
+                        /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4> */
+                        )}
+                    </div>
+                </div>
+
+                <br/>
+                <div className="category_details">
+                  <h3 className="category_subheading">Information Technology</h3>
+                    <div className="sub_categories">
+                        {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Information Technology').map((jobs,index)=>
+                        <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+                      <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                      </Link>
+                        /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4> */
+                        )}
+                    </div>
+                </div>
+
+                <br/>
+                <div className="category_details">
+                  <h3 className="category_subheading">Accounts & Finance</h3>
+                    <div className="sub_categories">
+                        {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Accounts & Finance').map((jobs,index)=>
+                        <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+                      <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                      </Link>
+                        /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4> */
+                        )}
+                    </div>
+                </div>
+                <br/>
+                <div className="category_details">
+                  <h3 className="category_subheading">Administration</h3>
+                    <div className="sub_categories">
+                        {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Administration').map((jobs,index)=>
+                        <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
+                      <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
+                      </Link>
+                        /* <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">Asst. Manager HR & Admin</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4>
+                        <h4 className="catgory_subheading_details">HR Executive</h4> */
+                        )}
+                    </div>
+                </div>
            </CategorySection>
              </MainContainer>
             </SectionContainer>  
