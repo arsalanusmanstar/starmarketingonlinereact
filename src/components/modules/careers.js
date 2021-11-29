@@ -4,7 +4,7 @@ import { useEffect,useState } from "react";
 import SectionContainer from "../styles/section-container";
 import { Link,NavLink,Redirect } from 'react-router-dom';
 import latest_icon06 from "../../assets/latest_icon06.png";
-
+import Fade from 'react-reveal/Fade';
 const Careers = (career)=>{
     const [data,setData] = useState([]);
     const [toggle,setToggle] = useState(false);
@@ -104,7 +104,7 @@ return (
            
                 <div className="category_details">
                   <h3 className="category_subheading" onClick={()=>setToggle('human')}>Human Resource</h3>
-                    <div className={toggle == 'human' ? "active sub_categories" : "sub_categories"}>
+                  <Fade bottom> <div className={toggle == 'human' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Human Resource').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
@@ -116,12 +116,12 @@ return (
                         <h4 className="catgory_subheading_details">HR Executive</h4>
                         <h4 className="catgory_subheading_details">HR Executive</h4> */
                         )}
-                    </div>
+                    </div></Fade>
                 </div>
                 
                 <div className="category_details">
                   <h3 className="category_subheading" onClick={()=>setToggle('sales')}>Sales & Marketing</h3>
-                    <div  className={toggle == 'sales' ? "active sub_categories" : "sub_categories"}>
+                  <Fade bottom><div  className={toggle == 'sales' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Sales & Marketing').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
@@ -133,13 +133,13 @@ return (
                         <h4 className="catgory_subheading_details">HR Executive</h4>
                         <h4 className="catgory_subheading_details">HR Executive</h4> */
                         )}
-                    </div>
+                    </div></Fade>
                 </div>
 
               
                 <div className="category_details">
-                  <h3 className="category_subheading">Information Technology</h3>
-                    <div className="sub_categories">
+                  <h3 className="category_subheading" onClick={()=>setToggle('information')}>Information Technology</h3>
+                  <Fade bottom> <div  className={toggle == 'information' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Information Technology').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
@@ -151,13 +151,13 @@ return (
                         <h4 className="catgory_subheading_details">HR Executive</h4>
                         <h4 className="catgory_subheading_details">HR Executive</h4> */
                         )}
-                    </div>
+                    </div></Fade>
                 </div>
 
               
                 <div className="category_details">
-                  <h3 className="category_subheading">Accounts & Finance</h3>
-                    <div className="sub_categories">
+                  <h3 className="category_subheading" onClick={()=>setToggle('accounts')}>Accounts & Finance</h3>
+                  <Fade bottom><div  className={toggle == 'accounts' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Accounts & Finance').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
@@ -169,12 +169,12 @@ return (
                         <h4 className="catgory_subheading_details">HR Executive</h4>
                         <h4 className="catgory_subheading_details">HR Executive</h4> */
                         )}
-                    </div>
+                    </div></Fade>
                 </div>
               
                 <div className="category_details">
-                  <h3 className="category_subheading">Administration</h3>
-                    <div className="sub_categories">
+                  <h3 className="category_subheading" onClick={()=>setToggle('administration')}>Administration</h3>
+                  <Fade bottom><div  className={toggle == 'administration' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Administration').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
@@ -186,7 +186,7 @@ return (
                         <h4 className="catgory_subheading_details">HR Executive</h4>
                         <h4 className="catgory_subheading_details">HR Executive</h4> */
                         )}
-                    </div>
+                    </div></Fade>
                 </div>
            </CategorySection>
              </MainContainer>
@@ -451,10 +451,20 @@ const CategorySection = styled.div`
     margin: 0px 0px 10px 0px;
 }
 }
-.sub_categories{
+.sub_categories  {
+    height: 0;
+    display: none;
+}
+
+.active.sub_categories {
+    height: auto;
+    display: block;
+}
+.sub_categories a{
     display: inline-flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-right: 10px;
     
 @media only screen and (max-width: 820px) {
     gap: 4px;

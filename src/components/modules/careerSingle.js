@@ -122,41 +122,41 @@ const CareerSingle=({match,location})=>{
                           <i class="fa fa-id-badge" aria-hidden="true"></i><p>Apply for this job</p>
                          
                           </div>
-                          <div className="shareButton">
-                              {/* <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p> */}
-                              <FacebookShareButton 
+                          <FacebookShareButton 
                                   url={baseUrl+location.pathname}
                                   quote={""}
                                   hashtag=""
-                                  >
+                                  ><div className="shareButton">
+                              {/* <i class="fa fa-facebook" aria-hidden="true"></i><p>Share on Facebook</p> */}
+                              
                                   <i class="fa fa-facebook" aria-hidden="true"></i>
                                   <p>SHARE ON FACEBOOK</p>
-                              </FacebookShareButton> 
-                          </div>
-                          <div className="shareButton">
+                            
+                          </div></FacebookShareButton> 
+                          <TwitterShareButton
+                                url={baseUrl+location.pathname}
+                              ><div className="shareButton">
                               {/* <i class="fa fa-twitter" aria-hidden="true"></i><p>Share on Twitter</p> */}
-                              <TwitterShareButton
-                                url={baseUrl+location.pathname}
-                              >
+                              
                               <i class="fa fa-twitter" aria-hidden="true"></i><p>SHARE ON TWITTER</p>
-                              </TwitterShareButton>
-                          </div>
-                          <div className="shareButton">
+                             
+                          </div> </TwitterShareButton>
+                          <LinkedinShareButton
+                                url={baseUrl+location.pathname}
+                                > <div className="shareButton">
                               {/* <i class="fa fa-linkedin" aria-hidden="true"></i><p>Share on Linkedin</p> */}
-                              <LinkedinShareButton
-                                url={baseUrl+location.pathname}
-                                >
+                              
                                 <i class="fa fa-linkedin" aria-hidden="true"></i><p>SHARE ON LINKEDIN</p>
-                              </LinkedinShareButton>
-                          </div>
-                          <div className="shareButton">
-                              {/* <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p> */}
-                              <WhatsappShareButton
+                             
+                          </div> </LinkedinShareButton>
+                          <WhatsappShareButton
                                 url={baseUrl+location.pathname}
-                                >
+                                >  <div className="shareButton">
+                              {/* <i class="fa fa-whatsapp" aria-hidden="true"></i><p>Share on Whatsapp</p> */}
+                              
                                 <i class="fa fa-whatsapp" aria-hidden="true"></i><p>SHARE ON WHATSAPP</p>
-                              </WhatsappShareButton>
-                          </div>
+                             
+                          </div> </WhatsappShareButton>
                       </CareerSubSectionRight>
                    </CareerSubSectionMain>
                           <h3 className="skillsHeading">Find Similar Jobs</h3>
@@ -491,6 +491,9 @@ span{
 }
 `
 const CareerSubSectionRight = styled.div`
+button {
+  width: 100%;
+}
 .shareButton{
   cursor:pointer;
   border: 1px   solid #ABABAB;
