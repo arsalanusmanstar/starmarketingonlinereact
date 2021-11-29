@@ -6,7 +6,8 @@ import { Link,NavLink,Redirect } from 'react-router-dom';
 import latest_icon06 from "../../assets/latest_icon06.png";
 
 const Careers = (career)=>{
-  const [data,setData] = useState([]);
+    const [data,setData] = useState([]);
+    const [toggle,setToggle] = useState(false);
 
 
   //For Search
@@ -102,8 +103,8 @@ return (
            <CategorySection>
            
                 <div className="category_details">
-                  <h3 className="category_subheading">Human Resource</h3>
-                    <div className="sub_categories">
+                  <h3 className="category_subheading" onClick={()=>setToggle('human')}>Human Resource</h3>
+                    <div className={toggle == 'human' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Human Resource').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
@@ -119,8 +120,8 @@ return (
                 </div>
                 
                 <div className="category_details">
-                  <h3 className="category_subheading">Sales & Marketing</h3>
-                    <div className="sub_categories">
+                  <h3 className="category_subheading" onClick={()=>setToggle('sales')}>Sales & Marketing</h3>
+                    <div  className={toggle == 'sales' ? "active sub_categories" : "sub_categories"}>
                         {data.length>0 && data.filter((jobs)=> jobs.acf && jobs.acf.job_category === 'Sales & Marketing').map((jobs,index)=>
                         <Link to={jobs.link.replace('https://staging.starmarketingonline.com/jobs','career')} style={{ textDecoration: 'none' }}>
                       <h4 className="catgory_subheading_details"  key={index}>{jobs.acf.designation}</h4>
