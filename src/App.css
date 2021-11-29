@@ -1066,6 +1066,16 @@ html::-webkit-scrollbar-thumb:active {
   color: #079900;
 }
 
+.category_heading {
+  text-align: left;
+  font: normal normal 600 38px/30px Poppins;
+  letter-spacing: 1px;
+  color: #000000;
+  opacity: 1;
+  text-transform: uppercase;
+  margin-top: 6%;
+}
+
 @media only screen and (max-width: 1366px) {
   
 .sticky .hotMenuMain {line-height: 17px;}

@@ -98,8 +98,9 @@ return (
              </div> */}
              
            </JobSection>
+           <h2 className="category_heading">Browse by Category</h2>
            <CategorySection>
-             <h2 className="category_heading">Browse by Category</h2>
+           
                 <div className="category_details">
                   <h3 className="category_subheading">Human Resource</h3>
                     <div className="sub_categories">
@@ -116,7 +117,7 @@ return (
                         )}
                     </div>
                 </div>
-                <br/>
+                
                 <div className="category_details">
                   <h3 className="category_subheading">Sales & Marketing</h3>
                     <div className="sub_categories">
@@ -134,7 +135,7 @@ return (
                     </div>
                 </div>
 
-                <br/>
+              
                 <div className="category_details">
                   <h3 className="category_subheading">Information Technology</h3>
                     <div className="sub_categories">
@@ -152,7 +153,7 @@ return (
                     </div>
                 </div>
 
-                <br/>
+              
                 <div className="category_details">
                   <h3 className="category_subheading">Accounts & Finance</h3>
                     <div className="sub_categories">
@@ -169,7 +170,7 @@ return (
                         )}
                     </div>
                 </div>
-                <br/>
+              
                 <div className="category_details">
                   <h3 className="category_subheading">Administration</h3>
                     <div className="sub_categories">
@@ -410,6 +411,11 @@ p{
 `
 const CategorySection = styled.div`
     margin-top:40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 15px;
+    opacity: 1;
+    padding: 30px 40px;  
 .category_heading{
     text-align: left;
     font: normal normal 600 45px/106px Poppins;
@@ -425,11 +431,7 @@ const CategorySection = styled.div`
 }
 }
 .category_details{
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 15px;
-    opacity: 1;
-    padding: 30px 40px;  
+   
 @media only screen and (max-width: 820px) {
     padding: 20px 30px;  
 }
@@ -452,6 +454,7 @@ const CategorySection = styled.div`
     display: inline-flex;
     flex-wrap: wrap;
     gap: 20px;
+    
 @media only screen and (max-width: 820px) {
     gap: 4px;
 }
