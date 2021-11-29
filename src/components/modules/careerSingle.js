@@ -33,7 +33,7 @@ const CareerSingle=({match,location})=>{
   
      setLoader(true);
       const data = new FormData(e.target);
-      axios.post('https://starclubcard.info/api/career-api.php', data, {
+      axios.post('https://starmarketingonline.com/api/career-api.php', data, {
           headers: {
               'Content-Type': 'application/json'
           }
